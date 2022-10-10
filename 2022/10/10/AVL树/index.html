@@ -152,14 +152,14 @@
             
             <span class="tag">
                 
-                <a href="/tags/python/" style="color: #03a9f4">
+                <a href="/tags/python/" style="color: #ffa2c4">
                     python
                 </a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/BiTreeNode/" style="color: #00a596">
+                <a href="/tags/BiTreeNode/" style="color: #ff7d73">
                     BiTreeNode
                 </a>
             </span>
@@ -327,6 +327,11 @@ tree.order(tree.root)
     </div>
     
     
+    <link rel="stylesheet" href="https://unpkg.com/@waline/client@v2/dist/waline.css" />
+    <div id="comment">
+        <div id="waline-container"></div>
+    </div>
+    
 </div>
                          
 <footer id="footer">
@@ -360,6 +365,23 @@ tree.order(tree.root)
         <script src="/js/fireworks.js"></script>
         <script src="/js/background.js"></script>
         
+
+<script src="https://unpkg.com/@waline/client@v2/dist/waline.js"></script>
+<script>
+    Waline.init({
+        el: '#waline-container',
+        serverURL: "https://waline-muout4n39-tongrens.vercel.app/",
+        commentCount: true,
+        pageview: false,
+        emoji: "https://unpkg.com/@waline/emojis@1.0.1/weibo,https://unpkg.com/@waline/emojis@1.0.1/alus,https://unpkg.com/@waline/emojis@1.0.1/bilibili,https://unpkg.com/@waline/emojis@1.0.1/qq,https://unpkg.com/@waline/emojis@1.0.1/tieba,https://unpkg.com/@waline/emojis@1.0.1/tw-emoji".split(','),
+        meta: "nick,mail,link".split(','),
+        requiredMeta: "nick".split(','),
+        lang: "zh-CN",
+        wordLimit: parseInt("0"),
+        pageSize: "10",
+        login: "enable",
+    });
+</script>
 
     </body>
 </html>
