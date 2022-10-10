@@ -4,17 +4,16 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
-        <title>接口及以太网链路配置及管理 | Tongrens&#39;s Home</title>
+        <title>接口及以太网链路配置及管理 | Tongrens</title>
         <meta name="author" content="Tongrens">
         <meta name="description" content="">
         <meta name="keywords" content="">
-        <link rel="icon" href="https://tongrens.me/images/73508047.jpg">
+        <link rel="icon" href="https://tongrens.me/images/73508047.png">
         <script src="https://cdn.staticfile.org/instant.page/5.1.0/instantpage.min.js" type="module"></script>
         <script src="https://cdn.staticfile.org/font-awesome/6.2.0/js/all.min.js"></script>
         
-        <link rel="stylesheet" href="/css/test/fonts.min.css">
-        <link rel="stylesheet" href="/css/test/particlex.css">
-        <link rel="stylesheet" href="/css/custom.css">
+        <link rel="stylesheet" href="/css/fonts.min.css">
+        <link rel="stylesheet" href="/css/particlex.css">
         
         <script src="https://cdn.staticfile.org/vue/3.2.33/vue.global.prod.min.js"></script>
         <script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
@@ -33,7 +32,7 @@
 <nav id="menu">
     <div class="desktop-menu">
         <a href="/">
-            <span class="title">Tongrens's Home</span>
+            <span class="title">Tongrens</span>
         </a>
         
         <a href="/">
@@ -66,7 +65,7 @@
         <div class="curtain" @click="menu_show = !menu_show" v-show="menu_show"></div>
         <div :class="'title'" @click="menu_show = !menu_show">
             <i class="fa-solid fa-bars fa-fw"></i>
-            <span>&emsp;Tongrens's Home</span>
+            <span>&emsp;Tongrens</span>
         </div>
         <transition name="slide">
         <div class="items" v-show="menu_show">
@@ -152,7 +151,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/switch/" style="color: #ff7d73">
+                <a href="/tags/switch/" style="color: #03a9f4">
                     switch
                 </a>
             </span>
@@ -178,6 +177,8 @@
 </blockquote>
 <h2 id="链路聚合"><a href="#链路聚合" class="headerlink" title="链路聚合"></a>链路聚合</h2><p>链路聚合是指将多个相同属性的物理接口捆绑在一起形成一个逻辑接口，可以用来增加带宽，且聚合端口与物理接口同样可以配置端口类型。</p>
 <h2 id="负载分担："><a href="#负载分担：" class="headerlink" title="负载分担："></a>负载分担：</h2><p>负载分担分为手动负载分担和静态LACP负载分担。在手动负载分担的模式下，聚合端口与成员接口的配置都需要由手工来经行完成，并且在该模式下所有链路都参与数据的转发，平均分担流量；静态LACP负载分担模式则是利用LACP协议进行自动聚合，通过LACPDU报文经行交互，通告自己的（系统优先级、系统MAC、端口优先级、端口号和操作key）并与对端经行比较，选择能够汇聚的端口，链路的两端称为Actor和Partner，且LACP模式可以实现链路冗余备份（所以也被称为M:N模式）。</p>
+<span id="more"></span>
+
 <blockquote>
 <p>LACP建立主被动关系顺序：<br>1、系统优先级（system priority）越低越优先，缺省值都为32768<br>2、系统MAC（system ID），越小越优先</p>
 </blockquote>
@@ -200,7 +201,7 @@
 <footer id="footer">
     <div class="footer-wrap">
         <div>
-            © 2022 - 2022 Tongrens&#39;s Home
+            © 2022 - 2022 Tongrens
             <span class="footer-icon">
                 <i class="fa-solid fa-font-awesome fa-fw"></i>
             </span>

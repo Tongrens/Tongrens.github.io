@@ -4,17 +4,16 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
-        <title>Tongrens&#39;s Home</title>
+        <title>Tongrens</title>
         <meta name="author" content="Tongrens">
         <meta name="description" content="">
         <meta name="keywords" content="">
-        <link rel="icon" href="https://tongrens.me/images/73508047.jpg">
+        <link rel="icon" href="https://tongrens.me/images/73508047.png">
         <script src="https://cdn.staticfile.org/instant.page/5.1.0/instantpage.min.js" type="module"></script>
         <script src="https://cdn.staticfile.org/font-awesome/6.2.0/js/all.min.js"></script>
         
-        <link rel="stylesheet" href="/css/test/fonts.min.css">
-        <link rel="stylesheet" href="/css/test/particlex.css">
-        <link rel="stylesheet" href="/css/custom.css">
+        <link rel="stylesheet" href="/css/fonts.min.css">
+        <link rel="stylesheet" href="/css/particlex.css">
         
         <script src="https://cdn.staticfile.org/vue/3.2.33/vue.global.prod.min.js"></script>
         <script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
@@ -33,7 +32,7 @@
 <nav id="menu">
     <div class="desktop-menu">
         <a href="/">
-            <span class="title">Tongrens's Home</span>
+            <span class="title">Tongrens</span>
         </a>
         
         <a href="/">
@@ -66,7 +65,7 @@
         <div class="curtain" @click="menu_show = !menu_show" v-show="menu_show"></div>
         <div :class="'title'" @click="menu_show = !menu_show">
             <i class="fa-solid fa-bars fa-fw"></i>
-            <span>&emsp;Tongrens's Home</span>
+            <span>&emsp;Tongrens</span>
         </div>
         <transition name="slide">
         <div class="items" v-show="menu_show">
@@ -132,8 +131,8 @@
         <span class="loop"></span>
         <span class="info">
             <div class="wrap">
-                <h1>Tongrens&#39;s Home</h1>
-                <h3></h3>
+                <h1>Tongrens</h1>
+                <h3>Welcome to My Blog!</h3>
                 <h5></h5>
             </div>
         </span>
@@ -173,41 +172,6 @@
             
             <h1 id="基本VLAN特性配置与管理"><a href="#基本VLAN特性配置与管理" class="headerlink" title="基本VLAN特性配置与管理"></a>基本VLAN特性配置与管理</h1><h2 id="VLAN基础"><a href="#VLAN基础" class="headerlink" title="VLAN基础"></a>VLAN基础</h2><p>VLAN（虚拟局域网）是一个将物理LAN逻辑划分为若干个虚拟的LAN，目的是为了缩小广播域，使广播域进行二层（数据链路层）通信，不同VLAN间的主机是不能互相通信的，必须经过第三层（网络层）进行通信。<br><strong>VLAN既能限制广播网络，又可增强局域网的安全性，还提高了网络的健壮性。</strong><br>在同一个物理交换机上不可能存在两个相同的VLAN，在不同交换机上则可以有相同VLAN</p>
 <h2 id="VLAN帧"><a href="#VLAN帧" class="headerlink" title="VLAN帧"></a>VLAN帧</h2><p>VLAN Tag:标识所属VLAN，遵循IEEE 802.1Q标注，支持802.1Q协议的交换机既可以发送有标记帧也可以发送无标记帧（有标记帧加入了4字节的801.1Q Tag，反之则没有），交换机内部的数据包一律携带Tag。</p>
-<h2 id="802-1Q-Tag各字段含义："><a href="#802-1Q-Tag各字段含义：" class="headerlink" title="802.1Q Tag各字段含义："></a>802.1Q Tag各字段含义：</h2><p>TPID：长度2bytes，表示帧类型，取值为0x8100为802.1Q帧，如果不支持的设备接受到则丢弃<br>PRI：长度3bits，表示帧优先级，取值范围0-7，越大越优，用于QOS<br>CFI：长度1bits，表示MAC地址是否为经典格式，0是经典1是非经典，在以太网中值为1<br>VID：长度12bits，表示VLAN ID</p>
-<h2 id="VLAN特性"><a href="#VLAN特性" class="headerlink" title="VLAN特性"></a>VLAN特性</h2><p>华为交换机支持5种VLAN划分：基于<strong>端口</strong>划分、基于<strong>子网</strong>划分、基于<strong>MAC地址</strong>划分、基于<strong>协议</strong>划分、基于<strong>策略</strong>划分；其中端口划分属于静态VLAN划分，其余的属于动态VLAN划分<br><em>（除了端口划分其余都要在Hybrid口上划分）</em></p>
-<p>常见的VLAN间通信有三层VLANIF接口、三层以太网子接口和VLAN switch方案</p>
-<blockquote>
-<p>VLAN聚合：是指Super VLAN技术，他是在一个主VLAN下包括多个同IP网段的VLAN技术，但只需要为主VLANIF配置IP地址，各从VLAN中的用户主机就可以通过主VLAN的VLANIF接口作为缺省网关进行通信</p>
-</blockquote>
-<blockquote>
-<p>VLAN映射：在一些交换机上不支持全范围（1-4094）的VLAN ID，而只支持1-512的VLAN ID就与公网的VLAN ID实现冲突；于是就产生了一种可以实现在用户VLAN ID与运营商VLAN ID进行相互转换的技术。</p>
-</blockquote>
-<blockquote>
-<p>语音VLAN：（Voice VLAN）是相对传统VLAN数据而言的，他是针对不同类型的用户语言流进行划分的，并能自动修改数据帧的优先级，以提高语音数据的传输质量</p>
-</blockquote>
-<blockquote>
-<p>VLAN透传：可以使交换机直接透明传输指定VLAN的数据帧，不上送CPU处理，也不用去识别VLAN标签，提高了转发效率</p>
-</blockquote>
-<blockquote>
-<p>QINQ协议：是基于IEEE 802.1Q技术的一种二层隧道协议。在公网中传输的数据一般分为公网VLAN标签和私网VLAN标签，QINQ的核心思想是为了将私网标签封装在公网标签中，为用户提供一种较为简单的二层VPN隧道</p>
-</blockquote>
-<h2 id="二层以太网端口"><a href="#二层以太网端口" class="headerlink" title="二层以太网端口"></a>二层以太网端口</h2><p>二层以太网端口类型有：<strong>access、trunk、hybrid和QINQ四种端口类型</strong></p>
-<blockquote>
-<p>Access端口：主要用来连接用户主机的二层以太网端口，仅允许一个VLAN通过，发送的以太网帧永远是不带标签的（Untagged）<br>Trunk端口：主要用来连接与其他交换机的二层端口，允许多个VLAN通过，发送的帧都是带标签的<br>Hybrid端口：Hybrid端口可以说是access端口和trunk端口的混合体，是一种特殊的二层以太网端口，既可以连接主机也可以连接交换机，可以允许一个或多个VLAN通过，并可以选择带标签或不带标签。<br>QINQ端口：QINQ端口是专用于QINQ协议的二层以太网端口，可以给数据帧加上双层VLAN标签，从而可以支持多达4094*4094个VLAN。</p>
-</blockquote>
-<h2 id="二层以太网链路"><a href="#二层以太网链路" class="headerlink" title="二层以太网链路"></a>二层以太网链路</h2><p>以太网链路分为<strong>接入链路（Access link）和干道链路（Trunk link）</strong></p>
-<blockquote>
-<p>接入链路：是交换机直接连接用户主机的链路。通常情况下主机并不需要识别自己是属于哪个VLAN，所以接入链路发送和接受的数据帧都是不带标签（Untagged）的，但接入链路不一定只允许一个VLAN通过，只是access端口才仅允许一个VLAN通过，当属于Hybrid端口时同样是允许多个VLAN通过的</p>
-</blockquote>
-<blockquote>
-<p>干道链路：是交换机与交换机互联的链路。可以承载多个不同VLAN数据传输，干道链路两端的设备需要识别VLAN标签，所以在干道链路的数据都是带标签（Tagged）的，除了该链路的PVID所属VLAN（默认VLAN1）</p>
-</blockquote>
-<h2 id="VLAN间通信"><a href="#VLAN间通信" class="headerlink" title="VLAN间通信"></a>VLAN间通信</h2><ol>
-<li>三层VLANIF接口方案（VLANIF接口作为对应VLAN内的用户缺省网关）</li>
-<li>三层以太网子接口方案（同时具备三层以太网物理接口和二层以太网物理接口的双重特性）</li>
-<li>VLAN Switch方案（一种按照VLAN标签进行数据转发的技术，需要预先在各交换机上配置静态转发路径，符合条件即可转发到对应的出接口，无需查看MAC地址，提高转发效率和安全性，能避免MAC地址攻击和广播风暴）<br><img src="https://tongrens.me/images/switch/1.jpg"></li>
-</ol>
-
             
         </div>
     </div>
@@ -220,14 +184,14 @@
         
         <span class="tag">
             
-            <a href="/tags/switch/" style="color: #ffa2c4">
+            <a href="/tags/switch/" style="color: #03a9f4">
                 switch
             </a>
         </span>
         
         <span class="tag">
             
-            <a href="/tags/vlan/" style="color: #ff7d73">
+            <a href="/tags/vlan/" style="color: #00a596">
                 vlan
             </a>
         </span>
@@ -277,58 +241,7 @@ def create_linklist_head(lst):
         node.next = head
         head = node
     return head
-
-# 尾插法
-def create_linklist_tail(lst):
-    head = Node(lst[0])
-    tail = head
-    for element in lst[1:]:
-        node = Node(element)
-        tail.next = node
-        tmp = tail
-        tail = node
-        tail.prior = tmp  # 26&amp;28双链表
-    return head
-
-# 输出链表
-def print_linklist(lk):
-    while lk:
-        print(lk.item, end=&#39;,&#39;)
-        lk = lk.next
-    print()
-
-# 头插法eg
-lk1 = create_linklist_head([1, 2, 3])
-print(lk1.item)  # 3
-print(lk1.next.item)  # 2
-print(lk1.next.prior.item)  # 3(双链表)
-print_linklist(lk1)  # 3,2,1,
-# 尾插法eg
-lk2 = create_linklist_tail([1, 2, 3])
-print(lk2.item)  # 1
-print(lk2.next.item)  # 2
-print(lk2.next.prior.item)  # 1(双链表)
-print_linklist(lk2)  # 1,2,3,
-# 插入元素
-p = Node(5)
-p.next = lk2.next
-lk2.next.prior = p
-p.prior = lk2   # 54&amp;55双链表
-lk2.next = p
-print_linklist(lk2)  # 1,5,2,3,
-# 删除元素
-lk2.next.next.prior = lk2
-lk2.next = lk2.next.next
-print_linklist(lk2)  # 1,2,3,
-&quot;&quot;&quot;
-————————————时间复杂度——————————————
-             列表      链表
-按元素查找：   O(n)      O(n)
-按下标查找：   O(1)      O(n)
-插入&amp;删除：   O(n)      O(1)
-&quot;&quot;&quot;
 </code></pre>
-
             
         </div>
     </div>
@@ -341,14 +254,14 @@ print_linklist(lk2)  # 1,2,3,
         
         <span class="tag">
             
-            <a href="/tags/python/" style="color: #03a9f4">
+            <a href="/tags/python/" style="color: #00a596">
                 python
             </a>
         </span>
         
         <span class="tag">
             
-            <a href="/tags/LinkList/" style="color: #ffa2c4">
+            <a href="/tags/LinkList/" style="color: #00bcd4">
                 LinkList
             </a>
         </span>
@@ -394,150 +307,7 @@ class AVLNode(BiTreeNode):
 class AVLTree(BST):
     def __init__(self, li=None):
         BST.__init__(self, li)
-
-    def rotate_left(self, p, c):
-        lc = c.lchild
-        p.rchild = lc
-        if lc:
-            lc.parent = p
-        c.lchild = p
-        p.parent = c
-        p.bf = 0
-        c.bf = 0
-        return c
-
-    def rotate_right(self, p, c):
-        rc = c.rchild
-        p.lchild = rc
-        if rc:
-            rc.parent = p
-        c.rchild = p
-        p.parent = c
-        p.bf = 0
-        c.bf = 0
-        return c
-
-    def rotate_right_left(self, p, c):
-        g = c.lchild
-        rrc = g.rchild
-        c.lchild = rrc
-        if rrc:
-            rrc.parent = c
-        g.rchild = c
-        c.parent = g
-        rlc = g.lchild
-        p.rchild = rlc
-        if rlc:
-            rlc.parent = p
-        g.lchild = p
-        p.parent = g
-        if g.bf &gt; 0:
-            p.bf = -1
-            c.bf = 0
-        elif g.bf &lt; 0:
-            p.bf = 0
-            c.bf = 1
-        else:
-            p.bf = 0
-            c.bf = 0
-        return g
-
-    def rotate_left_right(self, p, c):
-        g = c.rchild
-        rlc = g.lchild
-        c.rchild = rlc
-        if rlc:
-            rlc.parent = c
-        g.lchild = c
-        c.parent = g
-        rrc = g.rchild
-        p.lchild = rrc
-        if rrc:
-            rrc.parent = p
-        g.rchild = p
-        p.parent = g
-        if g.bf &gt; 0:
-            p.bf = 0
-            c.bf = -1
-        elif g.bf &lt; 0:
-            p.bf = 1
-            c.bf = 0
-        else:
-            p.bf = 0
-            c.bf = 0
-        return g
-
-    def insert(self, val):
-        p = self.root
-        if not p:
-            self.root = AVLNode(val)
-            return
-        while True:
-            if val &lt; p.data:
-                if p.lchild:
-                    p = p.lchild
-                else:
-                    p.lchild = AVLNode(val)
-                    p.lchild.parent = p
-                    node = p.lchild
-                    break
-            elif val &gt; p.data:
-                if p.rchild:
-                    p = p.rchild
-                else:
-                    p.rchild = AVLNode(val)
-                    p.rchild.parent = p
-                    node = p.rchild
-                    break
-            else:
-                return
-        while node.parent:
-            g = node.parent.parent
-            x = node.parent
-            if node == node.parent.lchild:
-                if node.parent.bf &lt; 0:
-                    if node.bf &gt; 0:
-                        n = self.rotate_left_right(node.parent, node)
-                    else:
-                        n = self.rotate_right(node.parent, node)
-                elif node.parent.bf == 0:
-                    node.parent.bf = -1
-                    node = node.parent
-                    continue
-                else:
-                    node.parent.bf = 0
-                    break
-            else:
-                if node.parent.bf &gt; 0:
-                    if node.bf &lt; 0:
-                        n = self.rotate_right_left(node.parent, node)
-                    else:
-                        n = self.rotate_left(node.parent, node)
-                elif node.parent.bf == 0:
-                    node.parent.bf = 1
-                    node = node.parent
-                    continue
-                else:
-                    node.parent.bf = 0
-                    break
-            n.parent = g
-            if g:
-                if x == g.lchild:
-                    g.lchild = n
-                else:
-                    g.rchild = n
-                break
-            else:
-                self.root = n
-                break
-
-tree = AVLTree([9,8,7,6,5,4,3,2,1])
-tree.order(tree.root)
-print()
-tree.insert(10)
-tree.order(tree.root)
 </code></pre>
-
             
         </div>
     </div>
@@ -550,7 +320,7 @@ tree.order(tree.root)
         
         <span class="tag">
             
-            <a href="/tags/python/" style="color: #00bcd4">
+            <a href="/tags/python/" style="color: #ff7d73">
                 python
             </a>
         </span>
@@ -605,99 +375,7 @@ class BST:
         if lst:
             for val in lst:
                 self.insert(val)
-
-    def insert(self, val):
-        p = self.root
-        if not p:
-            self.root = BiTreeNode(val)
-            return
-        while True:
-            if val &lt; p.data:
-                if p.lchild:
-                    p = p.lchild
-                else:
-                    p.lchild = BiTreeNode(val)
-                    p.lchild.parent = p
-                    return
-            elif val &gt; p.data:
-                if p.rchild:
-                    p = p.rchild
-                else:
-                    p.rchild = BiTreeNode(val)
-                    p.rchild.parent = p
-                    return
-            else:
-                return
-
-    def find(self, val):
-        p = self.root
-        while p:
-            if val &gt; p.data:
-                p = p.rchild
-            elif val &lt; p.data:
-                p = p.lchild
-            else:
-                return p
-        return None
-
-    def __delete_node_1(self, node):  # 删除叶子节点
-        if not node.parent:     # 只有一个根节点
-            self.root = None
-        elif node == node.parent.lchild:
-            node.parent.lchild = None
-        else:
-            node.parent.rchild = None
-
-    def __delete_node_2_left(self, node):  # 删除非叶子节点，只有左子树
-        if not node.parent:
-            self.root = node.lchild
-            node.lchild.parent = None
-        elif node == node.parent.lchild:
-            node.parent.lchild = node.lchild
-            node.lchild.parent = node.parent
-        else:
-            node.parent.rchild = node.lchild
-            node.lchild.parent = node.parent
-
-    def __delete_node_2_right(self, node):  # 删除非叶子节点，只有右子树
-        if not node.parent:
-            self.root = node.rchild
-            node.rchild.parent = None
-        elif node == node.parent.lchild:
-            node.parent.lchild = node.rchild
-            node.rchild.parent = node.parent
-        else:
-            node.parent.rchild = node.rchild
-            node.rchild.parent = node.parent
-
-    def delete(self, val):
-        if self.root:
-            node = self.find(val)
-            if not node:
-                raise ValueError(&#39;\&quot;&#39; + str(val) + &#39;\&quot; not in tree&#39;)
-            if not node.lchild and not node.rchild:
-                self.__delete_node_1(node)
-            elif not node.rchild:
-                self.__delete_node_2_left(node)
-            elif not node.lchild:
-                self.__delete_node_2_right(node)
-            else:
-                min_node = node.rchild
-                while min_node.lchild:
-                    min_node = min_node.lchild
-                node.data = min_node.data
-                if min_node.rchild:
-                    self.__delete_node_2_right(min_node)
-                else:
-                    self.__delete_node_1(min_node)
-
-    def order(self, root):
-        if root:
-            self.order(root.lchild)
-            print(root.data, end=&#39;,&#39;)
-            self.order(root.rchild)
 </code></pre>
-
             
         </div>
     </div>
@@ -710,14 +388,14 @@ class BST:
         
         <span class="tag">
             
-            <a href="/tags/python/" style="color: #ffa2c4">
+            <a href="/tags/python/" style="color: #00a596">
                 python
             </a>
         </span>
         
         <span class="tag">
             
-            <a href="/tags/BiTreeNode/" style="color: #03a9f4">
+            <a href="/tags/BiTreeNode/" style="color: #ff7d73">
                 BiTreeNode
             </a>
         </span>
@@ -771,48 +449,7 @@ def in_order(root):
         in_order(root.lchild)
         print(root.data, end=&#39;,&#39;)
         in_order(root.rchild)
-
-# 后序遍历  B,D,C,A,F,G,E,
-def post_order(root):
-    if root:
-        post_order(root.lchild)
-        post_order(root.rchild)
-        print(root.data, end=&#39;,&#39;)
-
-# 层次遍历  E,A,G,C,F,B,D,
-def level_order(root):
-    from collections import deque
-    queue = deque()
-    queue.append(root)
-    while len(queue) &gt; 0:
-        node = queue.popleft()
-        print(node.data, end=&#39;,&#39;)
-        if node.lchild:
-            queue.append(node.lchild)
-        if node.rchild:
-            queue.append(node.rchild)
-
-&quot;&quot;&quot;
-            E
-    A               G
-        C               F
-    B       D
-&quot;&quot;&quot;
-a = BiTreeNode(&#39;A&#39;)
-b = BiTreeNode(&#39;B&#39;)
-c = BiTreeNode(&#39;C&#39;)
-d = BiTreeNode(&#39;D&#39;)
-e = BiTreeNode(&#39;E&#39;)
-f = BiTreeNode(&#39;F&#39;)
-g = BiTreeNode(&#39;G&#39;)
-e.lchild = a
-e.rchild = g
-a.rchild = c
-g.rchild = f
-c.lchild = b
-c.rchild = d
 </code></pre>
-
             
         </div>
     </div>
@@ -825,14 +462,14 @@ c.rchild = d
         
         <span class="tag">
             
-            <a href="/tags/python/" style="color: #ff7d73">
+            <a href="/tags/python/" style="color: #03a9f4">
                 python
             </a>
         </span>
         
         <span class="tag">
             
-            <a href="/tags/BiTreeNode/" style="color: #00bcd4">
+            <a href="/tags/BiTreeNode/" style="color: #ff7d73">
                 BiTreeNode
             </a>
         </span>
@@ -902,7 +539,7 @@ c.rchild = d
         <div id="card-div">
     <div class="card-style" style="width: 300px">
         <div class="avatar">
-            <img src="https://tongrens.me/images/73508047.jpg " alt="avatar">
+            <img src="https://tongrens.me/images/73508047.png " alt="avatar">
         </div>
         <div class="name">
             Tongrens
@@ -953,7 +590,7 @@ c.rchild = d
 <footer id="footer">
     <div class="footer-wrap">
         <div>
-            © 2022 - 2022 Tongrens&#39;s Home
+            © 2022 - 2022 Tongrens
             <span class="footer-icon">
                 <i class="fa-solid fa-font-awesome fa-fw"></i>
             </span>

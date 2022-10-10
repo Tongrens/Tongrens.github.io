@@ -4,17 +4,16 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
-        <title>Tongrens&#39;s Home</title>
+        <title>Tongrens</title>
         <meta name="author" content="Tongrens">
         <meta name="description" content="">
         <meta name="keywords" content="">
-        <link rel="icon" href="https://tongrens.me/images/73508047.jpg">
+        <link rel="icon" href="https://tongrens.me/images/73508047.png">
         <script src="https://cdn.staticfile.org/instant.page/5.1.0/instantpage.min.js" type="module"></script>
         <script src="https://cdn.staticfile.org/font-awesome/6.2.0/js/all.min.js"></script>
         
-        <link rel="stylesheet" href="/css/test/fonts.min.css">
-        <link rel="stylesheet" href="/css/test/particlex.css">
-        <link rel="stylesheet" href="/css/custom.css">
+        <link rel="stylesheet" href="/css/fonts.min.css">
+        <link rel="stylesheet" href="/css/particlex.css">
         
         <script src="https://cdn.staticfile.org/vue/3.2.33/vue.global.prod.min.js"></script>
         <script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
@@ -33,7 +32,7 @@
 <nav id="menu">
     <div class="desktop-menu">
         <a href="/">
-            <span class="title">Tongrens's Home</span>
+            <span class="title">Tongrens</span>
         </a>
         
         <a href="/">
@@ -66,7 +65,7 @@
         <div class="curtain" @click="menu_show = !menu_show" v-show="menu_show"></div>
         <div :class="'title'" @click="menu_show = !menu_show">
             <i class="fa-solid fa-bars fa-fw"></i>
-            <span>&emsp;Tongrens's Home</span>
+            <span>&emsp;Tongrens</span>
         </div>
         <transition name="slide">
         <div class="items" v-show="menu_show">
@@ -132,8 +131,8 @@
         <span class="loop"></span>
         <span class="info">
             <div class="wrap">
-                <h1>Tongrens&#39;s Home</h1>
-                <h3></h3>
+                <h1>Tongrens</h1>
+                <h3>Welcome to My Blog!</h3>
                 <h5></h5>
             </div>
         </span>
@@ -192,67 +191,7 @@ class LinkList:
                 item = self.current.item
                 self.current = self.current.next
                 return item
-
-    def __init__(self, iterable=None):
-        self.head = None
-        self.tail = None
-        if iterable:
-            self.extend(iterable)
-
-    def append(self, obj):
-        node = self.Node(obj)
-        if self.head is None:
-            self.head = node
-            self.tail = node
-        else:
-            self.tail.next = node
-            self.tail = node
-
-    def extend(self, iterable):
-        for item in iterable:
-            self.append(item)
-
-    def find(self, obj):
-        for item in self:
-            if item == obj:
-                return True
-        return False
-
-    def __iter__(self):
-        return self.LinkListIterator(self.head)
-
-    def __repr__(self):
-        return str(list(self))
-
-class HashTable:
-    def __init__(self, size=101):
-        self.size = size
-        self.table = [LinkList() for i in range(self.size)]
-
-    def hash(self, obj):
-        return obj % self.size
-
-    def insert(self, obj):
-        index = self.hash(obj)
-        if self.find(obj):
-            return False
-        else:
-            self.table[index].append(obj)
-            return True
-
-    def find(self, obj):
-        index = self.hash(obj)
-        return self.table[index].find(obj)
-
-ht = HashTable()
-ht.insert(0)
-ht.insert(1)
-ht.insert(101)
-print(&#39;,&#39;.join(map(str, ht.table)))
-print(ht.find(1))
-print(ht.find(2))
 </code></pre>
-
             
         </div>
     </div>
@@ -272,7 +211,7 @@ print(ht.find(2))
         
         <span class="tag">
             
-            <a href="/tags/HashTable/" style="color: #ffa2c4">
+            <a href="/tags/HashTable/" style="color: #00a596">
                 HashTable
             </a>
         </span>
@@ -337,14 +276,14 @@ print(binary_search(li, 200))  # -1
         
         <span class="tag">
             
-            <a href="/tags/python/" style="color: #00bcd4">
+            <a href="/tags/python/" style="color: #ff7d73">
                 python
             </a>
         </span>
         
         <span class="tag">
             
-            <a href="/tags/search/" style="color: #ffa2c4">
+            <a href="/tags/search/" style="color: #00a596">
                 search
             </a>
         </span>
@@ -392,66 +331,6 @@ count_sort(li, 9)
 print(li)  # [1, 2, 3, 4, 5, 6, 7, 8, 9]
 </code></pre>
 <p><strong>时间复杂度：O(n)<br>空间复杂度：O(n)<br>稳定性：稳定</strong></p>
-<hr>
-<h1 id="基数排序"><a href="#基数排序" class="headerlink" title="基数排序"></a>基数排序</h1><pre><code class="python">def radix_sort(lst):
-    max_num = max(lst)
-    it = 0
-    while 10 ** it &lt;= max_num:
-        buckets = [[] for _ in range(10)]
-        for i in lst:
-            buckets[i // 10 ** it % 10].append(i)
-        lst.clear()
-        for bucket in buckets:
-            lst.extend(bucket)
-        it += 1
-
-li = [4, 6, 2, 3, 1, 5, 7, 9, 8]
-radix_sort(li)
-print(li)
-</code></pre>
-<p><strong>时间复杂度：O(nm)<br>空间复杂度：O(n)<br>稳定性：稳定</strong></p>
-<hr>
-<h1 id="希尔排序"><a href="#希尔排序" class="headerlink" title="希尔排序"></a>希尔排序</h1><pre><code class="python">def insert_sort_gap(lst, gap):
-    for i in range(gap, len(lst)):
-        tmp = lst[i]
-        j = i - gap
-        while j &gt;= 0 and lst[j] &gt; tmp:
-            lst[gap + j] = lst[j]
-            j -= gap
-        lst[j + gap] = tmp
-
-def shell_sort(lst):
-    n = len(lst) // 2
-    while n &gt;= 1:
-        insert_sort_gap(lst, n)
-        n //= 2
-
-li = [4, 6, 2, 3, 1, 5, 7, 9, 8]
-shell_sort(li)
-print(li)  # [1, 2, 3, 4, 5, 6, 7, 8, 9]
-</code></pre>
-<p><strong>时间复杂度：O(nlogn)<br>空间复杂度：O(1)<br>稳定性：不稳定</strong></p>
-<hr>
-<h1 id="桶排序"><a href="#桶排序" class="headerlink" title="桶排序"></a>桶排序</h1><pre><code class="python">def bucket_sort(lst, n=100, max_num=10000):
-    buckets = [[] for _ in range(n)]
-    for val in lst:
-        i = min(val // (max_num // n), n - 1)
-        buckets[i].append(val)
-        for j in range(len(buckets[i]) - 1, 0, -1):
-            if buckets[i][j - 1] &gt; buckets[i][j]:
-                buckets[i][j - 1], buckets[i][j] = buckets[i][j], buckets[i][j - 1]
-            else:
-                break
-    sorted_lst = []
-    for bucket in buckets:
-        sorted_lst.extend(bucket)
-    return sorted_lst
-
-li = [4, 6, 2, 3, 1, 5, 7, 9, 8]
-print(bucket_sort(li))  # [1, 2, 3, 4, 5, 6, 7, 8, 9]
-</code></pre>
-<p><strong>时间复杂度：O(nlogm)<br>空间复杂度：O(logm)<br>稳定性：稳定</strong></p>
-
             
         </div>
     </div>
@@ -464,14 +343,14 @@ print(bucket_sort(li))  # [1, 2, 3, 4, 5, 6, 7, 8, 9]
         
         <span class="tag">
             
-            <a href="/tags/python/" style="color: #00bcd4">
+            <a href="/tags/python/" style="color: #00a596">
                 python
             </a>
         </span>
         
         <span class="tag">
             
-            <a href="/tags/sort/" style="color: #03a9f4">
+            <a href="/tags/sort/" style="color: #00a596">
                 sort
             </a>
         </span>
@@ -527,89 +406,6 @@ li = [4, 6, 2, 3, 1, 5, 7, 9, 8]
 quick_sort(li, 0, len(li) - 1)
 print(li)  # [1, 2, 3, 4, 5, 6, 7, 8, 9]
 </code></pre>
-<blockquote>
-<p>partition:<br>对传入的lst部分进行分割，范围内的第一个数作为中间值，把小于中间值的置于左侧，大于的置于右侧，并返回中间值的下标<br>处理方法为第一次从right开始向左遍历，若遇到比中间值小的则将那个值置于left，然后从left向右遍历，遇到比中间值大的则置于right，以此类推<br>(优化)为防止每次传入的left为范围最大值，随机从范围内取一个数和第一个数替换<br>lst[(left+right)//2], lst[left] = lst[left], lst[(left+right)//2]</p>
-</blockquote>
-<blockquote>
-<p>quick_sort:<br>将传入的列表递归通过二分的方法切片传入partition</p>
-</blockquote>
-<p><strong>时间复杂度：O(nlogn)<br>空间复杂度：O(logn)<br>稳定性：不稳定</strong></p>
-<hr>
-<h1 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h1><pre><code class="python">def sift(lst, low, high):
-    i = low
-    j = 2 * i + 1
-    tmp = lst[i]
-    while j &lt;= high:
-        if j + 1 &lt;= high and lst[j + 1] &gt; lst[j]:
-            j += 1
-        if lst[j] &gt; tmp:
-            lst[i] = lst[j]
-            i = j
-            j = 2 * i + 1
-        else:
-            lst[i] = tmp
-            break
-    else:
-        lst[i] = tmp
-
-def heap_sort(lst):
-    n = len(lst)
-    for i in range((n - 2) // 2, -1, -1):
-        sift(lst, i, n - 1)
-    for i in range(n - 1, -1, -1):
-        lst[0], lst[i] = lst[i], lst[0]
-        sift(lst, 0, i - 1)
-
-li = [4, 6, 2, 3, 1, 5, 7, 9, 8]
-heap_sort(li)
-print(li)  # [1, 2, 3, 4, 5, 6, 7, 8, 9]
-</code></pre>
-<blockquote>
-<p>sift:<br>low为根节点，high为最后一个叶节点，tmp为根节点的值<br>定义i为low，j为i的左子节点，判断i的右子节点如果比j大则将j替换为i的右子节点<br>判断i和j的值，若j比i大则将i的值替换为j的值，并将j定义为新的i的左子节点并重复上一步骤<br>若i比j大，则将i的值替换为tmp并跳出循环；循环正常退出(j比high大)则将i的值替换为tmp</p>
-</blockquote>
-<blockquote>
-<p>heap_sort:<br>1.构建堆，倒序遍历(i)将最后一个非根节点((n-2)//2)做向下调整(i——len(lst)-1)<br>2.倒序遍历无序区将最后一个叶节点与根节点交换，将无序区做一次向下调整，并将无序区最后一个值下标向前一位</p>
-</blockquote>
-<p><strong>时间复杂度：O(nlogn)<br>空间复杂度：O(1)<br>稳定性：不稳定</strong></p>
-<hr>
-<h1 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h1><pre><code class="python">def marge(lst, low, mid, high):
-    i = low
-    j = mid + 1
-    tmp_lst = []
-    while i &lt;= mid and j &lt;= high:
-        if lst[i] &lt; lst[j]:
-            tmp_lst.append(lst[i])
-            i += 1
-        else:
-            tmp_lst.append(lst[j])
-            j += 1
-    while i &lt;= mid:
-        tmp_lst.append(lst[i])
-        i += 1
-    while j &lt;= high:
-        tmp_lst.append(lst[j])
-        j += 1
-    lst[low:high + 1] = tmp_lst
-
-def marge_sort(lst, low, high):
-    if low &lt; high:
-        mid = (low + high) // 2
-        marge_sort(lst, low, mid)
-        marge_sort(lst, mid + 1, high)
-        marge(lst, low, mid, high)
-
-li = [4, 6, 2, 3, 1, 5, 7, 9, 8]
-marge_sort(li, 0, len(li) - 1)
-print(li)  # [1, 2, 3, 4, 5, 6, 7, 8, 9]
-</code></pre>
-<blockquote>
-<p>marge:<br>每次归并会传入low,mid,high，创建临时列表tmp_lst，定义i为low，j为mid+1<br>若i比j的值大，则将i下标的值添加到tmp_lst，并自增<br>反之则将j下标的值添加到tmp_lst，并自增<br>最后将lst需要归并的范围(low——high)的内容替换为tmp_lst</p>
-</blockquote>
-<blockquote>
-<p>marge_sort:<br>将传入的lst递归分割为二等分，直到分割的长度为1为止，再将每两份分割的内容归并</p>
-</blockquote>
-<p><strong>时间复杂度：O(nlogn)<br>空间复杂度：O(n)<br>稳定性：稳定</strong></p>
-
             
         </div>
     </div>
@@ -622,14 +418,14 @@ print(li)  # [1, 2, 3, 4, 5, 6, 7, 8, 9]
         
         <span class="tag">
             
-            <a href="/tags/python/" style="color: #00a596">
+            <a href="/tags/python/" style="color: #00bcd4">
                 python
             </a>
         </span>
         
         <span class="tag">
             
-            <a href="/tags/sort/" style="color: #ff7d73">
+            <a href="/tags/sort/" style="color: #00bcd4">
                 sort
             </a>
         </span>
@@ -677,76 +473,6 @@ li = [4, 6, 2, 3, 1, 5, 7, 9, 8]
 bubble_sort(li)
 print(li)  # [1, 2, 3, 4, 5, 6, 7, 8, 9]
 </code></pre>
-<blockquote>
-<p>若无序区的相邻两个数前面的数大于后面的则交换<br>(优化)每一趟结束后判断flag，若无修改则直接退出</p>
-</blockquote>
-<blockquote>
-<blockquote>
-<p>i为第几趟(0开始)<br>j为遍历无序区的下标</p>
-</blockquote>
-</blockquote>
-<blockquote>
-<blockquote>
-<p>有序区为0——(i-1)<br>无序区为i——(len(lst)-1)</p>
-</blockquote>
-</blockquote>
-<p><strong>时间复杂度：O(n²)<br>空间复杂度：O(1)<br>稳定性：稳定</strong></p>
-<hr>
-<h1 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h1><pre><code class="python">def insert_sort(lst):
-    for i in range(1, len(lst)):
-        tmp = lst[i]
-        j = i-1
-        while j &gt;= 0 and lst[j] &gt; tmp:
-            lst[j+1] = lst[j]
-            j -= 1
-        lst[j+1] = tmp
-
-li = [4, 6, 2, 3, 1, 5, 7, 9, 8]
-insert_sort(li)
-print(li)  # [1, 2, 3, 4, 5, 6, 7, 8, 9]
-</code></pre>
-<blockquote>
-<p>初始手里一张牌(lst[0])<br>每次摸到一张牌(lst[i])，判断i前面的牌(j)是否比摸到的牌大，大则将前面的牌向后移一位，否则j向前移动一位并进行下次判断<br>若lst[j]&lt;lst[i]则将摸到的牌的值插入到lst[j+1]</p>
-</blockquote>
-<blockquote>
-<blockquote>
-<p>i为无序区第一个数<br>j为有序区为以-1步进遍历的下标</p>
-</blockquote>
-</blockquote>
-<blockquote>
-<blockquote>
-<p>有序区为0——(i-1)<br>无序区为i——(len(lst)-1)</p>
-</blockquote>
-</blockquote>
-<p><strong>时间复杂度：O(n²)<br>空间复杂度：O(1)<br>稳定性：稳定</strong></p>
-<hr>
-<h1 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h1><pre><code class="python">def select_sort(lst):
-    for i in range(len(lst)-1):
-        tmp = i
-        for j in range(i, len(lst)):
-            if lst[j] &lt; lst[tmp]:
-                tmp = j
-        lst[i], lst[tmp] = lst[tmp], lst[i]
-
-li = [4, 6, 2, 3, 1, 5, 7, 9, 8]
-select_sort(li)
-print(li)  # [1, 2, 3, 4, 5, 6, 7, 8, 9]
-</code></pre>
-<blockquote>
-<p>每一趟找出无序区的最小数并与无序区第一个数交换</p>
-</blockquote>
-<blockquote>
-<blockquote>
-<p>i为第几趟(0开始)<br>j为遍历无序区的下标</p>
-</blockquote>
-</blockquote>
-<blockquote>
-<blockquote>
-<p>有序区为0——(i-1)<br>无序区为i——(len(lst)-1)</p>
-</blockquote>
-</blockquote>
-<p><strong>时间复杂度：O(n²)<br>空间复杂度：O(1)<br>稳定性：不稳定</strong></p>
-
             
         </div>
     </div>
@@ -759,14 +485,14 @@ print(li)  # [1, 2, 3, 4, 5, 6, 7, 8, 9]
         
         <span class="tag">
             
-            <a href="/tags/python/" style="color: #00bcd4">
+            <a href="/tags/python/" style="color: #03a9f4">
                 python
             </a>
         </span>
         
         <span class="tag">
             
-            <a href="/tags/sort/" style="color: #ffa2c4">
+            <a href="/tags/sort/" style="color: #03a9f4">
                 sort
             </a>
         </span>
@@ -837,7 +563,7 @@ print(li)  # [1, 2, 3, 4, 5, 6, 7, 8, 9]
         <div id="card-div">
     <div class="card-style" style="width: 300px">
         <div class="avatar">
-            <img src="https://tongrens.me/images/73508047.jpg " alt="avatar">
+            <img src="https://tongrens.me/images/73508047.png " alt="avatar">
         </div>
         <div class="name">
             Tongrens
@@ -888,7 +614,7 @@ print(li)  # [1, 2, 3, 4, 5, 6, 7, 8, 9]
 <footer id="footer">
     <div class="footer-wrap">
         <div>
-            © 2022 - 2022 Tongrens&#39;s Home
+            © 2022 - 2022 Tongrens
             <span class="footer-icon">
                 <i class="fa-solid fa-font-awesome fa-fw"></i>
             </span>

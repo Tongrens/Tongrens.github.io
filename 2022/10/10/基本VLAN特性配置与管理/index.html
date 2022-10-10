@@ -4,17 +4,16 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
-        <title>基本VLAN特性配置与管理 | Tongrens&#39;s Home</title>
+        <title>基本VLAN特性配置与管理 | Tongrens</title>
         <meta name="author" content="Tongrens">
         <meta name="description" content="">
         <meta name="keywords" content="">
-        <link rel="icon" href="https://tongrens.me/images/73508047.jpg">
+        <link rel="icon" href="https://tongrens.me/images/73508047.png">
         <script src="https://cdn.staticfile.org/instant.page/5.1.0/instantpage.min.js" type="module"></script>
         <script src="https://cdn.staticfile.org/font-awesome/6.2.0/js/all.min.js"></script>
         
-        <link rel="stylesheet" href="/css/test/fonts.min.css">
-        <link rel="stylesheet" href="/css/test/particlex.css">
-        <link rel="stylesheet" href="/css/custom.css">
+        <link rel="stylesheet" href="/css/fonts.min.css">
+        <link rel="stylesheet" href="/css/particlex.css">
         
         <script src="https://cdn.staticfile.org/vue/3.2.33/vue.global.prod.min.js"></script>
         <script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
@@ -33,7 +32,7 @@
 <nav id="menu">
     <div class="desktop-menu">
         <a href="/">
-            <span class="title">Tongrens's Home</span>
+            <span class="title">Tongrens</span>
         </a>
         
         <a href="/">
@@ -66,7 +65,7 @@
         <div class="curtain" @click="menu_show = !menu_show" v-show="menu_show"></div>
         <div :class="'title'" @click="menu_show = !menu_show">
             <i class="fa-solid fa-bars fa-fw"></i>
-            <span>&emsp;Tongrens's Home</span>
+            <span>&emsp;Tongrens</span>
         </div>
         <transition name="slide">
         <div class="items" v-show="menu_show">
@@ -159,7 +158,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/vlan/" style="color: #ffa2c4">
+                <a href="/tags/vlan/" style="color: #03a9f4">
                     vlan
                 </a>
             </span>
@@ -170,8 +169,12 @@
     <div class="content" v-pre>
         <h1 id="基本VLAN特性配置与管理"><a href="#基本VLAN特性配置与管理" class="headerlink" title="基本VLAN特性配置与管理"></a>基本VLAN特性配置与管理</h1><h2 id="VLAN基础"><a href="#VLAN基础" class="headerlink" title="VLAN基础"></a>VLAN基础</h2><p>VLAN（虚拟局域网）是一个将物理LAN逻辑划分为若干个虚拟的LAN，目的是为了缩小广播域，使广播域进行二层（数据链路层）通信，不同VLAN间的主机是不能互相通信的，必须经过第三层（网络层）进行通信。<br><strong>VLAN既能限制广播网络，又可增强局域网的安全性，还提高了网络的健壮性。</strong><br>在同一个物理交换机上不可能存在两个相同的VLAN，在不同交换机上则可以有相同VLAN</p>
 <h2 id="VLAN帧"><a href="#VLAN帧" class="headerlink" title="VLAN帧"></a>VLAN帧</h2><p>VLAN Tag:标识所属VLAN，遵循IEEE 802.1Q标注，支持802.1Q协议的交换机既可以发送有标记帧也可以发送无标记帧（有标记帧加入了4字节的801.1Q Tag，反之则没有），交换机内部的数据包一律携带Tag。</p>
+<span id="more"></span>
+
 <h2 id="802-1Q-Tag各字段含义："><a href="#802-1Q-Tag各字段含义：" class="headerlink" title="802.1Q Tag各字段含义："></a>802.1Q Tag各字段含义：</h2><p>TPID：长度2bytes，表示帧类型，取值为0x8100为802.1Q帧，如果不支持的设备接受到则丢弃<br>PRI：长度3bits，表示帧优先级，取值范围0-7，越大越优，用于QOS<br>CFI：长度1bits，表示MAC地址是否为经典格式，0是经典1是非经典，在以太网中值为1<br>VID：长度12bits，表示VLAN ID</p>
 <h2 id="VLAN特性"><a href="#VLAN特性" class="headerlink" title="VLAN特性"></a>VLAN特性</h2><p>华为交换机支持5种VLAN划分：基于<strong>端口</strong>划分、基于<strong>子网</strong>划分、基于<strong>MAC地址</strong>划分、基于<strong>协议</strong>划分、基于<strong>策略</strong>划分；其中端口划分属于静态VLAN划分，其余的属于动态VLAN划分<br><em>（除了端口划分其余都要在Hybrid口上划分）</em></p>
+<!-- more -->
+
 <p>常见的VLAN间通信有三层VLANIF接口、三层以太网子接口和VLAN switch方案</p>
 <blockquote>
 <p>VLAN聚合：是指Super VLAN技术，他是在一个主VLAN下包括多个同IP网段的VLAN技术，但只需要为主VLANIF配置IP地址，各从VLAN中的用户主机就可以通过主VLAN的VLANIF接口作为缺省网关进行通信</p>
@@ -218,7 +221,7 @@
 <footer id="footer">
     <div class="footer-wrap">
         <div>
-            © 2022 - 2022 Tongrens&#39;s Home
+            © 2022 - 2022 Tongrens
             <span class="footer-icon">
                 <i class="fa-solid fa-font-awesome fa-fw"></i>
             </span>

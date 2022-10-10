@@ -4,17 +4,16 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
-        <title>BGP | Tongrens&#39;s Home</title>
+        <title>BGP | Tongrens</title>
         <meta name="author" content="Tongrens">
         <meta name="description" content="">
         <meta name="keywords" content="">
-        <link rel="icon" href="https://tongrens.me/images/73508047.jpg">
+        <link rel="icon" href="https://tongrens.me/images/73508047.png">
         <script src="https://cdn.staticfile.org/instant.page/5.1.0/instantpage.min.js" type="module"></script>
         <script src="https://cdn.staticfile.org/font-awesome/6.2.0/js/all.min.js"></script>
         
-        <link rel="stylesheet" href="/css/test/fonts.min.css">
-        <link rel="stylesheet" href="/css/test/particlex.css">
-        <link rel="stylesheet" href="/css/custom.css">
+        <link rel="stylesheet" href="/css/fonts.min.css">
+        <link rel="stylesheet" href="/css/particlex.css">
         
         <script src="https://cdn.staticfile.org/vue/3.2.33/vue.global.prod.min.js"></script>
         <script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
@@ -33,7 +32,7 @@
 <nav id="menu">
     <div class="desktop-menu">
         <a href="/">
-            <span class="title">Tongrens's Home</span>
+            <span class="title">Tongrens</span>
         </a>
         
         <a href="/">
@@ -66,7 +65,7 @@
         <div class="curtain" @click="menu_show = !menu_show" v-show="menu_show"></div>
         <div :class="'title'" @click="menu_show = !menu_show">
             <i class="fa-solid fa-bars fa-fw"></i>
-            <span>&emsp;Tongrens's Home</span>
+            <span>&emsp;Tongrens</span>
         </div>
         <transition name="slide">
         <div class="items" v-show="menu_show">
@@ -167,6 +166,8 @@
 <h3 id="2种角色："><a href="#2种角色：" class="headerlink" title="2种角色："></a>2种角色：</h3><blockquote>
 <p>Speaker：发送或者接受BGP报文的任何设备都是Speaker<br>Peer：相互交换报文的Speaker之间互为对等体，若干相关的对等体可以组成对等体组</p>
 </blockquote>
+<span id="more"></span>
+
 <h3 id="5种BGP报文："><a href="#5种BGP报文：" class="headerlink" title="5种BGP报文："></a>5种BGP报文：</h3><blockquote>
 <p>Open（建立）：建立后发送的第一个报文，包含本地Speaker信息以及建立tcp会话信息，用于建立BGP对等体之间的连接关系<br>Update（更新）：进行路由信息交换，可以发布可达路由信息，也可以撤销不可达<br>信息<br>Notification（通知）：检测到错误状态时会发送给对等体，会立即中断<br>Keepalive（保持活跃）：周期性发送（默认60s），用于保持连接的有效性<br>Route-refresh（路由刷新）：要求对等体重新发送指定路由信息</p>
 </blockquote>
@@ -227,7 +228,7 @@
 <footer id="footer">
     <div class="footer-wrap">
         <div>
-            © 2022 - 2022 Tongrens&#39;s Home
+            © 2022 - 2022 Tongrens
             <span class="footer-icon">
                 <i class="fa-solid fa-font-awesome fa-fw"></i>
             </span>

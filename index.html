@@ -4,17 +4,16 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
-        <title>Tongrens&#39;s Home</title>
+        <title>Tongrens</title>
         <meta name="author" content="Tongrens">
         <meta name="description" content="">
         <meta name="keywords" content="">
-        <link rel="icon" href="https://tongrens.me/images/73508047.jpg">
+        <link rel="icon" href="https://tongrens.me/images/73508047.png">
         <script src="https://cdn.staticfile.org/instant.page/5.1.0/instantpage.min.js" type="module"></script>
         <script src="https://cdn.staticfile.org/font-awesome/6.2.0/js/all.min.js"></script>
         
-        <link rel="stylesheet" href="/css/test/fonts.min.css">
-        <link rel="stylesheet" href="/css/test/particlex.css">
-        <link rel="stylesheet" href="/css/custom.css">
+        <link rel="stylesheet" href="/css/fonts.min.css">
+        <link rel="stylesheet" href="/css/particlex.css">
         
         <script src="https://cdn.staticfile.org/vue/3.2.33/vue.global.prod.min.js"></script>
         <script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
@@ -33,7 +32,7 @@
 <nav id="menu">
     <div class="desktop-menu">
         <a href="/">
-            <span class="title">Tongrens's Home</span>
+            <span class="title">Tongrens</span>
         </a>
         
         <a href="/">
@@ -66,7 +65,7 @@
         <div class="curtain" @click="menu_show = !menu_show" v-show="menu_show"></div>
         <div :class="'title'" @click="menu_show = !menu_show">
             <i class="fa-solid fa-bars fa-fw"></i>
-            <span>&emsp;Tongrens's Home</span>
+            <span>&emsp;Tongrens</span>
         </div>
         <transition name="slide">
         <div class="items" v-show="menu_show">
@@ -132,8 +131,8 @@
         <span class="loop"></span>
         <span class="info">
             <div class="wrap">
-                <h1>Tongrens&#39;s Home</h1>
-                <h3></h3>
+                <h1>Tongrens</h1>
+                <h3>Welcome to My Blog!</h3>
                 <h5></h5>
             </div>
         </span>
@@ -177,53 +176,6 @@
 <h3 id="2种角色："><a href="#2种角色：" class="headerlink" title="2种角色："></a>2种角色：</h3><blockquote>
 <p>Speaker：发送或者接受BGP报文的任何设备都是Speaker<br>Peer：相互交换报文的Speaker之间互为对等体，若干相关的对等体可以组成对等体组</p>
 </blockquote>
-<h3 id="5种BGP报文："><a href="#5种BGP报文：" class="headerlink" title="5种BGP报文："></a>5种BGP报文：</h3><blockquote>
-<p>Open（建立）：建立后发送的第一个报文，包含本地Speaker信息以及建立tcp会话信息，用于建立BGP对等体之间的连接关系<br>Update（更新）：进行路由信息交换，可以发布可达路由信息，也可以撤销不可达<br>信息<br>Notification（通知）：检测到错误状态时会发送给对等体，会立即中断<br>Keepalive（保持活跃）：周期性发送（默认60s），用于保持连接的有效性<br>Route-refresh（路由刷新）：要求对等体重新发送指定路由信息</p>
-</blockquote>
-<h3 id="6种BGP状态："><a href="#6种BGP状态：" class="headerlink" title="6种BGP状态："></a>6种BGP状态：</h3><blockquote>
-<p>空闲（Idle）：初始状态，当收到本设备的start事件后才转至connect状态<br>连接（Connect）：启动连接重传定时器，如果连接成功则转至OpenSent状态，如果失败则转至Active状态<br>活跃（Active）：尝试建立TCP连接，如果连接成功则转至OpenSent状态，如果失败则停留在Active状态，超时则转至Connect状态再次连接<br>Open报文已发送（OpenSent）：已发送open报文并对接收到的open报文进行检查，如果正确则发送Keepalive报文并转至OpenConfirm状态，如果错误则转至Idle状态<br>Open报文已确认（OpenConfirm）：已发送Keepalive报文并等待对方的keepalive或Notification报文，如果收到Keepalive报文则转至Established状态，如果收到Notification报文则转至Idle状态<br>已建立连接（Established）：正常转发Update、Notification、Keepalive和Route-refresh报文</p>
-</blockquote>
-<h2 id="BGP路由属性："><a href="#BGP路由属性：" class="headerlink" title="BGP路由属性："></a>BGP路由属性：</h2><p><strong>分为公认必遵、公认任意、可选过度和非可选过度</strong><br><img src="https://tongrens.me/images/router/1.jpg"></p>
-<blockquote>
-<p>公认必遵：（必须在Update报文中存在）</p>
-<blockquote>
-<p>Origin（源）：指明当前BGP路由是从哪类设备中产生的，优先级从高到低可以选择IGP(i内部)、EGP(e外部)和incomplete(?未知)。<br>AS_Path（AS路径）:按照矢量顺序记录了某条路由从本地到目的所经过的所有AS号，最左边的是刚刚声明这个路由的AS，最右边的是路由的产生者<br>NEXT_HOP（下一跳）：指定下一跳AS，因此只能在EBGP中使用，在IBGP中使用下一跳并不会改变</p>
-</blockquote>
-</blockquote>
-<blockquote>
-<p>公认可选：（不必在Update报文中存在）</p>
-<blockquote>
-<p>LOCAL_PREF（本地优先级）：仅在IBGP中传递，不通告给其他AS，值越大越优先，默认值为100<br>ATOMIC_AGGREGATE（）：在聚合时警告下游设备在重叠路由是出现了路径丢失</p>
-</blockquote>
-</blockquote>
-<blockquote>
-<p>可选过度：（可以将属性通告给其他对等体）</p>
-<blockquote>
-<p>AGGREGATOR（）：在聚合时指示重叠路由出现在哪个设备上<br>COMMUNITY（团体）：通过匹配团体值可以间接简化路由条目，类别（缺省为internet）有：<br>no_advertise：不通告给任何BGP邻居（最严格）<br>no_export：仅在AS 内传递，如果存在BGP联盟，则在联盟内的EBGP之间传递<br>no_export _subconfed(local-AS)：仅在AS 内传递<br>internet：可以公告给所有BGP对等体</p>
-</blockquote>
-</blockquote>
-<blockquote>
-<p>可选非过度：（不会将属性通告给其他对等体）</p>
-<blockquote>
-<p>MULTI_EXIT_DISC（MED多出口）：仅在相邻的两个AS之间交换，用于在EBGP对等体上判断流量进入其他AS时的最优路由，值越小越优先，默认值为0<br>ORIGINATOR_ID（）：在使用反射器时产生，当路由发起者在接收到路由的originator-id时发现了自己的RID，就忽略该路由条目，从而起防环作用，由第一个RR产生并不被后续RR修改，只应在IGBP对等体收到<br>CLUSTER_LIST（）：在使用反射器时产生，是路由经过反射器的簇ID（默认RR的router-id）的列表如果在cluster_list中发现了自己的本地簇ID，就忽略该路由条目，从而其防环作用</p>
-</blockquote>
-</blockquote>
-<h2 id="BGP选路规则"><a href="#BGP选路规则" class="headerlink" title="BGP选路规则"></a>BGP选路规则</h2><ol>
-<li>华为优选协议首选值（PrefVal），思科优选Weight属性</li>
-<li>优选Local_Pref（本地优先级）</li>
-<li>依次优选手动聚合路由、自动聚合路由、network引入的路由、重发布的路由、从对等体学习的路由</li>
-<li>优选AS_Path（AS路径）最短的路由</li>
-<li>优选Origin（源）类型最优的路由</li>
-<li>对于来自同一AS的路由，优选MED属性值最优的路由</li>
-<li>依次优选EBGP路由、IBGP路由</li>
-<li>优选到BGP下一跳IGP度量值（metric）最小的路由</li>
-<li>优选Router ID最小的设备发布的路由，如果携带Originator_ID属性则优比较</li>
-<li>优选Cluster_List最短的路由</li>
-<li>优选从具有最小邻居地址的对等体学来的路由</li>
-</ol>
-<hr>
-<h3 id="关于为了IBGP路由防环而导致AS内路由无法传递的解决方法："><a href="#关于为了IBGP路由防环而导致AS内路由无法传递的解决方法：" class="headerlink" title="关于为了IBGP路由防环而导致AS内路由无法传递的解决方法："></a>关于为了IBGP路由防环而导致AS内路由无法传递的解决方法：</h3><p><strong>路由反射器：</strong>可以把从IBGP学习到的路由反射被其他IBGP对等体<br><strong>BGP联盟：</strong>将一个AS划分成多个子AS，每个子AS之间建立IBGP联盟关系，IBGP联盟之间建立EBGP，原AS号作为每个路由器的联盟ID，这样可以保留原有IBGP属性，并且路由在传出联盟后会自动删除联盟属性，这样联盟外路由器只会知道原AS号</p>
-
             
         </div>
     </div>
@@ -236,7 +188,7 @@
         
         <span class="tag">
             
-            <a href="/tags/Router/" style="color: #ff7d73">
+            <a href="/tags/Router/" style="color: #00bcd4">
                 Router
             </a>
         </span>
@@ -286,85 +238,6 @@
 <ul>
 <li>网络LSA（Network LSA）<br>由DR或BDR产生<br>表明了DR和BDR所在网段的链路状态（DR和BDR只在广播中存在）</li>
 </ul>
-<blockquote>
-<p>Type3</p>
-</blockquote>
-<ul>
-<li>网络聚合LSA（Network summary LSA）<br>由ABR产生<br>描述某区域内的某网段的聚合路由（含缺省路由），并通告非Totally Stub和NSSA区域</li>
-</ul>
-<blockquote>
-<p>Type4</p>
-</blockquote>
-<ul>
-<li>ASBR聚合LSA（ASBR summary LSA）<br>由ABR产生<br>描述从该ABR到路由域中各个ASBR的路由，通告给整个路由域（只向普通区域泛洪）</li>
-</ul>
-<blockquote>
-<p>Type5</p>
-</blockquote>
-<ul>
-<li>自治系统外部LSA（AS external LSA）<br>由ASBR产生<br>描述到达AS外部的路由（只向普通区域泛洪）</li>
-</ul>
-<blockquote>
-<p>Type7</p>
-</blockquote>
-<ul>
-<li>NSSA外部LSA（NSSA external LSA）<br>由ASBR产生<br>内容与type5基本相同，但专用于NSSA区域和Totally NSSA区域链接的ASBR向NSSA区域内泛洪外部AS的路由</li>
-</ul>
-<blockquote>
-<p>Type9/10/11</p>
-</blockquote>
-<ul>
-<li>Opaque LSA<br>Type9仅在接口内传播，Type10仅在区域内传播，Type11仅在自治系统内传播</li>
-</ul>
-<h2 id="OSPF路由器类型"><a href="#OSPF路由器类型" class="headerlink" title="OSPF路由器类型"></a>OSPF路由器类型</h2><p><strong>指定路由器（DR）：</strong>所有路由信息都将发给DR再发送给其他设备<br><strong>备份指定路由器（BDR）：</strong>DR的备份，当DR down后将代替DR并选举出新的BDR<br><strong>非指定路由器（DROther）：</strong>DR和BDR之外的路由器都称为DROther，之间不再建立邻接关系也不交换任何路由信息<br><strong>区域内路由器（IR）：</strong>设备的所有接口都在同一个OSPF area内<br><strong>区域边界路由器（ABR）：</strong>一个接口必须为骨干区域，其他接口可以为其他区域<br><strong>骨干路由器（BR）：</strong>设备至少有一个接口属于骨干区域<br><strong>自治系统边界路由器（ASBR）：</strong>与其他AS设备交换路由信息的设备，只要引入了外部路由就是ASBR</p>
-<h2 id="OSPF路由类型"><a href="#OSPF路由类型" class="headerlink" title="OSPF路由类型"></a>OSPF路由类型</h2><p><strong>区域内路由：</strong>IR之间的路由<br><strong>区域间路由：</strong>ABR之间的路由<br><strong>一类外部路由：</strong>由ASBR引入的IGP类型的路由，可信度高<br><strong>二类外部路由：</strong>由ASBR引入的EGP类型的路由，可信度低</p>
-<h2 id="OSPF特殊区域"><a href="#OSPF特殊区域" class="headerlink" title="OSPF特殊区域"></a>OSPF特殊区域</h2><blockquote>
-<p>骨干区域</p>
-</blockquote>
-<ul>
-<li>区域号为0</li>
-</ul>
-<blockquote>
-<p>Stub（末梢）区域</p>
-</blockquote>
-<ul>
-<li>处于AS边缘，且只有一个连接其他区域的ABR，没有ASBR，没有虚链路到骨干区域的区域才能配置为Stub区域<br>只有type1、type2、type3 LSA</li>
-</ul>
-<blockquote>
-<p>Totally Stub（完全末梢）区域</p>
-</blockquote>
-<ul>
-<li>处于AS边缘，且只有一个连接其他区域的ABR，没有ASBR，没有虚链路到骨干区域的区域才能配置为Totally Stub区域<br>只有type1、type2 LSA</li>
-</ul>
-<blockquote>
-<p>NSSA区域</p>
-</blockquote>
-<ul>
-<li>相比Stub，可以位于非边缘区域，可以由多个ABR，可以有ASBR<br>只有type1、type2、type3、type7 LSA</li>
-</ul>
-<blockquote>
-<p>Totally NSSA区域</p>
-</blockquote>
-<ul>
-<li>同NSSA区域相同<br>只有type1、type2、type7 LSA</li>
-</ul>
-<h2 id="OSPF网络类型"><a href="#OSPF网络类型" class="headerlink" title="OSPF网络类型"></a>OSPF网络类型</h2><p><strong>点到点网络（P2P）：</strong>指通过点到点的方式与一台路由器相连。此类型不需要进行DR和BDR的选举<br><strong>广播型多路访问网络（Broadcast）：</strong>广播类型，但链路层协议是Ethernet、FDDI时，OSPF缺省网络类型为广播型。需要进行DR和BDR的选举。此类型网络通常以组播方式（224.0.0.5、224.0.0.6）发送协议报文<br><strong>非广播型多路访问网络（NBMA）：</strong>虽然是一个接口到达多个节点，但本身不支持广播功能，当链路层协议是帧中继、ATM或X.25时，OSPF缺省认为网络类型是NBMA。此时OSPF的邻居需要手工设定。此类型网络中以单播方式发送协议报文。<br><strong>点到多点网络（P2MP）：</strong>指该接口通过点到多点的网络于多台路由器相连。此类型可以以组播方式（224.0.0.5）发送协议报文，也可以以单播形式发送协议报文。</p>
-<h2 id="OSPF报文类型"><a href="#OSPF报文类型" class="headerlink" title="OSPF报文类型"></a>OSPF报文类型</h2><p><strong>Hello报文：</strong>用来建立和维护相邻邻居之间的连接关系，在P2P和广播类型网络中，以HelloInterval（默认10s）为周期，以组播方式向224.0.0.5组播组发送一次；但在P2MP和NBMA类型网络中，以PollInterval（默认60s）为周期，以单播方式向状态为DOWN的邻居发送一次Hello报文；如果在DeadInterval（通常为Hello报文发送时间间隔的4倍）时间内没有收到对方发来的Hello报文，则认为对方路由器无效<br><strong>DD报文：</strong>用来描述本地路由器的链路状态数据库（LSDB），即本地LSDB中包含了哪些LSA<br><strong>LSR报文：</strong>用于请求相邻路由器LSDB中的一部分数据<br><strong>LSU报文：</strong>是LSR请求报文的应答报文，发送对端所需的真正LSA内容<br><strong>LSAck报文：</strong>是LSU报文的确认报文</p>
-<h2 id="OSPF建立状态"><a href="#OSPF建立状态" class="headerlink" title="OSPF建立状态"></a>OSPF建立状态</h2><ol>
-<li>Down：初始阶段</li>
-<li>Attempt：该状态仅发生在NBMA网络中，当在DeadInterval时间内仍然没有收到Hello报文，则以轮询Hello报文发送时间间隔向对端发送Hello报文</li>
-<li>Init：收到不包含自己路由器ID的Hello报文后转化为Init状态</li>
-<li>2-Way：收到包含有自己路由器ID的Hello报文后转换为2-Way状态并建立邻居</li>
-<li>Exstart：在进行DR、BDR选举后形成邻居关系，则从Init转换为Exstart状态</li>
-<li>Exchange：主从关系协商完毕后，发送DD报文并转化为Exchange状态</li>
-<li>Loading：DD报文交互完成后转化为Loading状态</li>
-<li>Full：当收到来自对端反馈的LSAck报文后转换为Full状态并建立邻接</li>
-</ol>
-<h2 id="OSPF邻接关系建立流程"><a href="#OSPF邻接关系建立流程" class="headerlink" title="OSPF邻接关系建立流程"></a>OSPF邻接关系建立流程</h2><p><strong>邻居发现阶段：</strong>到达2-Way状态后建立起邻居关系<br><strong>主从关系确立阶段：</strong>在Exchange状态交换完DD报文后确立主从关系<br><strong>数据库同步阶段：</strong>发送LSR报文后收到对方返回的LSAck报文后完成数据库同步<br><strong>完全邻接阶段：</strong>双方转为Full状态后完成建立邻接</p>
-<h2 id="DR和BDR选举过程"><a href="#DR和BDR选举过程" class="headerlink" title="DR和BDR选举过程"></a>DR和BDR选举过程</h2><blockquote>
-<p>先选BDR 再选DR<br>首先，所有路由器都宣告自己是DR和BDR<br>然后创建两个子集，一个包括非DR的，一个包括DR的<br>从非DR中选举BDR，但是所有设备都声称自己是DR<br>所以这个子集为空，这时候，才用选取优先级，优先级高的为BDR<br>这时进行第二个子集选择，选取所有非BDR子集，<br>同理，集合为空，这时，所以没有任何设备声称自己是DR，<br>这时，新选取出来的BDR马上升级成为DR<br>然后由于BDR变成了DR，所以需要重新选取BDR</p>
-</blockquote>
-
             
         </div>
     </div>
@@ -377,7 +250,7 @@
         
         <span class="tag">
             
-            <a href="/tags/Router/" style="color: #ff7d73">
+            <a href="/tags/Router/" style="color: #ffa2c4">
                 Router
             </a>
         </span>
@@ -426,21 +299,6 @@
 <li>垃圾收集定时器：如果在垃圾收集时间内（默认为更新定时器的4倍，即120s），不可达链路没有被触发更新则将此路由从路由表中彻底删除。</li>
 </ol>
 </blockquote>
-<h2 id="RIP建立过程："><a href="#RIP建立过程：" class="headerlink" title="RIP建立过程："></a>RIP建立过程：</h2><blockquote>
-<ol>
-<li>初始状态：路由器开启RIP进程，宣告相关接口，设备就会从相关接口发送和接受RIP报文。</li>
-<li>构建路由表：路由器根据收到的RIP报文构建自己的路由表。</li>
-<li>维护路由表：每隔30s发送更新报文维护自己的路由表。</li>
-<li>老化路由表：将自己构建的路由表项启动180s的定时器，180s内如果收到更新报文则重置自己的更新定时器和老化定时器。</li>
-<li>垃圾收集表：如果180s后，没有收到路由表项的更新，则启动120s的垃圾收集定时器，同时将此路由表项的cost改为16</li>
-<li>删除路由表：如果120s后，仍然没有收到路由表更新，则将此表项删除。</li>
-</ol>
-</blockquote>
-<h2 id="水平分割："><a href="#水平分割：" class="headerlink" title="水平分割："></a>水平分割：</h2><p>防止路由环路的方法其一：水平分割</p>
-<p><strong>作用：</strong>减少带宽消耗、防止路由环路<br><strong>效果：</strong>但R1发送一条路由给R2后，如果没有配置水平分割，R2会把这条路由重新发回给R1，这样R1就有两条路由。当这条路由不可通之后，R1会认为这条路由在R2还可达，从而形成路由环路。配置水平分割后R2就不会再把这条路由发回给R1，从而达到避免路由环路的产生。<br><strong>特殊：</strong>NBMA网络中，水平分割默认是禁用的。<br>NBMA（非广播多路访问）：如X.25和帧中继这类本身并不具有支持广播和多播能力的多路访问网络，是OSPF四种网络类型的其中一种</p>
-<h2 id="毒性逆转："><a href="#毒性逆转：" class="headerlink" title="毒性逆转："></a>毒性逆转：</h2><p>防止路由环路的方法其二：毒性逆转</p>
-<p><strong>作用：</strong>清除对方路由表中的无用路由、防止路由环路<br><strong>效果：</strong>R2收到R1发来的路由后，R2会向R1发一个这条链路不可达的信息（将此路由开销值改为16），这样R1就不会再从R2学习到这条路由，从而达到避免路由环路。<br><strong>情况：</strong>默认情况下不启用毒性逆转，一般情况下均使用水平分割（除NBMA网络外）而不使用毒性逆转。</p>
-
             
         </div>
     </div>
@@ -453,7 +311,7 @@
         
         <span class="tag">
             
-            <a href="/tags/Router/" style="color: #00bcd4">
+            <a href="/tags/Router/" style="color: #03a9f4">
                 Router
             </a>
         </span>
@@ -501,30 +359,6 @@
 <li>从VLAN（Subordinate VLAN）包括隔离型从VLAN和互通型从VLAN：</li>
 <li>隔离型从VLAN（Separate VLAN）：Separate port只能和Principal port进行通信，和其他类型的接口实现完全隔离。</li>
 </ol>
-<p>每个隔离型从VLAN必须绑定一个主VLAN。<br>互通型从VLAN（Group VLAN）：Group port可以和Principal port进行通信，在同一组内的接口也可互相通信，但不能和其他组接口或Separate port通信。<br>每个互通型从VLAN必须绑定一个主VLAN。</p>
-<h2 id="QINQ技术："><a href="#QINQ技术：" class="headerlink" title="QINQ技术："></a>QINQ技术：</h2><p>QinQ封装过程就是把单层802.1Q标签的数据帧转换成双层802.1Q标签的数据帧，可以分为基本QinQ和灵活QinQ两种封装类型</p>
-<blockquote>
-<p>基本QinQ封装是把进入一个端口的所有流量都封装一个相同的外层VLAN标签，也称为“QinQ二层隧道“<br>灵活QinQ封装是基于端口和VLAN封装的结合方式，对同一个端口接收的数据帧可以根据不同的内层VLAN标签封装不同的外层标签。灵活QinQ又可以分为以下3种类型：</p>
-<blockquote>
-<ol>
-<li>基于VLAN ID的灵活QinQ：基于不同的内层VLAN ID的标签来封装不同的外层标签</li>
-<li>基于802.1p优先级的灵活QinQ：基于不同的内层802.1p的标签来封装不同的外层标签</li>
-<li>基于流策略的灵活QinQ：根据不同的QoS策略来添加不同的外层标签</li>
-</ol>
-</blockquote>
-</blockquote>
-<p>QinQ/Dot1q终结子接口：是指设备对数据帧的双层或单层VLAN标签进行识别，根据后续的转发行为进行剥离外层标签，然后据需传送。</p>
-<p><strong>QinQ映射：</strong>QinQ映射是在路由子接口上应用的，且发生在数据帧接收进来之前和从端口发送出去前。向外发送本地VLAN帧时，将帧中的本地VLAN标签替换成外部VLAN标签；接收外部VLAN的帧时，又将外部VLAN标签替换成本地VLAN标签。</p>
-<h2 id="VLAN映射："><a href="#VLAN映射：" class="headerlink" title="VLAN映射："></a>VLAN映射：</h2><p>VLAN映射不同于QinQ映射应用方式，VLAN映射是在物理端口上应用的</p>
-<blockquote>
-<p>配置1 to 1的VLAN映射</p>
-</blockquote>
-<ol>
-<li>基于VLAN的1 to 1的VLAN映射：可以在接收到带有单层VLAN标签的数据帧后，将帧中的VLAN ID映射为指定的VLAN ID。</li>
-<li>基于802.1p优先级的1 to 1的VLAN映射：可以根据接收到的数据帧的802.1p优先级和VLAN ID进行映射，且是在入端口配置的。</li>
-<li>基于流策略的1 to 1的VLAN映射：流策略是指将流分类后形成的完整的QoS策略，分为以下4个步骤：a)根据数据帧中的VLAN ID进行流分类； b)定义基于VLAN ID的流行为； c)创建QoS策略，将流分类与流行为进行关联； d)在端口上应用QoS策略。</li>
-</ol>
-
             
         </div>
     </div>
@@ -537,14 +371,14 @@
         
         <span class="tag">
             
-            <a href="/tags/switch/" style="color: #ffa2c4">
+            <a href="/tags/switch/" style="color: #ff7d73">
                 switch
             </a>
         </span>
         
         <span class="tag">
             
-            <a href="/tags/vlan/" style="color: #03a9f4">
+            <a href="/tags/vlan/" style="color: #ff7d73">
                 vlan
             </a>
         </span>
@@ -595,15 +429,6 @@
 </blockquote>
 <h2 id="链路聚合"><a href="#链路聚合" class="headerlink" title="链路聚合"></a>链路聚合</h2><p>链路聚合是指将多个相同属性的物理接口捆绑在一起形成一个逻辑接口，可以用来增加带宽，且聚合端口与物理接口同样可以配置端口类型。</p>
 <h2 id="负载分担："><a href="#负载分担：" class="headerlink" title="负载分担："></a>负载分担：</h2><p>负载分担分为手动负载分担和静态LACP负载分担。在手动负载分担的模式下，聚合端口与成员接口的配置都需要由手工来经行完成，并且在该模式下所有链路都参与数据的转发，平均分担流量；静态LACP负载分担模式则是利用LACP协议进行自动聚合，通过LACPDU报文经行交互，通告自己的（系统优先级、系统MAC、端口优先级、端口号和操作key）并与对端经行比较，选择能够汇聚的端口，链路的两端称为Actor和Partner，且LACP模式可以实现链路冗余备份（所以也被称为M:N模式）。</p>
-<blockquote>
-<p>LACP建立主被动关系顺序：<br>1、系统优先级（system priority）越低越优先，缺省值都为32768<br>2、系统MAC（system ID），越小越优先</p>
-</blockquote>
-<p><strong>注意事项：<br>成员接口的链路类型（华为默认为Hybrid）、所属VLAN、接口优先级、接口类型（百兆千兆）等需为一致<br>成员接口不能配置任何业务及静态MAC地址<br>一个以太网接口只能属于一个聚合端口中，如果需要加入其他聚合端口需先推出原来的聚合口<br>两端的互联接口都应配置为聚合端口，否则不能正常通信<br>聚合端口两端的成员接口数、速率、双工模式等属性配置需一致</strong></p>
-<blockquote>
-<p>负载分档方式：<br>dst-ip（目的IP）：同一个源IP发到不同目的IP的数据包将在不同端口发送，不同源地址但同目的IP地址的数据包总在同个端口发送<br>dst-mac（目的mac）：同一个源MAC发到不同目的MAC的数据包将在不同端口发送，不同源MAC但同目的MAC的数据包总在同个端口发送<br>src-ip（源IP）：来自不同IP地址的数据包总在不同端口转发，同一源IP的数据包总在同个端口转发<br>src-mac（源MAC）：来自不同MAC的数据包总在不同端口转发，同一源MAC的数据包总在同个端口转发<br>src-dst-ip（源与目的IP）：在不清楚是基于源IP转发还是目的IP转发时适用，AtoB BtoC CtoB都在不同端口转发<br>src-dst-mac（源与目的MAC）：在不清楚是基于源MAC转发还是目的MAC转发时适用，AtoB BtoC CtoB都在不同端口转发</p>
-</blockquote>
-<p><em>LACP抢占是指当链路中的高优先级端口出现故障时低优先级端口能代替故障端口经行转发<br>且LACP抢占有抢占延迟，指切换端口需要等待的时间<br>LACP报文超时时间是指当某个成员端口出现故障，则在超时时间后未收到LACP报文则认为对端不可达，不再转发数据</em></p>
-
             
         </div>
     </div>
@@ -616,7 +441,7 @@
         
         <span class="tag">
             
-            <a href="/tags/switch/" style="color: #ffa2c4">
+            <a href="/tags/switch/" style="color: #03a9f4">
                 switch
             </a>
         </span>
@@ -677,7 +502,7 @@
         <div id="card-div">
     <div class="card-style" style="width: 300px">
         <div class="avatar">
-            <img src="https://tongrens.me/images/73508047.jpg " alt="avatar">
+            <img src="https://tongrens.me/images/73508047.png " alt="avatar">
         </div>
         <div class="name">
             Tongrens
@@ -728,7 +553,7 @@
 <footer id="footer">
     <div class="footer-wrap">
         <div>
-            © 2022 - 2022 Tongrens&#39;s Home
+            © 2022 - 2022 Tongrens
             <span class="footer-icon">
                 <i class="fa-solid fa-font-awesome fa-fw"></i>
             </span>
