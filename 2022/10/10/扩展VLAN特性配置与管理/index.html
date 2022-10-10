@@ -136,11 +136,11 @@
         </span>
         
         <span class="category">
-            <a href="/categories/路由交换/">
+            <a href="/categories/笔记/">
                 <span class="icon">
                     <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
                 </span>
-                路由交换
+                笔记
             </a>
         </span>
         
@@ -152,14 +152,14 @@
             
             <span class="tag">
                 
-                <a href="/tags/switch/" style="color: #ff7d73">
+                <a href="/tags/switch/" style="color: #00bcd4">
                     switch
                 </a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/vlan/" style="color: #00bcd4">
+                <a href="/tags/vlan/" style="color: #ffa2c4">
                     vlan
                 </a>
             </span>
@@ -169,11 +169,12 @@
     </div>
     <div class="content" v-pre>
         <h1 id="扩展VLAN特性配置与管理"><a href="#扩展VLAN特性配置与管理" class="headerlink" title="扩展VLAN特性配置与管理"></a>扩展VLAN特性配置与管理</h1><h2 id="VLAN聚合："><a href="#VLAN聚合：" class="headerlink" title="VLAN聚合："></a>VLAN聚合：</h2><p>VLAN聚合是把多个不配置三层VLANIF接口聚合成一个超级VLAN（Super-VLAN），这些VLANIF的接口称为Sub-VLAN</p>
+<p><img src="https://raw.githubusercontent.com/Tongrens/my_gallery/main/blog_image/switch/2.jpg"></p>
 <blockquote>
 <p>Super-VLAN：<br>可以看成一个大的VLAN，但它的成员不是端口而是Sub-VLAN，需要配置三层VLANIF接口并配置IP地址。每个VLAN聚合中只能有一个Super-VLAN。</p>
 </blockquote>
 <blockquote>
-<p>Sub-VLAN：<br>它是Super-VLAN的成员，它的成员是交换机的端口，不能创建三层VLANIF接口，不同Sub-VLAN间是相互二层隔离的，但各个Sub-VLAN中的用户网关都是Super-VLAN的VLANIF接口IP地址，来实现各Sub-VLAN成员间以及与外部网络的三层通信。每个VLAN聚合中可以有多个Sub-VLAN。<br><a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/Tongrens/my_gallery/main/blog_image/switch/1.jpg"><img src="https://raw.githubusercontent.com/Tongrens/my_gallery/main/blog_image/switch/2.jpg"></a></p>
+<p>Sub-VLAN：<br>它是Super-VLAN的成员，它的成员是交换机的端口，不能创建三层VLANIF接口，不同Sub-VLAN间是相互二层隔离的，但各个Sub-VLAN中的用户网关都是Super-VLAN的VLANIF接口IP地址，来实现各Sub-VLAN成员间以及与外部网络的三层通信。每个VLAN聚合中可以有多个Sub-VLAN。</p>
 </blockquote>
 <h2 id="MUX-VLAN："><a href="#MUX-VLAN：" class="headerlink" title="MUX VLAN："></a>MUX VLAN：</h2><p><strong>MUX VLAN（Multiplex VLAN）提供了一种通过VLAN进行网络资源控制的机制</strong></p>
 <ol>

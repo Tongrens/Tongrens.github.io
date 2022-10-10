@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
-        <title>其他排序 | Tongrens&#39;s Home</title>
+        <title>排序算法-lowB三人组 | Tongrens&#39;s Home</title>
         <meta name="author" content="Tongrens">
         <meta name="description" content="">
         <meta name="keywords" content="">
@@ -125,7 +125,7 @@
                         
 <div class="article">
     <div>
-        <h1>其他排序 </h1>
+        <h1>排序算法-lowB三人组 </h1>
     </div>
     <div class="info">
         <span class="date">
@@ -136,11 +136,11 @@
         </span>
         
         <span class="category">
-            <a href="/categories/算法/">
+            <a href="/categories/笔记/">
                 <span class="icon">
                     <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
                 </span>
-                算法
+                笔记
             </a>
         </span>
         
@@ -152,15 +152,15 @@
             
             <span class="tag">
                 
-                <a href="/tags/python/" style="color: #ffa2c4">
+                <a href="/tags/python/" style="color: #00bcd4">
                     python
                 </a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/Search/" style="color: #03a9f4">
-                    Search
+                <a href="/tags/sort/" style="color: #ff7d73">
+                    sort
                 </a>
             </span>
             
@@ -168,79 +168,89 @@
         
     </div>
     <div class="content" v-pre>
-        <h1 id="计数排序"><a href="#计数排序" class="headerlink" title="计数排序"></a>计数排序</h1><pre><code class="python">def count_sort(lst, max_count=100):
-    count = [0 for _ in range(max_count + 1)]
-    for val in lst:
-        count[val] += 1
-    lst.clear()
-    for ind, val in enumerate(count):
-        for i in range(val):
-            lst.append(ind)
+        <h1 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h1><pre><code class="python">def bubble_sort(lst):
+    for i in range(len(lst) - 1):
+        flag = False
+        for j in range(len(lst) - i - 1):
+            if lst[j] &gt; lst[j + 1]:
+                lst[j], lst[j + 1] = lst[j + 1], lst[j]
+                flag = True
+        if not flag:
+            return
 
 li = [4, 6, 2, 3, 1, 5, 7, 9, 8]
-count_sort(li, 9)
+bubble_sort(li)
 print(li)  # [1, 2, 3, 4, 5, 6, 7, 8, 9]
 </code></pre>
-<p><strong>时间复杂度：O(n)<br>空间复杂度：O(n)<br>稳定性：稳定</strong></p>
+<blockquote>
+<p>若无序区的相邻两个数前面的数大于后面的则交换<br>(优化)每一趟结束后判断flag，若无修改则直接退出</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>i为第几趟(0开始)<br>j为遍历无序区的下标</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>有序区为0——(i-1)<br>无序区为i——(len(lst)-1)</p>
+</blockquote>
+</blockquote>
+<p><strong>时间复杂度：O(n²)<br>空间复杂度：O(1)<br>稳定性：稳定</strong></p>
 <hr>
-<h1 id="基数排序"><a href="#基数排序" class="headerlink" title="基数排序"></a>基数排序</h1><pre><code class="python">def radix_sort(lst):
-    max_num = max(lst)
-    it = 0
-    while 10 ** it &lt;= max_num:
-        buckets = [[] for _ in range(10)]
-        for i in lst:
-            buckets[i // 10 ** it % 10].append(i)
-        lst.clear()
-        for bucket in buckets:
-            lst.extend(bucket)
-        it += 1
-
-li = [4, 6, 2, 3, 1, 5, 7, 9, 8]
-radix_sort(li)
-print(li)
-</code></pre>
-<p><strong>时间复杂度：O(nm)<br>空间复杂度：O(n)<br>稳定性：稳定</strong></p>
-<hr>
-<h1 id="希尔排序"><a href="#希尔排序" class="headerlink" title="希尔排序"></a>希尔排序</h1><pre><code class="python">def insert_sort_gap(lst, gap):
-    for i in range(gap, len(lst)):
+<h1 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h1><pre><code class="python">def insert_sort(lst):
+    for i in range(1, len(lst)):
         tmp = lst[i]
-        j = i - gap
+        j = i-1
         while j &gt;= 0 and lst[j] &gt; tmp:
-            lst[gap + j] = lst[j]
-            j -= gap
-        lst[j + gap] = tmp
-
-def shell_sort(lst):
-    n = len(lst) // 2
-    while n &gt;= 1:
-        insert_sort_gap(lst, n)
-        n //= 2
+            lst[j+1] = lst[j]
+            j -= 1
+        lst[j+1] = tmp
 
 li = [4, 6, 2, 3, 1, 5, 7, 9, 8]
-shell_sort(li)
+insert_sort(li)
 print(li)  # [1, 2, 3, 4, 5, 6, 7, 8, 9]
 </code></pre>
-<p><strong>时间复杂度：O(nlogn)<br>空间复杂度：O(1)<br>稳定性：不稳定</strong></p>
+<blockquote>
+<p>初始手里一张牌(lst[0])<br>每次摸到一张牌(lst[i])，判断i前面的牌(j)是否比摸到的牌大，大则将前面的牌向后移一位，否则j向前移动一位并进行下次判断<br>若lst[j]&lt;lst[i]则将摸到的牌的值插入到lst[j+1]</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>i为无序区第一个数<br>j为有序区为以-1步进遍历的下标</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>有序区为0——(i-1)<br>无序区为i——(len(lst)-1)</p>
+</blockquote>
+</blockquote>
+<p><strong>时间复杂度：O(n²)<br>空间复杂度：O(1)<br>稳定性：稳定</strong></p>
 <hr>
-<h1 id="桶排序"><a href="#桶排序" class="headerlink" title="桶排序"></a>桶排序</h1><pre><code class="python">def bucket_sort(lst, n=100, max_num=10000):
-    buckets = [[] for _ in range(n)]
-    for val in lst:
-        i = min(val // (max_num // n), n - 1)
-        buckets[i].append(val)
-        for j in range(len(buckets[i]) - 1, 0, -1):
-            if buckets[i][j - 1] &gt; buckets[i][j]:
-                buckets[i][j - 1], buckets[i][j] = buckets[i][j], buckets[i][j - 1]
-            else:
-                break
-    sorted_lst = []
-    for bucket in buckets:
-        sorted_lst.extend(bucket)
-    return sorted_lst
+<h1 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h1><pre><code class="python">def select_sort(lst):
+    for i in range(len(lst)-1):
+        tmp = i
+        for j in range(i, len(lst)):
+            if lst[j] &lt; lst[tmp]:
+                tmp = j
+        lst[i], lst[tmp] = lst[tmp], lst[i]
 
 li = [4, 6, 2, 3, 1, 5, 7, 9, 8]
-print(bucket_sort(li))  # [1, 2, 3, 4, 5, 6, 7, 8, 9]
+select_sort(li)
+print(li)  # [1, 2, 3, 4, 5, 6, 7, 8, 9]
 </code></pre>
-<p><strong>时间复杂度：O(nlogm)<br>空间复杂度：O(logm)<br>稳定性：稳定</strong></p>
+<blockquote>
+<p>每一趟找出无序区的最小数并与无序区第一个数交换</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>i为第几趟(0开始)<br>j为遍历无序区的下标</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>有序区为0——(i-1)<br>无序区为i——(len(lst)-1)</p>
+</blockquote>
+</blockquote>
+<p><strong>时间复杂度：O(n²)<br>空间复杂度：O(1)<br>稳定性：不稳定</strong></p>
 
     </div>
     
