@@ -12,9 +12,8 @@
         <script src="https://cdn.staticfile.org/instant.page/5.1.0/instantpage.min.js" type="module"></script>
         <script src="https://cdn.staticfile.org/font-awesome/6.2.0/js/all.min.js"></script>
         
-        <link rel="stylesheet" href="/css/test/fonts.min.css">
-        <link rel="stylesheet" href="/css/test/particlex.css">
-        <link rel="stylesheet" href="/css/custom.css">
+        <link rel="stylesheet" href="/css/fonts.min.css">
+        <link rel="stylesheet" href="/css/particlex.css">
         
         <script src="https://cdn.staticfile.org/vue/3.2.33/vue.global.prod.min.js"></script>
         <script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
@@ -129,7 +128,7 @@
         
         
         <span>
-            <a href="/categories/笔记/" style="background: #03a9f4">
+            <a href="/categories/笔记/" style="background: #00a596">
                 <span class="icon">
                     <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
                 </span>
@@ -139,11 +138,21 @@
         
         
         <span>
-            <a href="/categories/笔记/路由交换/" style="background: #03a9f4">
+            <a href="/categories/笔记/路由交换/" style="background: #00bcd4">
                 <span class="icon">
                     <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
                 </span>
                 路由交换
+            </a>
+        </span>
+        
+        
+        <span>
+            <a href="/categories/笔记/算法/" style="background: #ff7d73">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                </span>
+                算法
             </a>
         </span>
         
@@ -154,16 +163,6 @@
                     <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
                 </span>
                 Other
-            </a>
-        </span>
-        
-        
-        <span>
-            <a href="/categories/笔记/算法/" style="background: #ffa2c4">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
-                </span>
-                算法
             </a>
         </span>
         
@@ -196,7 +195,7 @@
                         
                         <span class="tag">
                             
-                            <a href="/tags/text/" style="color: #03a9f4">
+                            <a href="/tags/text/" style="color: #00a596">
                                 text
                             </a>
                         </span>
@@ -235,9 +234,8 @@
         <script src="https://cdn.staticfile.org/highlight.js/11.5.1/highlight.min.js"></script>
         <script src="/js/particlex.js"></script>
         <script src="/js/showimg.js"></script>
-        <script src="/js/custom.js"></script>
-        <canvas id="fireworks"></canvas>
-        <canvas id="background"></canvas>
+        <canvas id="fireworks" style="position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:2147483647"></canvas>
+        <canvas id="background" style="position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:-1"></canvas>
         <script src="/js/fireworks.js"></script>
         <script src="/js/background.js"></script>
         
