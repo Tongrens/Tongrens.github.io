@@ -147,6 +147,426 @@
             
 
 <div class="post">
+    <a href="/2022/10/10/基本VLAN特性配置与管理/">
+        <h2 class="post-title">基本VLAN特性配置与管理</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/路由交换/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                </span>
+                路由交换
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/10/10
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <h1 id="基本VLAN特性配置与管理"><a href="#基本VLAN特性配置与管理" class="headerlink" title="基本VLAN特性配置与管理"></a>基本VLAN特性配置与管理</h1><h2 id="VLAN基础"><a href="#VLAN基础" class="headerlink" title="VLAN基础"></a>VLAN基础</h2><p>VLAN（虚拟局域网）是一个将物理LAN逻辑划分为若干个虚拟的LAN，目的是为了缩小广播域，使广播域进行二层（数据链路层）通信，不同VLAN间的主机是不能互相通信的，必须经过第三层（网络层）进行通信。<br><strong>VLAN既能限制广播网络，又可增强局域网的安全性，还提高了网络的健壮性。</strong><br>在同一个物理交换机上不可能存在两个相同的VLAN，在不同交换机上则可以有相同VLAN</p>
+<h2 id="VLAN帧"><a href="#VLAN帧" class="headerlink" title="VLAN帧"></a>VLAN帧</h2><p>VLAN Tag:标识所属VLAN，遵循IEEE 802.1Q标注，支持802.1Q协议的交换机既可以发送有标记帧也可以发送无标记帧（有标记帧加入了4字节的801.1Q Tag，反之则没有），交换机内部的数据包一律携带Tag。</p>
+<h2 id="802-1Q-Tag各字段含义："><a href="#802-1Q-Tag各字段含义：" class="headerlink" title="802.1Q Tag各字段含义："></a>802.1Q Tag各字段含义：</h2><p>TPID：长度2bytes，表示帧类型，取值为0x8100为802.1Q帧，如果不支持的设备接受到则丢弃<br>PRI：长度3bits，表示帧优先级，取值范围0-7，越大越优，用于QOS<br>CFI：长度1bits，表示MAC地址是否为经典格式，0是经典1是非经典，在以太网中值为1<br>VID：长度12bits，表示VLAN ID</p>
+<h2 id="VLAN特性"><a href="#VLAN特性" class="headerlink" title="VLAN特性"></a>VLAN特性</h2><p>华为交换机支持5种VLAN划分：基于<strong>端口</strong>划分、基于<strong>子网</strong>划分、基于<strong>MAC地址</strong>划分、基于<strong>协议</strong>划分、基于<strong>策略</strong>划分；其中端口划分属于静态VLAN划分，其余的属于动态VLAN划分<br><em>（除了端口划分其余都要在Hybrid口上划分）</em></p>
+<p>常见的VLAN间通信有三层VLANIF接口、三层以太网子接口和VLAN switch方案</p>
+<blockquote>
+<p>VLAN聚合：是指Super VLAN技术，他是在一个主VLAN下包括多个同IP网段的VLAN技术，但只需要为主VLANIF配置IP地址，各从VLAN中的用户主机就可以通过主VLAN的VLANIF接口作为缺省网关进行通信</p>
+</blockquote>
+<blockquote>
+<p>VLAN映射：在一些交换机上不支持全范围（1-4094）的VLAN ID，而只支持1-512的VLAN ID就与公网的VLAN ID实现冲突；于是就产生了一种可以实现在用户VLAN ID与运营商VLAN ID进行相互转换的技术。</p>
+</blockquote>
+<blockquote>
+<p>语音VLAN：（Voice VLAN）是相对传统VLAN数据而言的，他是针对不同类型的用户语言流进行划分的，并能自动修改数据帧的优先级，以提高语音数据的传输质量</p>
+</blockquote>
+<blockquote>
+<p>VLAN透传：可以使交换机直接透明传输指定VLAN的数据帧，不上送CPU处理，也不用去识别VLAN标签，提高了转发效率</p>
+</blockquote>
+<blockquote>
+<p>QINQ协议：是基于IEEE 802.1Q技术的一种二层隧道协议。在公网中传输的数据一般分为公网VLAN标签和私网VLAN标签，QINQ的核心思想是为了将私网标签封装在公网标签中，为用户提供一种较为简单的二层VPN隧道</p>
+</blockquote>
+<h2 id="二层以太网端口"><a href="#二层以太网端口" class="headerlink" title="二层以太网端口"></a>二层以太网端口</h2><p>二层以太网端口类型有：<strong>access、trunk、hybrid和QINQ四种端口类型</strong></p>
+<blockquote>
+<p>Access端口：主要用来连接用户主机的二层以太网端口，仅允许一个VLAN通过，发送的以太网帧永远是不带标签的（Untagged）<br>Trunk端口：主要用来连接与其他交换机的二层端口，允许多个VLAN通过，发送的帧都是带标签的<br>Hybrid端口：Hybrid端口可以说是access端口和trunk端口的混合体，是一种特殊的二层以太网端口，既可以连接主机也可以连接交换机，可以允许一个或多个VLAN通过，并可以选择带标签或不带标签。<br>QINQ端口：QINQ端口是专用于QINQ协议的二层以太网端口，可以给数据帧加上双层VLAN标签，从而可以支持多达4094*4094个VLAN。</p>
+</blockquote>
+<h2 id="二层以太网链路"><a href="#二层以太网链路" class="headerlink" title="二层以太网链路"></a>二层以太网链路</h2><p>以太网链路分为<strong>接入链路（Access link）和干道链路（Trunk link）</strong></p>
+<blockquote>
+<p>接入链路：是交换机直接连接用户主机的链路。通常情况下主机并不需要识别自己是属于哪个VLAN，所以接入链路发送和接受的数据帧都是不带标签（Untagged）的，但接入链路不一定只允许一个VLAN通过，只是access端口才仅允许一个VLAN通过，当属于Hybrid端口时同样是允许多个VLAN通过的</p>
+</blockquote>
+<blockquote>
+<p>干道链路：是交换机与交换机互联的链路。可以承载多个不同VLAN数据传输，干道链路两端的设备需要识别VLAN标签，所以在干道链路的数据都是带标签（Tagged）的，除了该链路的PVID所属VLAN（默认VLAN1）</p>
+</blockquote>
+<h2 id="VLAN间通信"><a href="#VLAN间通信" class="headerlink" title="VLAN间通信"></a>VLAN间通信</h2><ol>
+<li>三层VLANIF接口方案（VLANIF接口作为对应VLAN内的用户缺省网关）</li>
+<li>三层以太网子接口方案（同时具备三层以太网物理接口和二层以太网物理接口的双重特性）</li>
+<li>VLAN Switch方案（一种按照VLAN标签进行数据转发的技术，需要预先在各交换机上配置静态转发路径，符合条件即可转发到对应的出接口，无需查看MAC地址，提高转发效率和安全性，能避免MAC地址攻击和广播风暴）<br><a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/Tongrens/my_gallery/main/blog_image/switch/1.jpg"><img src="https://raw.githubusercontent.com/Tongrens/my_gallery/main/blog_image/switch/1.jpg"></a></li>
+</ol>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/switch/" style="color: #ffa2c4">
+                switch
+            </a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/vlan/" style="color: #03a9f4">
+                vlan
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2022/10/10/基本VLAN特性配置与管理/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2022/10/10/链表/">
+        <h2 class="post-title">链表</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/算法/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                </span>
+                算法
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/10/10
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <pre><code class="python"># 链表
+class Node:
+    def __init__(self, item=None):
+        self.item = item
+        self.next = None
+        self.prior = Node  # 双链表
+
+# 头插法
+def create_linklist_head(lst):
+    head = Node(lst[0])
+    for element in lst[1:]:
+        node = Node(element)
+        head.prior = node  # 双链表
+        node.next = head
+        head = node
+    return head
+
+# 尾插法
+def create_linklist_tail(lst):
+    head = Node(lst[0])
+    tail = head
+    for element in lst[1:]:
+        node = Node(element)
+        tail.next = node
+        tmp = tail
+        tail = node
+        tail.prior = tmp  # 26&amp;28双链表
+    return head
+
+# 输出链表
+def print_linklist(lk):
+    while lk:
+        print(lk.item, end=&#39;,&#39;)
+        lk = lk.next
+    print()
+
+# 头插法eg
+lk1 = create_linklist_head([1, 2, 3])
+print(lk1.item)  # 3
+print(lk1.next.item)  # 2
+print(lk1.next.prior.item)  # 3(双链表)
+print_linklist(lk1)  # 3,2,1,
+# 尾插法eg
+lk2 = create_linklist_tail([1, 2, 3])
+print(lk2.item)  # 1
+print(lk2.next.item)  # 2
+print(lk2.next.prior.item)  # 1(双链表)
+print_linklist(lk2)  # 1,2,3,
+# 插入元素
+p = Node(5)
+p.next = lk2.next
+lk2.next.prior = p
+p.prior = lk2   # 54&amp;55双链表
+lk2.next = p
+print_linklist(lk2)  # 1,5,2,3,
+# 删除元素
+lk2.next.next.prior = lk2
+lk2.next = lk2.next.next
+print_linklist(lk2)  # 1,2,3,
+&quot;&quot;&quot;
+————————————时间复杂度——————————————
+             列表      链表
+按元素查找：   O(n)      O(n)
+按下标查找：   O(1)      O(n)
+插入&amp;删除：   O(n)      O(1)
+&quot;&quot;&quot;
+</code></pre>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/python/" style="color: #00bcd4">
+                python
+            </a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/LinkList/" style="color: #00bcd4">
+                LinkList
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2022/10/10/链表/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2022/10/10/AVL树/">
+        <h2 class="post-title">AVL树</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/算法/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                </span>
+                算法
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/10/10
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <pre><code class="python"># AVLTree
+# https://www.bilibili.com/video/BV1uA411N7c5?p=74&amp;vd_source=2493c37afb3b31338e613a5ec70a3fcd
+from BST import BiTreeNode, BST
+
+class AVLNode(BiTreeNode):
+    def __init__(self, data):
+        BiTreeNode.__init__(self, data)
+        self.bf = 0
+
+class AVLTree(BST):
+    def __init__(self, li=None):
+        BST.__init__(self, li)
+
+    def rotate_left(self, p, c):
+        lc = c.lchild
+        p.rchild = lc
+        if lc:
+            lc.parent = p
+        c.lchild = p
+        p.parent = c
+        p.bf = 0
+        c.bf = 0
+        return c
+
+    def rotate_right(self, p, c):
+        rc = c.rchild
+        p.lchild = rc
+        if rc:
+            rc.parent = p
+        c.rchild = p
+        p.parent = c
+        p.bf = 0
+        c.bf = 0
+        return c
+
+    def rotate_right_left(self, p, c):
+        g = c.lchild
+        rrc = g.rchild
+        c.lchild = rrc
+        if rrc:
+            rrc.parent = c
+        g.rchild = c
+        c.parent = g
+        rlc = g.lchild
+        p.rchild = rlc
+        if rlc:
+            rlc.parent = p
+        g.lchild = p
+        p.parent = g
+        if g.bf &gt; 0:
+            p.bf = -1
+            c.bf = 0
+        elif g.bf &lt; 0:
+            p.bf = 0
+            c.bf = 1
+        else:
+            p.bf = 0
+            c.bf = 0
+        return g
+
+    def rotate_left_right(self, p, c):
+        g = c.rchild
+        rlc = g.lchild
+        c.rchild = rlc
+        if rlc:
+            rlc.parent = c
+        g.lchild = c
+        c.parent = g
+        rrc = g.rchild
+        p.lchild = rrc
+        if rrc:
+            rrc.parent = p
+        g.rchild = p
+        p.parent = g
+        if g.bf &gt; 0:
+            p.bf = 0
+            c.bf = -1
+        elif g.bf &lt; 0:
+            p.bf = 1
+            c.bf = 0
+        else:
+            p.bf = 0
+            c.bf = 0
+        return g
+
+    def insert(self, val):
+        p = self.root
+        if not p:
+            self.root = AVLNode(val)
+            return
+        while True:
+            if val &lt; p.data:
+                if p.lchild:
+                    p = p.lchild
+                else:
+                    p.lchild = AVLNode(val)
+                    p.lchild.parent = p
+                    node = p.lchild
+                    break
+            elif val &gt; p.data:
+                if p.rchild:
+                    p = p.rchild
+                else:
+                    p.rchild = AVLNode(val)
+                    p.rchild.parent = p
+                    node = p.rchild
+                    break
+            else:
+                return
+        while node.parent:
+            g = node.parent.parent
+            x = node.parent
+            if node == node.parent.lchild:
+                if node.parent.bf &lt; 0:
+                    if node.bf &gt; 0:
+                        n = self.rotate_left_right(node.parent, node)
+                    else:
+                        n = self.rotate_right(node.parent, node)
+                elif node.parent.bf == 0:
+                    node.parent.bf = -1
+                    node = node.parent
+                    continue
+                else:
+                    node.parent.bf = 0
+                    break
+            else:
+                if node.parent.bf &gt; 0:
+                    if node.bf &lt; 0:
+                        n = self.rotate_right_left(node.parent, node)
+                    else:
+                        n = self.rotate_left(node.parent, node)
+                elif node.parent.bf == 0:
+                    node.parent.bf = 1
+                    node = node.parent
+                    continue
+                else:
+                    node.parent.bf = 0
+                    break
+            n.parent = g
+            if g:
+                if x == g.lchild:
+                    g.lchild = n
+                else:
+                    g.rchild = n
+                break
+            else:
+                self.root = n
+                break
+
+tree = AVLTree([9,8,7,6,5,4,3,2,1])
+tree.order(tree.root)
+print()
+tree.insert(10)
+tree.order(tree.root)
+</code></pre>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/python/" style="color: #00bcd4">
+                python
+            </a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/BiTreeNode/" style="color: #ff7d73">
+                BiTreeNode
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2022/10/10/AVL树/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
     <a href="/2022/10/10/二叉搜索树/">
         <h2 class="post-title">二叉搜索树</h2>
     </a>
@@ -297,7 +717,7 @@ class BST:
         
         <span class="tag">
             
-            <a href="/tags/BiTreeNode/" style="color: #00bcd4">
+            <a href="/tags/BiTreeNode/" style="color: #03a9f4">
                 BiTreeNode
             </a>
         </span>
@@ -405,141 +825,6 @@ c.rchild = d
         
         <span class="tag">
             
-            <a href="/tags/python/" style="color: #ffa2c4">
-                python
-            </a>
-        </span>
-        
-        <span class="tag">
-            
-            <a href="/tags/BiTreeNode/" style="color: #03a9f4">
-                BiTreeNode
-            </a>
-        </span>
-        
-    </div>
-    <a href="/2022/10/10/二叉树/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2022/10/10/哈希表/">
-        <h2 class="post-title">哈希表</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/算法/">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
-                </span>
-                算法
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
-            </span>
-            2022/10/10
-        </span>
-    </div>
-    <div class="excerpt">
-        <div class="content" v-pre>
-            
-            <pre><code class="python"># HashTable
-class LinkList:
-    class Node:
-        def __init__(self, item=None):
-            self.item = item
-            self.next = None
-
-    class LinkListIterator:
-        def __init__(self, head):
-            self.current = head
-
-        def __iter__(self):
-            return self
-
-        def __next__(self):
-            if self.current is None:
-                raise StopIteration
-            else:
-                item = self.current.item
-                self.current = self.current.next
-                return item
-
-    def __init__(self, iterable=None):
-        self.head = None
-        self.tail = None
-        if iterable:
-            self.extend(iterable)
-
-    def append(self, obj):
-        node = self.Node(obj)
-        if self.head is None:
-            self.head = node
-            self.tail = node
-        else:
-            self.tail.next = node
-            self.tail = node
-
-    def extend(self, iterable):
-        for item in iterable:
-            self.append(item)
-
-    def find(self, obj):
-        for item in self:
-            if item == obj:
-                return True
-        return False
-
-    def __iter__(self):
-        return self.LinkListIterator(self.head)
-
-    def __repr__(self):
-        return str(list(self))
-
-class HashTable:
-    def __init__(self, size=101):
-        self.size = size
-        self.table = [LinkList() for i in range(self.size)]
-
-    def hash(self, obj):
-        return obj % self.size
-
-    def insert(self, obj):
-        index = self.hash(obj)
-        if self.find(obj):
-            return False
-        else:
-            self.table[index].append(obj)
-            return True
-
-    def find(self, obj):
-        index = self.hash(obj)
-        return self.table[index].find(obj)
-
-ht = HashTable()
-ht.insert(0)
-ht.insert(1)
-ht.insert(101)
-print(&#39;,&#39;.join(map(str, ht.table)))
-print(ht.find(1))
-print(ht.find(2))
-</code></pre>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-        </span>
-        
-        
-        <span class="tag">
-            
             <a href="/tags/python/" style="color: #00a596">
                 python
             </a>
@@ -547,205 +832,13 @@ print(ht.find(2))
         
         <span class="tag">
             
-            <a href="/tags/HashTable/" style="color: #00bcd4">
-                HashTable
+            <a href="/tags/BiTreeNode/" style="color: #ffa2c4">
+                BiTreeNode
             </a>
         </span>
         
     </div>
-    <a href="/2022/10/10/哈希表/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2022/10/10/二分查找法/">
-        <h2 class="post-title">二分查找法</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/算法/">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
-                </span>
-                算法
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
-            </span>
-            2022/10/10
-        </span>
-    </div>
-    <div class="excerpt">
-        <div class="content" v-pre>
-            
-            <pre><code class="python"># 二分查找
-def binary_search(lst, val):
-    left = 0
-    right = len(lst) - 1
-    while left &lt; right:
-        mid = (left + right) // 2
-        if lst[mid] &gt; val:
-            right = mid - 1
-        elif lst[mid] &lt; val:
-            left = mid + 1
-        else:
-            return mid
-    return -1
-
-li = list(range(100))
-print(binary_search(li, 50))  # 50
-print(binary_search(li, 200))  # -1
-</code></pre>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-        </span>
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/python/" style="color: #ff7d73">
-                python
-            </a>
-        </span>
-        
-    </div>
-    <a href="/2022/10/10/二分查找法/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2022/10/10/其他排序/">
-        <h2 class="post-title">其他排序</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/算法/">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
-                </span>
-                算法
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
-            </span>
-            2022/10/10
-        </span>
-    </div>
-    <div class="excerpt">
-        <div class="content" v-pre>
-            
-            <h1 id="计数排序"><a href="#计数排序" class="headerlink" title="计数排序"></a>计数排序</h1><pre><code class="python">def count_sort(lst, max_count=100):
-    count = [0 for _ in range(max_count + 1)]
-    for val in lst:
-        count[val] += 1
-    lst.clear()
-    for ind, val in enumerate(count):
-        for i in range(val):
-            lst.append(ind)
-
-li = [4, 6, 2, 3, 1, 5, 7, 9, 8]
-count_sort(li, 9)
-print(li)  # [1, 2, 3, 4, 5, 6, 7, 8, 9]
-</code></pre>
-<p><strong>时间复杂度：O(n)<br>空间复杂度：O(n)<br>稳定性：稳定</strong></p>
-<hr>
-<h1 id="基数排序"><a href="#基数排序" class="headerlink" title="基数排序"></a>基数排序</h1><pre><code class="python">def radix_sort(lst):
-    max_num = max(lst)
-    it = 0
-    while 10 ** it &lt;= max_num:
-        buckets = [[] for _ in range(10)]
-        for i in lst:
-            buckets[i // 10 ** it % 10].append(i)
-        lst.clear()
-        for bucket in buckets:
-            lst.extend(bucket)
-        it += 1
-
-li = [4, 6, 2, 3, 1, 5, 7, 9, 8]
-radix_sort(li)
-print(li)
-</code></pre>
-<p><strong>时间复杂度：O(nm)<br>空间复杂度：O(n)<br>稳定性：稳定</strong></p>
-<hr>
-<h1 id="希尔排序"><a href="#希尔排序" class="headerlink" title="希尔排序"></a>希尔排序</h1><pre><code class="python">def insert_sort_gap(lst, gap):
-    for i in range(gap, len(lst)):
-        tmp = lst[i]
-        j = i - gap
-        while j &gt;= 0 and lst[j] &gt; tmp:
-            lst[gap + j] = lst[j]
-            j -= gap
-        lst[j + gap] = tmp
-
-def shell_sort(lst):
-    n = len(lst) // 2
-    while n &gt;= 1:
-        insert_sort_gap(lst, n)
-        n //= 2
-
-li = [4, 6, 2, 3, 1, 5, 7, 9, 8]
-shell_sort(li)
-print(li)  # [1, 2, 3, 4, 5, 6, 7, 8, 9]
-</code></pre>
-<p><strong>时间复杂度：O(nlogn)<br>空间复杂度：O(1)<br>稳定性：不稳定</strong></p>
-<hr>
-<h1 id="桶排序"><a href="#桶排序" class="headerlink" title="桶排序"></a>桶排序</h1><pre><code class="python">def bucket_sort(lst, n=100, max_num=10000):
-    buckets = [[] for _ in range(n)]
-    for val in lst:
-        i = min(val // (max_num // n), n - 1)
-        buckets[i].append(val)
-        for j in range(len(buckets[i]) - 1, 0, -1):
-            if buckets[i][j - 1] &gt; buckets[i][j]:
-                buckets[i][j - 1], buckets[i][j] = buckets[i][j], buckets[i][j - 1]
-            else:
-                break
-    sorted_lst = []
-    for bucket in buckets:
-        sorted_lst.extend(bucket)
-    return sorted_lst
-
-li = [4, 6, 2, 3, 1, 5, 7, 9, 8]
-print(bucket_sort(li))  # [1, 2, 3, 4, 5, 6, 7, 8, 9]
-</code></pre>
-<p><strong>时间复杂度：O(nlogm)<br>空间复杂度：O(logm)<br>稳定性：稳定</strong></p>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-        </span>
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/python/" style="color: #00bcd4">
-                python
-            </a>
-        </span>
-        
-        <span class="tag">
-            
-            <a href="/tags/Search/" style="color: #ffa2c4">
-                Search
-            </a>
-        </span>
-        
-    </div>
-    <a href="/2022/10/10/其他排序/" class="go-post">阅读全文</a>
+    <a href="/2022/10/10/二叉树/" class="go-post">阅读全文</a>
 </div>
 
              
@@ -779,6 +872,12 @@ print(bucket_sort(li))  # [1, 2, 3, 4, 5, 6, 7, 8, 9]
             <a href="/page/3/">
                 <span class="page-num">
                     3
+                </span>
+            </a>
+            
+            <a href="/page/4">
+                <span class="page-num">
+                    4
                 </span>
             </a>
             

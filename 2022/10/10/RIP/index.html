@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
-        <title>Categories: Other | Tongrens&#39;s Home</title>
+        <title>RIP | Tongrens&#39;s Home</title>
         <meta name="author" content="Tongrens">
         <meta name="description" content="">
         <meta name="keywords" content="">
@@ -122,14 +122,21 @@
 </nav>
                     </div>
                     <div id="main">
-                         
-<div class="categories-tags">
-    
-    <div class="all-s">
+                        
+<div class="article">
+    <div>
+        <h1>RIP </h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/10/10
+        </span>
         
-        
-        <span>
-            <a href="/categories/路由交换/" style="background: #ffa2c4">
+        <span class="category">
+            <a href="/categories/路由交换/">
                 <span class="icon">
                     <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
                 </span>
@@ -138,86 +145,55 @@
         </span>
         
         
-        <span>
-            <a href="/categories/算法/" style="background: #00a596">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
-                </span>
-                算法
-            </a>
-        </span>
-        
-        
-        <span>
-            <a href="/categories/路由交换/笔记/" style="background: #ffa2c4">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
-                </span>
-                笔记
-            </a>
-        </span>
-        
-        
-        <span>
-            <a href="/categories/Other/" style="background: linear-gradient(120deg, #9abbf7 0%, #ffbbf4 100%)">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
-                </span>
-                Other
-            </a>
-        </span>
-        
-        
-        <span>
-            <a href="/categories/算法/笔记/" style="background: #00bcd4">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
-                </span>
-                笔记
-            </a>
-        </span>
-        
-    </div>
-    <div id="archives">
-        
-        <div class="timeline">
-            <div class="timeline-tail"></div>
-            <div class="timeline-content">
-                <div class="item-time">2022/10/10</div>
-                <a href="/2022/10/10/hello-world/">
-                    <h3>Hello World</h3>
+        <span class="tags">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/Router/" style="color: #00a596">
+                    Router
                 </a>
-                <div class="info">
-                    
-                    <span class="category">
-                        <a href="/categories/Other/">
-                            <span class="icon">
-                                <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
-                            </span>
-                            Other
-                        </a>
-                    </span>
-                    
-                    
-                    <span class="tags">
-                        <span class="icon">
-                            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-                        </span>
-                        
-                        <span class="tag">
-                            
-                            <a href="/tags/text/" style="color: #00bcd4">
-                                text
-                            </a>
-                        </span>
-                        
-                    </span>
-                    
-                </div>
-            </div>
-        </div>
+            </span>
+            
+        </span>
         
     </div>
+    <div class="content" v-pre>
+        <h1 id="RIP"><a href="#RIP" class="headerlink" title="RIP"></a>RIP</h1><h2 id="RIP特点："><a href="#RIP特点：" class="headerlink" title="RIP特点："></a>RIP特点：</h2><p>引入跳数（Hop Count）的概念，每经过一个三层设备跳数就增加1，到16则丢弃；当收到多条相同路由时，仅加收度量值更小或相当的更新</p>
+<h4 id="RIPv1特点："><a href="#RIPv1特点：" class="headerlink" title="RIPv1特点："></a>RIPv1特点：</h4><blockquote>
+<p>有类路由协议（不携带掩码信息）<br>利用广播更新<br>基于UDP协议，使用520端口<br>不支持路由聚合，也不支持不连续子网，也不支持验证</p>
+</blockquote>
+<h4 id="RIPv2特点："><a href="#RIPv2特点：" class="headerlink" title="RIPv2特点："></a>RIPv2特点：</h4><blockquote>
+<p>无类路由协议（携带掩码信息）<br>利用组播更新，组播地址为224.0.0.9<br>基于UDP协议，使用520端口<br>支持路由聚合，支持验证，支持指定下一跳，支持标记tag（给数据包打上tag以防止重发布导致路由环路），</p>
+</blockquote>
+<h2 id="RIP定时器："><a href="#RIP定时器：" class="headerlink" title="RIP定时器："></a>RIP定时器：</h2><blockquote>
+<ol>
+<li>更新定时器：定时触发更新报文的发送，默认30s</li>
+<li>抑制定时器：如果收到对端度量值为16的路由，则此路由进入抑制状态，即便再次收到度量值小于16的更新也不接受，默认是180s</li>
+<li>老化定时器：如果在老化时间内（默认180s）没有收到邻居发来的更新报文，则认为此路由不可达并将度量值改为16（16为不可达）</li>
+<li>垃圾收集定时器：如果在垃圾收集时间内（默认为更新定时器的4倍，即120s），不可达链路没有被触发更新则将此路由从路由表中彻底删除。</li>
+</ol>
+</blockquote>
+<h2 id="RIP建立过程："><a href="#RIP建立过程：" class="headerlink" title="RIP建立过程："></a>RIP建立过程：</h2><blockquote>
+<ol>
+<li>初始状态：路由器开启RIP进程，宣告相关接口，设备就会从相关接口发送和接受RIP报文。</li>
+<li>构建路由表：路由器根据收到的RIP报文构建自己的路由表。</li>
+<li>维护路由表：每隔30s发送更新报文维护自己的路由表。</li>
+<li>老化路由表：将自己构建的路由表项启动180s的定时器，180s内如果收到更新报文则重置自己的更新定时器和老化定时器。</li>
+<li>垃圾收集表：如果180s后，没有收到路由表项的更新，则启动120s的垃圾收集定时器，同时将此路由表项的cost改为16</li>
+<li>删除路由表：如果120s后，仍然没有收到路由表更新，则将此表项删除。</li>
+</ol>
+</blockquote>
+<h2 id="水平分割："><a href="#水平分割：" class="headerlink" title="水平分割："></a>水平分割：</h2><p>防止路由环路的方法其一：水平分割</p>
+<p><strong>作用：</strong>减少带宽消耗、防止路由环路<br><strong>效果：</strong>但R1发送一条路由给R2后，如果没有配置水平分割，R2会把这条路由重新发回给R1，这样R1就有两条路由。当这条路由不可通之后，R1会认为这条路由在R2还可达，从而形成路由环路。配置水平分割后R2就不会再把这条路由发回给R1，从而达到避免路由环路的产生。<br><strong>特殊：</strong>NBMA网络中，水平分割默认是禁用的。<br>NBMA（非广播多路访问）：如X.25和帧中继这类本身并不具有支持广播和多播能力的多路访问网络，是OSPF四种网络类型的其中一种</p>
+<h2 id="毒性逆转："><a href="#毒性逆转：" class="headerlink" title="毒性逆转："></a>毒性逆转：</h2><p>防止路由环路的方法其二：毒性逆转</p>
+<p><strong>作用：</strong>清除对方路由表中的无用路由、防止路由环路<br><strong>效果：</strong>R2收到R1发来的路由后，R2会向R1发一个这条链路不可达的信息（将此路由开销值改为16），这样R1就不会再从R2学习到这条路由，从而达到避免路由环路。<br><strong>情况：</strong>默认情况下不启用毒性逆转，一般情况下均使用水平分割（除NBMA网络外）而不使用毒性逆转。</p>
+
+    </div>
+    
+    
 </div>
                          
 <footer id="footer">

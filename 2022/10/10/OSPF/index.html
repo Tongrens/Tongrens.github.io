@@ -1,0 +1,297 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+        <title>OSPF | Tongrens&#39;s Home</title>
+        <meta name="author" content="Tongrens">
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <link rel="icon" href="https://avatars.githubusercontent.com/u/73508047">
+        <script src="https://cdn.staticfile.org/instant.page/5.1.0/instantpage.min.js" type="module"></script>
+        <script src="https://cdn.staticfile.org/font-awesome/6.2.0/js/all.min.js"></script>
+        
+        <link rel="stylesheet" href="/css/test/fonts.min.css">
+        <link rel="stylesheet" href="/css/test/particlex.css">
+        <link rel="stylesheet" href="/css/custom.css">
+        
+        <script src="https://cdn.staticfile.org/vue/3.2.33/vue.global.prod.min.js"></script>
+        <script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+        <meta name="generator" content="Hexo 6.2.0">
+    </head>
+    <body>
+        <div id="loading" style="height:100vh;width:100vw;position:fixed;display:flex;z-index:200;justify-content:space-between;background:#fff;transition:opacity 0.3s ease-out"><div style="position:fixed;height:100vh;width:100vw;display:flex;justify-content:center;align-items:center"><div id="loadcontent" style="width:50vmin;height:50vmin;padding:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;border:solid 10px #a3ddfb;text-align:center"><div><h2>LOADING...</h2><p style="word-break:keep-all">加载过慢请开启缓存(浏览器默认开启)</p><div><img alt="loading" src="/loading.gif"></div></div></div></div></div>
+        <div id="layout">
+            <i data-fa-symbol="calendar-solid" class="fa-solid fa-calendar fa-fw"></i>
+            <i data-fa-symbol="bookmark-solid" class="fa-solid fa-bookmark fa-fw"></i>
+            <i data-fa-symbol="tags-solid" class="fa-solid fa-tags fa-fw"></i>
+            <transition name="into">
+                <div v-show="show_page" style="display: -not-none">
+                    <div id="menu_show">
+                         
+<nav id="menu">
+    <div class="desktop-menu">
+        <a href="/">
+            <span class="title">Tongrens's Home</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;主页</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;关于</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;归档</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;分类</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;标签</span>
+        </a>
+        
+    </div>
+    <div :class="'phone-menu ' + menu_show" id="phone-menu">
+        <div class="curtain" @click="menu_show = !menu_show" v-show="menu_show"></div>
+        <div :class="'title'" @click="menu_show = !menu_show">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;Tongrens's Home</span>
+        </div>
+        <transition name="slide">
+        <div class="items" v-show="menu_show">
+            
+            <a href="/">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-house fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">主页</div>
+                </div>
+            </a>
+            
+            <a href="/about">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-id-card fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">关于</div>
+                </div>
+            </a>
+            
+            <a href="/archives">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-box-archive fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">归档</div>
+                </div>
+            </a>
+            
+            <a href="/categories">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-bookmark fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">分类</div>
+                </div>
+            </a>
+            
+            <a href="/tags">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">标签</div>
+                </div>
+            </a>
+            
+        </div>
+        </transition>
+    </div>
+</nav>
+                    </div>
+                    <div id="main">
+                        
+<div class="article">
+    <div>
+        <h1>OSPF </h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/10/10
+        </span>
+        
+        <span class="category">
+            <a href="/categories/路由交换/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                </span>
+                路由交换
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/Router/" style="color: #ffa2c4">
+                    Router
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+    <div class="content" v-pre>
+        <h1 id="OSPF"><a href="#OSPF" class="headerlink" title="OSPF"></a>OSPF</h1><h2 id="OSPF基础"><a href="#OSPF基础" class="headerlink" title="OSPF基础"></a>OSPF基础</h2><p>同一AS中每个路由器ID必须唯一，但同一路由器的不同进程中的路由器ID可以相同<br>AS（自治系统）：进程号<br>Area（区域）：区域号<br>每个参与计算的OSPF接口都有优先级，范围0-255，默认值为1，0不参与选举DR/BDR，<strong>越高越优先</strong></p>
+<blockquote>
+<p>组播地址：<br>DRother向DR，BDR发送DD，LSA request或者LSA UPdate时目标地址是AllDRouter（224.0.0.6）<br>DR，BDR向DRother发送DD，LSA Request或者LSA Update时目标地址是AllSPFRouter（224.0.0.5）</p>
+</blockquote>
+<h2 id="OSPF-LSA类型"><a href="#OSPF-LSA类型" class="headerlink" title="OSPF LSA类型"></a>OSPF LSA类型</h2><blockquote>
+<p>Type1</p>
+</blockquote>
+<ul>
+<li>路由器LSA（Router LSA）<br>每个路由器都会产生路由器LSA<br>表明了链路状态、开销等参数</li>
+</ul>
+<blockquote>
+<p>Type2</p>
+</blockquote>
+<ul>
+<li>网络LSA（Network LSA）<br>由DR或BDR产生<br>表明了DR和BDR所在网段的链路状态（DR和BDR只在广播中存在）</li>
+</ul>
+<blockquote>
+<p>Type3</p>
+</blockquote>
+<ul>
+<li>网络聚合LSA（Network summary LSA）<br>由ABR产生<br>描述某区域内的某网段的聚合路由（含缺省路由），并通告非Totally Stub和NSSA区域</li>
+</ul>
+<blockquote>
+<p>Type4</p>
+</blockquote>
+<ul>
+<li>ASBR聚合LSA（ASBR summary LSA）<br>由ABR产生<br>描述从该ABR到路由域中各个ASBR的路由，通告给整个路由域（只向普通区域泛洪）</li>
+</ul>
+<blockquote>
+<p>Type5</p>
+</blockquote>
+<ul>
+<li>自治系统外部LSA（AS external LSA）<br>由ASBR产生<br>描述到达AS外部的路由（只向普通区域泛洪）</li>
+</ul>
+<blockquote>
+<p>Type7</p>
+</blockquote>
+<ul>
+<li>NSSA外部LSA（NSSA external LSA）<br>由ASBR产生<br>内容与type5基本相同，但专用于NSSA区域和Totally NSSA区域链接的ASBR向NSSA区域内泛洪外部AS的路由</li>
+</ul>
+<blockquote>
+<p>Type9/10/11</p>
+</blockquote>
+<ul>
+<li>Opaque LSA<br>Type9仅在接口内传播，Type10仅在区域内传播，Type11仅在自治系统内传播</li>
+</ul>
+<h2 id="OSPF路由器类型"><a href="#OSPF路由器类型" class="headerlink" title="OSPF路由器类型"></a>OSPF路由器类型</h2><p><strong>指定路由器（DR）：</strong>所有路由信息都将发给DR再发送给其他设备<br><strong>备份指定路由器（BDR）：</strong>DR的备份，当DR down后将代替DR并选举出新的BDR<br><strong>非指定路由器（DROther）：</strong>DR和BDR之外的路由器都称为DROther，之间不再建立邻接关系也不交换任何路由信息<br><strong>区域内路由器（IR）：</strong>设备的所有接口都在同一个OSPF area内<br><strong>区域边界路由器（ABR）：</strong>一个接口必须为骨干区域，其他接口可以为其他区域<br><strong>骨干路由器（BR）：</strong>设备至少有一个接口属于骨干区域<br><strong>自治系统边界路由器（ASBR）：</strong>与其他AS设备交换路由信息的设备，只要引入了外部路由就是ASBR</p>
+<h2 id="OSPF路由类型"><a href="#OSPF路由类型" class="headerlink" title="OSPF路由类型"></a>OSPF路由类型</h2><p><strong>区域内路由：</strong>IR之间的路由<br><strong>区域间路由：</strong>ABR之间的路由<br><strong>一类外部路由：</strong>由ASBR引入的IGP类型的路由，可信度高<br><strong>二类外部路由：</strong>由ASBR引入的EGP类型的路由，可信度低</p>
+<h2 id="OSPF特殊区域"><a href="#OSPF特殊区域" class="headerlink" title="OSPF特殊区域"></a>OSPF特殊区域</h2><blockquote>
+<p>骨干区域</p>
+</blockquote>
+<ul>
+<li>区域号为0</li>
+</ul>
+<blockquote>
+<p>Stub（末梢）区域</p>
+</blockquote>
+<ul>
+<li>处于AS边缘，且只有一个连接其他区域的ABR，没有ASBR，没有虚链路到骨干区域的区域才能配置为Stub区域<br>只有type1、type2、type3 LSA</li>
+</ul>
+<blockquote>
+<p>Totally Stub（完全末梢）区域</p>
+</blockquote>
+<ul>
+<li>处于AS边缘，且只有一个连接其他区域的ABR，没有ASBR，没有虚链路到骨干区域的区域才能配置为Totally Stub区域<br>只有type1、type2 LSA</li>
+</ul>
+<blockquote>
+<p>NSSA区域</p>
+</blockquote>
+<ul>
+<li>相比Stub，可以位于非边缘区域，可以由多个ABR，可以有ASBR<br>只有type1、type2、type3、type7 LSA</li>
+</ul>
+<blockquote>
+<p>Totally NSSA区域</p>
+</blockquote>
+<ul>
+<li>同NSSA区域相同<br>只有type1、type2、type7 LSA</li>
+</ul>
+<h2 id="OSPF网络类型"><a href="#OSPF网络类型" class="headerlink" title="OSPF网络类型"></a>OSPF网络类型</h2><p><strong>点到点网络（P2P）：</strong>指通过点到点的方式与一台路由器相连。此类型不需要进行DR和BDR的选举<br><strong>广播型多路访问网络（Broadcast）：</strong>广播类型，但链路层协议是Ethernet、FDDI时，OSPF缺省网络类型为广播型。需要进行DR和BDR的选举。此类型网络通常以组播方式（224.0.0.5、224.0.0.6）发送协议报文<br><strong>非广播型多路访问网络（NBMA）：</strong>虽然是一个接口到达多个节点，但本身不支持广播功能，当链路层协议是帧中继、ATM或X.25时，OSPF缺省认为网络类型是NBMA。此时OSPF的邻居需要手工设定。此类型网络中以单播方式发送协议报文。<br><strong>点到多点网络（P2MP）：</strong>指该接口通过点到多点的网络于多台路由器相连。此类型可以以组播方式（224.0.0.5）发送协议报文，也可以以单播形式发送协议报文。</p>
+<h2 id="OSPF报文类型"><a href="#OSPF报文类型" class="headerlink" title="OSPF报文类型"></a>OSPF报文类型</h2><p><strong>Hello报文：</strong>用来建立和维护相邻邻居之间的连接关系，在P2P和广播类型网络中，以HelloInterval（默认10s）为周期，以组播方式向224.0.0.5组播组发送一次；但在P2MP和NBMA类型网络中，以PollInterval（默认60s）为周期，以单播方式向状态为DOWN的邻居发送一次Hello报文；如果在DeadInterval（通常为Hello报文发送时间间隔的4倍）时间内没有收到对方发来的Hello报文，则认为对方路由器无效<br><strong>DD报文：</strong>用来描述本地路由器的链路状态数据库（LSDB），即本地LSDB中包含了哪些LSA<br><strong>LSR报文：</strong>用于请求相邻路由器LSDB中的一部分数据<br><strong>LSU报文：</strong>是LSR请求报文的应答报文，发送对端所需的真正LSA内容<br><strong>LSAck报文：</strong>是LSU报文的确认报文</p>
+<h2 id="OSPF建立状态"><a href="#OSPF建立状态" class="headerlink" title="OSPF建立状态"></a>OSPF建立状态</h2><ol>
+<li>Down：初始阶段</li>
+<li>Attempt：该状态仅发生在NBMA网络中，当在DeadInterval时间内仍然没有收到Hello报文，则以轮询Hello报文发送时间间隔向对端发送Hello报文</li>
+<li>Init：收到不包含自己路由器ID的Hello报文后转化为Init状态</li>
+<li>2-Way：收到包含有自己路由器ID的Hello报文后转换为2-Way状态并建立邻居</li>
+<li>Exstart：在进行DR、BDR选举后形成邻居关系，则从Init转换为Exstart状态</li>
+<li>Exchange：主从关系协商完毕后，发送DD报文并转化为Exchange状态</li>
+<li>Loading：DD报文交互完成后转化为Loading状态</li>
+<li>Full：当收到来自对端反馈的LSAck报文后转换为Full状态并建立邻接</li>
+</ol>
+<h2 id="OSPF邻接关系建立流程"><a href="#OSPF邻接关系建立流程" class="headerlink" title="OSPF邻接关系建立流程"></a>OSPF邻接关系建立流程</h2><p><strong>邻居发现阶段：</strong>到达2-Way状态后建立起邻居关系<br><strong>主从关系确立阶段：</strong>在Exchange状态交换完DD报文后确立主从关系<br><strong>数据库同步阶段：</strong>发送LSR报文后收到对方返回的LSAck报文后完成数据库同步<br><strong>完全邻接阶段：</strong>双方转为Full状态后完成建立邻接</p>
+<h2 id="DR和BDR选举过程"><a href="#DR和BDR选举过程" class="headerlink" title="DR和BDR选举过程"></a>DR和BDR选举过程</h2><blockquote>
+<p>先选BDR 再选DR<br>首先，所有路由器都宣告自己是DR和BDR<br>然后创建两个子集，一个包括非DR的，一个包括DR的<br>从非DR中选举BDR，但是所有设备都声称自己是DR<br>所以这个子集为空，这时候，才用选取优先级，优先级高的为BDR<br>这时进行第二个子集选择，选取所有非BDR子集，<br>同理，集合为空，这时，所以没有任何设备声称自己是DR，<br>这时，新选取出来的BDR马上升级成为DR<br>然后由于BDR变成了DR，所以需要重新选取BDR</p>
+</blockquote>
+
+    </div>
+    
+    
+</div>
+                         
+<footer id="footer">
+    <div class="footer-wrap">
+        <div>
+            © 2022 - 2022 Tongrens&#39;s Home
+            <span class="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            @Tongrens
+        </div>
+        <div></div>
+        <div>Based on the <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo Engine</a> & <a
+                target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a></div>
+        
+    </div>
+</footer>
+                    </div>
+                </div>
+            </transition>
+            <div id="img_show">
+                <img id="img_content" alt="img_show">
+            </div>
+        </div>
+        <script src="https://cdn.staticfile.org/highlight.js/11.5.1/highlight.min.js"></script>
+        <script src="/js/particlex.js"></script>
+        <script src="/js/showimg.js"></script>
+        <script src="/js/custom.js"></script>
+        <canvas id="fireworks"></canvas>
+        <canvas id="background"></canvas>
+        <script src="/js/fireworks.js"></script>
+        <script src="/js/background.js"></script>
+        
+
+    </body>
+</html>

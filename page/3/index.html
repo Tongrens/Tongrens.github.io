@@ -147,6 +147,333 @@
             
 
 <div class="post">
+    <a href="/2022/10/10/哈希表/">
+        <h2 class="post-title">哈希表</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/算法/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                </span>
+                算法
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/10/10
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <pre><code class="python"># HashTable
+class LinkList:
+    class Node:
+        def __init__(self, item=None):
+            self.item = item
+            self.next = None
+
+    class LinkListIterator:
+        def __init__(self, head):
+            self.current = head
+
+        def __iter__(self):
+            return self
+
+        def __next__(self):
+            if self.current is None:
+                raise StopIteration
+            else:
+                item = self.current.item
+                self.current = self.current.next
+                return item
+
+    def __init__(self, iterable=None):
+        self.head = None
+        self.tail = None
+        if iterable:
+            self.extend(iterable)
+
+    def append(self, obj):
+        node = self.Node(obj)
+        if self.head is None:
+            self.head = node
+            self.tail = node
+        else:
+            self.tail.next = node
+            self.tail = node
+
+    def extend(self, iterable):
+        for item in iterable:
+            self.append(item)
+
+    def find(self, obj):
+        for item in self:
+            if item == obj:
+                return True
+        return False
+
+    def __iter__(self):
+        return self.LinkListIterator(self.head)
+
+    def __repr__(self):
+        return str(list(self))
+
+class HashTable:
+    def __init__(self, size=101):
+        self.size = size
+        self.table = [LinkList() for i in range(self.size)]
+
+    def hash(self, obj):
+        return obj % self.size
+
+    def insert(self, obj):
+        index = self.hash(obj)
+        if self.find(obj):
+            return False
+        else:
+            self.table[index].append(obj)
+            return True
+
+    def find(self, obj):
+        index = self.hash(obj)
+        return self.table[index].find(obj)
+
+ht = HashTable()
+ht.insert(0)
+ht.insert(1)
+ht.insert(101)
+print(&#39;,&#39;.join(map(str, ht.table)))
+print(ht.find(1))
+print(ht.find(2))
+</code></pre>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/python/" style="color: #ff7d73">
+                python
+            </a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/HashTable/" style="color: #ff7d73">
+                HashTable
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2022/10/10/哈希表/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2022/10/10/二分查找法/">
+        <h2 class="post-title">二分查找法</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/算法/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                </span>
+                算法
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/10/10
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <pre><code class="python"># 二分查找
+def binary_search(lst, val):
+    left = 0
+    right = len(lst) - 1
+    while left &lt; right:
+        mid = (left + right) // 2
+        if lst[mid] &gt; val:
+            right = mid - 1
+        elif lst[mid] &lt; val:
+            left = mid + 1
+        else:
+            return mid
+    return -1
+
+li = list(range(100))
+print(binary_search(li, 50))  # 50
+print(binary_search(li, 200))  # -1
+</code></pre>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/python/" style="color: #03a9f4">
+                python
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2022/10/10/二分查找法/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2022/10/10/其他排序/">
+        <h2 class="post-title">其他排序</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/算法/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                </span>
+                算法
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/10/10
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <h1 id="计数排序"><a href="#计数排序" class="headerlink" title="计数排序"></a>计数排序</h1><pre><code class="python">def count_sort(lst, max_count=100):
+    count = [0 for _ in range(max_count + 1)]
+    for val in lst:
+        count[val] += 1
+    lst.clear()
+    for ind, val in enumerate(count):
+        for i in range(val):
+            lst.append(ind)
+
+li = [4, 6, 2, 3, 1, 5, 7, 9, 8]
+count_sort(li, 9)
+print(li)  # [1, 2, 3, 4, 5, 6, 7, 8, 9]
+</code></pre>
+<p><strong>时间复杂度：O(n)<br>空间复杂度：O(n)<br>稳定性：稳定</strong></p>
+<hr>
+<h1 id="基数排序"><a href="#基数排序" class="headerlink" title="基数排序"></a>基数排序</h1><pre><code class="python">def radix_sort(lst):
+    max_num = max(lst)
+    it = 0
+    while 10 ** it &lt;= max_num:
+        buckets = [[] for _ in range(10)]
+        for i in lst:
+            buckets[i // 10 ** it % 10].append(i)
+        lst.clear()
+        for bucket in buckets:
+            lst.extend(bucket)
+        it += 1
+
+li = [4, 6, 2, 3, 1, 5, 7, 9, 8]
+radix_sort(li)
+print(li)
+</code></pre>
+<p><strong>时间复杂度：O(nm)<br>空间复杂度：O(n)<br>稳定性：稳定</strong></p>
+<hr>
+<h1 id="希尔排序"><a href="#希尔排序" class="headerlink" title="希尔排序"></a>希尔排序</h1><pre><code class="python">def insert_sort_gap(lst, gap):
+    for i in range(gap, len(lst)):
+        tmp = lst[i]
+        j = i - gap
+        while j &gt;= 0 and lst[j] &gt; tmp:
+            lst[gap + j] = lst[j]
+            j -= gap
+        lst[j + gap] = tmp
+
+def shell_sort(lst):
+    n = len(lst) // 2
+    while n &gt;= 1:
+        insert_sort_gap(lst, n)
+        n //= 2
+
+li = [4, 6, 2, 3, 1, 5, 7, 9, 8]
+shell_sort(li)
+print(li)  # [1, 2, 3, 4, 5, 6, 7, 8, 9]
+</code></pre>
+<p><strong>时间复杂度：O(nlogn)<br>空间复杂度：O(1)<br>稳定性：不稳定</strong></p>
+<hr>
+<h1 id="桶排序"><a href="#桶排序" class="headerlink" title="桶排序"></a>桶排序</h1><pre><code class="python">def bucket_sort(lst, n=100, max_num=10000):
+    buckets = [[] for _ in range(n)]
+    for val in lst:
+        i = min(val // (max_num // n), n - 1)
+        buckets[i].append(val)
+        for j in range(len(buckets[i]) - 1, 0, -1):
+            if buckets[i][j - 1] &gt; buckets[i][j]:
+                buckets[i][j - 1], buckets[i][j] = buckets[i][j], buckets[i][j - 1]
+            else:
+                break
+    sorted_lst = []
+    for bucket in buckets:
+        sorted_lst.extend(bucket)
+    return sorted_lst
+
+li = [4, 6, 2, 3, 1, 5, 7, 9, 8]
+print(bucket_sort(li))  # [1, 2, 3, 4, 5, 6, 7, 8, 9]
+</code></pre>
+<p><strong>时间复杂度：O(nlogm)<br>空间复杂度：O(logm)<br>稳定性：稳定</strong></p>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/python/" style="color: #ff7d73">
+                python
+            </a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/Search/" style="color: #ffa2c4">
+                Search
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2022/10/10/其他排序/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
     <a href="/2022/10/10/NB三人组/">
         <h2 class="post-title">NB三人组</h2>
     </a>
@@ -295,7 +622,7 @@ print(li)  # [1, 2, 3, 4, 5, 6, 7, 8, 9]
         
         <span class="tag">
             
-            <a href="/tags/Search/" style="color: #ff7d73">
+            <a href="/tags/Search/" style="color: #03a9f4">
                 Search
             </a>
         </span>
@@ -425,70 +752,20 @@ print(li)  # [1, 2, 3, 4, 5, 6, 7, 8, 9]
         
         <span class="tag">
             
-            <a href="/tags/python/" style="color: #00a596">
+            <a href="/tags/python/" style="color: #ff7d73">
                 python
             </a>
         </span>
         
         <span class="tag">
             
-            <a href="/tags/Search/" style="color: #ffa2c4">
+            <a href="/tags/Search/" style="color: #ff7d73">
                 Search
             </a>
         </span>
         
     </div>
     <a href="/2022/10/10/lowB三人组/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2022/10/10/hello-world/">
-        <h2 class="post-title">Hello World</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/Other/">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
-                </span>
-                Other
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
-            </span>
-            2022/10/10
-        </span>
-    </div>
-    <div class="excerpt">
-        <div class="content" v-pre>
-            
-            <p>通宵达旦做blog…记录一下…</p>
-<p>今后会在这里放一下学习笔记，小目标插本，加油加油！</p>
-<p>（吐槽一下，这hexo的结构是真的乱，那什么sb主题里的source结构是真的ex TvT</p>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-        </span>
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/text/" style="color: #03a9f4">
-                text
-            </a>
-        </span>
-        
-    </div>
-    <a href="/2022/10/10/hello-world/" class="go-post">阅读全文</a>
 </div>
 
              
@@ -525,8 +802,24 @@ print(li)  # [1, 2, 3, 4, 5, 6, 7, 8, 9]
             3
         </span>
         
+        <span>
+            <a href="/page/4/">
+                <span class="page-num">
+                    4
+                </span>
+            </a>
+            
+            
+        </span>
+        
     </div>
     <div class="next">
+        
+        <a href="/page/4/ ">
+            <span class="page-num">
+                <i class="fa-solid fa-caret-right fa-fw"></i>
+            </span>
+        </a>
         
     </div>
 </div>
