@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
-        <title>Tags: Text | Tongrens&#39;s Home</title>
+        <title>NB三人组 | Tongrens&#39;s Home</title>
         <meta name="author" content="Tongrens">
         <meta name="description" content="">
         <meta name="keywords" content="">
@@ -122,132 +122,160 @@
 </nav>
                     </div>
                     <div id="main">
-                         
-<div class="categories-tags">
-    
-    <div class="all-s">
-        
-        
-        <span>
-            <a href="/tags/python/" style="background: #03a9f4">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-                </span>
-                python
-            </a>
-        </span>
-        
-        
-        <span>
-            <a href="/tags/BiTreeNode/" style="background: #00bcd4">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-                </span>
-                BiTreeNode
-            </a>
-        </span>
-        
-        
-        <span>
-            <a href="/tags/Search/" style="background: #ffa2c4">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-                </span>
-                Search
-            </a>
-        </span>
-        
-        
-        <span>
-            <a href="/tags/text/" style="background: linear-gradient(120deg, #9abbf7 0%, #ffbbf4 100%)">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-                </span>
-                text
-            </a>
-        </span>
-        
-        
-        <span>
-            <a href="/tags/HashTable/" style="background: #00a596">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-                </span>
-                HashTable
-            </a>
-        </span>
-        
-        
-        <span>
-            <a href="/tags/switch/" style="background: #ffa2c4">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-                </span>
-                switch
-            </a>
-        </span>
-        
-        
-        <span>
-            <a href="/tags/vlan/" style="background: #00bcd4">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-                </span>
-                vlan
-            </a>
-        </span>
-        
-        
-        <span>
-            <a href="/tags/LinkList/" style="background: #00bcd4">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-                </span>
-                LinkList
-            </a>
-        </span>
-        
+                        
+<div class="article">
+    <div>
+        <h1>NB三人组 </h1>
     </div>
-    <div id="archives">
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/10/10
+        </span>
         
-        <div class="timeline">
-            <div class="timeline-tail"></div>
-            <div class="timeline-content">
-                <div class="item-time">2022/10/10</div>
-                <a href="/2022/10/10/hello-world/">
-                    <h3>Hello World</h3>
+        <span class="category">
+            <a href="/categories/算法/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                </span>
+                算法
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/python/" style="color: #03a9f4">
+                    python
                 </a>
-                <div class="info">
-                    
-                    <span class="category">
-                        <a href="/categories/Other/">
-                            <span class="icon">
-                                <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
-                            </span>
-                            Other
-                        </a>
-                    </span>
-                    
-                    
-                    <span class="tags">
-                        <span class="icon">
-                            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-                        </span>
-                        
-                        <span class="tag">
-                            
-                            <a href="/tags/text/" style="color: #00a596">
-                                text
-                            </a>
-                        </span>
-                        
-                    </span>
-                    
-                </div>
-            </div>
-        </div>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/Search/" style="color: #00a596">
+                    Search
+                </a>
+            </span>
+            
+        </span>
         
     </div>
+    <div class="content" v-pre>
+        <h1 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h1><pre><code class="python">def partition(lst, left, right):
+    tmp = lst[left]
+    while left &lt; right:
+        while left &lt; right and lst[right] &gt; tmp:
+            right -= 1
+        lst[left] = lst[right]
+        while left &lt; right and lst[left] &lt; tmp:
+            left += 1
+        lst[right] = lst[left]
+    lst[left] = tmp
+    return left
+
+def quick_sort(lst, left, right):
+    if left &lt; right:
+        mid = partition(lst, left, right)
+        quick_sort(lst, left, mid)
+        quick_sort(lst, mid + 1, right)
+
+li = [4, 6, 2, 3, 1, 5, 7, 9, 8]
+quick_sort(li, 0, len(li) - 1)
+print(li)  # [1, 2, 3, 4, 5, 6, 7, 8, 9]
+</code></pre>
+<blockquote>
+<p>partition:<br>对传入的lst部分进行分割，范围内的第一个数作为中间值，把小于中间值的置于左侧，大于的置于右侧，并返回中间值的下标<br>处理方法为第一次从right开始向左遍历，若遇到比中间值小的则将那个值置于left，然后从left向右遍历，遇到比中间值大的则置于right，以此类推<br>(优化)为防止每次传入的left为范围最大值，随机从范围内取一个数和第一个数替换<br>lst[(left+right)//2], lst[left] = lst[left], lst[(left+right)//2]</p>
+</blockquote>
+<blockquote>
+<p>quick_sort:<br>将传入的列表递归通过二分的方法切片传入partition</p>
+</blockquote>
+<p><strong>时间复杂度：O(nlogn)<br>空间复杂度：O(logn)<br>稳定性：不稳定</strong></p>
+<hr>
+<h1 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h1><pre><code class="python">def sift(lst, low, high):
+    i = low
+    j = 2 * i + 1
+    tmp = lst[i]
+    while j &lt;= high:
+        if j + 1 &lt;= high and lst[j + 1] &gt; lst[j]:
+            j += 1
+        if lst[j] &gt; tmp:
+            lst[i] = lst[j]
+            i = j
+            j = 2 * i + 1
+        else:
+            lst[i] = tmp
+            break
+    else:
+        lst[i] = tmp
+
+def heap_sort(lst):
+    n = len(lst)
+    for i in range((n - 2) // 2, -1, -1):
+        sift(lst, i, n - 1)
+    for i in range(n - 1, -1, -1):
+        lst[0], lst[i] = lst[i], lst[0]
+        sift(lst, 0, i - 1)
+
+li = [4, 6, 2, 3, 1, 5, 7, 9, 8]
+heap_sort(li)
+print(li)  # [1, 2, 3, 4, 5, 6, 7, 8, 9]
+</code></pre>
+<blockquote>
+<p>sift:<br>low为根节点，high为最后一个叶节点，tmp为根节点的值<br>定义i为low，j为i的左子节点，判断i的右子节点如果比j大则将j替换为i的右子节点<br>判断i和j的值，若j比i大则将i的值替换为j的值，并将j定义为新的i的左子节点并重复上一步骤<br>若i比j大，则将i的值替换为tmp并跳出循环；循环正常退出(j比high大)则将i的值替换为tmp</p>
+</blockquote>
+<blockquote>
+<p>heap_sort:<br>1.构建堆，倒序遍历(i)将最后一个非根节点((n-2)//2)做向下调整(i——len(lst)-1)<br>2.倒序遍历无序区将最后一个叶节点与根节点交换，将无序区做一次向下调整，并将无序区最后一个值下标向前一位</p>
+</blockquote>
+<p><strong>时间复杂度：O(nlogn)<br>空间复杂度：O(1)<br>稳定性：不稳定</strong></p>
+<hr>
+<h1 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h1><pre><code class="python">def marge(lst, low, mid, high):
+    i = low
+    j = mid + 1
+    tmp_lst = []
+    while i &lt;= mid and j &lt;= high:
+        if lst[i] &lt; lst[j]:
+            tmp_lst.append(lst[i])
+            i += 1
+        else:
+            tmp_lst.append(lst[j])
+            j += 1
+    while i &lt;= mid:
+        tmp_lst.append(lst[i])
+        i += 1
+    while j &lt;= high:
+        tmp_lst.append(lst[j])
+        j += 1
+    lst[low:high + 1] = tmp_lst
+
+def marge_sort(lst, low, high):
+    if low &lt; high:
+        mid = (low + high) // 2
+        marge_sort(lst, low, mid)
+        marge_sort(lst, mid + 1, high)
+        marge(lst, low, mid, high)
+
+li = [4, 6, 2, 3, 1, 5, 7, 9, 8]
+marge_sort(li, 0, len(li) - 1)
+print(li)  # [1, 2, 3, 4, 5, 6, 7, 8, 9]
+</code></pre>
+<blockquote>
+<p>marge:<br>每次归并会传入low,mid,high，创建临时列表tmp_lst，定义i为low，j为mid+1<br>若i比j的值大，则将i下标的值添加到tmp_lst，并自增<br>反之则将j下标的值添加到tmp_lst，并自增<br>最后将lst需要归并的范围(low——high)的内容替换为tmp_lst</p>
+</blockquote>
+<blockquote>
+<p>marge_sort:<br>将传入的lst递归分割为二等分，直到分割的长度为1为止，再将每两份分割的内容归并</p>
+</blockquote>
+<p><strong>时间复杂度：O(nlogn)<br>空间复杂度：O(n)<br>稳定性：稳定</strong></p>
+
+    </div>
+    
+    
 </div>
                          
 <footer id="footer">

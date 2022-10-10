@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
-        <title>Tags: Text | Tongrens&#39;s Home</title>
+        <title>lowB三人组 | Tongrens&#39;s Home</title>
         <meta name="author" content="Tongrens">
         <meta name="description" content="">
         <meta name="keywords" content="">
@@ -122,132 +122,139 @@
 </nav>
                     </div>
                     <div id="main">
-                         
-<div class="categories-tags">
-    
-    <div class="all-s">
-        
-        
-        <span>
-            <a href="/tags/python/" style="background: #03a9f4">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-                </span>
-                python
-            </a>
-        </span>
-        
-        
-        <span>
-            <a href="/tags/BiTreeNode/" style="background: #00bcd4">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-                </span>
-                BiTreeNode
-            </a>
-        </span>
-        
-        
-        <span>
-            <a href="/tags/Search/" style="background: #ffa2c4">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-                </span>
-                Search
-            </a>
-        </span>
-        
-        
-        <span>
-            <a href="/tags/text/" style="background: linear-gradient(120deg, #9abbf7 0%, #ffbbf4 100%)">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-                </span>
-                text
-            </a>
-        </span>
-        
-        
-        <span>
-            <a href="/tags/HashTable/" style="background: #00a596">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-                </span>
-                HashTable
-            </a>
-        </span>
-        
-        
-        <span>
-            <a href="/tags/switch/" style="background: #ffa2c4">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-                </span>
-                switch
-            </a>
-        </span>
-        
-        
-        <span>
-            <a href="/tags/vlan/" style="background: #00bcd4">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-                </span>
-                vlan
-            </a>
-        </span>
-        
-        
-        <span>
-            <a href="/tags/LinkList/" style="background: #00bcd4">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-                </span>
-                LinkList
-            </a>
-        </span>
-        
+                        
+<div class="article">
+    <div>
+        <h1>lowB三人组 </h1>
     </div>
-    <div id="archives">
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/10/10
+        </span>
         
-        <div class="timeline">
-            <div class="timeline-tail"></div>
-            <div class="timeline-content">
-                <div class="item-time">2022/10/10</div>
-                <a href="/2022/10/10/hello-world/">
-                    <h3>Hello World</h3>
+        <span class="category">
+            <a href="/categories/算法/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                </span>
+                算法
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/python/" style="color: #03a9f4">
+                    python
                 </a>
-                <div class="info">
-                    
-                    <span class="category">
-                        <a href="/categories/Other/">
-                            <span class="icon">
-                                <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
-                            </span>
-                            Other
-                        </a>
-                    </span>
-                    
-                    
-                    <span class="tags">
-                        <span class="icon">
-                            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-                        </span>
-                        
-                        <span class="tag">
-                            
-                            <a href="/tags/text/" style="color: #00a596">
-                                text
-                            </a>
-                        </span>
-                        
-                    </span>
-                    
-                </div>
-            </div>
-        </div>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/Search/" style="color: #03a9f4">
+                    Search
+                </a>
+            </span>
+            
+        </span>
         
     </div>
+    <div class="content" v-pre>
+        <h1 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h1><pre><code class="python">def bubble_sort(lst):
+    for i in range(len(lst) - 1):
+        flag = False
+        for j in range(len(lst) - i - 1):
+            if lst[j] &gt; lst[j + 1]:
+                lst[j], lst[j + 1] = lst[j + 1], lst[j]
+                flag = True
+        if not flag:
+            return
+
+li = [4, 6, 2, 3, 1, 5, 7, 9, 8]
+bubble_sort(li)
+print(li)  # [1, 2, 3, 4, 5, 6, 7, 8, 9]
+</code></pre>
+<blockquote>
+<p>若无序区的相邻两个数前面的数大于后面的则交换<br>(优化)每一趟结束后判断flag，若无修改则直接退出</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>i为第几趟(0开始)<br>j为遍历无序区的下标</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>有序区为0——(i-1)<br>无序区为i——(len(lst)-1)</p>
+</blockquote>
+</blockquote>
+<p><strong>时间复杂度：O(n²)<br>空间复杂度：O(1)<br>稳定性：稳定</strong></p>
+<hr>
+<h1 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h1><pre><code class="python">def insert_sort(lst):
+    for i in range(1, len(lst)):
+        tmp = lst[i]
+        j = i-1
+        while j &gt;= 0 and lst[j] &gt; tmp:
+            lst[j+1] = lst[j]
+            j -= 1
+        lst[j+1] = tmp
+
+li = [4, 6, 2, 3, 1, 5, 7, 9, 8]
+insert_sort(li)
+print(li)  # [1, 2, 3, 4, 5, 6, 7, 8, 9]
+</code></pre>
+<blockquote>
+<p>初始手里一张牌(lst[0])<br>每次摸到一张牌(lst[i])，判断i前面的牌(j)是否比摸到的牌大，大则将前面的牌向后移一位，否则j向前移动一位并进行下次判断<br>若lst[j]&lt;lst[i]则将摸到的牌的值插入到lst[j+1]</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>i为无序区第一个数<br>j为有序区为以-1步进遍历的下标</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>有序区为0——(i-1)<br>无序区为i——(len(lst)-1)</p>
+</blockquote>
+</blockquote>
+<p><strong>时间复杂度：O(n²)<br>空间复杂度：O(1)<br>稳定性：稳定</strong></p>
+<hr>
+<h1 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h1><pre><code class="python">def select_sort(lst):
+    for i in range(len(lst)-1):
+        tmp = i
+        for j in range(i, len(lst)):
+            if lst[j] &lt; lst[tmp]:
+                tmp = j
+        lst[i], lst[tmp] = lst[tmp], lst[i]
+
+li = [4, 6, 2, 3, 1, 5, 7, 9, 8]
+select_sort(li)
+print(li)  # [1, 2, 3, 4, 5, 6, 7, 8, 9]
+</code></pre>
+<blockquote>
+<p>每一趟找出无序区的最小数并与无序区第一个数交换</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>i为第几趟(0开始)<br>j为遍历无序区的下标</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>有序区为0——(i-1)<br>无序区为i——(len(lst)-1)</p>
+</blockquote>
+</blockquote>
+<p><strong>时间复杂度：O(n²)<br>空间复杂度：O(1)<br>稳定性：不稳定</strong></p>
+
+    </div>
+    
+    
 </div>
                          
 <footer id="footer">

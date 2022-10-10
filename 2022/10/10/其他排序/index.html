@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
-        <title>Tags: Text | Tongrens&#39;s Home</title>
+        <title>其他排序 | Tongrens&#39;s Home</title>
         <meta name="author" content="Tongrens">
         <meta name="description" content="">
         <meta name="keywords" content="">
@@ -122,132 +122,129 @@
 </nav>
                     </div>
                     <div id="main">
-                         
-<div class="categories-tags">
-    
-    <div class="all-s">
-        
-        
-        <span>
-            <a href="/tags/python/" style="background: #03a9f4">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-                </span>
-                python
-            </a>
-        </span>
-        
-        
-        <span>
-            <a href="/tags/BiTreeNode/" style="background: #00bcd4">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-                </span>
-                BiTreeNode
-            </a>
-        </span>
-        
-        
-        <span>
-            <a href="/tags/Search/" style="background: #ffa2c4">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-                </span>
-                Search
-            </a>
-        </span>
-        
-        
-        <span>
-            <a href="/tags/text/" style="background: linear-gradient(120deg, #9abbf7 0%, #ffbbf4 100%)">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-                </span>
-                text
-            </a>
-        </span>
-        
-        
-        <span>
-            <a href="/tags/HashTable/" style="background: #00a596">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-                </span>
-                HashTable
-            </a>
-        </span>
-        
-        
-        <span>
-            <a href="/tags/switch/" style="background: #ffa2c4">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-                </span>
-                switch
-            </a>
-        </span>
-        
-        
-        <span>
-            <a href="/tags/vlan/" style="background: #00bcd4">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-                </span>
-                vlan
-            </a>
-        </span>
-        
-        
-        <span>
-            <a href="/tags/LinkList/" style="background: #00bcd4">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-                </span>
-                LinkList
-            </a>
-        </span>
-        
+                        
+<div class="article">
+    <div>
+        <h1>其他排序 </h1>
     </div>
-    <div id="archives">
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/10/10
+        </span>
         
-        <div class="timeline">
-            <div class="timeline-tail"></div>
-            <div class="timeline-content">
-                <div class="item-time">2022/10/10</div>
-                <a href="/2022/10/10/hello-world/">
-                    <h3>Hello World</h3>
+        <span class="category">
+            <a href="/categories/算法/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                </span>
+                算法
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/python/" style="color: #ffa2c4">
+                    python
                 </a>
-                <div class="info">
-                    
-                    <span class="category">
-                        <a href="/categories/Other/">
-                            <span class="icon">
-                                <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
-                            </span>
-                            Other
-                        </a>
-                    </span>
-                    
-                    
-                    <span class="tags">
-                        <span class="icon">
-                            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-                        </span>
-                        
-                        <span class="tag">
-                            
-                            <a href="/tags/text/" style="color: #00a596">
-                                text
-                            </a>
-                        </span>
-                        
-                    </span>
-                    
-                </div>
-            </div>
-        </div>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/Search/" style="color: #ff7d73">
+                    Search
+                </a>
+            </span>
+            
+        </span>
         
     </div>
+    <div class="content" v-pre>
+        <h1 id="计数排序"><a href="#计数排序" class="headerlink" title="计数排序"></a>计数排序</h1><pre><code class="python">def count_sort(lst, max_count=100):
+    count = [0 for _ in range(max_count + 1)]
+    for val in lst:
+        count[val] += 1
+    lst.clear()
+    for ind, val in enumerate(count):
+        for i in range(val):
+            lst.append(ind)
+
+li = [4, 6, 2, 3, 1, 5, 7, 9, 8]
+count_sort(li, 9)
+print(li)  # [1, 2, 3, 4, 5, 6, 7, 8, 9]
+</code></pre>
+<p><strong>时间复杂度：O(n)<br>空间复杂度：O(n)<br>稳定性：稳定</strong></p>
+<hr>
+<h1 id="基数排序"><a href="#基数排序" class="headerlink" title="基数排序"></a>基数排序</h1><pre><code class="python">def radix_sort(lst):
+    max_num = max(lst)
+    it = 0
+    while 10 ** it &lt;= max_num:
+        buckets = [[] for _ in range(10)]
+        for i in lst:
+            buckets[i // 10 ** it % 10].append(i)
+        lst.clear()
+        for bucket in buckets:
+            lst.extend(bucket)
+        it += 1
+
+li = [4, 6, 2, 3, 1, 5, 7, 9, 8]
+radix_sort(li)
+print(li)
+</code></pre>
+<p><strong>时间复杂度：O(nm)<br>空间复杂度：O(n)<br>稳定性：稳定</strong></p>
+<hr>
+<h1 id="希尔排序"><a href="#希尔排序" class="headerlink" title="希尔排序"></a>希尔排序</h1><pre><code class="python">def insert_sort_gap(lst, gap):
+    for i in range(gap, len(lst)):
+        tmp = lst[i]
+        j = i - gap
+        while j &gt;= 0 and lst[j] &gt; tmp:
+            lst[gap + j] = lst[j]
+            j -= gap
+        lst[j + gap] = tmp
+
+def shell_sort(lst):
+    n = len(lst) // 2
+    while n &gt;= 1:
+        insert_sort_gap(lst, n)
+        n //= 2
+
+li = [4, 6, 2, 3, 1, 5, 7, 9, 8]
+shell_sort(li)
+print(li)  # [1, 2, 3, 4, 5, 6, 7, 8, 9]
+</code></pre>
+<p><strong>时间复杂度：O(nlogn)<br>空间复杂度：O(1)<br>稳定性：不稳定</strong></p>
+<hr>
+<h1 id="桶排序"><a href="#桶排序" class="headerlink" title="桶排序"></a>桶排序</h1><pre><code class="python">def bucket_sort(lst, n=100, max_num=10000):
+    buckets = [[] for _ in range(n)]
+    for val in lst:
+        i = min(val // (max_num // n), n - 1)
+        buckets[i].append(val)
+        for j in range(len(buckets[i]) - 1, 0, -1):
+            if buckets[i][j - 1] &gt; buckets[i][j]:
+                buckets[i][j - 1], buckets[i][j] = buckets[i][j], buckets[i][j - 1]
+            else:
+                break
+    sorted_lst = []
+    for bucket in buckets:
+        sorted_lst.extend(bucket)
+    return sorted_lst
+
+li = [4, 6, 2, 3, 1, 5, 7, 9, 8]
+print(bucket_sort(li))  # [1, 2, 3, 4, 5, 6, 7, 8, 9]
+</code></pre>
+<p><strong>时间复杂度：O(nlogm)<br>空间复杂度：O(logm)<br>稳定性：稳定</strong></p>
+
+    </div>
+    
+    
 </div>
                          
 <footer id="footer">

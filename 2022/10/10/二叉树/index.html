@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
-        <title>Tags: Text | Tongrens&#39;s Home</title>
+        <title>二叉树 | Tongrens&#39;s Home</title>
         <meta name="author" content="Tongrens">
         <meta name="description" content="">
         <meta name="keywords" content="">
@@ -122,132 +122,117 @@
 </nav>
                     </div>
                     <div id="main">
-                         
-<div class="categories-tags">
-    
-    <div class="all-s">
-        
-        
-        <span>
-            <a href="/tags/python/" style="background: #03a9f4">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-                </span>
-                python
-            </a>
-        </span>
-        
-        
-        <span>
-            <a href="/tags/BiTreeNode/" style="background: #00bcd4">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-                </span>
-                BiTreeNode
-            </a>
-        </span>
-        
-        
-        <span>
-            <a href="/tags/Search/" style="background: #ffa2c4">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-                </span>
-                Search
-            </a>
-        </span>
-        
-        
-        <span>
-            <a href="/tags/text/" style="background: linear-gradient(120deg, #9abbf7 0%, #ffbbf4 100%)">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-                </span>
-                text
-            </a>
-        </span>
-        
-        
-        <span>
-            <a href="/tags/HashTable/" style="background: #00a596">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-                </span>
-                HashTable
-            </a>
-        </span>
-        
-        
-        <span>
-            <a href="/tags/switch/" style="background: #ffa2c4">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-                </span>
-                switch
-            </a>
-        </span>
-        
-        
-        <span>
-            <a href="/tags/vlan/" style="background: #00bcd4">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-                </span>
-                vlan
-            </a>
-        </span>
-        
-        
-        <span>
-            <a href="/tags/LinkList/" style="background: #00bcd4">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-                </span>
-                LinkList
-            </a>
-        </span>
-        
+                        
+<div class="article">
+    <div>
+        <h1>二叉树 </h1>
     </div>
-    <div id="archives">
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/10/10
+        </span>
         
-        <div class="timeline">
-            <div class="timeline-tail"></div>
-            <div class="timeline-content">
-                <div class="item-time">2022/10/10</div>
-                <a href="/2022/10/10/hello-world/">
-                    <h3>Hello World</h3>
+        <span class="category">
+            <a href="/categories/算法/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                </span>
+                算法
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/python/" style="color: #ff7d73">
+                    python
                 </a>
-                <div class="info">
-                    
-                    <span class="category">
-                        <a href="/categories/Other/">
-                            <span class="icon">
-                                <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
-                            </span>
-                            Other
-                        </a>
-                    </span>
-                    
-                    
-                    <span class="tags">
-                        <span class="icon">
-                            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-                        </span>
-                        
-                        <span class="tag">
-                            
-                            <a href="/tags/text/" style="color: #00a596">
-                                text
-                            </a>
-                        </span>
-                        
-                    </span>
-                    
-                </div>
-            </div>
-        </div>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/BiTreeNode/" style="color: #ff7d73">
+                    BiTreeNode
+                </a>
+            </span>
+            
+        </span>
         
     </div>
+    <div class="content" v-pre>
+        <pre><code class="python"># BiTreeNode
+class BiTreeNode:
+    def __init__(self, data):
+        self.data = data
+        self.lchild = None
+        self.rchild = None
+
+# 前序遍历  E,A,C,B,D,G,F,
+def pre_order(root):
+    if root:
+        print(root.data, end=&#39;,&#39;)
+        pre_order(root.lchild)
+        pre_order(root.rchild)
+
+# 中序遍历  A,B,C,D,E,G,F,
+def in_order(root):
+    if root:
+        in_order(root.lchild)
+        print(root.data, end=&#39;,&#39;)
+        in_order(root.rchild)
+
+# 后序遍历  B,D,C,A,F,G,E,
+def post_order(root):
+    if root:
+        post_order(root.lchild)
+        post_order(root.rchild)
+        print(root.data, end=&#39;,&#39;)
+
+# 层次遍历  E,A,G,C,F,B,D,
+def level_order(root):
+    from collections import deque
+    queue = deque()
+    queue.append(root)
+    while len(queue) &gt; 0:
+        node = queue.popleft()
+        print(node.data, end=&#39;,&#39;)
+        if node.lchild:
+            queue.append(node.lchild)
+        if node.rchild:
+            queue.append(node.rchild)
+
+&quot;&quot;&quot;
+            E
+    A               G
+        C               F
+    B       D
+&quot;&quot;&quot;
+a = BiTreeNode(&#39;A&#39;)
+b = BiTreeNode(&#39;B&#39;)
+c = BiTreeNode(&#39;C&#39;)
+d = BiTreeNode(&#39;D&#39;)
+e = BiTreeNode(&#39;E&#39;)
+f = BiTreeNode(&#39;F&#39;)
+g = BiTreeNode(&#39;G&#39;)
+e.lchild = a
+e.rchild = g
+a.rchild = c
+g.rchild = f
+c.lchild = b
+c.rchild = d
+</code></pre>
+
+    </div>
+    
+    
 </div>
                          
 <footer id="footer">

@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
-        <title>Hello World | Tongrens&#39;s Home</title>
+        <title>基本VLAN特性配置与管理 | Tongrens&#39;s Home</title>
         <meta name="author" content="Tongrens">
         <meta name="description" content="">
         <meta name="keywords" content="">
@@ -125,7 +125,7 @@
                         
 <div class="article">
     <div>
-        <h1>Hello World </h1>
+        <h1>基本VLAN特性配置与管理 </h1>
     </div>
     <div class="info">
         <span class="date">
@@ -136,11 +136,11 @@
         </span>
         
         <span class="category">
-            <a href="/categories/Other/">
+            <a href="/categories/路由交换/">
                 <span class="icon">
                     <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
                 </span>
-                Other
+                路由交换
             </a>
         </span>
         
@@ -152,8 +152,15 @@
             
             <span class="tag">
                 
-                <a href="/tags/text/" style="color: #00bcd4">
-                    text
+                <a href="/tags/switch/" style="color: #00bcd4">
+                    switch
+                </a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/vlan/" style="color: #03a9f4">
+                    vlan
                 </a>
             </span>
             
@@ -161,9 +168,42 @@
         
     </div>
     <div class="content" v-pre>
-        <p>通宵达旦做blog…记录一下…</p>
-<p>今后会在这里放一下学习笔记，小目标插本，加油加油！</p>
-<p>（吐槽一下，这hexo的结构是真的乱，那什么sb主题里的source结构是真的ex TvT</p>
+        <h1 id="基本VLAN特性配置与管理"><a href="#基本VLAN特性配置与管理" class="headerlink" title="基本VLAN特性配置与管理"></a>基本VLAN特性配置与管理</h1><h2 id="VLAN基础"><a href="#VLAN基础" class="headerlink" title="VLAN基础"></a>VLAN基础</h2><p>VLAN（虚拟局域网）是一个将物理LAN逻辑划分为若干个虚拟的LAN，目的是为了缩小广播域，使广播域进行二层（数据链路层）通信，不同VLAN间的主机是不能互相通信的，必须经过第三层（网络层）进行通信。<br><strong>VLAN既能限制广播网络，又可增强局域网的安全性，还提高了网络的健壮性。</strong><br>在同一个物理交换机上不可能存在两个相同的VLAN，在不同交换机上则可以有相同VLAN</p>
+<h2 id="VLAN帧"><a href="#VLAN帧" class="headerlink" title="VLAN帧"></a>VLAN帧</h2><p>VLAN Tag:标识所属VLAN，遵循IEEE 802.1Q标注，支持802.1Q协议的交换机既可以发送有标记帧也可以发送无标记帧（有标记帧加入了4字节的801.1Q Tag，反之则没有），交换机内部的数据包一律携带Tag。</p>
+<h2 id="802-1Q-Tag各字段含义："><a href="#802-1Q-Tag各字段含义：" class="headerlink" title="802.1Q Tag各字段含义："></a>802.1Q Tag各字段含义：</h2><p>TPID：长度2bytes，表示帧类型，取值为0x8100为802.1Q帧，如果不支持的设备接受到则丢弃<br>PRI：长度3bits，表示帧优先级，取值范围0-7，越大越优，用于QOS<br>CFI：长度1bits，表示MAC地址是否为经典格式，0是经典1是非经典，在以太网中值为1<br>VID：长度12bits，表示VLAN ID</p>
+<h2 id="VLAN特性"><a href="#VLAN特性" class="headerlink" title="VLAN特性"></a>VLAN特性</h2><p>华为交换机支持5种VLAN划分：基于<strong>端口</strong>划分、基于<strong>子网</strong>划分、基于<strong>MAC地址</strong>划分、基于<strong>协议</strong>划分、基于<strong>策略</strong>划分；其中端口划分属于静态VLAN划分，其余的属于动态VLAN划分<br><em>（除了端口划分其余都要在Hybrid口上划分）</em></p>
+<p>常见的VLAN间通信有三层VLANIF接口、三层以太网子接口和VLAN switch方案</p>
+<blockquote>
+<p>VLAN聚合：是指Super VLAN技术，他是在一个主VLAN下包括多个同IP网段的VLAN技术，但只需要为主VLANIF配置IP地址，各从VLAN中的用户主机就可以通过主VLAN的VLANIF接口作为缺省网关进行通信</p>
+</blockquote>
+<blockquote>
+<p>VLAN映射：在一些交换机上不支持全范围（1-4094）的VLAN ID，而只支持1-512的VLAN ID就与公网的VLAN ID实现冲突；于是就产生了一种可以实现在用户VLAN ID与运营商VLAN ID进行相互转换的技术。</p>
+</blockquote>
+<blockquote>
+<p>语音VLAN：（Voice VLAN）是相对传统VLAN数据而言的，他是针对不同类型的用户语言流进行划分的，并能自动修改数据帧的优先级，以提高语音数据的传输质量</p>
+</blockquote>
+<blockquote>
+<p>VLAN透传：可以使交换机直接透明传输指定VLAN的数据帧，不上送CPU处理，也不用去识别VLAN标签，提高了转发效率</p>
+</blockquote>
+<blockquote>
+<p>QINQ协议：是基于IEEE 802.1Q技术的一种二层隧道协议。在公网中传输的数据一般分为公网VLAN标签和私网VLAN标签，QINQ的核心思想是为了将私网标签封装在公网标签中，为用户提供一种较为简单的二层VPN隧道</p>
+</blockquote>
+<h2 id="二层以太网端口"><a href="#二层以太网端口" class="headerlink" title="二层以太网端口"></a>二层以太网端口</h2><p>二层以太网端口类型有：<strong>access、trunk、hybrid和QINQ四种端口类型</strong></p>
+<blockquote>
+<p>Access端口：主要用来连接用户主机的二层以太网端口，仅允许一个VLAN通过，发送的以太网帧永远是不带标签的（Untagged）<br>Trunk端口：主要用来连接与其他交换机的二层端口，允许多个VLAN通过，发送的帧都是带标签的<br>Hybrid端口：Hybrid端口可以说是access端口和trunk端口的混合体，是一种特殊的二层以太网端口，既可以连接主机也可以连接交换机，可以允许一个或多个VLAN通过，并可以选择带标签或不带标签。<br>QINQ端口：QINQ端口是专用于QINQ协议的二层以太网端口，可以给数据帧加上双层VLAN标签，从而可以支持多达4094*4094个VLAN。</p>
+</blockquote>
+<h2 id="二层以太网链路"><a href="#二层以太网链路" class="headerlink" title="二层以太网链路"></a>二层以太网链路</h2><p>以太网链路分为<strong>接入链路（Access link）和干道链路（Trunk link）</strong></p>
+<blockquote>
+<p>接入链路：是交换机直接连接用户主机的链路。通常情况下主机并不需要识别自己是属于哪个VLAN，所以接入链路发送和接受的数据帧都是不带标签（Untagged）的，但接入链路不一定只允许一个VLAN通过，只是access端口才仅允许一个VLAN通过，当属于Hybrid端口时同样是允许多个VLAN通过的</p>
+</blockquote>
+<blockquote>
+<p>干道链路：是交换机与交换机互联的链路。可以承载多个不同VLAN数据传输，干道链路两端的设备需要识别VLAN标签，所以在干道链路的数据都是带标签（Tagged）的，除了该链路的PVID所属VLAN（默认VLAN1）</p>
+</blockquote>
+<h2 id="VLAN间通信"><a href="#VLAN间通信" class="headerlink" title="VLAN间通信"></a>VLAN间通信</h2><ol>
+<li>三层VLANIF接口方案（VLANIF接口作为对应VLAN内的用户缺省网关）</li>
+<li>三层以太网子接口方案（同时具备三层以太网物理接口和二层以太网物理接口的双重特性）</li>
+<li>VLAN Switch方案（一种按照VLAN标签进行数据转发的技术，需要预先在各交换机上配置静态转发路径，符合条件即可转发到对应的出接口，无需查看MAC地址，提高转发效率和安全性，能避免MAC地址攻击和广播风暴）<br><a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/Tongrens/my_gallery/main/blog_image/switch/1.jpg"><img src="https://raw.githubusercontent.com/Tongrens/my_gallery/main/blog_image/switch/1.jpg"></a></li>
+</ol>
 
     </div>
     

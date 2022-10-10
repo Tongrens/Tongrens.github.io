@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
-        <title>Tags: Text | Tongrens&#39;s Home</title>
+        <title>扩展VLAN特性配置与管理 | Tongrens&#39;s Home</title>
         <meta name="author" content="Tongrens">
         <meta name="description" content="">
         <meta name="keywords" content="">
@@ -122,132 +122,92 @@
 </nav>
                     </div>
                     <div id="main">
-                         
-<div class="categories-tags">
-    
-    <div class="all-s">
-        
-        
-        <span>
-            <a href="/tags/python/" style="background: #03a9f4">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-                </span>
-                python
-            </a>
-        </span>
-        
-        
-        <span>
-            <a href="/tags/BiTreeNode/" style="background: #00bcd4">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-                </span>
-                BiTreeNode
-            </a>
-        </span>
-        
-        
-        <span>
-            <a href="/tags/Search/" style="background: #ffa2c4">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-                </span>
-                Search
-            </a>
-        </span>
-        
-        
-        <span>
-            <a href="/tags/text/" style="background: linear-gradient(120deg, #9abbf7 0%, #ffbbf4 100%)">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-                </span>
-                text
-            </a>
-        </span>
-        
-        
-        <span>
-            <a href="/tags/HashTable/" style="background: #00a596">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-                </span>
-                HashTable
-            </a>
-        </span>
-        
-        
-        <span>
-            <a href="/tags/switch/" style="background: #ffa2c4">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-                </span>
-                switch
-            </a>
-        </span>
-        
-        
-        <span>
-            <a href="/tags/vlan/" style="background: #00bcd4">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-                </span>
-                vlan
-            </a>
-        </span>
-        
-        
-        <span>
-            <a href="/tags/LinkList/" style="background: #00bcd4">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-                </span>
-                LinkList
-            </a>
-        </span>
-        
+                        
+<div class="article">
+    <div>
+        <h1>扩展VLAN特性配置与管理 </h1>
     </div>
-    <div id="archives">
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/10/10
+        </span>
         
-        <div class="timeline">
-            <div class="timeline-tail"></div>
-            <div class="timeline-content">
-                <div class="item-time">2022/10/10</div>
-                <a href="/2022/10/10/hello-world/">
-                    <h3>Hello World</h3>
+        <span class="category">
+            <a href="/categories/路由交换/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                </span>
+                路由交换
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/switch/" style="color: #00a596">
+                    switch
                 </a>
-                <div class="info">
-                    
-                    <span class="category">
-                        <a href="/categories/Other/">
-                            <span class="icon">
-                                <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
-                            </span>
-                            Other
-                        </a>
-                    </span>
-                    
-                    
-                    <span class="tags">
-                        <span class="icon">
-                            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-                        </span>
-                        
-                        <span class="tag">
-                            
-                            <a href="/tags/text/" style="color: #00a596">
-                                text
-                            </a>
-                        </span>
-                        
-                    </span>
-                    
-                </div>
-            </div>
-        </div>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/vlan/" style="color: #ff7d73">
+                    vlan
+                </a>
+            </span>
+            
+        </span>
         
     </div>
+    <div class="content" v-pre>
+        <h1 id="扩展VLAN特性配置与管理"><a href="#扩展VLAN特性配置与管理" class="headerlink" title="扩展VLAN特性配置与管理"></a>扩展VLAN特性配置与管理</h1><h2 id="VLAN聚合："><a href="#VLAN聚合：" class="headerlink" title="VLAN聚合："></a>VLAN聚合：</h2><p>VLAN聚合是把多个不配置三层VLANIF接口聚合成一个超级VLAN（Super-VLAN），这些VLANIF的接口称为Sub-VLAN</p>
+<blockquote>
+<p>Super-VLAN：<br>可以看成一个大的VLAN，但它的成员不是端口而是Sub-VLAN，需要配置三层VLANIF接口并配置IP地址。每个VLAN聚合中只能有一个Super-VLAN。</p>
+</blockquote>
+<blockquote>
+<p>Sub-VLAN：<br>它是Super-VLAN的成员，它的成员是交换机的端口，不能创建三层VLANIF接口，不同Sub-VLAN间是相互二层隔离的，但各个Sub-VLAN中的用户网关都是Super-VLAN的VLANIF接口IP地址，来实现各Sub-VLAN成员间以及与外部网络的三层通信。每个VLAN聚合中可以有多个Sub-VLAN。<br><a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/Tongrens/my_gallery/main/blog_image/switch/1.jpg"><img src="https://raw.githubusercontent.com/Tongrens/my_gallery/main/blog_image/switch/2.jpg"></a></p>
+</blockquote>
+<h2 id="MUX-VLAN："><a href="#MUX-VLAN：" class="headerlink" title="MUX VLAN："></a>MUX VLAN：</h2><p><strong>MUX VLAN（Multiplex VLAN）提供了一种通过VLAN进行网络资源控制的机制</strong></p>
+<ol>
+<li>主VLAN（Principal VLAN）：Principal port可以和MUX VLAN内的所有接口进行通信。</li>
+<li>从VLAN（Subordinate VLAN）包括隔离型从VLAN和互通型从VLAN：</li>
+<li>隔离型从VLAN（Separate VLAN）：Separate port只能和Principal port进行通信，和其他类型的接口实现完全隔离。</li>
+</ol>
+<p>每个隔离型从VLAN必须绑定一个主VLAN。<br>互通型从VLAN（Group VLAN）：Group port可以和Principal port进行通信，在同一组内的接口也可互相通信，但不能和其他组接口或Separate port通信。<br>每个互通型从VLAN必须绑定一个主VLAN。</p>
+<h2 id="QINQ技术："><a href="#QINQ技术：" class="headerlink" title="QINQ技术："></a>QINQ技术：</h2><p>QinQ封装过程就是把单层802.1Q标签的数据帧转换成双层802.1Q标签的数据帧，可以分为基本QinQ和灵活QinQ两种封装类型</p>
+<blockquote>
+<p>基本QinQ封装是把进入一个端口的所有流量都封装一个相同的外层VLAN标签，也称为“QinQ二层隧道“<br>灵活QinQ封装是基于端口和VLAN封装的结合方式，对同一个端口接收的数据帧可以根据不同的内层VLAN标签封装不同的外层标签。灵活QinQ又可以分为以下3种类型：</p>
+<blockquote>
+<ol>
+<li>基于VLAN ID的灵活QinQ：基于不同的内层VLAN ID的标签来封装不同的外层标签</li>
+<li>基于802.1p优先级的灵活QinQ：基于不同的内层802.1p的标签来封装不同的外层标签</li>
+<li>基于流策略的灵活QinQ：根据不同的QoS策略来添加不同的外层标签</li>
+</ol>
+</blockquote>
+</blockquote>
+<p>QinQ/Dot1q终结子接口：是指设备对数据帧的双层或单层VLAN标签进行识别，根据后续的转发行为进行剥离外层标签，然后据需传送。</p>
+<p><strong>QinQ映射：</strong>QinQ映射是在路由子接口上应用的，且发生在数据帧接收进来之前和从端口发送出去前。向外发送本地VLAN帧时，将帧中的本地VLAN标签替换成外部VLAN标签；接收外部VLAN的帧时，又将外部VLAN标签替换成本地VLAN标签。</p>
+<h2 id="VLAN映射："><a href="#VLAN映射：" class="headerlink" title="VLAN映射："></a>VLAN映射：</h2><p>VLAN映射不同于QinQ映射应用方式，VLAN映射是在物理端口上应用的</p>
+<blockquote>
+<p>配置1 to 1的VLAN映射</p>
+</blockquote>
+<ol>
+<li>基于VLAN的1 to 1的VLAN映射：可以在接收到带有单层VLAN标签的数据帧后，将帧中的VLAN ID映射为指定的VLAN ID。</li>
+<li>基于802.1p优先级的1 to 1的VLAN映射：可以根据接收到的数据帧的802.1p优先级和VLAN ID进行映射，且是在入端口配置的。</li>
+<li>基于流策略的1 to 1的VLAN映射：流策略是指将流分类后形成的完整的QoS策略，分为以下4个步骤：a)根据数据帧中的VLAN ID进行流分类； b)定义基于VLAN ID的流行为； c)创建QoS策略，将流分类与流行为进行关联； d)在端口上应用QoS策略。</li>
+</ol>
+
+    </div>
+    
+    
 </div>
                          
 <footer id="footer">

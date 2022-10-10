@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
-        <title>Tags: Text | Tongrens&#39;s Home</title>
+        <title>二叉搜索树 | Tongrens&#39;s Home</title>
         <meta name="author" content="Tongrens">
         <meta name="description" content="">
         <meta name="keywords" content="">
@@ -122,132 +122,162 @@
 </nav>
                     </div>
                     <div id="main">
-                         
-<div class="categories-tags">
-    
-    <div class="all-s">
-        
-        
-        <span>
-            <a href="/tags/python/" style="background: #03a9f4">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-                </span>
-                python
-            </a>
-        </span>
-        
-        
-        <span>
-            <a href="/tags/BiTreeNode/" style="background: #00bcd4">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-                </span>
-                BiTreeNode
-            </a>
-        </span>
-        
-        
-        <span>
-            <a href="/tags/Search/" style="background: #ffa2c4">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-                </span>
-                Search
-            </a>
-        </span>
-        
-        
-        <span>
-            <a href="/tags/text/" style="background: linear-gradient(120deg, #9abbf7 0%, #ffbbf4 100%)">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-                </span>
-                text
-            </a>
-        </span>
-        
-        
-        <span>
-            <a href="/tags/HashTable/" style="background: #00a596">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-                </span>
-                HashTable
-            </a>
-        </span>
-        
-        
-        <span>
-            <a href="/tags/switch/" style="background: #ffa2c4">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-                </span>
-                switch
-            </a>
-        </span>
-        
-        
-        <span>
-            <a href="/tags/vlan/" style="background: #00bcd4">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-                </span>
-                vlan
-            </a>
-        </span>
-        
-        
-        <span>
-            <a href="/tags/LinkList/" style="background: #00bcd4">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-                </span>
-                LinkList
-            </a>
-        </span>
-        
+                        
+<div class="article">
+    <div>
+        <h1>二叉搜索树 </h1>
     </div>
-    <div id="archives">
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/10/10
+        </span>
         
-        <div class="timeline">
-            <div class="timeline-tail"></div>
-            <div class="timeline-content">
-                <div class="item-time">2022/10/10</div>
-                <a href="/2022/10/10/hello-world/">
-                    <h3>Hello World</h3>
+        <span class="category">
+            <a href="/categories/算法/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                </span>
+                算法
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/python/" style="color: #03a9f4">
+                    python
                 </a>
-                <div class="info">
-                    
-                    <span class="category">
-                        <a href="/categories/Other/">
-                            <span class="icon">
-                                <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
-                            </span>
-                            Other
-                        </a>
-                    </span>
-                    
-                    
-                    <span class="tags">
-                        <span class="icon">
-                            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-                        </span>
-                        
-                        <span class="tag">
-                            
-                            <a href="/tags/text/" style="color: #00a596">
-                                text
-                            </a>
-                        </span>
-                        
-                    </span>
-                    
-                </div>
-            </div>
-        </div>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/BiTreeNode/" style="color: #00a596">
+                    BiTreeNode
+                </a>
+            </span>
+            
+        </span>
         
     </div>
+    <div class="content" v-pre>
+        <pre><code class="python"># BST
+class BiTreeNode:
+    def __init__(self, data):
+        self.data = data
+        self.lchild = None
+        self.rchild = None
+        self.parent = None
+
+class BST:
+    def __init__(self, lst=None):
+        self.root = None
+        if lst:
+            for val in lst:
+                self.insert(val)
+
+    def insert(self, val):
+        p = self.root
+        if not p:
+            self.root = BiTreeNode(val)
+            return
+        while True:
+            if val &lt; p.data:
+                if p.lchild:
+                    p = p.lchild
+                else:
+                    p.lchild = BiTreeNode(val)
+                    p.lchild.parent = p
+                    return
+            elif val &gt; p.data:
+                if p.rchild:
+                    p = p.rchild
+                else:
+                    p.rchild = BiTreeNode(val)
+                    p.rchild.parent = p
+                    return
+            else:
+                return
+
+    def find(self, val):
+        p = self.root
+        while p:
+            if val &gt; p.data:
+                p = p.rchild
+            elif val &lt; p.data:
+                p = p.lchild
+            else:
+                return p
+        return None
+
+    def __delete_node_1(self, node):  # 删除叶子节点
+        if not node.parent:     # 只有一个根节点
+            self.root = None
+        elif node == node.parent.lchild:
+            node.parent.lchild = None
+        else:
+            node.parent.rchild = None
+
+    def __delete_node_2_left(self, node):  # 删除非叶子节点，只有左子树
+        if not node.parent:
+            self.root = node.lchild
+            node.lchild.parent = None
+        elif node == node.parent.lchild:
+            node.parent.lchild = node.lchild
+            node.lchild.parent = node.parent
+        else:
+            node.parent.rchild = node.lchild
+            node.lchild.parent = node.parent
+
+    def __delete_node_2_right(self, node):  # 删除非叶子节点，只有右子树
+        if not node.parent:
+            self.root = node.rchild
+            node.rchild.parent = None
+        elif node == node.parent.lchild:
+            node.parent.lchild = node.rchild
+            node.rchild.parent = node.parent
+        else:
+            node.parent.rchild = node.rchild
+            node.rchild.parent = node.parent
+
+    def delete(self, val):
+        if self.root:
+            node = self.find(val)
+            if not node:
+                raise ValueError(&#39;\&quot;&#39; + str(val) + &#39;\&quot; not in tree&#39;)
+            if not node.lchild and not node.rchild:
+                self.__delete_node_1(node)
+            elif not node.rchild:
+                self.__delete_node_2_left(node)
+            elif not node.lchild:
+                self.__delete_node_2_right(node)
+            else:
+                min_node = node.rchild
+                while min_node.lchild:
+                    min_node = min_node.lchild
+                node.data = min_node.data
+                if min_node.rchild:
+                    self.__delete_node_2_right(min_node)
+                else:
+                    self.__delete_node_1(min_node)
+
+    def order(self, root):
+        if root:
+            self.order(root.lchild)
+            print(root.data, end=&#39;,&#39;)
+            self.order(root.rchild)
+</code></pre>
+
+    </div>
+    
+    
 </div>
                          
 <footer id="footer">

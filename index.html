@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
@@ -123,7 +123,7 @@
                     </div>
                     <div id="main">
                         <div id="home-head">
-    <div id="home-background" style="background-image: url(https://raw.githubusercontent.com/Tongrens/my_gallery/main/image/blog_head.jpg)"></div>
+    <div id="home-background" style="background-image: url(https://raw.githubusercontent.com/Tongrens/my_gallery/main/blog_image/blog_head.jpg)"></div>
     
     <div id="home-info" class="home-info" @click="home_click">
         <span class="loop"></span>
@@ -147,17 +147,17 @@
             
 
 <div class="post">
-    <a href="/2022/10/10/hello-world/">
-        <h2 class="post-title">Hello World</h2>
+    <a href="/2022/10/10/扩展VLAN特性配置与管理/">
+        <h2 class="post-title">扩展VLAN特性配置与管理</h2>
     </a>
     <div class="category-and-date">
         
         <span class="category">
-            <a href="/categories/Other/">
+            <a href="/categories/路由交换/">
                 <span class="icon">
                     <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
                 </span>
-                Other
+                路由交换
             </a>
         </span>
         
@@ -171,9 +171,42 @@
     <div class="excerpt">
         <div class="content" v-pre>
             
-            <p>通宵达旦做blog…记录一下…</p>
-<p>今后会在这里放一下学习笔记，小目标插本，加油加油！</p>
-<p>（吐槽一下，这hexo的结构是真的乱，那什么sb主题里的source结构是真的ex TvT</p>
+            <h1 id="扩展VLAN特性配置与管理"><a href="#扩展VLAN特性配置与管理" class="headerlink" title="扩展VLAN特性配置与管理"></a>扩展VLAN特性配置与管理</h1><h2 id="VLAN聚合："><a href="#VLAN聚合：" class="headerlink" title="VLAN聚合："></a>VLAN聚合：</h2><p>VLAN聚合是把多个不配置三层VLANIF接口聚合成一个超级VLAN（Super-VLAN），这些VLANIF的接口称为Sub-VLAN</p>
+<blockquote>
+<p>Super-VLAN：<br>可以看成一个大的VLAN，但它的成员不是端口而是Sub-VLAN，需要配置三层VLANIF接口并配置IP地址。每个VLAN聚合中只能有一个Super-VLAN。</p>
+</blockquote>
+<blockquote>
+<p>Sub-VLAN：<br>它是Super-VLAN的成员，它的成员是交换机的端口，不能创建三层VLANIF接口，不同Sub-VLAN间是相互二层隔离的，但各个Sub-VLAN中的用户网关都是Super-VLAN的VLANIF接口IP地址，来实现各Sub-VLAN成员间以及与外部网络的三层通信。每个VLAN聚合中可以有多个Sub-VLAN。<br><a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/Tongrens/my_gallery/main/blog_image/switch/1.jpg"><img src="https://raw.githubusercontent.com/Tongrens/my_gallery/main/blog_image/switch/2.jpg"></a></p>
+</blockquote>
+<h2 id="MUX-VLAN："><a href="#MUX-VLAN：" class="headerlink" title="MUX VLAN："></a>MUX VLAN：</h2><p><strong>MUX VLAN（Multiplex VLAN）提供了一种通过VLAN进行网络资源控制的机制</strong></p>
+<ol>
+<li>主VLAN（Principal VLAN）：Principal port可以和MUX VLAN内的所有接口进行通信。</li>
+<li>从VLAN（Subordinate VLAN）包括隔离型从VLAN和互通型从VLAN：</li>
+<li>隔离型从VLAN（Separate VLAN）：Separate port只能和Principal port进行通信，和其他类型的接口实现完全隔离。</li>
+</ol>
+<p>每个隔离型从VLAN必须绑定一个主VLAN。<br>互通型从VLAN（Group VLAN）：Group port可以和Principal port进行通信，在同一组内的接口也可互相通信，但不能和其他组接口或Separate port通信。<br>每个互通型从VLAN必须绑定一个主VLAN。</p>
+<h2 id="QINQ技术："><a href="#QINQ技术：" class="headerlink" title="QINQ技术："></a>QINQ技术：</h2><p>QinQ封装过程就是把单层802.1Q标签的数据帧转换成双层802.1Q标签的数据帧，可以分为基本QinQ和灵活QinQ两种封装类型</p>
+<blockquote>
+<p>基本QinQ封装是把进入一个端口的所有流量都封装一个相同的外层VLAN标签，也称为“QinQ二层隧道“<br>灵活QinQ封装是基于端口和VLAN封装的结合方式，对同一个端口接收的数据帧可以根据不同的内层VLAN标签封装不同的外层标签。灵活QinQ又可以分为以下3种类型：</p>
+<blockquote>
+<ol>
+<li>基于VLAN ID的灵活QinQ：基于不同的内层VLAN ID的标签来封装不同的外层标签</li>
+<li>基于802.1p优先级的灵活QinQ：基于不同的内层802.1p的标签来封装不同的外层标签</li>
+<li>基于流策略的灵活QinQ：根据不同的QoS策略来添加不同的外层标签</li>
+</ol>
+</blockquote>
+</blockquote>
+<p>QinQ/Dot1q终结子接口：是指设备对数据帧的双层或单层VLAN标签进行识别，根据后续的转发行为进行剥离外层标签，然后据需传送。</p>
+<p><strong>QinQ映射：</strong>QinQ映射是在路由子接口上应用的，且发生在数据帧接收进来之前和从端口发送出去前。向外发送本地VLAN帧时，将帧中的本地VLAN标签替换成外部VLAN标签；接收外部VLAN的帧时，又将外部VLAN标签替换成本地VLAN标签。</p>
+<h2 id="VLAN映射："><a href="#VLAN映射：" class="headerlink" title="VLAN映射："></a>VLAN映射：</h2><p>VLAN映射不同于QinQ映射应用方式，VLAN映射是在物理端口上应用的</p>
+<blockquote>
+<p>配置1 to 1的VLAN映射</p>
+</blockquote>
+<ol>
+<li>基于VLAN的1 to 1的VLAN映射：可以在接收到带有单层VLAN标签的数据帧后，将帧中的VLAN ID映射为指定的VLAN ID。</li>
+<li>基于802.1p优先级的1 to 1的VLAN映射：可以根据接收到的数据帧的802.1p优先级和VLAN ID进行映射，且是在入端口配置的。</li>
+<li>基于流策略的1 to 1的VLAN映射：流策略是指将流分类后形成的完整的QoS策略，分为以下4个步骤：a)根据数据帧中的VLAN ID进行流分类； b)定义基于VLAN ID的流行为； c)创建QoS策略，将流分类与流行为进行关联； d)在端口上应用QoS策略。</li>
+</ol>
 
             
         </div>
@@ -187,13 +220,512 @@
         
         <span class="tag">
             
-            <a href="/tags/text/" style="color: #00a596">
-                text
+            <a href="/tags/switch/" style="color: #03a9f4">
+                switch
+            </a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/vlan/" style="color: #00a596">
+                vlan
             </a>
         </span>
         
     </div>
-    <a href="/2022/10/10/hello-world/" class="go-post">阅读全文</a>
+    <a href="/2022/10/10/扩展VLAN特性配置与管理/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2022/10/10/接口及以太网链路配置及管理/">
+        <h2 class="post-title">接口及以太网链路配置及管理</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/路由交换/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                </span>
+                路由交换
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/10/10
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <h1 id="接口及以太网链路配置及管理"><a href="#接口及以太网链路配置及管理" class="headerlink" title="接口及以太网链路配置及管理"></a>接口及以太网链路配置及管理</h1><h2 id="以太网接口属性："><a href="#以太网接口属性：" class="headerlink" title="以太网接口属性："></a>以太网接口属性：</h2><blockquote>
+<p>二层接口是一种物理接口，属于数据链路层，不能配置IP地址，可以对接收到的报文经行二层转发。</p>
+</blockquote>
+<blockquote>
+<p>三层子接口是一种逻辑接口，属于网络层，可以配置IP地址，主要用来实现收发VLAN报文。可以通过配置使一个二层接口绑定多个三层子接口，从而使得不同VLAN报文从不同子接口转发。</p>
+</blockquote>
+<h2 id="接口类型："><a href="#接口类型：" class="headerlink" title="接口类型："></a>接口类型：</h2><blockquote>
+<p>接口类型分为<strong>管理接口、物理接口和逻辑接口</strong><br>管理接口用于登陆到设备经行配置与管理，此接口不承担业务传输<br>物理接口是真实存在的可承担业务传输的接口，一般由电口与光口组成<br>逻辑接口是指能实现数据交换但物理上不存在的接口</p>
+</blockquote>
+<h2 id="端口隔离"><a href="#端口隔离" class="headerlink" title="端口隔离"></a>端口隔离</h2><blockquote>
+<p>端口隔离分为单向隔离和端口隔离组，且都仅适用于同意交换机上不同端口间的隔离，且一个端口可以加入多个端口隔离组</p>
+</blockquote>
+<blockquote>
+<p>单向隔离指禁止某个端口发送的报文到达其他端口，而不禁止其他端口的报文到达本端口<br>而端口隔离组内的接口则是互相隔离的</p>
+</blockquote>
+<h2 id="链路聚合"><a href="#链路聚合" class="headerlink" title="链路聚合"></a>链路聚合</h2><p>链路聚合是指将多个相同属性的物理接口捆绑在一起形成一个逻辑接口，可以用来增加带宽，且聚合端口与物理接口同样可以配置端口类型。</p>
+<h2 id="负载分担："><a href="#负载分担：" class="headerlink" title="负载分担："></a>负载分担：</h2><p>负载分担分为手动负载分担和静态LACP负载分担。在手动负载分担的模式下，聚合端口与成员接口的配置都需要由手工来经行完成，并且在该模式下所有链路都参与数据的转发，平均分担流量；静态LACP负载分担模式则是利用LACP协议进行自动聚合，通过LACPDU报文经行交互，通告自己的（系统优先级、系统MAC、端口优先级、端口号和操作key）并与对端经行比较，选择能够汇聚的端口，链路的两端称为Actor和Partner，且LACP模式可以实现链路冗余备份（所以也被称为M:N模式）。</p>
+<blockquote>
+<p>LACP建立主被动关系顺序：<br>1、系统优先级（system priority）越低越优先，缺省值都为32768<br>2、系统MAC（system ID），越小越优先</p>
+</blockquote>
+<p><strong>注意事项：<br>成员接口的链路类型（华为默认为Hybrid）、所属VLAN、接口优先级、接口类型（百兆千兆）等需为一致<br>成员接口不能配置任何业务及静态MAC地址<br>一个以太网接口只能属于一个聚合端口中，如果需要加入其他聚合端口需先推出原来的聚合口<br>两端的互联接口都应配置为聚合端口，否则不能正常通信<br>聚合端口两端的成员接口数、速率、双工模式等属性配置需一致</strong></p>
+<blockquote>
+<p>负载分档方式：<br>dst-ip（目的IP）：同一个源IP发到不同目的IP的数据包将在不同端口发送，不同源地址但同目的IP地址的数据包总在同个端口发送<br>dst-mac（目的mac）：同一个源MAC发到不同目的MAC的数据包将在不同端口发送，不同源MAC但同目的MAC的数据包总在同个端口发送<br>src-ip（源IP）：来自不同IP地址的数据包总在不同端口转发，同一源IP的数据包总在同个端口转发<br>src-mac（源MAC）：来自不同MAC的数据包总在不同端口转发，同一源MAC的数据包总在同个端口转发<br>src-dst-ip（源与目的IP）：在不清楚是基于源IP转发还是目的IP转发时适用，AtoB BtoC CtoB都在不同端口转发<br>src-dst-mac（源与目的MAC）：在不清楚是基于源MAC转发还是目的MAC转发时适用，AtoB BtoC CtoB都在不同端口转发</p>
+</blockquote>
+<p><em>LACP抢占是指当链路中的高优先级端口出现故障时低优先级端口能代替故障端口经行转发<br>且LACP抢占有抢占延迟，指切换端口需要等待的时间<br>LACP报文超时时间是指当某个成员端口出现故障，则在超时时间后未收到LACP报文则认为对端不可达，不再转发数据</em></p>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/switch/" style="color: #ff7d73">
+                switch
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2022/10/10/接口及以太网链路配置及管理/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2022/10/10/基本VLAN特性配置与管理/">
+        <h2 class="post-title">基本VLAN特性配置与管理</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/路由交换/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                </span>
+                路由交换
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/10/10
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <h1 id="基本VLAN特性配置与管理"><a href="#基本VLAN特性配置与管理" class="headerlink" title="基本VLAN特性配置与管理"></a>基本VLAN特性配置与管理</h1><h2 id="VLAN基础"><a href="#VLAN基础" class="headerlink" title="VLAN基础"></a>VLAN基础</h2><p>VLAN（虚拟局域网）是一个将物理LAN逻辑划分为若干个虚拟的LAN，目的是为了缩小广播域，使广播域进行二层（数据链路层）通信，不同VLAN间的主机是不能互相通信的，必须经过第三层（网络层）进行通信。<br><strong>VLAN既能限制广播网络，又可增强局域网的安全性，还提高了网络的健壮性。</strong><br>在同一个物理交换机上不可能存在两个相同的VLAN，在不同交换机上则可以有相同VLAN</p>
+<h2 id="VLAN帧"><a href="#VLAN帧" class="headerlink" title="VLAN帧"></a>VLAN帧</h2><p>VLAN Tag:标识所属VLAN，遵循IEEE 802.1Q标注，支持802.1Q协议的交换机既可以发送有标记帧也可以发送无标记帧（有标记帧加入了4字节的801.1Q Tag，反之则没有），交换机内部的数据包一律携带Tag。</p>
+<h2 id="802-1Q-Tag各字段含义："><a href="#802-1Q-Tag各字段含义：" class="headerlink" title="802.1Q Tag各字段含义："></a>802.1Q Tag各字段含义：</h2><p>TPID：长度2bytes，表示帧类型，取值为0x8100为802.1Q帧，如果不支持的设备接受到则丢弃<br>PRI：长度3bits，表示帧优先级，取值范围0-7，越大越优，用于QOS<br>CFI：长度1bits，表示MAC地址是否为经典格式，0是经典1是非经典，在以太网中值为1<br>VID：长度12bits，表示VLAN ID</p>
+<h2 id="VLAN特性"><a href="#VLAN特性" class="headerlink" title="VLAN特性"></a>VLAN特性</h2><p>华为交换机支持5种VLAN划分：基于<strong>端口</strong>划分、基于<strong>子网</strong>划分、基于<strong>MAC地址</strong>划分、基于<strong>协议</strong>划分、基于<strong>策略</strong>划分；其中端口划分属于静态VLAN划分，其余的属于动态VLAN划分<br><em>（除了端口划分其余都要在Hybrid口上划分）</em></p>
+<p>常见的VLAN间通信有三层VLANIF接口、三层以太网子接口和VLAN switch方案</p>
+<blockquote>
+<p>VLAN聚合：是指Super VLAN技术，他是在一个主VLAN下包括多个同IP网段的VLAN技术，但只需要为主VLANIF配置IP地址，各从VLAN中的用户主机就可以通过主VLAN的VLANIF接口作为缺省网关进行通信</p>
+</blockquote>
+<blockquote>
+<p>VLAN映射：在一些交换机上不支持全范围（1-4094）的VLAN ID，而只支持1-512的VLAN ID就与公网的VLAN ID实现冲突；于是就产生了一种可以实现在用户VLAN ID与运营商VLAN ID进行相互转换的技术。</p>
+</blockquote>
+<blockquote>
+<p>语音VLAN：（Voice VLAN）是相对传统VLAN数据而言的，他是针对不同类型的用户语言流进行划分的，并能自动修改数据帧的优先级，以提高语音数据的传输质量</p>
+</blockquote>
+<blockquote>
+<p>VLAN透传：可以使交换机直接透明传输指定VLAN的数据帧，不上送CPU处理，也不用去识别VLAN标签，提高了转发效率</p>
+</blockquote>
+<blockquote>
+<p>QINQ协议：是基于IEEE 802.1Q技术的一种二层隧道协议。在公网中传输的数据一般分为公网VLAN标签和私网VLAN标签，QINQ的核心思想是为了将私网标签封装在公网标签中，为用户提供一种较为简单的二层VPN隧道</p>
+</blockquote>
+<h2 id="二层以太网端口"><a href="#二层以太网端口" class="headerlink" title="二层以太网端口"></a>二层以太网端口</h2><p>二层以太网端口类型有：<strong>access、trunk、hybrid和QINQ四种端口类型</strong></p>
+<blockquote>
+<p>Access端口：主要用来连接用户主机的二层以太网端口，仅允许一个VLAN通过，发送的以太网帧永远是不带标签的（Untagged）<br>Trunk端口：主要用来连接与其他交换机的二层端口，允许多个VLAN通过，发送的帧都是带标签的<br>Hybrid端口：Hybrid端口可以说是access端口和trunk端口的混合体，是一种特殊的二层以太网端口，既可以连接主机也可以连接交换机，可以允许一个或多个VLAN通过，并可以选择带标签或不带标签。<br>QINQ端口：QINQ端口是专用于QINQ协议的二层以太网端口，可以给数据帧加上双层VLAN标签，从而可以支持多达4094*4094个VLAN。</p>
+</blockquote>
+<h2 id="二层以太网链路"><a href="#二层以太网链路" class="headerlink" title="二层以太网链路"></a>二层以太网链路</h2><p>以太网链路分为<strong>接入链路（Access link）和干道链路（Trunk link）</strong></p>
+<blockquote>
+<p>接入链路：是交换机直接连接用户主机的链路。通常情况下主机并不需要识别自己是属于哪个VLAN，所以接入链路发送和接受的数据帧都是不带标签（Untagged）的，但接入链路不一定只允许一个VLAN通过，只是access端口才仅允许一个VLAN通过，当属于Hybrid端口时同样是允许多个VLAN通过的</p>
+</blockquote>
+<blockquote>
+<p>干道链路：是交换机与交换机互联的链路。可以承载多个不同VLAN数据传输，干道链路两端的设备需要识别VLAN标签，所以在干道链路的数据都是带标签（Tagged）的，除了该链路的PVID所属VLAN（默认VLAN1）</p>
+</blockquote>
+<h2 id="VLAN间通信"><a href="#VLAN间通信" class="headerlink" title="VLAN间通信"></a>VLAN间通信</h2><ol>
+<li>三层VLANIF接口方案（VLANIF接口作为对应VLAN内的用户缺省网关）</li>
+<li>三层以太网子接口方案（同时具备三层以太网物理接口和二层以太网物理接口的双重特性）</li>
+<li>VLAN Switch方案（一种按照VLAN标签进行数据转发的技术，需要预先在各交换机上配置静态转发路径，符合条件即可转发到对应的出接口，无需查看MAC地址，提高转发效率和安全性，能避免MAC地址攻击和广播风暴）<br><a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/Tongrens/my_gallery/main/blog_image/switch/1.jpg"><img src="https://raw.githubusercontent.com/Tongrens/my_gallery/main/blog_image/switch/1.jpg"></a></li>
+</ol>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/switch/" style="color: #ffa2c4">
+                switch
+            </a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/vlan/" style="color: #00bcd4">
+                vlan
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2022/10/10/基本VLAN特性配置与管理/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2022/10/10/链表/">
+        <h2 class="post-title">链表</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/算法/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                </span>
+                算法
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/10/10
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <pre><code class="python"># 链表
+class Node:
+    def __init__(self, item=None):
+        self.item = item
+        self.next = None
+        self.prior = Node  # 双链表
+
+# 头插法
+def create_linklist_head(lst):
+    head = Node(lst[0])
+    for element in lst[1:]:
+        node = Node(element)
+        head.prior = node  # 双链表
+        node.next = head
+        head = node
+    return head
+
+# 尾插法
+def create_linklist_tail(lst):
+    head = Node(lst[0])
+    tail = head
+    for element in lst[1:]:
+        node = Node(element)
+        tail.next = node
+        tmp = tail
+        tail = node
+        tail.prior = tmp  # 26&amp;28双链表
+    return head
+
+# 输出链表
+def print_linklist(lk):
+    while lk:
+        print(lk.item, end=&#39;,&#39;)
+        lk = lk.next
+    print()
+
+# 头插法eg
+lk1 = create_linklist_head([1, 2, 3])
+print(lk1.item)  # 3
+print(lk1.next.item)  # 2
+print(lk1.next.prior.item)  # 3(双链表)
+print_linklist(lk1)  # 3,2,1,
+# 尾插法eg
+lk2 = create_linklist_tail([1, 2, 3])
+print(lk2.item)  # 1
+print(lk2.next.item)  # 2
+print(lk2.next.prior.item)  # 1(双链表)
+print_linklist(lk2)  # 1,2,3,
+# 插入元素
+p = Node(5)
+p.next = lk2.next
+lk2.next.prior = p
+p.prior = lk2   # 54&amp;55双链表
+lk2.next = p
+print_linklist(lk2)  # 1,5,2,3,
+# 删除元素
+lk2.next.next.prior = lk2
+lk2.next = lk2.next.next
+print_linklist(lk2)  # 1,2,3,
+&quot;&quot;&quot;
+————————————时间复杂度——————————————
+             列表      链表
+按元素查找：   O(n)      O(n)
+按下标查找：   O(1)      O(n)
+插入&amp;删除：   O(n)      O(1)
+&quot;&quot;&quot;
+</code></pre>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/python/" style="color: #00a596">
+                python
+            </a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/LinkList/" style="color: #03a9f4">
+                LinkList
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2022/10/10/链表/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2022/10/10/AVL树/">
+        <h2 class="post-title">AVL树</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/算法/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                </span>
+                算法
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/10/10
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <pre><code class="python"># AVLTree
+# https://www.bilibili.com/video/BV1uA411N7c5?p=74&amp;vd_source=2493c37afb3b31338e613a5ec70a3fcd
+from BST import BiTreeNode, BST
+
+class AVLNode(BiTreeNode):
+    def __init__(self, data):
+        BiTreeNode.__init__(self, data)
+        self.bf = 0
+
+class AVLTree(BST):
+    def __init__(self, li=None):
+        BST.__init__(self, li)
+
+    def rotate_left(self, p, c):
+        lc = c.lchild
+        p.rchild = lc
+        if lc:
+            lc.parent = p
+        c.lchild = p
+        p.parent = c
+        p.bf = 0
+        c.bf = 0
+        return c
+
+    def rotate_right(self, p, c):
+        rc = c.rchild
+        p.lchild = rc
+        if rc:
+            rc.parent = p
+        c.rchild = p
+        p.parent = c
+        p.bf = 0
+        c.bf = 0
+        return c
+
+    def rotate_right_left(self, p, c):
+        g = c.lchild
+        rrc = g.rchild
+        c.lchild = rrc
+        if rrc:
+            rrc.parent = c
+        g.rchild = c
+        c.parent = g
+        rlc = g.lchild
+        p.rchild = rlc
+        if rlc:
+            rlc.parent = p
+        g.lchild = p
+        p.parent = g
+        if g.bf &gt; 0:
+            p.bf = -1
+            c.bf = 0
+        elif g.bf &lt; 0:
+            p.bf = 0
+            c.bf = 1
+        else:
+            p.bf = 0
+            c.bf = 0
+        return g
+
+    def rotate_left_right(self, p, c):
+        g = c.rchild
+        rlc = g.lchild
+        c.rchild = rlc
+        if rlc:
+            rlc.parent = c
+        g.lchild = c
+        c.parent = g
+        rrc = g.rchild
+        p.lchild = rrc
+        if rrc:
+            rrc.parent = p
+        g.rchild = p
+        p.parent = g
+        if g.bf &gt; 0:
+            p.bf = 0
+            c.bf = -1
+        elif g.bf &lt; 0:
+            p.bf = 1
+            c.bf = 0
+        else:
+            p.bf = 0
+            c.bf = 0
+        return g
+
+    def insert(self, val):
+        p = self.root
+        if not p:
+            self.root = AVLNode(val)
+            return
+        while True:
+            if val &lt; p.data:
+                if p.lchild:
+                    p = p.lchild
+                else:
+                    p.lchild = AVLNode(val)
+                    p.lchild.parent = p
+                    node = p.lchild
+                    break
+            elif val &gt; p.data:
+                if p.rchild:
+                    p = p.rchild
+                else:
+                    p.rchild = AVLNode(val)
+                    p.rchild.parent = p
+                    node = p.rchild
+                    break
+            else:
+                return
+        while node.parent:
+            g = node.parent.parent
+            x = node.parent
+            if node == node.parent.lchild:
+                if node.parent.bf &lt; 0:
+                    if node.bf &gt; 0:
+                        n = self.rotate_left_right(node.parent, node)
+                    else:
+                        n = self.rotate_right(node.parent, node)
+                elif node.parent.bf == 0:
+                    node.parent.bf = -1
+                    node = node.parent
+                    continue
+                else:
+                    node.parent.bf = 0
+                    break
+            else:
+                if node.parent.bf &gt; 0:
+                    if node.bf &lt; 0:
+                        n = self.rotate_right_left(node.parent, node)
+                    else:
+                        n = self.rotate_left(node.parent, node)
+                elif node.parent.bf == 0:
+                    node.parent.bf = 1
+                    node = node.parent
+                    continue
+                else:
+                    node.parent.bf = 0
+                    break
+            n.parent = g
+            if g:
+                if x == g.lchild:
+                    g.lchild = n
+                else:
+                    g.rchild = n
+                break
+            else:
+                self.root = n
+                break
+
+tree = AVLTree([9,8,7,6,5,4,3,2,1])
+tree.order(tree.root)
+print()
+tree.insert(10)
+tree.order(tree.root)
+</code></pre>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/python/" style="color: #03a9f4">
+                python
+            </a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/BiTreeNode/" style="color: #00bcd4">
+                BiTreeNode
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2022/10/10/AVL树/" class="go-post">阅读全文</a>
 </div>
 
              
@@ -207,8 +739,30 @@
             1
         </span>
         
+        <span>
+            <a href="/page/2/">
+                <span class="page-num">
+                    2
+                </span>
+            </a>
+            
+            <a href="/page/3">
+                <span class="page-num">
+                    3
+                </span>
+            </a>
+            
+            
+        </span>
+        
     </div>
     <div class="next">
+        
+        <a href="/page/2/ ">
+            <span class="page-num">
+                <i class="fa-solid fa-caret-right fa-fw"></i>
+            </span>
+        </a>
         
     </div>
 </div>
@@ -240,7 +794,7 @@
             </span>
             
             <span class="icon-link">
-                <a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/Tongrens/my_gallery/main/image/wechat.png">
+                <a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/Tongrens/my_gallery/main/blog_image/wechat.png">
                     <i class="fa-brands fa-weixin fa-fw"></i>
                 </a>
             </span>

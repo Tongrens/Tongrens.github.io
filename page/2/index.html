@@ -1,0 +1,881 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+        <title>Tongrens&#39;s Home</title>
+        <meta name="author" content="Tongrens">
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <link rel="icon" href="https://avatars.githubusercontent.com/u/73508047">
+        <script src="https://cdn.staticfile.org/instant.page/5.1.0/instantpage.min.js" type="module"></script>
+        <script src="https://cdn.staticfile.org/font-awesome/6.2.0/js/all.min.js"></script>
+        
+        <link rel="stylesheet" href="/css/test/fonts.min.css">
+        <link rel="stylesheet" href="/css/test/particlex.css">
+        <link rel="stylesheet" href="/css/custom.css">
+        
+        <script src="https://cdn.staticfile.org/vue/3.2.33/vue.global.prod.min.js"></script>
+        <script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+        <meta name="generator" content="Hexo 6.2.0">
+    </head>
+    <body>
+        <div id="loading" style="height:100vh;width:100vw;position:fixed;display:flex;z-index:200;justify-content:space-between;background:#fff;transition:opacity 0.3s ease-out"><div style="position:fixed;height:100vh;width:100vw;display:flex;justify-content:center;align-items:center"><div id="loadcontent" style="width:50vmin;height:50vmin;padding:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;border:solid 10px #a3ddfb;text-align:center"><div><h2>LOADING...</h2><p style="word-break:keep-all">加载过慢请开启缓存(浏览器默认开启)</p><div><img alt="loading" src="/loading.gif"></div></div></div></div></div>
+        <div id="layout">
+            <i data-fa-symbol="calendar-solid" class="fa-solid fa-calendar fa-fw"></i>
+            <i data-fa-symbol="bookmark-solid" class="fa-solid fa-bookmark fa-fw"></i>
+            <i data-fa-symbol="tags-solid" class="fa-solid fa-tags fa-fw"></i>
+            <transition name="into">
+                <div v-show="show_page" style="display: -not-none">
+                    <div id="menu_show">
+                         
+<nav id="menu">
+    <div class="desktop-menu">
+        <a href="/">
+            <span class="title">Tongrens's Home</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;主页</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;关于</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;归档</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;分类</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;标签</span>
+        </a>
+        
+    </div>
+    <div :class="'phone-menu ' + menu_show" id="phone-menu">
+        <div class="curtain" @click="menu_show = !menu_show" v-show="menu_show"></div>
+        <div :class="'title'" @click="menu_show = !menu_show">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;Tongrens's Home</span>
+        </div>
+        <transition name="slide">
+        <div class="items" v-show="menu_show">
+            
+            <a href="/">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-house fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">主页</div>
+                </div>
+            </a>
+            
+            <a href="/about">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-id-card fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">关于</div>
+                </div>
+            </a>
+            
+            <a href="/archives">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-box-archive fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">归档</div>
+                </div>
+            </a>
+            
+            <a href="/categories">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-bookmark fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">分类</div>
+                </div>
+            </a>
+            
+            <a href="/tags">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">标签</div>
+                </div>
+            </a>
+            
+        </div>
+        </transition>
+    </div>
+</nav>
+                    </div>
+                    <div id="main">
+                        <div id="home-head">
+    <div id="home-background" style="background-image: url(https://raw.githubusercontent.com/Tongrens/my_gallery/main/blog_image/blog_head.jpg)"></div>
+    
+    <div id="home-info" class="home-info" @click="home_click">
+        <span class="loop"></span>
+        <span class="loop"></span>
+        <span class="loop"></span>
+        <span class="loop"></span>
+        <span class="info">
+            <div class="wrap">
+                <h1>Tongrens&#39;s Home</h1>
+                <h3></h3>
+                <h5></h5>
+            </div>
+        </span>
+    </div>
+    
+</div>
+
+<div id="home-posts-wrap" class="">
+    <div id="home-posts">
+        <div id="posts">
+            
+
+<div class="post">
+    <a href="/2022/10/10/二叉搜索树/">
+        <h2 class="post-title">二叉搜索树</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/算法/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                </span>
+                算法
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/10/10
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <pre><code class="python"># BST
+class BiTreeNode:
+    def __init__(self, data):
+        self.data = data
+        self.lchild = None
+        self.rchild = None
+        self.parent = None
+
+class BST:
+    def __init__(self, lst=None):
+        self.root = None
+        if lst:
+            for val in lst:
+                self.insert(val)
+
+    def insert(self, val):
+        p = self.root
+        if not p:
+            self.root = BiTreeNode(val)
+            return
+        while True:
+            if val &lt; p.data:
+                if p.lchild:
+                    p = p.lchild
+                else:
+                    p.lchild = BiTreeNode(val)
+                    p.lchild.parent = p
+                    return
+            elif val &gt; p.data:
+                if p.rchild:
+                    p = p.rchild
+                else:
+                    p.rchild = BiTreeNode(val)
+                    p.rchild.parent = p
+                    return
+            else:
+                return
+
+    def find(self, val):
+        p = self.root
+        while p:
+            if val &gt; p.data:
+                p = p.rchild
+            elif val &lt; p.data:
+                p = p.lchild
+            else:
+                return p
+        return None
+
+    def __delete_node_1(self, node):  # 删除叶子节点
+        if not node.parent:     # 只有一个根节点
+            self.root = None
+        elif node == node.parent.lchild:
+            node.parent.lchild = None
+        else:
+            node.parent.rchild = None
+
+    def __delete_node_2_left(self, node):  # 删除非叶子节点，只有左子树
+        if not node.parent:
+            self.root = node.lchild
+            node.lchild.parent = None
+        elif node == node.parent.lchild:
+            node.parent.lchild = node.lchild
+            node.lchild.parent = node.parent
+        else:
+            node.parent.rchild = node.lchild
+            node.lchild.parent = node.parent
+
+    def __delete_node_2_right(self, node):  # 删除非叶子节点，只有右子树
+        if not node.parent:
+            self.root = node.rchild
+            node.rchild.parent = None
+        elif node == node.parent.lchild:
+            node.parent.lchild = node.rchild
+            node.rchild.parent = node.parent
+        else:
+            node.parent.rchild = node.rchild
+            node.rchild.parent = node.parent
+
+    def delete(self, val):
+        if self.root:
+            node = self.find(val)
+            if not node:
+                raise ValueError(&#39;\&quot;&#39; + str(val) + &#39;\&quot; not in tree&#39;)
+            if not node.lchild and not node.rchild:
+                self.__delete_node_1(node)
+            elif not node.rchild:
+                self.__delete_node_2_left(node)
+            elif not node.lchild:
+                self.__delete_node_2_right(node)
+            else:
+                min_node = node.rchild
+                while min_node.lchild:
+                    min_node = min_node.lchild
+                node.data = min_node.data
+                if min_node.rchild:
+                    self.__delete_node_2_right(min_node)
+                else:
+                    self.__delete_node_1(min_node)
+
+    def order(self, root):
+        if root:
+            self.order(root.lchild)
+            print(root.data, end=&#39;,&#39;)
+            self.order(root.rchild)
+</code></pre>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/python/" style="color: #00bcd4">
+                python
+            </a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/BiTreeNode/" style="color: #00bcd4">
+                BiTreeNode
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2022/10/10/二叉搜索树/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2022/10/10/二叉树/">
+        <h2 class="post-title">二叉树</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/算法/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                </span>
+                算法
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/10/10
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <pre><code class="python"># BiTreeNode
+class BiTreeNode:
+    def __init__(self, data):
+        self.data = data
+        self.lchild = None
+        self.rchild = None
+
+# 前序遍历  E,A,C,B,D,G,F,
+def pre_order(root):
+    if root:
+        print(root.data, end=&#39;,&#39;)
+        pre_order(root.lchild)
+        pre_order(root.rchild)
+
+# 中序遍历  A,B,C,D,E,G,F,
+def in_order(root):
+    if root:
+        in_order(root.lchild)
+        print(root.data, end=&#39;,&#39;)
+        in_order(root.rchild)
+
+# 后序遍历  B,D,C,A,F,G,E,
+def post_order(root):
+    if root:
+        post_order(root.lchild)
+        post_order(root.rchild)
+        print(root.data, end=&#39;,&#39;)
+
+# 层次遍历  E,A,G,C,F,B,D,
+def level_order(root):
+    from collections import deque
+    queue = deque()
+    queue.append(root)
+    while len(queue) &gt; 0:
+        node = queue.popleft()
+        print(node.data, end=&#39;,&#39;)
+        if node.lchild:
+            queue.append(node.lchild)
+        if node.rchild:
+            queue.append(node.rchild)
+
+&quot;&quot;&quot;
+            E
+    A               G
+        C               F
+    B       D
+&quot;&quot;&quot;
+a = BiTreeNode(&#39;A&#39;)
+b = BiTreeNode(&#39;B&#39;)
+c = BiTreeNode(&#39;C&#39;)
+d = BiTreeNode(&#39;D&#39;)
+e = BiTreeNode(&#39;E&#39;)
+f = BiTreeNode(&#39;F&#39;)
+g = BiTreeNode(&#39;G&#39;)
+e.lchild = a
+e.rchild = g
+a.rchild = c
+g.rchild = f
+c.lchild = b
+c.rchild = d
+</code></pre>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/python/" style="color: #ffa2c4">
+                python
+            </a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/BiTreeNode/" style="color: #03a9f4">
+                BiTreeNode
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2022/10/10/二叉树/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2022/10/10/哈希表/">
+        <h2 class="post-title">哈希表</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/算法/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                </span>
+                算法
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/10/10
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <pre><code class="python"># HashTable
+class LinkList:
+    class Node:
+        def __init__(self, item=None):
+            self.item = item
+            self.next = None
+
+    class LinkListIterator:
+        def __init__(self, head):
+            self.current = head
+
+        def __iter__(self):
+            return self
+
+        def __next__(self):
+            if self.current is None:
+                raise StopIteration
+            else:
+                item = self.current.item
+                self.current = self.current.next
+                return item
+
+    def __init__(self, iterable=None):
+        self.head = None
+        self.tail = None
+        if iterable:
+            self.extend(iterable)
+
+    def append(self, obj):
+        node = self.Node(obj)
+        if self.head is None:
+            self.head = node
+            self.tail = node
+        else:
+            self.tail.next = node
+            self.tail = node
+
+    def extend(self, iterable):
+        for item in iterable:
+            self.append(item)
+
+    def find(self, obj):
+        for item in self:
+            if item == obj:
+                return True
+        return False
+
+    def __iter__(self):
+        return self.LinkListIterator(self.head)
+
+    def __repr__(self):
+        return str(list(self))
+
+class HashTable:
+    def __init__(self, size=101):
+        self.size = size
+        self.table = [LinkList() for i in range(self.size)]
+
+    def hash(self, obj):
+        return obj % self.size
+
+    def insert(self, obj):
+        index = self.hash(obj)
+        if self.find(obj):
+            return False
+        else:
+            self.table[index].append(obj)
+            return True
+
+    def find(self, obj):
+        index = self.hash(obj)
+        return self.table[index].find(obj)
+
+ht = HashTable()
+ht.insert(0)
+ht.insert(1)
+ht.insert(101)
+print(&#39;,&#39;.join(map(str, ht.table)))
+print(ht.find(1))
+print(ht.find(2))
+</code></pre>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/python/" style="color: #00a596">
+                python
+            </a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/HashTable/" style="color: #00bcd4">
+                HashTable
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2022/10/10/哈希表/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2022/10/10/二分查找法/">
+        <h2 class="post-title">二分查找法</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/算法/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                </span>
+                算法
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/10/10
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <pre><code class="python"># 二分查找
+def binary_search(lst, val):
+    left = 0
+    right = len(lst) - 1
+    while left &lt; right:
+        mid = (left + right) // 2
+        if lst[mid] &gt; val:
+            right = mid - 1
+        elif lst[mid] &lt; val:
+            left = mid + 1
+        else:
+            return mid
+    return -1
+
+li = list(range(100))
+print(binary_search(li, 50))  # 50
+print(binary_search(li, 200))  # -1
+</code></pre>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/python/" style="color: #ff7d73">
+                python
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2022/10/10/二分查找法/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2022/10/10/其他排序/">
+        <h2 class="post-title">其他排序</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/算法/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                </span>
+                算法
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/10/10
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <h1 id="计数排序"><a href="#计数排序" class="headerlink" title="计数排序"></a>计数排序</h1><pre><code class="python">def count_sort(lst, max_count=100):
+    count = [0 for _ in range(max_count + 1)]
+    for val in lst:
+        count[val] += 1
+    lst.clear()
+    for ind, val in enumerate(count):
+        for i in range(val):
+            lst.append(ind)
+
+li = [4, 6, 2, 3, 1, 5, 7, 9, 8]
+count_sort(li, 9)
+print(li)  # [1, 2, 3, 4, 5, 6, 7, 8, 9]
+</code></pre>
+<p><strong>时间复杂度：O(n)<br>空间复杂度：O(n)<br>稳定性：稳定</strong></p>
+<hr>
+<h1 id="基数排序"><a href="#基数排序" class="headerlink" title="基数排序"></a>基数排序</h1><pre><code class="python">def radix_sort(lst):
+    max_num = max(lst)
+    it = 0
+    while 10 ** it &lt;= max_num:
+        buckets = [[] for _ in range(10)]
+        for i in lst:
+            buckets[i // 10 ** it % 10].append(i)
+        lst.clear()
+        for bucket in buckets:
+            lst.extend(bucket)
+        it += 1
+
+li = [4, 6, 2, 3, 1, 5, 7, 9, 8]
+radix_sort(li)
+print(li)
+</code></pre>
+<p><strong>时间复杂度：O(nm)<br>空间复杂度：O(n)<br>稳定性：稳定</strong></p>
+<hr>
+<h1 id="希尔排序"><a href="#希尔排序" class="headerlink" title="希尔排序"></a>希尔排序</h1><pre><code class="python">def insert_sort_gap(lst, gap):
+    for i in range(gap, len(lst)):
+        tmp = lst[i]
+        j = i - gap
+        while j &gt;= 0 and lst[j] &gt; tmp:
+            lst[gap + j] = lst[j]
+            j -= gap
+        lst[j + gap] = tmp
+
+def shell_sort(lst):
+    n = len(lst) // 2
+    while n &gt;= 1:
+        insert_sort_gap(lst, n)
+        n //= 2
+
+li = [4, 6, 2, 3, 1, 5, 7, 9, 8]
+shell_sort(li)
+print(li)  # [1, 2, 3, 4, 5, 6, 7, 8, 9]
+</code></pre>
+<p><strong>时间复杂度：O(nlogn)<br>空间复杂度：O(1)<br>稳定性：不稳定</strong></p>
+<hr>
+<h1 id="桶排序"><a href="#桶排序" class="headerlink" title="桶排序"></a>桶排序</h1><pre><code class="python">def bucket_sort(lst, n=100, max_num=10000):
+    buckets = [[] for _ in range(n)]
+    for val in lst:
+        i = min(val // (max_num // n), n - 1)
+        buckets[i].append(val)
+        for j in range(len(buckets[i]) - 1, 0, -1):
+            if buckets[i][j - 1] &gt; buckets[i][j]:
+                buckets[i][j - 1], buckets[i][j] = buckets[i][j], buckets[i][j - 1]
+            else:
+                break
+    sorted_lst = []
+    for bucket in buckets:
+        sorted_lst.extend(bucket)
+    return sorted_lst
+
+li = [4, 6, 2, 3, 1, 5, 7, 9, 8]
+print(bucket_sort(li))  # [1, 2, 3, 4, 5, 6, 7, 8, 9]
+</code></pre>
+<p><strong>时间复杂度：O(nlogm)<br>空间复杂度：O(logm)<br>稳定性：稳定</strong></p>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/python/" style="color: #00bcd4">
+                python
+            </a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/Search/" style="color: #ffa2c4">
+                Search
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2022/10/10/其他排序/" class="go-post">阅读全文</a>
+</div>
+
+             
+<div class="page-current">
+    <div class="prev">
+        
+        <a href="/">
+            <span class="page-num">
+                <i class="fa-solid fa-caret-left fa-fw"></i>
+            </span>
+        </a>
+        
+    </div>
+    <div class="page-index">
+        
+        <span>
+            
+            
+            <a href="/">
+                <span class="page-num">
+                    1
+                </span>
+            </a>
+        </span>
+        
+        <span class="current">
+            2
+        </span>
+        
+        <span>
+            <a href="/page/3/">
+                <span class="page-num">
+                    3
+                </span>
+            </a>
+            
+            
+        </span>
+        
+    </div>
+    <div class="next">
+        
+        <a href="/page/3/ ">
+            <span class="page-num">
+                <i class="fa-solid fa-caret-right fa-fw"></i>
+            </span>
+        </a>
+        
+    </div>
+</div>
+        </div>
+    </div>
+    
+    <div id="home-card">
+        <div id="card-div">
+    <div class="card-style" style="width: 300px">
+        <div class="avatar">
+            <img src="https://avatars.githubusercontent.com/u/73508047 " alt="avatar">
+        </div>
+        <div class="name">
+            Tongrens
+        </div>
+        <div class="descriptions">
+            
+            <div class="description">
+                没什么好看的，累了毁灭吧sb Hexo
+            </div>
+            
+        </div>
+        <div class="icon-links">
+            
+            <span class="icon-link">
+                <a target="_blank" rel="noopener" href="https://github.com/Tongrens">
+                    <i class="fa-brands fa-github fa-fw"></i>
+                </a>
+            </span>
+            
+            <span class="icon-link">
+                <a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/Tongrens/my_gallery/main/blog_image/wechat.png">
+                    <i class="fa-brands fa-weixin fa-fw"></i>
+                </a>
+            </span>
+            
+            <span class="icon-link">
+                <a href="mailto:tongrens@qq.com">
+                    <i class="fa-solid fa-envelope fa-fw"></i>
+                </a>
+            </span>
+            
+        </div>
+        <div class="friend-links">
+            
+        </div>
+    </div>
+</div>
+    </div>
+    
+</div>
+                         
+<footer id="footer">
+    <div class="footer-wrap">
+        <div>
+            © 2022 - 2022 Tongrens&#39;s Home
+            <span class="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            @Tongrens
+        </div>
+        <div></div>
+        <div>Based on the <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo Engine</a> & <a
+                target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a></div>
+        
+    </div>
+</footer>
+                    </div>
+                </div>
+            </transition>
+            <div id="img_show">
+                <img id="img_content" alt="img_show">
+            </div>
+        </div>
+        <script src="https://cdn.staticfile.org/highlight.js/11.5.1/highlight.min.js"></script>
+        <script src="/js/particlex.js"></script>
+        <script src="/js/showimg.js"></script>
+        <script src="/js/custom.js"></script>
+        <canvas id="fireworks"></canvas>
+        <canvas id="background"></canvas>
+        <script src="/js/fireworks.js"></script>
+        <script src="/js/background.js"></script>
+        
+
+    </body>
+</html>
