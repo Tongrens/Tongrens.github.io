@@ -151,7 +151,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/Router/" style="color: #00bcd4">
+                <a href="/tags/Router/" style="color: #ff7d73">
                     Router
                 </a>
             </span>
@@ -211,6 +211,8 @@
 <li>对于来自同一AS的路由，优选MED属性值最优的路由</li>
 <li>依次优选EBGP路由、IBGP路由</li>
 <li>优选到BGP下一跳IGP度量值（metric）最小的路由</li>
+<li>执行等价负载均衡，路由表当中有两条等价路由，但在BGP路由表中，仍只会优选一条最优路由，发布给对等体</li>
+<li>优选最老的EBGP路由，EBGP路由接收的顺序</li>
 <li>优选Router ID最小的设备发布的路由，如果携带Originator_ID属性则优比较</li>
 <li>优选Cluster_List最短的路由</li>
 <li>优选从具有最小邻居地址的对等体学来的路由</li>
