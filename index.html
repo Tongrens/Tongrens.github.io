@@ -171,8 +171,9 @@
         <div class="content" v-pre>
             
             <h1 id="BGP"><a href="#BGP" class="headerlink" title="BGP"></a>BGP</h1><blockquote>
-<h5 id="BGP分类："><a href="#BGP分类：" class="headerlink" title="BGP分类："></a>BGP分类：</h5><p>BGP是EGP（外部网关协议）的一种，而IGP包含了RIP、OSPF、ISIS，是内部网关协议，BGP协议本身不产生、发现路由；<br>BGP分为IBGP和EBGP<br>EBGP：当BGP设备收到EBGP发来的路由时，会将带有自己AS号的路由丢弃<br>IBGP：为了防止环路，从IBGP学习到的路由不会转发给其他IBGP设备，需要建立全连接才能互通，有路由反射器和联盟两种解决方法<br>BGP Router-id：在发送的Open报文中携带，通常是IP地址<br>#####AS划分：<br>二字节AS：1-65535<br>四字节AS：1-4294967295<br>公网AS：1-64511<br>私网AS：64512-65534</p>
+<h5 id="BGP分类："><a href="#BGP分类：" class="headerlink" title="BGP分类："></a>BGP分类：</h5><p>BGP是EGP（外部网关协议）的一种，而IGP包含了RIP、OSPF、ISIS，是内部网关协议，BGP协议本身不产生、发现路由；<br>BGP分为IBGP和EBGP<br>EBGP：当BGP设备收到EBGP发来的路由时，会将带有自己AS号的路由丢弃<br>IBGP：为了防止环路，从IBGP学习到的路由不会转发给其他IBGP设备，需要建立全连接才能互通，有路由反射器和联盟两种解决方法<br>BGP Router-id：在发送的Open报文中携带，通常是IP地址</p>
 </blockquote>
+<h5 id="AS划分："><a href="#AS划分：" class="headerlink" title="AS划分："></a>AS划分：</h5><p>二字节AS：1-65535<br>四字节AS：1-4294967295<br>公网AS：1-64511<br>私网AS：64512-65534</p>
 <h3 id="2种角色："><a href="#2种角色：" class="headerlink" title="2种角色："></a>2种角色：</h3><blockquote>
 <p>Speaker：发送或者接受BGP报文的任何设备都是Speaker<br>Peer：相互交换报文的Speaker之间互为对等体，若干相关的对等体可以组成对等体组</p>
 </blockquote>
@@ -188,7 +189,7 @@
         
         <span class="tag">
             
-            <a href="/tags/Router/" style="color: #ffa2c4">
+            <a href="/tags/Router/" style="color: #00a596">
                 Router
             </a>
         </span>
@@ -311,7 +312,7 @@
         
         <span class="tag">
             
-            <a href="/tags/Router/" style="color: #00bcd4">
+            <a href="/tags/Router/" style="color: #ff7d73">
                 Router
             </a>
         </span>
@@ -371,14 +372,14 @@
         
         <span class="tag">
             
-            <a href="/tags/switch/" style="color: #00bcd4">
+            <a href="/tags/switch/" style="color: #ff7d73">
                 switch
             </a>
         </span>
         
         <span class="tag">
             
-            <a href="/tags/vlan/" style="color: #00bcd4">
+            <a href="/tags/vlan/" style="color: #ffa2c4">
                 vlan
             </a>
         </span>
@@ -425,9 +426,14 @@
 <p>端口隔离分为单向隔离和端口隔离组，且都仅适用于同意交换机上不同端口间的隔离，且一个端口可以加入多个端口隔离组</p>
 </blockquote>
 <blockquote>
-<p>单向隔离指禁止某个端口发送的报文到达其他端口，而不禁止其他端口的报文到达本端口<br>而端口隔离组内的接口则是互相隔离的</p>
+<ol>
+<li>单向隔离指禁止某个端口发送的报文到达其他端口，而不禁止其他端口的报文到达本端口</li>
+<li>而端口隔离组内的接口则是互相隔离的</li>
+</ol>
 </blockquote>
-<h2 id="链路聚合"><a href="#链路聚合" class="headerlink" title="链路聚合"></a>链路聚合</h2><p>链路聚合是指将多个相同属性的物理接口捆绑在一起形成一个逻辑接口，可以用来增加带宽，且聚合端口与物理接口同样可以配置端口类型。</p>
+<h2 id="链路聚合"><a href="#链路聚合" class="headerlink" title="链路聚合"></a>链路聚合</h2><blockquote>
+<p>链路聚合是指将多个相同属性的物理接口捆绑在一起形成一个逻辑接口，可以用来增加带宽，且聚合端口与物理接口同样可以配置端口类型。</p>
+</blockquote>
 <h2 id="负载分担："><a href="#负载分担：" class="headerlink" title="负载分担："></a>负载分担：</h2><p>负载分担分为手动负载分担和静态LACP负载分担。在手动负载分担的模式下，聚合端口与成员接口的配置都需要由手工来经行完成，并且在该模式下所有链路都参与数据的转发，平均分担流量；静态LACP负载分担模式则是利用LACP协议进行自动聚合，通过LACPDU报文经行交互，通告自己的（系统优先级、系统MAC、端口优先级、端口号和操作key）并与对端经行比较，选择能够汇聚的端口，链路的两端称为Actor和Partner，且LACP模式可以实现链路冗余备份（所以也被称为M:N模式）。</p>
             
         </div>
@@ -441,7 +447,7 @@
         
         <span class="tag">
             
-            <a href="/tags/switch/" style="color: #00a596">
+            <a href="/tags/switch/" style="color: #03a9f4">
                 switch
             </a>
         </span>
