@@ -146,6 +146,73 @@
             
 
 <div class="post">
+    <a href="/2022/10/10/排序算法-lowB三人组/">
+        <h2 class="post-title">排序算法-lowB三人组</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/笔记/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                </span>
+                笔记
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/10/10
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <h1 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h1><pre><code class="python">def bubble_sort(lst):
+    for i in range(len(lst) - 1):
+        flag = False
+        for j in range(len(lst) - i - 1):
+            if lst[j] &gt; lst[j + 1]:
+                lst[j], lst[j + 1] = lst[j + 1], lst[j]
+                flag = True
+        if not flag:
+            return
+
+li = [4, 6, 2, 3, 1, 5, 7, 9, 8]
+bubble_sort(li)
+print(li)  # [1, 2, 3, 4, 5, 6, 7, 8, 9]
+</code></pre>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/python/" style="color: #ff7d73">
+                python
+            </a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/sort/" style="color: #00a596">
+                sort
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2022/10/10/排序算法-lowB三人组/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
     <a href="/2022/10/10/hello-world/">
         <h2 class="post-title">Hello World</h2>
     </a>
@@ -186,7 +253,7 @@
         
         <span class="tag">
             
-            <a href="/tags/text/" style="color: #ff7d73">
+            <a href="/tags/text/" style="color: #03a9f4">
                 text
             </a>
         </span>
