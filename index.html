@@ -181,71 +181,6 @@
     return ans
 print(fun11(200))   # 61
 </code></pre>
-<blockquote>
-<p>12.编写Python代码，用户输入N和K，计算 1 到 N 中有多少个数满足其二进制表示中恰好有 K 个 1<br>例如：<br>输入7 2<br>输出3</p>
-</blockquote>
-<pre><code class="python">def fun12(n, k):
-    ans = 0
-    for i in range(1, n + 1):
-        if bin(i).count(&#39;1&#39;) == k:
-            ans += 1
-    return ans
-print(fun12(7, 2))  # 3
-</code></pre>
-<blockquote>
-<p>13.给定一个整数数组 nums和一个整数目标值target，请你在该数组中找出和为目标值 target的那两个整数，并返回它们的数组下标。<br>你可以假设每种输入只会对应一个答案。但是，数组中同一个元素在答案里不能重复出现。<br>你可以按任意顺序返回答案。<br>示例 1：<br>输入：nums = [2,7,11,15], target = 9<br>输出：[0,1]<br>解释：因为 nums[0] + nums[1] == 9 ，返回 [0, 1] 。<br><br>示例 2：<br>输入：nums = [3,2,4], target = 6<br>输出：[1,2]<br><br>示例 3：<br>输入：nums = [3,3], target = 6<br>输出：[0,1]</p>
-</blockquote>
-<pre><code class="python">def fun13(nums, target):
-    a = &#123;&#125;
-    for i in range(len(nums)):
-        tmp = target - nums[i]
-        if tmp not in a:
-            a[nums[i]] = i
-        else:
-            return [a[tmp], i]
-print(fun13([2, 7, 11, 15], 9)) # [0, 1]
-</code></pre>
-<blockquote>
-<p>14.给定两个字符串s和t，判断它们是否是同构的。<br>如果s中的字符可以按某种映射关系替换得到t，那么这两个字符串是同构的。<br>每个出现的字符都应当映射到另一个字符，同时不改变字符的顺序。不同字符不能映射到同一个字符上，相同字符只能映射到同一个字符上，字符可以映射到自己本身。<br>示例 1:<br>输入：s = “egg”, t = “add”<br>输出：True<br><br>示例 2：<br>输入：s = “foo”, t = “bar”<br>输出：False<br><br>示例 3：<br>输入：s = “paper”, t = “title”<br>输出：True</p>
-</blockquote>
-<pre><code class="python">def fun14(s, t):
-    dict, dict1 = &#123;&#125;, &#123;&#125;
-    for i in range(len(s)):
-        if dict.get(s[i]) == None:
-            dict[s[i]] = t[i]
-        elif dict.get(s[i]) != t[i]:
-            return False
-        elif dict.get(s[i]) == t[i]:
-            continue
-    for i in range(len(s)):
-        if dict1.get(t[i]) == None:
-            dict1[t[i]] = s[i]
-        elif dict1.get(t[i]) != s[i]:
-            return False
-        elif dict1.get(t[i]) == s[i]:
-            continue
-    return True
-print(fun14(&#39;egg&#39;, &#39;add&#39;))  # True
-</code></pre>
-<blockquote>
-<p>15.小藍每天都锻炼身体。正常情况下，小蓝每天跑 1千米。如果某天是周一或者月初 （1日），为了激励自己，小蓝要跑 2千米。如果同时是周一或月初，小蓝也是跑2千米。小蓝跑步已经坚持了很长时间，从2000年1月1日周六（含）到2022年10月19日周三（含）。请问这段时间小蓝总共跑步多少千米？</p>
-</blockquote>
-<pre><code class="python">def fun15():
-    import datetime
-    ans = 0
-    day = datetime.timedelta(days=1)
-    x1 = datetime.date(2000, 1, 1)
-    x2 = datetime.date(2022, 10, 19)
-    while x1 &lt;= x2:
-        if x1.weekday() == 0 and x1.day == 1:
-            ans += 2
-        else:
-            ans += 1
-        x1 += day
-    return ans
-print(fun15())  # 8366
-</code></pre>
-
             
         </div>
     </div>
@@ -258,14 +193,14 @@ print(fun15())  # 8366
         
         <span class="tag">
             
-            <a href="/tags/python/" style="color: #00bcd4">
+            <a href="/tags/python/" style="color: #00a596">
                 python
             </a>
         </span>
         
         <span class="tag">
             
-            <a href="/tags/exam/" style="color: #03a9f4">
+            <a href="/tags/exam/" style="color: #ffa2c4">
                 exam
             </a>
         </span>
@@ -317,7 +252,7 @@ print(fun15())  # 8366
         
         <span class="tag">
             
-            <a href="/tags/text/" style="color: #03a9f4">
+            <a href="/tags/text/" style="color: #00bcd4">
                 text
             </a>
         </span>
@@ -369,7 +304,7 @@ print(fun15())  # 8366
         
         <span class="tag">
             
-            <a href="/tags/Router/" style="color: #ffa2c4">
+            <a href="/tags/Router/" style="color: #00bcd4">
                 Router
             </a>
         </span>
@@ -431,7 +366,7 @@ print(fun15())  # 8366
         
         <span class="tag">
             
-            <a href="/tags/Router/" style="color: #ffa2c4">
+            <a href="/tags/Router/" style="color: #00a596">
                 Router
             </a>
         </span>
@@ -492,7 +427,7 @@ print(fun15())  # 8366
         
         <span class="tag">
             
-            <a href="/tags/Router/" style="color: #00a596">
+            <a href="/tags/Router/" style="color: #ff7d73">
                 Router
             </a>
         </span>
