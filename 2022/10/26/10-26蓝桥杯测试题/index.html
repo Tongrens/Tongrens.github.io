@@ -151,14 +151,14 @@
             
             <span class="tag">
                 
-                <a href="/tags/python/" style="color: #00a596">
+                <a href="/tags/python/" style="color: #00bcd4">
                     python
                 </a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/exam/" style="color: #00bcd4">
+                <a href="/tags/exam/" style="color: #ff7d73">
                     exam
                 </a>
             </span>
@@ -167,11 +167,37 @@
         
     </div>
     <div class="content" v-pre>
-        <h1 id="还是老规矩直接上题"><a href="#还是老规矩直接上题" class="headerlink" title="还是老规矩直接上题"></a>还是老规矩直接上题</h1><blockquote>
-<p>问题描述<br>小明决定从下周一开始努力刷题准备蓝桥杯竞赛。他计划周一至周五每天 做a道题目, 周六和周日每天做b道题目。请你帮小明计算, 按照计划他将在 第几天实现做题数大于等于n题?<br>输入格式：输入一行包含三个整数 a，b 和 n.<br>输出格式：输出一个整数代表天数。<br><br>样例输入<br>10 20 99<br>样例输出<br>8<br><br>评测用例规模与约定<br>对于 50% 的评测用例, 1&lt;= a，b, n &lt;= 10<strong>6<br>对于100% 的评测用例, 1&lt;= a，b, n &lt;= 10</strong>18<br>运行限制</p>
+        <h1 id="还是老规矩直接上题"><a href="#还是老规矩直接上题" class="headerlink" title="还是老规矩直接上题"></a>还是老规矩直接上题</h1><h3 id="1-题目"><a href="#1-题目" class="headerlink" title="1. 题目"></a>1. <a target="_blank" rel="noopener" href="https://www.lanqiao.cn/problems/2118/learning/">题目</a></h3><blockquote>
+<p>小蓝要把一个字符串中的字母按其在字母表中的顺序排列。<br>例如，LANQIAO 排列后为 AAILNOQ。<br>又如，GOODGOODSTUDYDAYDAYUP 排列后为 AADDDDDGGOOOOPSTUUYYY。<br>请问对于以下字符串，排列之后字符串是什么？<br>WHERETHEREISAWILLTHEREISAWAYZA</p>
 </blockquote>
+<pre><code class="python">source = &#39;WHERETHEREISAWILLTHEREISAWAY&#39;
+print(&#39;&#39;.join(sorted(list(source))))
+# AAAEEEEEEHHHIIILLRRRSSTTWWWY
+</code></pre>
 <span id="more"></span>
 
+<h3 id="2-题目"><a href="#2-题目" class="headerlink" title="2. 题目"></a>2. <a target="_blank" rel="noopener" href="https://www.lanqiao.cn/problems/2060/learning/">题目</a></h3><blockquote>
+<p>小蓝有一个裁纸刀，每次可以将一张纸沿一条直线裁成两半。<br>小蓝用一张纸打印出两行三列共 6 个二维码，至少使用九次裁出来，下图给出了一种裁法。<br>在上面的例子中，小蓝的打印机没办法打印到边缘，所以边缘至少要裁 4 次。另外，小蓝每次只能裁一张纸，不能重叠或者拼起来裁。<br>如果小蓝要用一张纸打印出 20 行 22 列共 440 个二维码，他至少需要裁多少次？<br><img src="https://tongrens.me/images/other/lqb1.png"></p>
+</blockquote>
+<pre><code class="python">h, l = 20, 22
+print(4+(h-1)+h*(l-1))
+# 443
+</code></pre>
+<h3 id="3-题目"><a href="#3-题目" class="headerlink" title="3. 题目"></a>3. <a target="_blank" rel="noopener" href="https://www.lanqiao.cn/problems/2095/learning/">题目</a></h3><blockquote>
+<p>九进制正整数(2022)9转换成十进制等于多少？</p>
+</blockquote>
+<pre><code class="python">def fun3():
+  source = &#39;2022&#39;
+  source = source[::-1]
+  ans = 0
+  for i in range(len(source)):
+    ans += 9 ** i * int(source[i])
+  return ans
+print(fun3())   #  1478
+</code></pre>
+<h3 id="4-题目"><a href="#4-题目" class="headerlink" title="4. 题目"></a>4. <a target="_blank" rel="noopener" href="https://www.lanqiao.cn/problems/2098/learning/">题目</a></h3><blockquote>
+<p>问题描述<br>小明决定从下周一开始努力刷题准备蓝桥杯竞赛。他计划周一至周五每天 做a道题目, 周六和周日每天做b道题目。请你帮小明计算, 按照计划他将在 第几天实现做题数大于等于n题?<br>输入格式：输入一行包含三个整数 a，b 和 n.<br>输出格式：输出一个整数代表天数。<br><br>样例输入<br>10 20 99<br>样例输出<br>8<br><br>评测用例规模与约定<br>对于 50% 的评测用例, 1&lt;= a，b, n &lt;= 10<strong>6<br>对于100% 的评测用例, 1&lt;= a，b, n &lt;= 10</strong>18<br>运行限制</p>
+</blockquote>
 <pre><code class="python">def fun4(a, b, n):
     ans = 0
     if n &gt; 5 * a + 2 * b:
@@ -185,52 +211,50 @@
     if n:
         ans += 1
     return ans
-print(fun4(10, 20, 99)) # 8
+a, b, n = map(int, input().split())
+print(fun4(a, b, n))
 </code></pre>
-<blockquote>
+<h3 id="5-题目"><a href="#5-题目" class="headerlink" title="5. 题目"></a>5. <a target="_blank" rel="noopener" href="https://www.lanqiao.cn/problems/2119/learning/">题目</a></h3><blockquote>
 <p>2022 年 2 月 22 日 22:20 是一个很有意义的时间, 年份为 2022 , 由 3 个 2 和 1 个 0 组成，如果将月和日写成 4 位, 为 0222 , 也是由 3 个 2 和 1 个 0 组 成, 如果将时间中的时和分写成 4 位, 还是由 3 个 2 和 1 个 0 组成。<br>小蓝对这样的时间很感兴趣, 他还找到了其它类似的例子, 比如 111 年 10 月 11 日 01: 11，2202 年 2 月 22 日 22: 02等等。<br>请问, 总共有多少个时间是这种年份写成 4 位、月日写成 4 位、时间写成 4 位后由 3 个一种数字和 1 个另一种数字组成。注意 1111 年 11 月 11 日 11: 11 不算，因为它里面没有两种数字。</p>
 </blockquote>
-<pre><code class="python">def fun5():
-    import datetime
-    from itertools import permutations
-    def get_num(inp):
-        dit = &#123;&#125;
-        for x in inp:
-            if x in dit:
-                dit[x] += 1
-            else:
-                dit[x] = 1
-        return dit
+<pre><code class="python">import datetime
+def fun5():
     ans = 0
-    day = datetime.datetime(1, 1, 1)
-    while day &lt; datetime.datetime(9999, 12, 31):
-        flag = False
-        tmp = str(day)[:4]
-        for i in tmp:
-            if tmp.count(i) == 3:
-                flag = True
-        if flag and get_num(tmp) == get_num(str(day)[5:7] + str(day)[8:10]):
-            tmp = [int(i) for i in tmp]
-            for a, b, c, d in permutations(tmp):
-                if 0 &lt;= 10 * a + b &lt; 24 and 0 &lt;= 10 * c + d &lt; 60:
-                    ans += 1
-                    break
-        day += datetime.timedelta(days=1)
+    for i in range(0, 10):
+        for j in range(0, 10):
+            if i != j:
+                for a in range(4):
+                    tmp1 = [i, i, i, i]
+                    tmp1[a] = j
+                    for b in range(4):
+                        tmp2 = [i, i, i, i]
+                        tmp2[b] = j
+                        for c in range(4):
+                            tmp3 = [i, i, i, i]
+                            tmp3[c] = j
+                            if 1 &lt;= int(str(tmp2[0]) + str(tmp2[1])) &lt;= 12 and 1 &lt;= int(str(tmp2[2]) + str(tmp2[3])) &lt;= 31:
+                                try:
+                                    datetime.datetime(tmp1[0] * 1000 + tmp1[1] * 100 + tmp1[2] * 10 + tmp1[3], tmp2[0] * 10 + tmp2[1], tmp2[2] * 10 + tmp2[3])
+                                except:
+                                    continue
+                                if int(str(tmp3[0]) + str(tmp3[1])) &lt;= 23 and int(str(tmp3[2]) + str(tmp3[3])) &lt;= 59:
+                                    ans += 1
     return ans
-print(fun5())   # 64
+print(fun5())   # 212
 </code></pre>
-<blockquote>
+<h3 id="6-题目"><a href="#6-题目" class="headerlink" title="6. 题目"></a>6. <a target="_blank" rel="noopener" href="https://www.lanqiao.cn/problems/2226/learning/">题目</a></h3><blockquote>
 <p>问题描述: <br>一个整数如果包含连续的 2022 四个数字, 我们就称之为 “好数”。例如 2022、52022、20223、7020224 都是好数, 而 2202、20022、2222 都不是好数。给定 LL 和 RR, 请你计算在 LL 到 RR 之间（包含 LL 和 RR ) 所有好数的和是多少?<br><br>输入格式：两个整数 LL 和 RR 。<br>输出格式：一个整数代表答案。<br>样例输入<br>1 20000<br>样例输出<br>14044<br>样例说明<br>满足条件的好数有 2022、12022, 它们的和是 14044。<br><br>评测用例规模与约定<br>对于 60% 的评测用例， <br>对于100% 的评测用例， <br>运行限制<br>最大运行时间：1s<br>最大运行内存: 512M</p>
 </blockquote>
-<pre><code class="python">def fun6(LL, RR):
+<pre><code class="python">def fun6(L, R):
     ans = 0
-    for i in range(LL, RR + 1):
-        if (&#39;2202&#39; != str(i) and &#39;20022&#39; != str(i) or &#39;2222&#39; != str(i)) and &#39;2022&#39; in str(i):
-            ans += 1
+    for i in range(L, R + 1):
+        if &#39;2022&#39; in str(i):
+            ans += i
     return ans
-print(fun6(1, 200000))  # 40
+L, R = map(int, input().split())
+print(fun6(L, R))
 </code></pre>
-<blockquote>
+<h3 id="7-题目"><a href="#7-题目" class="headerlink" title="7. 题目"></a>7. <a target="_blank" rel="noopener" href="https://www.lanqiao.cn/problems/2133/learning/">题目</a></h3><blockquote>
 <p>问题描述：<br>给定两个不同的正整数 a,b, 求一个正整数 k 使得 gcd(a+k, b+k)尽可能大, 其中gcd(a,b) 表示 a 和 bb的最大公约数, 如果存在多个 k, 请输出所有满足条件的 k 中最小的那个。<br><br>输入格式：输入一行包含两个正整数 a,b, 用一个空格分隔。<br>输出格式：输出一行包含一个正整数 k 。<br>样例输入<br>5 7<br>样例输出<br>1<br><br>评测用例规模与约定<br>对于 20% 的评测用例， <br>对于 40% 的评测用例, <br>对于所有评测用例, <br>运行限制<br>最大运行时间：1s<br>最大运行内存: 512M</p>
 </blockquote>
 <pre><code class="python">def fun7(a, b):
@@ -238,9 +262,11 @@ print(fun6(1, 200000))  # 40
         return 1
     else:
         return (b - a) - (min(a, b) % (b - a))
-print(fun7(5, 7))   # 1
+
+a, b = map(int, input().split())
+print(fun7(a, b))
 </code></pre>
-<blockquote>
+<h3 id="8-题目"><a href="#8-题目" class="headerlink" title="8. 题目"></a>8. <a target="_blank" rel="noopener" href="https://www.lanqiao.cn/problems/2227/learning/">题目</a></h3><blockquote>
 <p>问题描述：<br>小蓝最近迷上了一款名为《点亮》的谜题游戏, 游戏在一个 n×n 的格子棋 盘上进行, 棋盘由黑色和白色两种格子组成, 玩家在白色格子上放置灯泡, 确 保任意两个灯泡不会相互照射, 直到整个棋盘上的白色格子都被点亮（每个谜 题均为唯一解)。灯泡只会往水平和垂直方向发射光线, 照亮整行和整列, 除非 它的光线被黑色格子挡住。黑色格子上可能有从 0 到 4 的整数数字, 表示与其 上下左右四个相邻的白色格子共有几个灯泡; 也可能没有数字, 这表示可以在 上下左右四个相邻的白色格子处任意选择几个位置放置灯泡。游戏的目标是选 择合适的位置放置灯泡, 使得整个棋盘上的白色格子都被照亮。<br>例如, 有一个黑色格子处数字为 4 , 这表示它周围必须有 4 个灯泡, 需要 在他的上、下、左、右处分别放置一个灯泡; 如果一个黑色格子处数字为 2 , 它 的上下左右相邻格子只有 3 个格子是白色格子, 那么需要从这三个白色格子中 选择两个来放置灯泡; 如果一个黑色格子没有标记数字, 且其上下左右相邻格 子全是白色格子, 那么可以从这 4 个白色格子中任选出 0 至 4 个来放置灯泡。<br>题目保证给出的数据是合法的, 黑色格子周围一定有位置可以放下对应数 量的灯泡。且保证所有谜题的解都是唯一的。<br>现在, 给出一个初始的棋盘局面, 请在上面放置好灯泡, 使得整个棋盘上 的白色格子被点亮。<br><br><br>输入格式<br>输入的第一行包含一个整数 n, 表示棋盘的大小。<br>接下来 n行, 每行包含 n个字符, 表示给定的棋盘。字符. 表示对应的格子为白色, 数字字符 0 、 1 、 2 、 3 、 4表示一个有数字标识的黑色格子, 大写字母X表示没有数字标识的黑色格子。<br><br>输出格式<br>输出 n 行, 每行包含 nn个字符, 表示答案。大写字母 O 表示对应的格子包含灯泡, 其它字符的意义与输入相同。<br><br>样例输入<br>5<br><br>…..<br>.2.4.<br>..4..<br>.2.X.<br>…..<br><br>样例输出<br>…O.<br>.2O4O<br>.O4O.<br>.2OX.<br>O….<br><br>评测用例规模与约定<br>对于所有评测用例, 2≤n≤5, 且棋监上至少有 15% 的格子是黑色格子。<br>运行限制<br>最大运行时间：5s<br>最大运行内存: 512M</p>
 </blockquote>
 <pre><code class="python"># 不会做了……
