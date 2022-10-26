@@ -151,14 +151,14 @@
             
             <span class="tag">
                 
-                <a href="/tags/python/" style="color: #03a9f4">
+                <a href="/tags/python/" style="color: #ff7d73">
                     python
                 </a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/exam/" style="color: #00a596">
+                <a href="/tags/exam/" style="color: #ff7d73">
                     exam
                 </a>
             </span>
@@ -268,7 +268,24 @@ print(abs(a-b)-(a%abs(a-b)))
 <h3 id="8-题目"><a href="#8-题目" class="headerlink" title="8. 题目"></a>8. <a target="_blank" rel="noopener" href="https://www.lanqiao.cn/problems/2227/learning/">题目</a></h3><blockquote>
 <p>问题描述：<br>小蓝最近迷上了一款名为《点亮》的谜题游戏, 游戏在一个 n×n 的格子棋 盘上进行, 棋盘由黑色和白色两种格子组成, 玩家在白色格子上放置灯泡, 确 保任意两个灯泡不会相互照射, 直到整个棋盘上的白色格子都被点亮（每个谜 题均为唯一解)。灯泡只会往水平和垂直方向发射光线, 照亮整行和整列, 除非 它的光线被黑色格子挡住。黑色格子上可能有从 0 到 4 的整数数字, 表示与其 上下左右四个相邻的白色格子共有几个灯泡; 也可能没有数字, 这表示可以在 上下左右四个相邻的白色格子处任意选择几个位置放置灯泡。游戏的目标是选 择合适的位置放置灯泡, 使得整个棋盘上的白色格子都被照亮。<br>例如, 有一个黑色格子处数字为 4 , 这表示它周围必须有 4 个灯泡, 需要 在他的上、下、左、右处分别放置一个灯泡; 如果一个黑色格子处数字为 2 , 它 的上下左右相邻格子只有 3 个格子是白色格子, 那么需要从这三个白色格子中 选择两个来放置灯泡; 如果一个黑色格子没有标记数字, 且其上下左右相邻格 子全是白色格子, 那么可以从这 4 个白色格子中任选出 0 至 4 个来放置灯泡。<br>题目保证给出的数据是合法的, 黑色格子周围一定有位置可以放下对应数 量的灯泡。且保证所有谜题的解都是唯一的。<br>现在, 给出一个初始的棋盘局面, 请在上面放置好灯泡, 使得整个棋盘上 的白色格子被点亮。<br><br><br>输入格式<br>输入的第一行包含一个整数 n, 表示棋盘的大小。<br>接下来 n行, 每行包含 n个字符, 表示给定的棋盘。字符. 表示对应的格子为白色, 数字字符 0 、 1 、 2 、 3 、 4表示一个有数字标识的黑色格子, 大写字母X表示没有数字标识的黑色格子。<br><br>输出格式<br>输出 n 行, 每行包含 nn个字符, 表示答案。大写字母 O 表示对应的格子包含灯泡, 其它字符的意义与输入相同。<br><br>样例输入<br>5<br>…..<br>.2.4.<br>..4..<br>.2.X.<br>…..<br><br>样例输出<br>…O.<br>.2O4O<br>.O4O.<br>.2OX.<br>O….<br><br>评测用例规模与约定<br>对于所有评测用例, 2≤n≤5, 且棋监上至少有 15% 的格子是黑色格子。<br>运行限制<br>最大运行时间：5s<br>最大运行内存: 512M</p>
 </blockquote>
-<pre><code class="python"># 不会做了……
+<pre><code class="python">import itertools
+def fun6(L, R):
+    dict1 = &#123;&#125;
+    ans = 0
+    start, end = max(len(L), 4) - 4, len(R) - max(len(L), 4)
+    for i in range(start, end+start+1):
+        for j in itertools.combinations_with_replacement([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], i+1):
+            j += (2022,)
+            for k in itertools.permutations(j):
+                num = int(&#39;&#39;.join(map(str, k)))
+                if int(L) &lt;= num &lt;= int(R):
+                    if num not in dict1:
+                        dict1[num] = 1
+                        ans += num
+    return ans
+L, R = input().split()
+print(fun6(L, R))
+# 花了一晚上时间想出另一种方法结果还是超时……麻了已经
 </code></pre>
 
     </div>
