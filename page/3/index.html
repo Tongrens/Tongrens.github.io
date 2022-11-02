@@ -146,6 +146,76 @@
             
 
 <div class="post">
+    <a href="/2022/10/10/链表/">
+        <h2 class="post-title">链表</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/笔记/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                </span>
+                笔记
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/10/10
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <pre><code class="python"># 链表
+class Node:
+    def __init__(self, item=None):
+        self.item = item
+        self.next = None
+        self.prior = Node  # 双链表
+
+# 头插法
+def create_linklist_head(lst):
+    head = Node(lst[0])
+    for element in lst[1:]:
+        node = Node(element)
+        head.prior = node  # 双链表
+        node.next = head
+        head = node
+    return head
+</code></pre>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/python/" style="color: #00a596">
+                python
+            </a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/LinkList/" style="color: #03a9f4">
+                LinkList
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2022/10/10/链表/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
     <a href="/2022/10/10/AVL树/">
         <h2 class="post-title">AVL树</h2>
     </a>
@@ -195,14 +265,14 @@ class AVLTree(BST):
         
         <span class="tag">
             
-            <a href="/tags/python/" style="color: #ffa2c4">
+            <a href="/tags/python/" style="color: #ff7d73">
                 python
             </a>
         </span>
         
         <span class="tag">
             
-            <a href="/tags/BiTreeNode/" style="color: #00a596">
+            <a href="/tags/BiTreeNode/" style="color: #03a9f4">
                 BiTreeNode
             </a>
         </span>
@@ -263,14 +333,14 @@ class BST:
         
         <span class="tag">
             
-            <a href="/tags/python/" style="color: #03a9f4">
+            <a href="/tags/python/" style="color: #ff7d73">
                 python
             </a>
         </span>
         
         <span class="tag">
             
-            <a href="/tags/BiTreeNode/" style="color: #ffa2c4">
+            <a href="/tags/BiTreeNode/" style="color: #00a596">
                 BiTreeNode
             </a>
         </span>
@@ -337,14 +407,14 @@ def in_order(root):
         
         <span class="tag">
             
-            <a href="/tags/python/" style="color: #00a596">
+            <a href="/tags/python/" style="color: #ffa2c4">
                 python
             </a>
         </span>
         
         <span class="tag">
             
-            <a href="/tags/BiTreeNode/" style="color: #00bcd4">
+            <a href="/tags/BiTreeNode/" style="color: #03a9f4">
                 BiTreeNode
             </a>
         </span>
@@ -412,7 +482,7 @@ class LinkList:
         
         <span class="tag">
             
-            <a href="/tags/python/" style="color: #00a596">
+            <a href="/tags/python/" style="color: #03a9f4">
                 python
             </a>
         </span>
@@ -426,78 +496,6 @@ class LinkList:
         
     </div>
     <a href="/2022/10/10/哈希表/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2022/10/10/二分查找法/">
-        <h2 class="post-title">二分查找法</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/笔记/">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
-                </span>
-                笔记
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
-            </span>
-            2022/10/10
-        </span>
-    </div>
-    <div class="excerpt">
-        <div class="content" v-pre>
-            
-            <pre><code class="python"># 二分查找
-def binary_search(lst, val):
-    left = 0
-    right = len(lst) - 1
-    while left &lt; right:
-        mid = (left + right) // 2
-        if lst[mid] &gt; val:
-            right = mid - 1
-        elif lst[mid] &lt; val:
-            left = mid + 1
-        else:
-            return mid
-    return -1
-
-li = list(range(100))
-print(binary_search(li, 50))  # 50
-print(binary_search(li, 200))  # -1
-</code></pre>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-        </span>
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/python/" style="color: #00bcd4">
-                python
-            </a>
-        </span>
-        
-        <span class="tag">
-            
-            <a href="/tags/search/" style="color: #ff7d73">
-                search
-            </a>
-        </span>
-        
-    </div>
-    <a href="/2022/10/10/二分查找法/" class="go-post">阅读全文</a>
 </div>
 
              
