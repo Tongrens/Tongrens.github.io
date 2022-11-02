@@ -158,7 +158,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/exam/" style="color: #ff7d73">
+                <a href="/tags/exam/" style="color: #ffa2c4">
                     exam
                 </a>
             </span>
@@ -223,12 +223,12 @@ print(fun2(a))  # input(10) output(210) first_num(199)
 <p>小蓝有一个超大的仓库，可以摆放很多货物。<br>现在，小蓝有 n 箱货物要摆放在仓库，每箱货物都是规则的正方体。小蓝规定了长、宽、高三个互相垂直的方向，每箱货物的边都必须严格平行于长、宽、高。<br>小蓝希望所有的货物最终摆成一个大的长方体。即在长、宽、高的方向上分别堆 L、W、H 的货物,满足n = L × W × H。<br>给定 n，请问有多少种堆放货物的方案满足要求。<br>例如，当 n=4 时，有以下 6 种方案：1×1×4、1×2×2、1×4×1、2×1×2、2×2×1、4×1×1。<br>请问，当 n=2021041820210418 （注意有16位数字）时，总共有多少种方案？</p>
 </blockquote>
 <pre><code class="python">def fun3(n):
-    import math
     nums, ans = [], 0
-    for i in range(1, int(math.sqrt(n)) + 1):
+    for i in range(1, int(n ** 0.5) + 1):
         if n % i == 0:
             if i not in nums:
                 nums.append(i)
+            if x // i not in nums:
                 nums.append(n // i)
     nums.sort()
     for i in nums:
@@ -242,7 +242,7 @@ n = int(input())
 print(fun3(n))  # input(2021041820210418) output(2430)
 </code></pre>
 <blockquote>
-<p>下面的图形是著名的杨辉三角形：<br><img src="https://tongrens.me/images/other/lqb2.jpg"><br>如果我们按从上到下、从左到右的顺序把所有数排成一列，可以得到如下数列： 1,1,1,1,2,1,1,3,3,1,1,4,6,4,1,⋯<br>给定一个正整数 N，请你输出数列中第一次出现 N是在第几个数？<br>输入描述<br>输入一个整数 N。<br>输出描述<br>输出一个整数代表答案。<br>输入输出样例<br>输入6<br>输出13</p>
+<p>下面的图形是著名的杨辉三角形：<br><img src="https://tongrens.me/images/other/lqb2.jpg"><br>如果我们按从上到下、从左到右的顺序把所有数排成一列，可以得到如下数列： 1,1,1,1,2,1,1,3,3,1,1,4,6,4,1,⋯<br>给定一个正整数 N，请你输出数列中第一次出现 N是在第几个数？<br><br>输入描述<br>输入一个整数 N。<br>输出描述<br>输出一个整数代表答案。<br>输入输出样例<br>输入6<br>输出13</p>
 </blockquote>
 <pre><code class="python">def fun4(n):
     if n == 1:
@@ -314,9 +314,25 @@ print(fun6())   # input(...) output(31)
 print(fun7())  # output(17812964)
 </code></pre>
 <blockquote>
-<p>记 f(x)为 x的所有因数的平方的和。例如: f(12)=12+22+32+42+62+… + 122<br>定义 g(n)=∑i=1nf(i)。给定 n, 求 g(n)除以 109+7的余数。<br>输入格式<br>输入一行包含一个正整数 n。<br>输出格式<br>输出一个整数表示答案 g(n)除以 109+7的余数。<br>例如：<br>输入100000<br>输出680584257</p>
+<p>记 f(x)为 x的所有因数的平方的和。例如: f(12)=$1^2+2^2+3^2+4^2+6^2+12^2$<br>定义$g(n)=∑^n_{i=1}f(i)$。给定 n, 求g(n)除以$10^9+7$的余数。<br><br>输入格式<br>输入一行包含一个正整数 n。<br>输出格式<br>输出一个整数表示答案g(n)除以$10^9+7$的余数。<br>例如：<br>输入100000<br>输出680584257</p>
 </blockquote>
-<pre><code class="python"># 题都没看懂……
+<pre><code class="python">def fun8(n):
+    def f(x):
+        nums = []
+        for i in range(1, int(x ** 0.5) + 1):
+            if x % i == 0:
+                if i not in nums:
+                    nums.append(i)
+                if x // i not in nums:
+                    nums.append(x // i)
+        return sum([i ** 2 for i in nums])
+    ans = 0
+    for i in range(1, n + 1):
+        tmp = f(i)
+        ans += tmp
+    return ans % (10 ** 9 + 7)
+n = int(input())
+print(fun8(n))  # input(100000) output(680584257)
 </code></pre>
 
     </div>
