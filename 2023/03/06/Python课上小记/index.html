@@ -151,14 +151,14 @@
             
             <span class="tag">
                 
-                <a href="/tags/text/" style="color: #00a596">
+                <a href="/tags/text/" style="color: #03a9f4">
                     text
                 </a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/python/" style="color: #00bcd4">
+                <a href="/tags/python/" style="color: #00a596">
                     python
                 </a>
             </span>
@@ -170,13 +170,10 @@
         <h3 id="这条笔记用于记录一些Python课上的One-line-Code"><a href="#这条笔记用于记录一些Python课上的One-line-Code" class="headerlink" title="这条笔记用于记录一些Python课上的One-line Code~"></a>这条笔记用于记录一些Python课上的One-line Code~</h3><p>过7游戏：</p>
 <blockquote>
 <p>Question:</p>
-</blockquote>
 <ul>
 <li>过七游戏：输入一个整数，如果这个整数的下一个数是7的倍数或者包含“7”则输出“过”，否则输出这个数。</li>
 </ul>
-<blockquote>
 <p>Answer:</p>
-</blockquote>
 <pre><code class="python">num = int(input(&#39;输入数字：&#39;)) + 1
 print(&#39;需要输入正整数&#39;) if num &lt; 2 else print(&#39;过&#39;) if &#39;7&#39; in str(num) or num % 7 == 0 else print(num)
 </code></pre>
@@ -185,196 +182,163 @@ print(&#39;需要输入正整数&#39;) if num &lt; 2 else print(&#39;过&#39;) i
 <li><strong>注意题目要求：需要判断的数是输入的下一个数</strong></li>
 <li>line1: 将用户输入的数字加一并存入num</li>
 <li>line2: 代码等同于：<pre><code class="python">if num &lt; 2:  # 判断自增后的数是否小于2，只有大于1的整数才是正整数
- print(&#39;需要输入正整数&#39;)
+print(&#39;需要输入正整数&#39;)
 else:
- if &#39;7&#39; in str(num) or num % 7 == 0:  # 判断&quot;7&quot;是否在num内或者是否能整除7
-     print(&#39;过&#39;)
- else:
-     print(num)
+if &#39;7&#39; in str(num) or num % 7 == 0:  # 判断&quot;7&quot;是否在num内或者是否能整除7
+    print(&#39;过&#39;)
+else:
+    print(num)
 </code></pre>
 </li>
 </ol>
+</blockquote>
 <p>猜大小：</p>
 <blockquote>
 <p>Question:</p>
-</blockquote>
 <ul>
 <li>程序生成一个随机数，让用户猜这个数是多少，如果输入的数小于随机数则返回”猜低了”，反之返回”猜高了”，并让用户接着输入下一个数，直到猜对返回这个随机数和共计的次数。</li>
 </ul>
-<blockquote>
 <p>Answer:</p>
-</blockquote>
-<pre><code class="python">import random
+<pre><code class="python">&gt;import random
 ans, count = random.randint(0, 100), 1  # 生成随机数并初始化次数
 # 使用海象运算符*对每次输入的价格进行赋值的同时判断是否等于随机数
 while (num := int(input(&#39;请输入价格：&#39;))) != ans:
-    count += 1  # 不等于则次数+1
-    # 如果输入的数大于随机数则输出&quot;猜高了&quot;，反之输出&quot;猜低了&quot;
-    print(&#39;猜高了&#39; if num &gt; ans else &#39;猜低了&#39;)
+   count += 1  # 不等于则次数+1
+   # 如果输入的数大于随机数则输出&quot;猜高了&quot;，反之输出&quot;猜低了&quot;
+   print(&#39;猜高了&#39; if num &gt; ans else &#39;猜低了&#39;)
 print(f&#39;恭喜猜对！答案是&#123;num&#125;，一共猜了&#123;count&#125;次。&#39;)
 </code></pre>
-<blockquote>
 <p>Analysis:</p>
-</blockquote>
 <ol>
 <li><a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3/whatsnew/3.8.html?highlight=%E6%B5%B7%E8%B1%A1" title="海象运算符">海象运算符</a></li>
 </ol>
+</blockquote>
 <p>累加求和：</p>
 <blockquote>
 <p>Question:</p>
-</blockquote>
 <ul>
 <li>⽤户输⼊⼀个正整数 n ，计算所有⼩于等于 n 的正整数之和。</li>
 </ul>
-<blockquote>
 <p>Answer:</p>
-</blockquote>
 <pre><code class="python">print(f&quot;输出：&#123;sum(range(1, int(input(&#39;输入：&#39;)) + 1))&#125;&quot;)
 </code></pre>
 <p>Analysis:</p>
 <ol>
 <li>range将返回1到n的序列，再利用sum对返回的序列求和</li>
 </ol>
+</blockquote>
 <p>累加求和进阶I：</p>
 <blockquote>
 <p>Question:</p>
-</blockquote>
 <ul>
 <li>⽤户输⼊⼀个正整数 n ，计算所有⼩于等于 n 的偶数之和。</li>
 </ul>
-<blockquote>
 <p>Answer:</p>
-</blockquote>
 <pre><code class="python">print(f&quot;输出：&#123;sum(range(2, int(input(&#39;输入：&#39;)) + 1, 2))&#125;&quot;)
 </code></pre>
-<blockquote>
 <p>Analysis:</p>
-</blockquote>
 <ol>
 <li>range将返回2到n的偶数序列，其中步长为2，这样可以只返回偶数，再利用sum对返回的序列求和</li>
 </ol>
+</blockquote>
 <p>累加求和进阶II：</p>
 <blockquote>
 <p>Question:</p>
-</blockquote>
 <ul>
 <li>⽤户输⼊⼀个正整数 n ，计算所有⼩于等于 n 的满⾜过7条件的数字之和。</li>
 </ul>
-<blockquote>
 <p>Answer:</p>
-</blockquote>
 <pre><code class="python">print(f&quot;输出：&#123;sum([i for i in range(1, int(input(&#39;输入：&#39;)) + 1) if i % 7 == 0 or &#39;7&#39; in str(i)])&#125;&quot;)
 </code></pre>
-<blockquote>
 <p>Analysis:</p>
-</blockquote>
 <ol>
 <li>[i for i in range(1, int(input(‘输入：’)) + 1) if i % 7 == 0 or ‘7’ in str(i)]<br>这部分为<a target="_blank" rel="noopener" href="https://www.liaoxuefeng.com/wiki/1016959663602400/1017317609699776" title="列表生成式">列表生成式</a>，若1到输入的正整数中有满⾜过7条件的数字则添加到列表中</li>
 <li>再用sum函数对上面返回的列表进行求和</li>
 </ol>
+</blockquote>
 <p>质数判定：</p>
 <blockquote>
 <p>Question:</p>
-</blockquote>
 <ul>
 <li>⽤户输⼊⼀个⼤于1的正整数 n ，判断这个数是不是质数<br>如果⼀个⼤于1的正整数只能被1和⾃⼰整除，则这个数为质数</li>
 </ul>
-<blockquote>
 <p>Answer:</p>
-</blockquote>
 <pre><code class="python">num = int(input(&#39;输入：&#39;))
 print(f&quot;输出：&#123;&#39;不是&#39; if any(num % i == 0 for i in range(2, int(num ** 0.5 + 1))) else &#39;是&#39;&#125;质数&quot;)
 </code></pre>
-<blockquote>
 <p>Analysis:</p>
-</blockquote>
 <ol>
 <li>int(num ** 0.5 + 1)<br>获取n开平方后的向上取整</li>
 <li>any(num % i == 0 for i in range(2, int(num ** 0.5 + 1)))<br>判断num是否能被2到第一步的数中的数字整除，若能被整除则不是质数，反之则是质数<br>any函数用于判断序列中是否为非空</li>
 </ol>
+</blockquote>
 <p>⽇期计算：</p>
 <blockquote>
 <p>Question:</p>
-</blockquote>
 <ul>
 <li>⽤户输⼊⼀个正整数 n ，该数字代表这是2023年的第n天，输出这⼀天是⼏⽉⼏号。<br>思考：如何同时输出这⼀天是星期⼏？</li>
 </ul>
-<blockquote>
 <p>Answer:</p>
-</blockquote>
 <pre><code class="python">default = num = int(input(&#39;输入：&#39;))  # 初始化输入日期，其中default给星期几使用
 time_lst, month = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]  # 2023年时间列表
 while (num := num - time_lst[month]) &gt; 0:
-    month += 1
-print(f&quot;输出：&#123;month + 1&#125;月&#123;num + time_lst[month]&#125;日&quot;)
+   month += 1
+&gt;print(f&quot;输出：&#123;month + 1&#125;月&#123;num + time_lst[month]&#125;日&quot;)
 print(f&quot;输出：星期&#123;[&#39;日&#39;, &#39;一&#39;, &#39;二&#39;, &#39;三&#39;, &#39;四&#39;, &#39;五&#39;, &#39;六&#39;][default % 7 - 1]&#125;&quot;)
 </code></pre>
-<blockquote>
 <p>Analysis:</p>
-</blockquote>
 <ol>
 <li>while (num := num - time_lst[month]) &gt; 0:<br>time_lst[month]为month+1这个月的时间，使用海象运算符让num循环减去下个月的天数，如果num减去天数后小于0则代表剩余天数不够下个月的天数，则跳出循环</li>
 <li>{num + time_lst[month]}日<br>因为num还循环体中已经被减去了最后一个月的天数，所以输出的时候要加上最后一个月的天数。</li>
 <li>星期{[‘日’, ‘一’, ‘二’, ‘三’, ‘四’, ‘五’, ‘六’][default % 7 - 1]}<br>利用初始化的default模除7再减去1就得到星期几，因为2023-01-01这天是周日</li>
 </ol>
+</blockquote>
 <p>判断标识符是否合法：</p>
 <blockquote>
 <p>Question:</p>
-</blockquote>
 <ul>
 <li>⽤户输⼊⼀个字符串，判断这个字符串是否是合法的？</li>
 </ul>
-<blockquote>
 <p>Answer:</p>
-</blockquote>
 <pre><code class="python">import keyword
 user_input = input(&#39;输入：&#39;)
 print(f&quot;输出：&#123;&#39;非法&#39; if not user_input.isidentifier() or keyword.iskeyword(user_input) else &#39;合法&#39;&#125;&quot;)
 </code></pre>
-<blockquote>
 <p>Analysis:</p>
-</blockquote>
 <ol>
 <li>user_input.isidentifier()<br>python内置函数isidentifier()，用于返回字符串是否合法，若user_input能构成变量名(关键字除外)，则返回True，反之返回False；用not取反，若不合法则最终返回为True输出”非法”</li>
 <li>keyword.iskeyword(user_input)<br>用于返回user_input是否为关键字，因为第一步的函数无法判断关键字，故用此函数判断，若是关键字则返回True，反之返回False，不合法则输出”非法”</li>
 </ol>
+</blockquote>
 <p>字符串切片I：</p>
 <blockquote>
 <p>Question:</p>
-</blockquote>
 <ul>
 <li>用户输入一个字符串，输出字符串的前6个字符，如果长度不足6，则输出全部字符。</li>
 </ul>
-<blockquote>
 <p>Answer:</p>
-</blockquote>
 <pre><code class="python">print(input(&#39;请输入字符串：&#39;)[:6])
 </code></pre>
-<blockquote>
 <p>Analysis:</p>
-</blockquote>
 <ol>
 <li>直接对输入字符串进行切片，切片用法为[start：end：step]<br>省去start则默认为0，省去step则默认为1<br>切片不会越界，所以无需考虑长度不足6的情况，直接切片即可</li>
 </ol>
+</blockquote>
 <p>字符串切片II：</p>
 <blockquote>
 <p>Question:</p>
-</blockquote>
 <ul>
 <li>用户输入一个字符串，将字符串按照每4个字符一行进行输出。</li>
 </ul>
-<blockquote>
 <p>Answer:</p>
-</blockquote>
 <pre><code class="python">s = input(&#39;请输入字符串：&#39;)
 [print(s[i:i + 4]) for i in range(0, len(s), 4)]
 </code></pre>
-<blockquote>
 <p>Analysis:</p>
-</blockquote>
 <ol>
 <li>利用range获取每4个字符中的第一个字符，例如长度为9的字符将会输出(0, 4, 8)，再将输入的字符串进行切片，start为range遍历的数，end为start+4，并用列表生成式对每一次遍历的内容进行print，同样不需要考虑越界问题</li>
 </ol>
+</blockquote>
 
     </div>
     
