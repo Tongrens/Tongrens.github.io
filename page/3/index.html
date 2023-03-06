@@ -146,6 +146,129 @@
             
 
 <div class="post">
+    <a href="/2022/10/10/接口及以太网链路配置及管理/">
+        <h2 class="post-title">接口及以太网链路配置及管理</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/笔记/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                </span>
+                笔记
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/10/10
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <h1 id="接口及以太网链路配置及管理"><a href="#接口及以太网链路配置及管理" class="headerlink" title="接口及以太网链路配置及管理"></a>接口及以太网链路配置及管理</h1><h2 id="以太网接口属性："><a href="#以太网接口属性：" class="headerlink" title="以太网接口属性："></a>以太网接口属性：</h2><blockquote>
+<p>二层接口是一种物理接口，属于数据链路层，不能配置IP地址，可以对接收到的报文经行二层转发。</p>
+</blockquote>
+<blockquote>
+<p>三层子接口是一种逻辑接口，属于网络层，可以配置IP地址，主要用来实现收发VLAN报文。可以通过配置使一个二层接口绑定多个三层子接口，从而使得不同VLAN报文从不同子接口转发。</p>
+</blockquote>
+<h2 id="接口类型："><a href="#接口类型：" class="headerlink" title="接口类型："></a>接口类型：</h2><blockquote>
+<p>接口类型分为<strong>管理接口、物理接口和逻辑接口</strong><br>管理接口用于登陆到设备经行配置与管理，此接口不承担业务传输<br>物理接口是真实存在的可承担业务传输的接口，一般由电口与光口组成<br>逻辑接口是指能实现数据交换但物理上不存在的接口</p>
+</blockquote>
+<h2 id="端口隔离"><a href="#端口隔离" class="headerlink" title="端口隔离"></a>端口隔离</h2><blockquote>
+<p>端口隔离分为单向隔离和端口隔离组，且都仅适用于同意交换机上不同端口间的隔离，且一个端口可以加入多个端口隔离组</p>
+</blockquote>
+<blockquote>
+<ol>
+<li>单向隔离指禁止某个端口发送的报文到达其他端口，而不禁止其他端口的报文到达本端口</li>
+<li>而端口隔离组内的接口则是互相隔离的</li>
+</ol>
+</blockquote>
+<h2 id="链路聚合"><a href="#链路聚合" class="headerlink" title="链路聚合"></a>链路聚合</h2><blockquote>
+<p>链路聚合是指将多个相同属性的物理接口捆绑在一起形成一个逻辑接口，可以用来增加带宽，且聚合端口与物理接口同样可以配置端口类型。</p>
+</blockquote>
+<h2 id="负载分担："><a href="#负载分担：" class="headerlink" title="负载分担："></a>负载分担：</h2><p>负载分担分为手动负载分担和静态LACP负载分担。在手动负载分担的模式下，聚合端口与成员接口的配置都需要由手工来经行完成，并且在该模式下所有链路都参与数据的转发，平均分担流量；静态LACP负载分担模式则是利用LACP协议进行自动聚合，通过LACPDU报文经行交互，通告自己的（系统优先级、系统MAC、端口优先级、端口号和操作key）并与对端经行比较，选择能够汇聚的端口，链路的两端称为Actor和Partner，且LACP模式可以实现链路冗余备份（所以也被称为M:N模式）。</p>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/switch/" style="color: #00a596">
+                switch
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2022/10/10/接口及以太网链路配置及管理/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2022/10/10/基本VLAN特性配置与管理/">
+        <h2 class="post-title">基本VLAN特性配置与管理</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/笔记/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                </span>
+                笔记
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/10/10
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <h1 id="基本VLAN特性配置与管理"><a href="#基本VLAN特性配置与管理" class="headerlink" title="基本VLAN特性配置与管理"></a>基本VLAN特性配置与管理</h1><h2 id="VLAN基础"><a href="#VLAN基础" class="headerlink" title="VLAN基础"></a>VLAN基础</h2><p>VLAN（虚拟局域网）是一个将物理LAN逻辑划分为若干个虚拟的LAN，目的是为了缩小广播域，使广播域进行二层（数据链路层）通信，不同VLAN间的主机是不能互相通信的，必须经过第三层（网络层）进行通信。<br><strong>VLAN既能限制广播网络，又可增强局域网的安全性，还提高了网络的健壮性。</strong><br>在同一个物理交换机上不可能存在两个相同的VLAN，在不同交换机上则可以有相同VLAN</p>
+<h2 id="VLAN帧"><a href="#VLAN帧" class="headerlink" title="VLAN帧"></a>VLAN帧</h2><p>VLAN Tag:标识所属VLAN，遵循IEEE 802.1Q标注，支持802.1Q协议的交换机既可以发送有标记帧也可以发送无标记帧（有标记帧加入了4字节的801.1Q Tag，反之则没有），交换机内部的数据包一律携带Tag。</p>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/switch/" style="color: #ffa2c4">
+                switch
+            </a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/vlan/" style="color: #ff7d73">
+                vlan
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2022/10/10/基本VLAN特性配置与管理/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
     <a href="/2022/10/10/链表/">
         <h2 class="post-title">链表</h2>
     </a>
@@ -199,7 +322,7 @@ def create_linklist_head(lst):
         
         <span class="tag">
             
-            <a href="/tags/python/" style="color: #00bcd4">
+            <a href="/tags/python/" style="color: #03a9f4">
                 python
             </a>
         </span>
@@ -272,7 +395,7 @@ class AVLTree(BST):
         
         <span class="tag">
             
-            <a href="/tags/BiTreeNode/" style="color: #03a9f4">
+            <a href="/tags/BiTreeNode/" style="color: #ffa2c4">
                 BiTreeNode
             </a>
         </span>
@@ -333,81 +456,7 @@ class BST:
         
         <span class="tag">
             
-            <a href="/tags/python/" style="color: #03a9f4">
-                python
-            </a>
-        </span>
-        
-        <span class="tag">
-            
-            <a href="/tags/BiTreeNode/" style="color: #00bcd4">
-                BiTreeNode
-            </a>
-        </span>
-        
-    </div>
-    <a href="/2022/10/10/二叉搜索树/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2022/10/10/二叉树/">
-        <h2 class="post-title">二叉树</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/笔记/">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
-                </span>
-                笔记
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
-            </span>
-            2022/10/10
-        </span>
-    </div>
-    <div class="excerpt">
-        <div class="content" v-pre>
-            
-            <pre><code class="python"># BiTreeNode
-class BiTreeNode:
-    def __init__(self, data):
-        self.data = data
-        self.lchild = None
-        self.rchild = None
-
-# 前序遍历  E,A,C,B,D,G,F,
-def pre_order(root):
-    if root:
-        print(root.data, end=&#39;,&#39;)
-        pre_order(root.lchild)
-        pre_order(root.rchild)
-
-# 中序遍历  A,B,C,D,E,G,F,
-def in_order(root):
-    if root:
-        in_order(root.lchild)
-        print(root.data, end=&#39;,&#39;)
-        in_order(root.rchild)
-</code></pre>
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-        </span>
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/python/" style="color: #ff7d73">
+            <a href="/tags/python/" style="color: #00bcd4">
                 python
             </a>
         </span>
@@ -420,82 +469,7 @@ def in_order(root):
         </span>
         
     </div>
-    <a href="/2022/10/10/二叉树/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2022/10/10/哈希表/">
-        <h2 class="post-title">哈希表</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/笔记/">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
-                </span>
-                笔记
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
-            </span>
-            2022/10/10
-        </span>
-    </div>
-    <div class="excerpt">
-        <div class="content" v-pre>
-            
-            <pre><code class="python"># HashTable
-class LinkList:
-    class Node:
-        def __init__(self, item=None):
-            self.item = item
-            self.next = None
-
-    class LinkListIterator:
-        def __init__(self, head):
-            self.current = head
-
-        def __iter__(self):
-            return self
-
-        def __next__(self):
-            if self.current is None:
-                raise StopIteration
-            else:
-                item = self.current.item
-                self.current = self.current.next
-                return item
-</code></pre>
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-        </span>
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/python/" style="color: #00a596">
-                python
-            </a>
-        </span>
-        
-        <span class="tag">
-            
-            <a href="/tags/HashTable/" style="color: #00bcd4">
-                HashTable
-            </a>
-        </span>
-        
-    </div>
-    <a href="/2022/10/10/哈希表/" class="go-post">阅读全文</a>
+    <a href="/2022/10/10/二叉搜索树/" class="go-post">阅读全文</a>
 </div>
 
              
@@ -536,6 +510,12 @@ class LinkList:
             <a href="/page/4/">
                 <span class="page-num">
                     4
+                </span>
+            </a>
+            
+            <a href="/page/5">
+                <span class="page-num">
+                    5
                 </span>
             </a>
             
@@ -611,7 +591,7 @@ class LinkList:
 <footer id="footer">
     <div class="footer-wrap">
         <div>
-            © 2022 - 2022 Tongrens
+            © 2022 - 2023 Tongrens
             <span class="footer-icon">
                 <i class="fa-solid fa-font-awesome fa-fw"></i>
             </span>

@@ -146,6 +146,155 @@
             
 
 <div class="post">
+    <a href="/2022/10/10/二叉树/">
+        <h2 class="post-title">二叉树</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/笔记/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                </span>
+                笔记
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/10/10
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <pre><code class="python"># BiTreeNode
+class BiTreeNode:
+    def __init__(self, data):
+        self.data = data
+        self.lchild = None
+        self.rchild = None
+
+# 前序遍历  E,A,C,B,D,G,F,
+def pre_order(root):
+    if root:
+        print(root.data, end=&#39;,&#39;)
+        pre_order(root.lchild)
+        pre_order(root.rchild)
+
+# 中序遍历  A,B,C,D,E,G,F,
+def in_order(root):
+    if root:
+        in_order(root.lchild)
+        print(root.data, end=&#39;,&#39;)
+        in_order(root.rchild)
+</code></pre>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/python/" style="color: #ffa2c4">
+                python
+            </a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/BiTreeNode/" style="color: #ff7d73">
+                BiTreeNode
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2022/10/10/二叉树/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2022/10/10/哈希表/">
+        <h2 class="post-title">哈希表</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/笔记/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                </span>
+                笔记
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/10/10
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <pre><code class="python"># HashTable
+class LinkList:
+    class Node:
+        def __init__(self, item=None):
+            self.item = item
+            self.next = None
+
+    class LinkListIterator:
+        def __init__(self, head):
+            self.current = head
+
+        def __iter__(self):
+            return self
+
+        def __next__(self):
+            if self.current is None:
+                raise StopIteration
+            else:
+                item = self.current.item
+                self.current = self.current.next
+                return item
+</code></pre>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/python/" style="color: #ff7d73">
+                python
+            </a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/HashTable/" style="color: #00a596">
+                HashTable
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2022/10/10/哈希表/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
     <a href="/2022/10/10/二分查找法/">
         <h2 class="post-title">二分查找法</h2>
     </a>
@@ -201,14 +350,14 @@ print(binary_search(li, 200))  # -1
         
         <span class="tag">
             
-            <a href="/tags/python/" style="color: #00a596">
+            <a href="/tags/python/" style="color: #00bcd4">
                 python
             </a>
         </span>
         
         <span class="tag">
             
-            <a href="/tags/search/" style="color: #ff7d73">
+            <a href="/tags/search/" style="color: #00a596">
                 search
             </a>
         </span>
@@ -275,7 +424,7 @@ print(li)  # [1, 2, 3, 4, 5, 6, 7, 8, 9]
         
         <span class="tag">
             
-            <a href="/tags/sort/" style="color: #00a596">
+            <a href="/tags/sort/" style="color: #03a9f4">
                 sort
             </a>
         </span>
@@ -343,137 +492,20 @@ print(li)  # [1, 2, 3, 4, 5, 6, 7, 8, 9]
         
         <span class="tag">
             
-            <a href="/tags/python/" style="color: #ffa2c4">
+            <a href="/tags/python/" style="color: #ff7d73">
                 python
             </a>
         </span>
         
         <span class="tag">
             
-            <a href="/tags/sort/" style="color: #00bcd4">
+            <a href="/tags/sort/" style="color: #03a9f4">
                 sort
             </a>
         </span>
         
     </div>
     <a href="/2022/10/10/排序算法-NB三人组/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2022/10/10/排序算法-lowB三人组/">
-        <h2 class="post-title">排序算法-lowB三人组</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/笔记/">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
-                </span>
-                笔记
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
-            </span>
-            2022/10/10
-        </span>
-    </div>
-    <div class="excerpt">
-        <div class="content" v-pre>
-            
-            <h1 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h1><pre><code class="python">def bubble_sort(lst):
-    for i in range(len(lst) - 1):
-        flag = False
-        for j in range(len(lst) - i - 1):
-            if lst[j] &gt; lst[j + 1]:
-                lst[j], lst[j + 1] = lst[j + 1], lst[j]
-                flag = True
-        if not flag:
-            return
-
-li = [4, 6, 2, 3, 1, 5, 7, 9, 8]
-bubble_sort(li)
-print(li)  # [1, 2, 3, 4, 5, 6, 7, 8, 9]
-</code></pre>
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-        </span>
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/python/" style="color: #00bcd4">
-                python
-            </a>
-        </span>
-        
-        <span class="tag">
-            
-            <a href="/tags/sort/" style="color: #ff7d73">
-                sort
-            </a>
-        </span>
-        
-    </div>
-    <a href="/2022/10/10/排序算法-lowB三人组/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2022/10/10/hello-world/">
-        <h2 class="post-title">Hello World</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/Other/">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
-                </span>
-                Other
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
-            </span>
-            2022/10/10
-        </span>
-    </div>
-    <div class="excerpt">
-        <div class="content" v-pre>
-            
-            <p>通宵达旦做blog…记录一下…</p>
-<p>今后会在这里放一下学习笔记，小目标插本，加油加油！</p>
-<p>（吐槽一下，这hexo的结构是真的乱，那什么sb主题里的source结构是真的ex TvT</p>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-        </span>
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/text/" style="color: #00a596">
-                text
-            </a>
-        </span>
-        
-    </div>
-    <a href="/2022/10/10/hello-world/" class="go-post">阅读全文</a>
 </div>
 
              
@@ -515,8 +547,24 @@ print(li)  # [1, 2, 3, 4, 5, 6, 7, 8, 9]
             4
         </span>
         
+        <span>
+            <a href="/page/5/">
+                <span class="page-num">
+                    5
+                </span>
+            </a>
+            
+            
+        </span>
+        
     </div>
     <div class="next">
+        
+        <a href="/page/5/ ">
+            <span class="page-num">
+                <i class="fa-solid fa-caret-right fa-fw"></i>
+            </span>
+        </a>
         
     </div>
 </div>
@@ -578,7 +626,7 @@ print(li)  # [1, 2, 3, 4, 5, 6, 7, 8, 9]
 <footer id="footer">
     <div class="footer-wrap">
         <div>
-            © 2022 - 2022 Tongrens
+            © 2022 - 2023 Tongrens
             <span class="footer-icon">
                 <i class="fa-solid fa-font-awesome fa-fw"></i>
             </span>
