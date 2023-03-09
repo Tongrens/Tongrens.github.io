@@ -146,6 +146,73 @@
             
 
 <div class="post">
+    <a href="/2022/10/10/扩展VLAN特性配置与管理/">
+        <h2 class="post-title">扩展VLAN特性配置与管理</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/笔记/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                </span>
+                笔记
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/10/10
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <h1 id="扩展VLAN特性配置与管理"><a href="#扩展VLAN特性配置与管理" class="headerlink" title="扩展VLAN特性配置与管理"></a>扩展VLAN特性配置与管理</h1><h2 id="VLAN聚合："><a href="#VLAN聚合：" class="headerlink" title="VLAN聚合："></a>VLAN聚合：</h2><p>VLAN聚合是把多个不配置三层VLANIF接口聚合成一个超级VLAN（Super-VLAN），这些VLANIF的接口称为Sub-VLAN</p>
+<p><img src="/images/switch/2.jpg"></p>
+<blockquote>
+<p>Super-VLAN：<br>可以看成一个大的VLAN，但它的成员不是端口而是Sub-VLAN，需要配置三层VLANIF接口并配置IP地址。每个VLAN聚合中只能有一个Super-VLAN。</p>
+</blockquote>
+<blockquote>
+<p>Sub-VLAN：<br>它是Super-VLAN的成员，它的成员是交换机的端口，不能创建三层VLANIF接口，不同Sub-VLAN间是相互二层隔离的，但各个Sub-VLAN中的用户网关都是Super-VLAN的VLANIF接口IP地址，来实现各Sub-VLAN成员间以及与外部网络的三层通信。每个VLAN聚合中可以有多个Sub-VLAN。</p>
+</blockquote>
+<h2 id="MUX-VLAN："><a href="#MUX-VLAN：" class="headerlink" title="MUX VLAN："></a>MUX VLAN：</h2><p><strong>MUX VLAN（Multiplex VLAN）提供了一种通过VLAN进行网络资源控制的机制</strong></p>
+<ol>
+<li>主VLAN（Principal VLAN）：Principal port可以和MUX VLAN内的所有接口进行通信。</li>
+<li>从VLAN（Subordinate VLAN）包括隔离型从VLAN和互通型从VLAN：</li>
+<li>隔离型从VLAN（Separate VLAN）：Separate port只能和Principal port进行通信，和其他类型的接口实现完全隔离。</li>
+</ol>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/switch/" style="color: #00a596">
+                switch
+            </a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/vlan/" style="color: #ffa2c4">
+                vlan
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2022/10/10/扩展VLAN特性配置与管理/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
     <a href="/2022/10/10/接口及以太网链路配置及管理/">
         <h2 class="post-title">接口及以太网链路配置及管理</h2>
     </a>
@@ -204,7 +271,7 @@
         
         <span class="tag">
             
-            <a href="/tags/switch/" style="color: #03a9f4">
+            <a href="/tags/switch/" style="color: #00bcd4">
                 switch
             </a>
         </span>
@@ -252,7 +319,7 @@
         
         <span class="tag">
             
-            <a href="/tags/switch/" style="color: #ff7d73">
+            <a href="/tags/switch/" style="color: #ffa2c4">
                 switch
             </a>
         </span>
@@ -322,14 +389,14 @@ def create_linklist_head(lst):
         
         <span class="tag">
             
-            <a href="/tags/python/" style="color: #03a9f4">
+            <a href="/tags/python/" style="color: #00a596">
                 python
             </a>
         </span>
         
         <span class="tag">
             
-            <a href="/tags/LinkList/" style="color: #00bcd4">
+            <a href="/tags/LinkList/" style="color: #03a9f4">
                 LinkList
             </a>
         </span>
@@ -388,88 +455,20 @@ class AVLTree(BST):
         
         <span class="tag">
             
-            <a href="/tags/python/" style="color: #00bcd4">
+            <a href="/tags/python/" style="color: #00a596">
                 python
             </a>
         </span>
         
         <span class="tag">
             
-            <a href="/tags/BiTreeNode/" style="color: #03a9f4">
+            <a href="/tags/BiTreeNode/" style="color: #ff7d73">
                 BiTreeNode
             </a>
         </span>
         
     </div>
     <a href="/2022/10/10/AVL树/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2022/10/10/二叉搜索树/">
-        <h2 class="post-title">二叉搜索树</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/笔记/">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
-                </span>
-                笔记
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
-            </span>
-            2022/10/10
-        </span>
-    </div>
-    <div class="excerpt">
-        <div class="content" v-pre>
-            
-            <pre><code class="python"># BST
-class BiTreeNode:
-    def __init__(self, data):
-        self.data = data
-        self.lchild = None
-        self.rchild = None
-        self.parent = None
-
-class BST:
-    def __init__(self, lst=None):
-        self.root = None
-        if lst:
-            for val in lst:
-                self.insert(val)
-</code></pre>
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-        </span>
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/python/" style="color: #ffa2c4">
-                python
-            </a>
-        </span>
-        
-        <span class="tag">
-            
-            <a href="/tags/BiTreeNode/" style="color: #ffa2c4">
-                BiTreeNode
-            </a>
-        </span>
-        
-    </div>
-    <a href="/2022/10/10/二叉搜索树/" class="go-post">阅读全文</a>
 </div>
 
              
