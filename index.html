@@ -207,15 +207,15 @@ else:
         
         <span class="tag">
             
-            <a href="/tags/python/" style="color: #00a596">
-                python
+            <a href="/tags/text/" style="color: #03a9f4">
+                text
             </a>
         </span>
         
         <span class="tag">
             
-            <a href="/tags/text/" style="color: #ff7d73">
-                text
+            <a href="/tags/python/" style="color: #ffa2c4">
+                python
             </a>
         </span>
         
@@ -273,70 +273,20 @@ else:
         
         <span class="tag">
             
-            <a href="/tags/python/" style="color: #00bcd4">
+            <a href="/tags/python/" style="color: #ff7d73">
                 python
             </a>
         </span>
         
         <span class="tag">
             
-            <a href="/tags/exam/" style="color: #ffa2c4">
+            <a href="/tags/exam/" style="color: #00bcd4">
                 exam
             </a>
         </span>
         
     </div>
     <a href="/2023/03/09/23-03-09蓝桥杯测试题/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2022/11/23/hello-world/">
-        <h2 class="post-title">Hello World</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/Other/">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
-                </span>
-                Other
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
-            </span>
-            2022/11/23
-        </span>
-    </div>
-    <div class="excerpt">
-        <div class="content" v-pre>
-            
-            <p>通宵达旦做blog…记录一下…</p>
-<p>今后会在这里放一下学习笔记，小目标插本，加油加油！</p>
-<p>（吐槽一下，这hexo的结构是真的乱，那什么sb主题里的source结构是真的ex TvT</p>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-        </span>
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/text/" style="color: #00bcd4">
-                text
-            </a>
-        </span>
-        
-    </div>
-    <a href="/2022/11/23/hello-world/" class="go-post">阅读全文</a>
 </div>
 
 <div class="post">
@@ -379,14 +329,14 @@ else:
         
         <span class="tag">
             
-            <a href="/tags/python/" style="color: #ff7d73">
+            <a href="/tags/python/" style="color: #00bcd4">
                 python
             </a>
         </span>
         
         <span class="tag">
             
-            <a href="/tags/exam/" style="color: #ff7d73">
+            <a href="/tags/exam/" style="color: #03a9f4">
                 exam
             </a>
         </span>
@@ -439,20 +389,84 @@ print(&#39;&#39;.join(sorted(list(source))))
         
         <span class="tag">
             
-            <a href="/tags/python/" style="color: #03a9f4">
+            <a href="/tags/python/" style="color: #ff7d73">
                 python
             </a>
         </span>
         
         <span class="tag">
             
-            <a href="/tags/exam/" style="color: #ff7d73">
+            <a href="/tags/exam/" style="color: #00bcd4">
                 exam
             </a>
         </span>
         
     </div>
     <a href="/2022/10/26/22-10-26蓝桥杯测试题/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2022/10/19/22-10-19蓝桥杯测试题/">
+        <h2 class="post-title">22.10.19蓝桥杯测试题</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/笔记/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                </span>
+                笔记
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/10/19
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <h1 id="没什么好说的，直接上题"><a href="#没什么好说的，直接上题" class="headerlink" title="没什么好说的，直接上题"></a>没什么好说的，直接上题</h1><blockquote>
+<p>11.《过7游戏》<br>编写代码：用户给出一个正整数n，计算所有小于等于n的正整数中，包含数字7或7的倍数的数字有多少个。<br>例如：<br>输入10，输出1<br>输入200，输出38<br>输入200000，输出81902</p>
+</blockquote>
+<pre><code class="python">def fun11(n):
+    ans = 0
+    for i in range(1, n + 1):
+        if &#39;7&#39; in str(i) or i % 7 == 0:
+            ans += 1
+    return ans
+print(fun11(200))   # 61
+</code></pre>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/python/" style="color: #ff7d73">
+                python
+            </a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/exam/" style="color: #00a596">
+                exam
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2022/10/19/22-10-19蓝桥杯测试题/" class="go-post">阅读全文</a>
 </div>
 
              
