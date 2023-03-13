@@ -146,270 +146,7 @@
             
 
 <div class="post">
-    <a href="/2023/03/09/23-03-09蓝桥杯测试题/">
-        <h2 class="post-title">23-03-09蓝桥杯测试题</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/笔记/">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
-                </span>
-                笔记
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
-            </span>
-            2023/3/9
-        </span>
-    </div>
-    <div class="excerpt">
-        <div class="content" v-pre>
-            
-            <h1 id="好久没做算法题了，上题上题"><a href="#好久没做算法题了，上题上题" class="headerlink" title="好久没做算法题了，上题上题"></a>好久没做算法题了，上题上题</h1><blockquote>
-<p>请找到⼀个⼤于 2022 的最⼩数，这个数转换成⼗六进制之后，所有的数位（不含前导 0）都为字⺟（A 到 F）。<br>请将这个数的⼗进制形式作为答案提交。</p>
-</blockquote>
-<pre><code class="python">def fun1():
-    cur = 2022
-    while True:
-        for i in hex(cur)[2:]:
-            if i.isnumeric():
-                break
-        else:
-            return cur
-        cur += 1
-</code></pre>
-<blockquote>
-<p>在 Excel 中，列的名称使⽤英⽂字⺟的组合。前 26 列⽤⼀个字⺟，依次为 A 到 Z，接下来 26*26 列使⽤两个字⺟的组合，依次为 AA 到 ZZ。<br>请问第 2022 列的名称是什么？</p>
-</blockquote>
-<pre><code class="python">def fun2():
-    cur, ans = 2022, &#39;&#39;
-    while True:
-        if cur % 26 == 0:
-            ans += &#39;Z&#39;
-            cur = cur // 26 - 1
-        else:
-            ans += chr(ord(&#39;A&#39;) + cur % 26 - 1)
-            cur //= 26
-        if cur == 0:
-            return ans[::-1]
-</code></pre>
-<blockquote>
-<p>对于⼀个⽇期，我们可以计算出年份的各个数位上的数字之和，也可以分别计算⽉和⽇的各位数字之和。请问从1900 年 1 ⽉ 1 ⽇⾄ 9999 年 12 ⽉ 31 ⽇，总共有多少天，年份的数位数字之和等于⽉的数位数字之和加⽇的数位数字之和。<br>例如，2022年11⽉13⽇满⾜要求，因为 2+0+2+2=(1+1)+(1+3) 。<br>请提交满⾜条件的⽇期的总数量。</p>
-</blockquote>
-<pre><code class="python">def fun3():
-    import datetime
-    ans = 0
-    for i in range(1900, 9999):
-        for j in range(1, 13):
-            for k in range(1, 32):
-                if sum(map(int, str(i))) == j + k:
-                    try:
-                        datetime.datetime(i, j, k)
-                        ans += 1
-                    except ValueError:
-                        pass
-    return ans
-</code></pre>
-<blockquote>
-<p>⼩蓝有 30 个数，分别为：99, 22, 51, 63, 72, 61, 20, 88, 40, 21, 63, 30, 11, 18, 99, 12, 93, 16, 7, 53, 64, 9, 28, 84, 34, 96, 52, 82, 51, 77<br>⼩蓝可以在这些数中取出两个序号不同的数，共有 30*29/2=435 种取法。<br>请问这 435 种取法中，有多少种取法取出的两个数的乘积⼤于等于 2022 。</p>
-</blockquote>
-<pre><code class="python">def fun4():
-    lst, ans = [99, 22, 51, 63, 72, 61, 20, 88, 40, 21, 63, 30, 11, 18, 99,
-                12, 93, 16, 7, 53, 64, 9, 28, 84, 34, 96, 52, 82, 51, 77], 0
-    for i in range(len(lst)):
-        for j in range(i, len(lst)):
-            if lst[i] * lst[j] &gt;= 2022:
-                ans += 1
-    return ans
-</code></pre>
-<blockquote>
-<p>⼩蓝有⼀个 30 ⾏ 60 列的数字矩阵，矩阵中的每个数都是 0 或 1 。如果从⼀个标为 1 的位置可以通过上下左右⾛到另⼀个标为 1 的位置，则称两个位置连通。与某⼀个标为 1 的位置连通的所有位置（包括⾃⼰）组成⼀个连通分块。<br>请问矩阵中最⼤的连通分块有多⼤？</p>
-</blockquote>
-<pre><code># 矩阵：
-110010000011111110101001001001101010111011011011101001111110
-010000000001010001101100000010010110001111100010101100011110
-001011101000100011111111111010000010010101010111001000010100
-101100001101011101101011011001000110111111010000000110110000
-010101100100010000111000100111100110001110111101010011001011
-010011011010011110111101111001001001010111110001101000100011
-101001011000110100001101011000000110110110100100110111101011
-101111000000101000111001100010110000100110001001000101011001
-001110111010001011110000001111100001010101001110011010101110
-001010101000110001011111001010111111100110000011011111101010
-011111100011001110100101001011110011000101011000100111001011
-011010001101011110011011111010111110010100101000110111010110
-001110000111100100101110001011101010001100010111110111011011
-111100001000001100010110101100111001001111100100110000001101
-001110010000000111011110000011000010101000111000000110101101
-100100011101011111001101001010011111110010111101000010000111
-110010100110101100001101111101010011000110101100000110001010
-110101101100001110000100010001001010100010110100100001000011
-100100000100001101010101001101000101101000000101111110001010
-101101011010101000111110110000110100000010011111111100110010
-101111000100000100011000010001011111001010010001010110001010
-001010001110101010000100010011101001010101101101010111100101
-001111110000101100010111111100000100101010000001011101100001
-101011110010000010010110000100001010011111100011011000110010
-011110010100011101100101111101000001011100001011010001110011
-000101000101000010010010110111000010101111001101100110011100
-100011100110011111000110011001111100001110110111001001000111
-111011000110001000110111011001011110010010010110101000011111
-011110011110110110011011001011010000100100101010110000010011
-010011110011100101010101111010001001001111101111101110011101
-</code></pre>
-<pre><code class="python">def fun5():
-    def dfs(i, j):
-        visited[i][j] = True
-        for x, y in [(i - 1, j), (i + 1, j), (i, j - 1), (i, j + 1)]:
-            if 0 &lt;= x &lt; 30 and 0 &lt;= y &lt; 60 and matrix[x][y] == 1 and not visited[x][y]:
-                dfs(x, y)
-    matrix = &#39;&#39;&#39;
-    110010000011111110101001001001101010111011011011101001111110
-    010000000001010001101100000010010110001111100010101100011110
-    001011101000100011111111111010000010010101010111001000010100
-    101100001101011101101011011001000110111111010000000110110000
-    010101100100010000111000100111100110001110111101010011001011
-    010011011010011110111101111001001001010111110001101000100011
-    101001011000110100001101011000000110110110100100110111101011
-    101111000000101000111001100010110000100110001001000101011001
-    001110111010001011110000001111100001010101001110011010101110
-    001010101000110001011111001010111111100110000011011111101010
-    011111100011001110100101001011110011000101011000100111001011
-    011010001101011110011011111010111110010100101000110111010110
-    001110000111100100101110001011101010001100010111110111011011
-    111100001000001100010110101100111001001111100100110000001101
-    001110010000000111011110000011000010101000111000000110101101
-    100100011101011111001101001010011111110010111101000010000111
-    110010100110101100001101111101010011000110101100000110001010
-    110101101100001110000100010001001010100010110100100001000011
-    100100000100001101010101001101000101101000000101111110001010
-    101101011010101000111110110000110100000010011111111100110010
-    101111000100000100011000010001011111001010010001010110001010
-    001010001110101010000100010011101001010101101101010111100101
-    001111110000101100010111111100000100101010000001011101100001
-    101011110010000010010110000100001010011111100011011000110010
-    011110010100011101100101111101000001011100001011010001110011
-    000101000101000010010010110111000010101111001101100110011100
-    100011100110011111000110011001111100001110110111001001000111
-    111011000110001000110111011001011110010010010110101000011111
-    011110011110110110011011001011010000100100101010110000010011
-    010011110011100101010101111010001001001111101111101110011101
-    &#39;&#39;&#39;
-    matrix = matrix.strip().split()
-    visited, count = [[False] * 60 for _ in range(30)], 0
-    for a in range(30):
-        for b in range(60):
-            if matrix[a][b] == &#39;1&#39; and not visited[a][b]:
-                dfs(a, b)
-                count += 1
-    return count
-</code></pre>
-<blockquote>
-<p>给定⼀天是⼀周中的哪天，请问 n 天后是⼀周中的哪天？<br>输出格式：<br>输出⼀⾏包含⼀个整数，表示 n 天后是⼀周中的哪天，1 到 6 分别表示周⼀到周六，7 表示周⽇。</p>
-</blockquote>
-<pre><code class="python">def fun6():
-    return (input() + input()) % 7
-</code></pre>
-<blockquote>
-<p>⼩蓝负责⼀块区域的信号塔安装，整块区域是⼀个⻓⽅形区域，建⽴坐标轴后，⻄南⻆坐标为 (0, 0)， 东南⻆坐标为 (W, 0)， ⻄北⻆坐标为 (0, H)， 东北⻆坐标为 (W, H)。其中 W, H 都是整数。<br>他在 n 个位置设置了信号塔，每个信号塔可以覆盖以⾃⼰为圆⼼，半径为 R 的圆形（包括边缘）。<br>为了对信号覆盖的情况进⾏检查，⼩蓝打算在区域内的所有横纵坐标为整数的点进⾏测试，检查信号状态。其中横坐标范围为 0 到 W，纵坐标范围为 0 到 H，总共测试 (W+1) * (H+1) 个点。<br>给定信号塔的位置，请问这 (W+1)*(H+1) 个点中有多少个点被信号覆盖。<br>输⼊格式：<br>输⼊第⼀⾏包含四个整数 W, H, n, R，相邻整数之间使⽤⼀个空格分隔。<br>接下来 n ⾏，每⾏包含两个整数 x, y，表示⼀个信号塔的坐标。信号塔可能重合，表示两个信号发射器装在了同⼀个位置。</p>
-</blockquote>
-<pre><code class="python">def fun7():
-    info = list(map(int, input().split()))
-    lst, ans = [], 0
-    for i in range(info[2]):
-        lst.append(list(map(int, input().split())))
-    for i in range(info[0]):
-        for j in range(info[1]):
-            for k in lst:
-                if ((i - k[0]) ** 2 + (j - k[1]) ** 2) ** 0.5 &lt;= info[3]:
-                    ans += 1
-                    break
-    return ans
-</code></pre>
-<blockquote>
-<p>⼩蓝有⼀个 n * m ⼤⼩的矩形⽔域，⼩蓝将这个⽔域划分为 n ⾏ m 列，⾏数从 1 到 n 标号，列数从 1 到 m 标号。每⾏和每列的宽度都是单位 1 。<br>现在，这个⽔域⻓满了⽔草，⼩蓝要清理⽔草。<br>每次，⼩蓝可以清理⼀块矩形的区域，从第 r1 ⾏（含）到第 r2 ⾏（含）的第 c1 列（含）到 c2 列（含）。<br>经过⼀段时间清理后，请问还有多少地⽅没有被清理过。<br>输⼊格式：<br>输⼊第⼀⾏包含两个整数 n, m，⽤⼀个空格分隔。<br>第⼆⾏包含⼀个整数 t ，表示清理的次数。<br>接下来 t ⾏，每⾏四个整数 r1, c1, r2, c2，相邻整数之间⽤⼀个空格分隔，表示⼀次清理。请注意输⼊的顺序。</p>
-</blockquote>
-<pre><code class="python">def fun8():
-    n, m = map(int, input().split())
-    jz = [[0 for _ in range(m)] for _ in range(n)]
-    for i in range(int(input())):
-        a, b, c, d = map(int, input().split())
-        for j in range(a - 1, c):
-            for k in range(b - 1, d):
-                jz[j][k] = 1
-    ans = 0
-    for i in jz:
-        ans += (m - sum(i))
-    return ans
-</code></pre>
-<blockquote>
-<p>⼩蓝准备在⼀个空旷的场地⾥⾯滑⾏，这个场地的⾼度不⼀，⼩蓝⽤⼀个 n ⾏ m 列的矩阵来表示场地，矩阵中的数值表示场地的⾼度。<br>如果⼩蓝在某个位置，⽽他上、下、左、右中有⼀个位置的⾼度（严格）低于当前的⾼度，⼩蓝就可以滑过去，滑动距离为 1 。<br>如果⼩蓝在某个位置，⽽他上、下、左、右中所有位置的⾼度都⼤于等于当前的⾼度，⼩蓝的滑⾏就结束了。<br>⼩蓝不能滑出矩阵所表示的场地。<br>⼩蓝可以任意选择⼀个位置开始滑⾏，请问⼩蓝最多能滑⾏多远距离。<br>输⼊格式：<br>输⼊第⼀⾏包含两个整数 n, m，⽤⼀个空格分隔。<br>接下来 n ⾏，每⾏包含 m 个整数，相邻整数之间⽤⼀个空格分隔，依次表示每个位置的⾼度。</p>
-</blockquote>
-<pre><code class="python">def fun9():
-    def dfs(i, j):
-        max_num = 0
-        for x, y in [(i - 1, j), (i + 1, j), (i, j - 1), (i, j + 1)]:
-            if 0 &lt;= x &lt;= n - 1 and 0 &lt;= y &lt;= m - 1 and matrix[x][y] &lt; matrix[i][j] and not visited[x][y]:
-                visited[i][j] = True
-                max_num = max(dfs(x, y), max_num)
-                visited[i][j] = False
-        return max_num + 1
-    n, m = map(int, input().split())
-    ans, matrix, visited = 0, [], [[False] * m for _ in range(n)]
-    for _ in range(n):
-        matrix.append(list(map(int, input().split())))
-    for a in range(n):
-        for b in range(m):
-            visited[a][b] = True
-            ans = max(dfs(a, b), ans)
-            visited[a][b] = False
-    return ans
-</code></pre>
-<blockquote>
-<p>⼩蓝有⼀个序列a[1], a[2], …, a[n]。<br>给定⼀个正整数 k，请问对于每⼀个 1 到 n 之间的序号 i， a[i−k],a[i−k+1],…,a[i+k] 这 2k+1 个数中的最⼩值是多少？<br>当某个下标超过 1 到 n 的范围时，数不存在，求最⼩值时只取存在的那些值。<br>输⼊格式：<br>输⼊的第⼀⾏包含⼀整数 n。<br>第⼆⾏包含 n 个整数，分别表示 a[1], a[2], …, a[n]。<br>第三⾏包含⼀个整数 k 。</p>
-</blockquote>
-<pre><code class="python">def fun10():
-    _, lst, k, ans = input(), input().split(), input(), []
-    for i in range(len(lst)):
-        ans.append(min(list(map(int, lst[max(i - int(k), 0):i + int(k) + 1]))))
-    return ans
-</code></pre>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-        </span>
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/python/" style="color: #ff7d73">
-                python
-            </a>
-        </span>
-        
-        <span class="tag">
-            
-            <a href="/tags/exam/" style="color: #03a9f4">
-                exam
-            </a>
-        </span>
-        
-    </div>
-    <a href="/2023/03/09/23-03-09蓝桥杯测试题/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2023/03/06/Python课上小记/">
+    <a href="/2023/03/13/Python课上小记/">
         <h2 class="post-title">Python课上小记</h2>
     </a>
     <div class="category-and-date">
@@ -427,7 +164,7 @@
             <span class="icon">
                 <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
             </span>
-            2023/3/6
+            2023/3/13
         </span>
     </div>
     <div class="excerpt">
@@ -470,20 +207,86 @@ else:
         
         <span class="tag">
             
-            <a href="/tags/python/" style="color: #03a9f4">
+            <a href="/tags/python/" style="color: #00a596">
                 python
             </a>
         </span>
         
         <span class="tag">
             
-            <a href="/tags/text/" style="color: #ffa2c4">
+            <a href="/tags/text/" style="color: #ff7d73">
                 text
             </a>
         </span>
         
     </div>
-    <a href="/2023/03/06/Python课上小记/" class="go-post">阅读全文</a>
+    <a href="/2023/03/13/Python课上小记/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/03/09/23-03-09蓝桥杯测试题/">
+        <h2 class="post-title">23-03-09蓝桥杯测试题</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/笔记/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                </span>
+                笔记
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2023/3/9
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <h1 id="好久没做算法题了，上题上题"><a href="#好久没做算法题了，上题上题" class="headerlink" title="好久没做算法题了，上题上题"></a>好久没做算法题了，上题上题</h1><blockquote>
+<p>请找到⼀个⼤于 2022 的最⼩数，这个数转换成⼗六进制之后，所有的数位（不含前导 0）都为字⺟（A 到 F）。<br>请将这个数的⼗进制形式作为答案提交。</p>
+</blockquote>
+<pre><code class="python">def fun1():
+    cur = 2022
+    while True:
+        for i in hex(cur)[2:]:
+            if i.isnumeric():
+                break
+        else:
+            return cur
+        cur += 1
+</code></pre>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/python/" style="color: #00bcd4">
+                python
+            </a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/exam/" style="color: #ffa2c4">
+                exam
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2023/03/09/23-03-09蓝桥杯测试题/" class="go-post">阅读全文</a>
 </div>
 
 <div class="post">
@@ -527,7 +330,7 @@ else:
         
         <span class="tag">
             
-            <a href="/tags/text/" style="color: #ffa2c4">
+            <a href="/tags/text/" style="color: #00bcd4">
                 text
             </a>
         </span>
@@ -576,14 +379,14 @@ else:
         
         <span class="tag">
             
-            <a href="/tags/python/" style="color: #00bcd4">
+            <a href="/tags/python/" style="color: #ff7d73">
                 python
             </a>
         </span>
         
         <span class="tag">
             
-            <a href="/tags/exam/" style="color: #00a596">
+            <a href="/tags/exam/" style="color: #ff7d73">
                 exam
             </a>
         </span>
@@ -636,14 +439,14 @@ print(&#39;&#39;.join(sorted(list(source))))
         
         <span class="tag">
             
-            <a href="/tags/python/" style="color: #ffa2c4">
+            <a href="/tags/python/" style="color: #03a9f4">
                 python
             </a>
         </span>
         
         <span class="tag">
             
-            <a href="/tags/exam/" style="color: #00a596">
+            <a href="/tags/exam/" style="color: #ff7d73">
                 exam
             </a>
         </span>

@@ -131,7 +131,7 @@
             <span class="icon">
                 <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
             </span>
-            2023/3/6
+            2023/3/13
         </span>
         
         <span class="category">
@@ -151,14 +151,14 @@
             
             <span class="tag">
                 
-                <a href="/tags/python/" style="color: #ffa2c4">
+                <a href="/tags/python/" style="color: #03a9f4">
                     python
                 </a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/text/" style="color: #ff7d73">
+                <a href="/tags/text/" style="color: #00bcd4">
                     text
                 </a>
             </span>
@@ -339,6 +339,130 @@ print(f&quot;输出：&#123;&#39;非法&#39; if not user_input.isidentifier() or
 <p>Analysis:</p>
 <ol>
 <li>利用range获取每4个字符中的第一个字符，例如长度为9的字符将会输出(0, 4, 8)，再将输入的字符串进行切片，start为range遍历的数，end为start+4，并用列表生成式对每一次遍历的内容进行print，同样不需要考虑越界问题</li>
+</ol>
+</blockquote>
+<p>字符串反转:</p>
+<blockquote>
+<p>Question:</p>
+<ul>
+<li>⽤户输⼊⼀段字符串，将该字符串反转并输出。</li>
+</ul>
+<p>Answer:</p>
+<pre><code class="python">print(input(&#39;请输入字符串：&#39;)[::-1])
+</code></pre>
+</blockquote>
+<p>回⽂判断:</p>
+<blockquote>
+<p>Question:</p>
+<ul>
+<li>⽤户输⼊⼀段字符串，判断该字符串是否是回⽂（回⽂指的是这个字符串和它反转后相同）。</li>
+</ul>
+<p>Answer:</p>
+<pre><code class="python">inp = input(&#39;请输入字符串：&#39;)
+print(&#39;是回文串&#39; if inp == inp[::-1] else &#39;不是回文串&#39;)
+</code></pre>
+<p>Analysis:</p>
+<ol>
+<li>判断字符串正反是否相同</li>
+</ol>
+</blockquote>
+<p>字符串查找：</p>
+<blockquote>
+<p>Question:</p>
+<ul>
+<li>众所周知，Python字符串的find⽅法只能找到第⼀个⼦串的下标，请编写代码，完成以下功能：</li>
+<li>⽤户输⼊两个字符串 sent 和 sub ，如果 sent 字符串中包含 sub ，则打印出所有的下标，否则打印 -1</li>
+</ul>
+<p>Answer:</p>
+<pre><code class="python">sent, sub = input(&#39;请输入字符串：&#39;), input(&#39;请输入查找字串：&#39;)
+print(&#39;\n&#39;.join(map(str, [i for i in range(len(sent)) if sent[i] == sub])) or &#39;-1&#39;)
+</code></pre>
+<p>Analysis:</p>
+<ol>
+<li>[i for i in range(len(sent)) if sent[i] == sub] <br>利用for循环判断sent中是否有等于sub的，如果有则将下标存入这个列表中</li>
+<li>map(str, [i for i in range(len(sent)) if sent[i] == sub]) <br>利用map函数将上一步列表里的int转为字符串，用于后续join函数输出</li>
+<li>‘\n’.join() <br>将上一步的列表进行拼接，利用\n实现每一行一个下标</li>
+<li>print(‘\n’.join() or -1) <br>若or左侧，也就是第三步中没有结果则判定为False，输出-1</li>
+</ol>
+</blockquote>
+<p>跑⻢灯：</p>
+<blockquote>
+<p>Question:</p>
+<ul>
+<li>制作跑马灯并实现以下效果：<br>【欢迎XXX来到深圳职业技术学院】</li>
+</ul>
+<p>Answer:</p>
+<pre><code class="python">import time
+sent = &quot;欢迎XXX来到深圳职业技术学院&quot;
+while True:
+   print(f&quot;\r【&#123;sent&#125;】&quot;, end=&quot;&quot;) # 利用\r实现每次输出之前都把上次输出的内容清空
+   time.sleep(0.5)
+   sent = sent[1:] + sent[0]  # 生成新的字符串供下次输出使用
+</code></pre>
+</blockquote>
+<p>邮箱地址合法性判断:</p>
+<blockquote>
+<p>Question:</p>
+<ul>
+<li>⽤户输⼊⼀个字符串，判断该字符串是否是合法的邮箱地址，合法的邮箱地址符合以下规则：<br>电⼦邮件地址格式为 域内部分@域名 ，域内部分需要符合以下规则：</li>
+</ul>
+<ol>
+<li>最⻓64个字符 </li>
+<li>可以由英⽂⼩写字⺟ a 到 z 和⼤写字⺟ A 到 Z 、数字 0 到 9 、英⽂句号 . 、短横线 - 或者下划线 _ 组成 </li>
+<li>英⽂句号 . 、短横线 - 或者下划线 _ 不能作为⾸尾字符，也不能连续出现\</li>
+</ol>
+<ul>
+<li>域名部分除了以上规则，还需要符合以下规则：</li>
+</ul>
+<ol start="4">
+<li>不能是纯数字</li>
+<li>必须包含英⽂句号 . ，但不能是⾸尾字符，也不能连续出现</li>
+</ol>
+<p>Answer:</p>
+<pre><code class="python">def is_email(email):
+   def is_user(user_in):  # 判断域内部分
+       # 最长64个字符，并且首尾不能为&#39;.&#39;、&#39;-&#39;、&#39;_&#39;
+       if len(user_in) &gt; 64 or user_in[0] in [&#39;.&#39;, &#39;-&#39;, &#39;_&#39;] or user_in[-1] in [&#39;.&#39;, &#39;-&#39;, &#39;_&#39;]:
+           return False
+       for useri in range(len(user_in)):
+           if not (user_in[useri].isalnum() or user_in[useri] in [&#39;.&#39;, &#39;-&#39;, &#39;_&#39;]):  # 只能包含字母、数字、&#39;.&#39;、&#39;-&#39;、&#39;_&#39;
+               return False
+           if user_in[useri] in [&#39;.&#39;, &#39;-&#39;, &#39;_&#39;]:
+               if useri + 1 &lt; len(user_in) and user_in[useri + 1] == user_in[useri]:  # 不能连续为&#39;.&#39;、&#39;-&#39;、&#39;_&#39;
+                   return False
+       return True
+   if email.count(&#39;@&#39;) != 1 or &#39;@&#39; not in email:  # 判断邮箱是否只包含一个&#39;@&#39;
+       return False
+   user, domain = email.split(&#39;@&#39;)
+   if not is_user(user) or not is_user(domain):
+       return False
+   # 判断域名部分
+   # 判断是否为纯数字并判断是否存在&#39;.&#39;,并且首位不能为&#39;.&#39;
+   if domain.isnumeric() or &#39;.&#39; not in domain or domain[0] == &#39;.&#39; or domain[-1] == &#39;.&#39;:
+       return False
+   for domaini in range(1, len(domain)):
+       if domain[domaini - 1] == domain[domaini] == &#39;.&#39;:  # 不能连续为&#39;.&#39;
+           return False
+   # 判断结束返回True
+   return True
+print(&#39;有效的邮箱地址&#39; if is_email(input(&#39;请输入邮箱：&#39;)) else &#39;无效的邮箱地址&#39;)
+</code></pre>
+</blockquote>
+<p>IPv4地址合法性判断：</p>
+<blockquote>
+<p>Question:</p>
+<ul>
+<li>⽤户输⼊⼀个字符串，该字符串只由数字 0 到 9 和英⽂句号 . 组成判断该字符串是否为合法的IPv4地址。</li>
+</ul>
+<p>Answer:</p>
+<pre><code class="python">inp = input(&#39;请输入IPv4地址：&#39;)
+print(&#39;非法IP地址&#39; if inp.count(&#39;.&#39;) != 3 or sum([1 for i in inp.split(&#39;.&#39;) if i and int(i) &lt; 256]) != 4 else &#39;合法IP地址&#39;)
+</code></pre>
+<p>Analysis:</p>
+<ol>
+<li>inp.count(‘.’) != 3 <br>判断IP地址是否只包含三个’.’，用or参数拼接，若前半部分为False则不判断后半部分</li>
+<li>[1 for i in inp.split(‘.’) if i and int(i) &lt; 256] <br>利用split进行分割，使用for进行遍历，若不为空且小于256则在列表中添加’1’</li>
+<li>sum([1 for i in inp.split(‘.’) if i and int(i) &lt; 256]) != 4 <br>利用sum函数对第二步中的列表进行求和，若等于4则点分十进制的4个部分都合法</li>
 </ol>
 </blockquote>
 
