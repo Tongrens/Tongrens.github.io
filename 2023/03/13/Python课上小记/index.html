@@ -151,14 +151,14 @@
             
             <span class="tag">
                 
-                <a href="/tags/text/" style="color: #ff7d73">
+                <a href="/tags/text/" style="color: #00bcd4">
                     text
                 </a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/python/" style="color: #ff7d73">
+                <a href="/tags/python/" style="color: #00bcd4">
                     python
                 </a>
             </span>
@@ -456,13 +456,13 @@ print(&#39;有效的邮箱地址&#39; if is_email(input(&#39;请输入邮箱：&
 </ul>
 <p>Answer:</p>
 <pre><code class="python">inp = input(&#39;请输入IPv4地址：&#39;)
-print(&#39;非法IP地址&#39; if inp.count(&#39;.&#39;) != 3 or sum([1 for i in inp.split(&#39;.&#39;) if i and int(i) &lt; 256]) != 4 else &#39;合法IP地址&#39;)
+print(&#39;非法IP地址&#39; if inp.count(&#39;.&#39;) != 3 or sum([1 for i in inp.split(&#39;.&#39;) if i.isnumeric() and 0 &lt;= int(i) &lt; 256]) != 4 else &#39;合法IP地址&#39;)
 </code></pre>
 <p>Analysis:</p>
 <ol>
 <li>inp.count(‘.’) != 3 <br>判断IP地址是否只包含三个’.’，用or参数拼接，若前半部分为False则不判断后半部分</li>
-<li>[1 for i in inp.split(‘.’) if i and int(i) &lt; 256] <br>利用split进行分割，使用for进行遍历，若不为空且小于256则在列表中添加’1’</li>
-<li>sum([1 for i in inp.split(‘.’) if i and int(i) &lt; 256]) != 4 <br>利用sum函数对第二步中的列表进行求和，若等于4则点分十进制的4个部分都合法</li>
+<li>[1 for i in inp.split(‘.’) if i.isnumeric() and 0 &lt;= int(i) &lt; 256] <br>利用split进行分割，使用for进行遍历，若不为空且大于等于0小于256则在列表中添加’1’</li>
+<li>sum([1 for i in inp.split(‘.’) if i.isnumeric() and 0 &lt;= int(i) &lt; 256]) != 4 <br>利用sum函数对第二步中的列表进行求和，若等于4则点分十进制的4个部分都合法</li>
 </ol>
 </blockquote>
 
