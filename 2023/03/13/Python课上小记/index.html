@@ -151,7 +151,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/text/" style="color: #00bcd4">
+                <a href="/tags/text/" style="color: #03a9f4">
                     text
                 </a>
             </span>
@@ -375,7 +375,7 @@ print(&#39;是回文串&#39; if inp == inp[::-1] else &#39;不是回文串&#39;)
 </ul>
 <p>Answer:</p>
 <pre><code class="python">sent, sub = input(&#39;请输入字符串：&#39;), input(&#39;请输入查找字串：&#39;)
-print(&#39;\n&#39;.join(map(str, [i for i in range(len(sent)) if sent[i] == sub])) or &#39;-1&#39;)
+print(&#39;\n&#39;.join([str(i) for i in range(len(sent)) if sent[i] == sub]) or &#39;-1&#39;)
 </code></pre>
 <p>Analysis:</p>
 <ol>
@@ -419,33 +419,28 @@ while True:
 <li>必须包含英⽂句号 . ，但不能是⾸尾字符，也不能连续出现</li>
 </ol>
 <p>Answer:</p>
-<pre><code class="python">def is_email(email):
-   def is_user(user_in):  # 判断域内部分
-       # 最长64个字符，并且首尾不能为&#39;.&#39;、&#39;-&#39;、&#39;_&#39;
-       if len(user_in) &gt; 64 or user_in[0] in [&#39;.&#39;, &#39;-&#39;, &#39;_&#39;] or user_in[-1] in [&#39;.&#39;, &#39;-&#39;, &#39;_&#39;]:
+<pre><code class="python">def is_email(email_in):
+   def is_local_true(is_local):
+       # 判断长度是否大于64、判断是否有连续的&quot;. - _&quot;
+       if len(is_local) &gt; 64 or &#39;..&#39; in is_local or &#39;--&#39; in is_local or &#39;__&#39; in is_local:
            return False
-       for useri in range(len(user_in)):
-           if not (user_in[useri].isalnum() or user_in[useri] in [&#39;.&#39;, &#39;-&#39;, &#39;_&#39;]):  # 只能包含字母、数字、&#39;.&#39;、&#39;-&#39;、&#39;_&#39;
+       if is_local[0] in [&#39;.&#39;, &#39;-&#39;, &#39;_&#39;] or is_local[-1] in [&#39;.&#39;, &#39;-&#39;, &#39;_&#39;]:  # 判断首位是否为&quot;. - _&quot;
+           return False
+       # 判断是否有除字母数字和&quot;. - _&quot;之外的字符
+       for in_local in is_local:
+           if in_local not in [&#39;.&#39;, &#39;-&#39;, &#39;_&#39;] and not in_local.isalnum():
                return False
-           if user_in[useri] in [&#39;.&#39;, &#39;-&#39;, &#39;_&#39;]:
-               if useri + 1 &lt; len(user_in) and user_in[useri + 1] == user_in[useri]:  # 不能连续为&#39;.&#39;、&#39;-&#39;、&#39;_&#39;
-                   return False
        return True
-   if email.count(&#39;@&#39;) != 1 or &#39;@&#39; not in email:  # 判断邮箱是否只包含一个&#39;@&#39;
+   if email_in.count(&#39;@&#39;) != 1 or email_in.startswith(&#39;@&#39;) or email_in.endswith(&#39;@&#39;):  # 判断邮箱基本格式是否合法
        return False
-   user, domain = email.split(&#39;@&#39;)
-   if not is_user(user) or not is_user(domain):
-       return False
-   # 判断域名部分
-   # 判断是否为纯数字并判断是否存在&#39;.&#39;,并且首位不能为&#39;.&#39;
-   if domain.isnumeric() or &#39;.&#39; not in domain or domain[0] == &#39;.&#39; or domain[-1] == &#39;.&#39;:
-       return False
-   for domaini in range(1, len(domain)):
-       if domain[domaini - 1] == domain[domaini] == &#39;.&#39;:  # 不能连续为&#39;.&#39;
+   else:
+       local, domain = email_in.split(&#39;@&#39;)  # 使⽤split⽅法分割，local是域内部分，domain是域名
+       # 判断域内部分是否合法、判断域名部分是否合法、判断域名部分是否存在&#39;.&#39;、判断域名部分是否为纯数字
+       if not is_local_true(local) or not is_local_true(domain) or &#39;.&#39; not in domain or domain.isdigit():
            return False
-   # 判断结束返回True
-   return True
-print(&#39;有效的邮箱地址&#39; if is_email(input(&#39;请输入邮箱：&#39;)) else &#39;无效的邮箱地址&#39;)
+       return True
+email = input(&quot;输⼊邮箱地址：&quot;).strip()
+print(f&quot;&#123;email&#125;是&#123;&#39;有效&#39; if is_email(email) else &#39;无效&#39;&#125;的邮箱地址&quot;)
 </code></pre>
 </blockquote>
 <p>IPv4地址合法性判断：</p>
