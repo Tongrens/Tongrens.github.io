@@ -188,7 +188,7 @@
         
         <span class="tag">
             
-            <a href="/tags/text/" style="color: #ffa2c4">
+            <a href="/tags/text/" style="color: #03a9f4">
                 text
             </a>
         </span>
@@ -223,9 +223,9 @@
         <div class="content" v-pre>
             
             <h1 id="BGP"><a href="#BGP" class="headerlink" title="BGP"></a>BGP</h1><blockquote>
-<h5 id="BGP分类："><a href="#BGP分类：" class="headerlink" title="BGP分类："></a>BGP分类：</h5><p>BGP是EGP（外部网关协议）的一种，而IGP包含了RIP、OSPF、ISIS，是内部网关协议，BGP协议本身不产生、发现路由；<br>BGP分为IBGP和EBGP<br>EBGP：当BGP设备收到EBGP发来的路由时，会将带有自己AS号的路由丢弃<br>IBGP：为了防止环路，从IBGP学习到的路由不会转发给其他IBGP设备，需要建立全连接才能互通，有路由反射器和联盟两种解决方法<br>BGP Router-id：在发送的Open报文中携带，通常是IP地址<br><strong>AS划分：</strong><br>二字节AS：1-65535<br>四字节AS：1-4294967295<br>公网AS：1-64511<br>私网AS：64512-65534</p>
-</blockquote>
-<h3 id="2种角色："><a href="#2种角色：" class="headerlink" title="2种角色："></a>2种角色：</h3><blockquote>
+<h5 id="BGP分类"><a href="#BGP分类" class="headerlink" title="BGP分类"></a>BGP分类</h5></blockquote>
+<p>BGP是EGP（外部网关协议）的一种，而IGP包含了RIP、OSPF、ISIS，是内部网关协议，BGP协议本身不产生、发现路由；<br>BGP分为IBGP和EBGP<br>EBGP：当BGP设备收到EBGP发来的路由时，会将带有自己AS号的路由丢弃<br>IBGP：为了防止环路，从IBGP学习到的路由不会转发给其他IBGP设备，需要建立全连接才能互通，有路由反射器和联盟两种解决方法<br>BGP Router-id：在发送的Open报文中携带，通常是IP地址<br><strong>AS划分：</strong><br>二字节AS：1-65535<br>四字节AS：1-4294967295<br>公网AS：1-64511<br>私网AS：64512-65534</p>
+<h3 id="2种角色"><a href="#2种角色" class="headerlink" title="2种角色"></a>2种角色</h3><blockquote>
 <p>Speaker：发送或者接受BGP报文的任何设备都是Speaker<br>Peer：相互交换报文的Speaker之间互为对等体，若干相关的对等体可以组成对等体组</p>
 </blockquote>
             
@@ -240,7 +240,7 @@
         
         <span class="tag">
             
-            <a href="/tags/Router/" style="color: #ffa2c4">
+            <a href="/tags/Router/" style="color: #ff7d73">
                 Router
             </a>
         </span>
@@ -302,7 +302,7 @@
         
         <span class="tag">
             
-            <a href="/tags/Router/" style="color: #00bcd4">
+            <a href="/tags/Router/" style="color: #03a9f4">
                 Router
             </a>
         </span>
@@ -336,21 +336,23 @@
     <div class="excerpt">
         <div class="content" v-pre>
             
-            <h1 id="RIP"><a href="#RIP" class="headerlink" title="RIP"></a>RIP</h1><h2 id="RIP特点："><a href="#RIP特点：" class="headerlink" title="RIP特点："></a>RIP特点：</h2><p>引入跳数（Hop Count）的概念，每经过一个三层设备跳数就增加1，到16则丢弃；当收到多条相同路由时，仅加收度量值更小或相当的更新</p>
-<h4 id="RIPv1特点："><a href="#RIPv1特点：" class="headerlink" title="RIPv1特点："></a>RIPv1特点：</h4><blockquote>
+            <h1 id="RIP"><a href="#RIP" class="headerlink" title="RIP"></a>RIP</h1><h2 id="RIP特点"><a href="#RIP特点" class="headerlink" title="RIP特点"></a>RIP特点</h2><p>引入跳数（Hop Count）的概念，每经过一个三层设备跳数就增加1，到16则丢弃；当收到多条相同路由时，仅加收度量值更小或相当的更新</p>
+<h4 id="RIPv1特点"><a href="#RIPv1特点" class="headerlink" title="RIPv1特点"></a>RIPv1特点</h4><blockquote>
 <p>有类路由协议（不携带掩码信息）<br>利用广播更新<br>基于UDP协议，使用520端口<br>不支持路由聚合，也不支持不连续子网，也不支持验证</p>
 </blockquote>
-<h4 id="RIPv2特点："><a href="#RIPv2特点：" class="headerlink" title="RIPv2特点："></a>RIPv2特点：</h4><blockquote>
+<h4 id="RIPv2特点"><a href="#RIPv2特点" class="headerlink" title="RIPv2特点"></a>RIPv2特点</h4><blockquote>
 <p>无类路由协议（携带掩码信息）<br>利用组播更新，组播地址为224.0.0.9<br>基于UDP协议，使用520端口<br>支持路由聚合，支持验证，支持指定下一跳，支持标记tag（给数据包打上tag以防止重发布导致路由环路），</p>
 </blockquote>
-<h2 id="RIP定时器："><a href="#RIP定时器：" class="headerlink" title="RIP定时器："></a>RIP定时器：</h2><blockquote>
+<h2 id="RIP定时器"><a href="#RIP定时器" class="headerlink" title="RIP定时器"></a>RIP定时器</h2><blockquote>
 <ol>
 <li>更新定时器：定时触发更新报文的发送，默认30s</li>
+</ol>
+</blockquote>
+<ol start="2">
 <li>抑制定时器：如果收到对端度量值为16的路由，则此路由进入抑制状态，即便再次收到度量值小于16的更新也不接受，默认是180s</li>
 <li>老化定时器：如果在老化时间内（默认180s）没有收到邻居发来的更新报文，则认为此路由不可达并将度量值改为16（16为不可达）</li>
 <li>垃圾收集定时器：如果在垃圾收集时间内（默认为更新定时器的4倍，即120s），不可达链路没有被触发更新则将此路由从路由表中彻底删除。</li>
 </ol>
-</blockquote>
             
         </div>
     </div>
@@ -363,7 +365,7 @@
         
         <span class="tag">
             
-            <a href="/tags/Router/" style="color: #00a596">
+            <a href="/tags/Router/" style="color: #ff7d73">
                 Router
             </a>
         </span>
@@ -397,7 +399,7 @@
     <div class="excerpt">
         <div class="content" v-pre>
             
-            <h1 id="扩展VLAN特性配置与管理"><a href="#扩展VLAN特性配置与管理" class="headerlink" title="扩展VLAN特性配置与管理"></a>扩展VLAN特性配置与管理</h1><h2 id="VLAN聚合："><a href="#VLAN聚合：" class="headerlink" title="VLAN聚合："></a>VLAN聚合：</h2><p>VLAN聚合是把多个不配置三层VLANIF接口聚合成一个超级VLAN（Super-VLAN），这些VLANIF的接口称为Sub-VLAN</p>
+            <h1 id="扩展VLAN特性配置与管理"><a href="#扩展VLAN特性配置与管理" class="headerlink" title="扩展VLAN特性配置与管理"></a>扩展VLAN特性配置与管理</h1><h2 id="VLAN聚合"><a href="#VLAN聚合" class="headerlink" title="VLAN聚合"></a>VLAN聚合</h2><p>VLAN聚合是把多个不配置三层VLANIF接口聚合成一个超级VLAN（Super-VLAN），这些VLANIF的接口称为Sub-VLAN</p>
 <p><img src="/images/switch/2.jpg"></p>
 <blockquote>
 <p>Super-VLAN：<br>可以看成一个大的VLAN，但它的成员不是端口而是Sub-VLAN，需要配置三层VLANIF接口并配置IP地址。每个VLAN聚合中只能有一个Super-VLAN。</p>
@@ -405,7 +407,7 @@
 <blockquote>
 <p>Sub-VLAN：<br>它是Super-VLAN的成员，它的成员是交换机的端口，不能创建三层VLANIF接口，不同Sub-VLAN间是相互二层隔离的，但各个Sub-VLAN中的用户网关都是Super-VLAN的VLANIF接口IP地址，来实现各Sub-VLAN成员间以及与外部网络的三层通信。每个VLAN聚合中可以有多个Sub-VLAN。</p>
 </blockquote>
-<h2 id="MUX-VLAN："><a href="#MUX-VLAN：" class="headerlink" title="MUX VLAN："></a>MUX VLAN：</h2><p><strong>MUX VLAN（Multiplex VLAN）提供了一种通过VLAN进行网络资源控制的机制</strong></p>
+<h2 id="MUX-VLAN"><a href="#MUX-VLAN" class="headerlink" title="MUX VLAN"></a>MUX VLAN</h2><p><strong>MUX VLAN（Multiplex VLAN）提供了一种通过VLAN进行网络资源控制的机制</strong></p>
 <ol>
 <li>主VLAN（Principal VLAN）：Principal port可以和MUX VLAN内的所有接口进行通信。</li>
 <li>从VLAN（Subordinate VLAN）包括隔离型从VLAN和互通型从VLAN：</li>
@@ -423,14 +425,14 @@
         
         <span class="tag">
             
-            <a href="/tags/switch/" style="color: #ffa2c4">
+            <a href="/tags/switch/" style="color: #03a9f4">
                 switch
             </a>
         </span>
         
         <span class="tag">
             
-            <a href="/tags/vlan/" style="color: #03a9f4">
+            <a href="/tags/vlan/" style="color: #ff7d73">
                 vlan
             </a>
         </span>
@@ -522,7 +524,7 @@
         <div class="icon-links">
             
             <span class="icon-link">
-                <a target="_blank" rel="noopener" href="https://tongrens.vip">
+                <a href="https://tongrens.me">
                     <i class="fa-solid fa-earth-americas fa-fw"></i>
                 </a>
             </span>

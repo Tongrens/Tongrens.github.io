@@ -151,7 +151,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/switch/" style="color: #03a9f4">
+                <a href="/tags/switch/" style="color: #00a596">
                     switch
                 </a>
             </span>
@@ -160,30 +160,28 @@
         
     </div>
     <div class="content" v-pre>
-        <h1 id="接口及以太网链路配置及管理"><a href="#接口及以太网链路配置及管理" class="headerlink" title="接口及以太网链路配置及管理"></a>接口及以太网链路配置及管理</h1><h2 id="以太网接口属性："><a href="#以太网接口属性：" class="headerlink" title="以太网接口属性："></a>以太网接口属性：</h2><blockquote>
+        <h1 id="接口及以太网链路配置及管理"><a href="#接口及以太网链路配置及管理" class="headerlink" title="接口及以太网链路配置及管理"></a>接口及以太网链路配置及管理</h1><h2 id="以太网接口属性"><a href="#以太网接口属性" class="headerlink" title="以太网接口属性"></a>以太网接口属性</h2><blockquote>
 <p>二层接口是一种物理接口，属于数据链路层，不能配置IP地址，可以对接收到的报文经行二层转发。</p>
-</blockquote>
-<blockquote>
 <p>三层子接口是一种逻辑接口，属于网络层，可以配置IP地址，主要用来实现收发VLAN报文。可以通过配置使一个二层接口绑定多个三层子接口，从而使得不同VLAN报文从不同子接口转发。</p>
 </blockquote>
-<h2 id="接口类型："><a href="#接口类型：" class="headerlink" title="接口类型："></a>接口类型：</h2><blockquote>
+<h2 id="接口类型"><a href="#接口类型" class="headerlink" title="接口类型"></a>接口类型</h2><blockquote>
 <p>接口类型分为<strong>管理接口、物理接口和逻辑接口</strong><br>管理接口用于登陆到设备经行配置与管理，此接口不承担业务传输<br>物理接口是真实存在的可承担业务传输的接口，一般由电口与光口组成<br>逻辑接口是指能实现数据交换但物理上不存在的接口</p>
 </blockquote>
 <h2 id="端口隔离"><a href="#端口隔离" class="headerlink" title="端口隔离"></a>端口隔离</h2><blockquote>
 <p>端口隔离分为单向隔离和端口隔离组，且都仅适用于同意交换机上不同端口间的隔离，且一个端口可以加入多个端口隔离组</p>
-</blockquote>
-<blockquote>
 <ol>
-<li>单向隔离指禁止某个端口发送的报文到达其他端口，而不禁止其他端口的报文到达本端口</li>
-<li>而端口隔离组内的接口则是互相隔离的</li>
+<li><p>单向隔离指禁止某个端口发送的报文到达其他端口，而不禁止其他端口的报文到达本端口</p>
+</li>
+<li><p>而端口隔离组内的接口则是互相隔离的</p>
+</li>
 </ol>
 </blockquote>
+<span id="more"></span>
+
 <h2 id="链路聚合"><a href="#链路聚合" class="headerlink" title="链路聚合"></a>链路聚合</h2><blockquote>
 <p>链路聚合是指将多个相同属性的物理接口捆绑在一起形成一个逻辑接口，可以用来增加带宽，且聚合端口与物理接口同样可以配置端口类型。</p>
 </blockquote>
-<h2 id="负载分担："><a href="#负载分担：" class="headerlink" title="负载分担："></a>负载分担：</h2><p>负载分担分为手动负载分担和静态LACP负载分担。在手动负载分担的模式下，聚合端口与成员接口的配置都需要由手工来经行完成，并且在该模式下所有链路都参与数据的转发，平均分担流量；静态LACP负载分担模式则是利用LACP协议进行自动聚合，通过LACPDU报文经行交互，通告自己的（系统优先级、系统MAC、端口优先级、端口号和操作key）并与对端经行比较，选择能够汇聚的端口，链路的两端称为Actor和Partner，且LACP模式可以实现链路冗余备份（所以也被称为M:N模式）。</p>
-<span id="more"></span>
-
+<h2 id="负载分担"><a href="#负载分担" class="headerlink" title="负载分担"></a>负载分担</h2><p>负载分担分为手动负载分担和静态LACP负载分担。在手动负载分担的模式下，聚合端口与成员接口的配置都需要由手工来经行完成，并且在该模式下所有链路都参与数据的转发，平均分担流量；静态LACP负载分担模式则是利用LACP协议进行自动聚合，通过LACPDU报文经行交互，通告自己的（系统优先级、系统MAC、端口优先级、端口号和操作key）并与对端经行比较，选择能够汇聚的端口，链路的两端称为Actor和Partner，且LACP模式可以实现链路冗余备份（所以也被称为M:N模式）。</p>
 <blockquote>
 <p>LACP建立主被动关系顺序：</p>
 </blockquote>

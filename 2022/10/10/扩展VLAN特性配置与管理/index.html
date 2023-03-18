@@ -151,14 +151,14 @@
             
             <span class="tag">
                 
-                <a href="/tags/switch/" style="color: #ff7d73">
+                <a href="/tags/switch/" style="color: #00bcd4">
                     switch
                 </a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/vlan/" style="color: #ff7d73">
+                <a href="/tags/vlan/" style="color: #03a9f4">
                     vlan
                 </a>
             </span>
@@ -167,7 +167,7 @@
         
     </div>
     <div class="content" v-pre>
-        <h1 id="扩展VLAN特性配置与管理"><a href="#扩展VLAN特性配置与管理" class="headerlink" title="扩展VLAN特性配置与管理"></a>扩展VLAN特性配置与管理</h1><h2 id="VLAN聚合："><a href="#VLAN聚合：" class="headerlink" title="VLAN聚合："></a>VLAN聚合：</h2><p>VLAN聚合是把多个不配置三层VLANIF接口聚合成一个超级VLAN（Super-VLAN），这些VLANIF的接口称为Sub-VLAN</p>
+        <h1 id="扩展VLAN特性配置与管理"><a href="#扩展VLAN特性配置与管理" class="headerlink" title="扩展VLAN特性配置与管理"></a>扩展VLAN特性配置与管理</h1><h2 id="VLAN聚合"><a href="#VLAN聚合" class="headerlink" title="VLAN聚合"></a>VLAN聚合</h2><p>VLAN聚合是把多个不配置三层VLANIF接口聚合成一个超级VLAN（Super-VLAN），这些VLANIF的接口称为Sub-VLAN</p>
 <p><img src="/images/switch/2.jpg"></p>
 <blockquote>
 <p>Super-VLAN：<br>可以看成一个大的VLAN，但它的成员不是端口而是Sub-VLAN，需要配置三层VLANIF接口并配置IP地址。每个VLAN聚合中只能有一个Super-VLAN。</p>
@@ -175,7 +175,7 @@
 <blockquote>
 <p>Sub-VLAN：<br>它是Super-VLAN的成员，它的成员是交换机的端口，不能创建三层VLANIF接口，不同Sub-VLAN间是相互二层隔离的，但各个Sub-VLAN中的用户网关都是Super-VLAN的VLANIF接口IP地址，来实现各Sub-VLAN成员间以及与外部网络的三层通信。每个VLAN聚合中可以有多个Sub-VLAN。</p>
 </blockquote>
-<h2 id="MUX-VLAN："><a href="#MUX-VLAN：" class="headerlink" title="MUX VLAN："></a>MUX VLAN：</h2><p><strong>MUX VLAN（Multiplex VLAN）提供了一种通过VLAN进行网络资源控制的机制</strong></p>
+<h2 id="MUX-VLAN"><a href="#MUX-VLAN" class="headerlink" title="MUX VLAN"></a>MUX VLAN</h2><p><strong>MUX VLAN（Multiplex VLAN）提供了一种通过VLAN进行网络资源控制的机制</strong></p>
 <ol>
 <li>主VLAN（Principal VLAN）：Principal port可以和MUX VLAN内的所有接口进行通信。</li>
 <li>从VLAN（Subordinate VLAN）包括隔离型从VLAN和互通型从VLAN：</li>
@@ -184,20 +184,22 @@
 <span id="more"></span>
 
 <p>每个隔离型从VLAN必须绑定一个主VLAN。<br>互通型从VLAN（Group VLAN）：Group port可以和Principal port进行通信，在同一组内的接口也可互相通信，但不能和其他组接口或Separate port通信。<br>每个互通型从VLAN必须绑定一个主VLAN。</p>
-<h2 id="QINQ技术："><a href="#QINQ技术：" class="headerlink" title="QINQ技术："></a>QINQ技术：</h2><p>QinQ封装过程就是把单层802.1Q标签的数据帧转换成双层802.1Q标签的数据帧，可以分为基本QinQ和灵活QinQ两种封装类型</p>
+<h2 id="QINQ技术"><a href="#QINQ技术" class="headerlink" title="QINQ技术"></a>QINQ技术</h2><p>QinQ封装过程就是把单层802.1Q标签的数据帧转换成双层802.1Q标签的数据帧，可以分为基本QinQ和灵活QinQ两种封装类型</p>
 <blockquote>
 <p>基本QinQ封装是把进入一个端口的所有流量都封装一个相同的外层VLAN标签，也称为“QinQ二层隧道“<br>灵活QinQ封装是基于端口和VLAN封装的结合方式，对同一个端口接收的数据帧可以根据不同的内层VLAN标签封装不同的外层标签。灵活QinQ又可以分为以下3种类型：</p>
 <blockquote>
 <ol>
 <li>基于VLAN ID的灵活QinQ：基于不同的内层VLAN ID的标签来封装不同的外层标签</li>
+</ol>
+</blockquote>
+<ol start="2">
 <li>基于802.1p优先级的灵活QinQ：基于不同的内层802.1p的标签来封装不同的外层标签</li>
 <li>基于流策略的灵活QinQ：根据不同的QoS策略来添加不同的外层标签</li>
 </ol>
 </blockquote>
-</blockquote>
 <p>QinQ/Dot1q终结子接口：是指设备对数据帧的双层或单层VLAN标签进行识别，根据后续的转发行为进行剥离外层标签，然后据需传送。</p>
 <p><strong>QinQ映射：</strong>QinQ映射是在路由子接口上应用的，且发生在数据帧接收进来之前和从端口发送出去前。向外发送本地VLAN帧时，将帧中的本地VLAN标签替换成外部VLAN标签；接收外部VLAN的帧时，又将外部VLAN标签替换成本地VLAN标签。</p>
-<h2 id="VLAN映射："><a href="#VLAN映射：" class="headerlink" title="VLAN映射："></a>VLAN映射：</h2><p>VLAN映射不同于QinQ映射应用方式，VLAN映射是在物理端口上应用的</p>
+<h2 id="VLAN映射"><a href="#VLAN映射" class="headerlink" title="VLAN映射"></a>VLAN映射</h2><p>VLAN映射不同于QinQ映射应用方式，VLAN映射是在物理端口上应用的</p>
 <blockquote>
 <p>配置1 to 1的VLAN映射</p>
 </blockquote>

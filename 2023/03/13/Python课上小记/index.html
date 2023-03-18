@@ -151,15 +151,15 @@
             
             <span class="tag">
                 
-                <a href="/tags/text/" style="color: #03a9f4">
-                    text
+                <a href="/tags/python/" style="color: #03a9f4">
+                    python
                 </a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/python/" style="color: #00bcd4">
-                    python
+                <a href="/tags/text/" style="color: #ffa2c4">
+                    text
                 </a>
             </span>
             
@@ -181,16 +181,16 @@ print(&#39;需要输入正整数&#39;) if num &lt; 2 else print(&#39;过&#39;) i
 <ol>
 <li><strong>注意题目要求：需要判断的数是输入的下一个数</strong></li>
 <li>line1: 将用户输入的数字加一并存入num</li>
-<li>line2: 代码等同于：<pre><code class="python">if num &lt; 2:  # 判断自增后的数是否小于2，只有大于1的整数才是正整数
-print(&#39;需要输入正整数&#39;)
-else:
-if &#39;7&#39; in str(num) or num % 7 == 0:  # 判断&quot;7&quot;是否在num内或者是否能整除7
-    print(&#39;过&#39;)
-else:
-    print(num)
-</code></pre>
-</li>
+<li>line2: 代码等同于：</li>
 </ol>
+<pre><code class="python">if num &lt; 2:  # 判断自增后的数是否小于2，只有大于1的整数才是正整数
+   print(&#39;需要输入正整数&#39;)
+else:
+   if &#39;7&#39; in str(num) or num % 7 == 0:  # 判断&quot;7&quot;是否在num内或者是否能整除7
+       print(&#39;过&#39;)
+   else:
+       print(num)
+</code></pre>
 </blockquote>
 <span id="more"></span>
 
@@ -407,8 +407,8 @@ while True:
 <li>⽤户输⼊⼀个字符串，判断该字符串是否是合法的邮箱地址，合法的邮箱地址符合以下规则：<br>电⼦邮件地址格式为 域内部分@域名 ，域内部分需要符合以下规则：</li>
 </ul>
 <ol>
-<li>最⻓64个字符 </li>
-<li>可以由英⽂⼩写字⺟ a 到 z 和⼤写字⺟ A 到 Z 、数字 0 到 9 、英⽂句号 . 、短横线 - 或者下划线 _ 组成 </li>
+<li>最⻓64个字符</li>
+<li>可以由英⽂⼩写字⺟ a 到 z 和⼤写字⺟ A 到 Z 、数字 0 到 9 、英⽂句号 . 、短横线 - 或者下划线 _ 组成</li>
 <li>英⽂句号 . 、短横线 - 或者下划线 _ 不能作为⾸尾字符，也不能连续出现\</li>
 </ol>
 <ul>

@@ -151,7 +151,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/Router/" style="color: #00a596">
+                <a href="/tags/Router/" style="color: #ff7d73">
                     Router
                 </a>
             </span>
@@ -161,20 +161,20 @@
     </div>
     <div class="content" v-pre>
         <h1 id="BGP"><a href="#BGP" class="headerlink" title="BGP"></a>BGP</h1><blockquote>
-<h5 id="BGP分类："><a href="#BGP分类：" class="headerlink" title="BGP分类："></a>BGP分类：</h5><p>BGP是EGP（外部网关协议）的一种，而IGP包含了RIP、OSPF、ISIS，是内部网关协议，BGP协议本身不产生、发现路由；<br>BGP分为IBGP和EBGP<br>EBGP：当BGP设备收到EBGP发来的路由时，会将带有自己AS号的路由丢弃<br>IBGP：为了防止环路，从IBGP学习到的路由不会转发给其他IBGP设备，需要建立全连接才能互通，有路由反射器和联盟两种解决方法<br>BGP Router-id：在发送的Open报文中携带，通常是IP地址<br><strong>AS划分：</strong><br>二字节AS：1-65535<br>四字节AS：1-4294967295<br>公网AS：1-64511<br>私网AS：64512-65534</p>
-</blockquote>
-<h3 id="2种角色："><a href="#2种角色：" class="headerlink" title="2种角色："></a>2种角色：</h3><blockquote>
+<h5 id="BGP分类"><a href="#BGP分类" class="headerlink" title="BGP分类"></a>BGP分类</h5></blockquote>
+<p>BGP是EGP（外部网关协议）的一种，而IGP包含了RIP、OSPF、ISIS，是内部网关协议，BGP协议本身不产生、发现路由；<br>BGP分为IBGP和EBGP<br>EBGP：当BGP设备收到EBGP发来的路由时，会将带有自己AS号的路由丢弃<br>IBGP：为了防止环路，从IBGP学习到的路由不会转发给其他IBGP设备，需要建立全连接才能互通，有路由反射器和联盟两种解决方法<br>BGP Router-id：在发送的Open报文中携带，通常是IP地址<br><strong>AS划分：</strong><br>二字节AS：1-65535<br>四字节AS：1-4294967295<br>公网AS：1-64511<br>私网AS：64512-65534</p>
+<h3 id="2种角色"><a href="#2种角色" class="headerlink" title="2种角色"></a>2种角色</h3><blockquote>
 <p>Speaker：发送或者接受BGP报文的任何设备都是Speaker<br>Peer：相互交换报文的Speaker之间互为对等体，若干相关的对等体可以组成对等体组</p>
 </blockquote>
 <span id="more"></span>
 
-<h3 id="5种BGP报文："><a href="#5种BGP报文：" class="headerlink" title="5种BGP报文："></a>5种BGP报文：</h3><blockquote>
+<h3 id="5种BGP报文"><a href="#5种BGP报文" class="headerlink" title="5种BGP报文"></a>5种BGP报文</h3><blockquote>
 <p>Open（建立）：建立后发送的第一个报文，包含本地Speaker信息以及建立tcp会话信息，用于建立BGP对等体之间的连接关系<br>Update（更新）：进行路由信息交换，可以发布可达路由信息，也可以撤销不可达<br>信息<br>Notification（通知）：检测到错误状态时会发送给对等体，会立即中断<br>Keepalive（保持活跃）：周期性发送（默认60s），用于保持连接的有效性<br>Route-refresh（路由刷新）：要求对等体重新发送指定路由信息</p>
 </blockquote>
-<h3 id="6种BGP状态："><a href="#6种BGP状态：" class="headerlink" title="6种BGP状态："></a>6种BGP状态：</h3><blockquote>
+<h3 id="6种BGP状态"><a href="#6种BGP状态" class="headerlink" title="6种BGP状态"></a>6种BGP状态</h3><blockquote>
 <p>空闲（Idle）：初始状态，当收到本设备的start事件后才转至connect状态<br>连接（Connect）：启动连接重传定时器，如果连接成功则转至OpenSent状态，如果失败则转至Active状态<br>活跃（Active）：尝试建立TCP连接，如果连接成功则转至OpenSent状态，如果失败则停留在Active状态，超时则转至Connect状态再次连接<br>Open报文已发送（OpenSent）：已发送open报文并对接收到的open报文进行检查，如果正确则发送Keepalive报文并转至OpenConfirm状态，如果错误则转至Idle状态<br>Open报文已确认（OpenConfirm）：已发送Keepalive报文并等待对方的keepalive或Notification报文，如果收到Keepalive报文则转至Established状态，如果收到Notification报文则转至Idle状态<br>已建立连接（Established）：正常转发Update、Notification、Keepalive和Route-refresh报文</p>
 </blockquote>
-<h2 id="BGP路由属性："><a href="#BGP路由属性：" class="headerlink" title="BGP路由属性："></a>BGP路由属性：</h2><p><strong>分为公认必遵、公认任意、可选过度和非可选过度</strong><br><img src="/images/router/1.jpg"></p>
+<h2 id="BGP路由属性"><a href="#BGP路由属性" class="headerlink" title="BGP路由属性"></a>BGP路由属性</h2><p><strong>分为公认必遵、公认任意、可选过度和非可选过度</strong><br><img src="/images/router/1.jpg"></p>
 <blockquote>
 <p>公认必遵：（必须在Update报文中存在）</p>
 <blockquote>
@@ -218,7 +218,7 @@
 <li>优选从具有最小邻居地址的对等体学来的路由</li>
 </ol>
 <hr>
-<h3 id="关于为了IBGP路由防环而导致AS内路由无法传递的解决方法："><a href="#关于为了IBGP路由防环而导致AS内路由无法传递的解决方法：" class="headerlink" title="关于为了IBGP路由防环而导致AS内路由无法传递的解决方法："></a>关于为了IBGP路由防环而导致AS内路由无法传递的解决方法：</h3><p><strong>路由反射器：</strong>可以把从IBGP学习到的路由反射被其他IBGP对等体<br><strong>BGP联盟：</strong>将一个AS划分成多个子AS，每个子AS之间建立IBGP联盟关系，IBGP联盟之间建立EBGP，原AS号作为每个路由器的联盟ID，这样可以保留原有IBGP属性，并且路由在传出联盟后会自动删除联盟属性，这样联盟外路由器只会知道原AS号</p>
+<h3 id="关于为了IBGP路由防环而导致AS内路由无法传递的解决方法"><a href="#关于为了IBGP路由防环而导致AS内路由无法传递的解决方法" class="headerlink" title="关于为了IBGP路由防环而导致AS内路由无法传递的解决方法"></a>关于为了IBGP路由防环而导致AS内路由无法传递的解决方法</h3><p><strong>路由反射器：</strong>可以把从IBGP学习到的路由反射被其他IBGP对等体<br><strong>BGP联盟：</strong>将一个AS划分成多个子AS，每个子AS之间建立IBGP联盟关系，IBGP联盟之间建立EBGP，原AS号作为每个路由器的联盟ID，这样可以保留原有IBGP属性，并且路由在传出联盟后会自动删除联盟属性，这样联盟外路由器只会知道原AS号</p>
 
     </div>
     

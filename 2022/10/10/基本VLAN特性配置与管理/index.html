@@ -151,14 +151,14 @@
             
             <span class="tag">
                 
-                <a href="/tags/switch/" style="color: #ffa2c4">
+                <a href="/tags/switch/" style="color: #ff7d73">
                     switch
                 </a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/vlan/" style="color: #ff7d73">
+                <a href="/tags/vlan/" style="color: #00a596">
                     vlan
                 </a>
             </span>
@@ -171,7 +171,7 @@
 <h2 id="VLAN帧"><a href="#VLAN帧" class="headerlink" title="VLAN帧"></a>VLAN帧</h2><p>VLAN Tag:标识所属VLAN，遵循IEEE 802.1Q标注，支持802.1Q协议的交换机既可以发送有标记帧也可以发送无标记帧（有标记帧加入了4字节的801.1Q Tag，反之则没有），交换机内部的数据包一律携带Tag。</p>
 <span id="more"></span>
 
-<h2 id="802-1Q-Tag各字段含义："><a href="#802-1Q-Tag各字段含义：" class="headerlink" title="802.1Q Tag各字段含义："></a>802.1Q Tag各字段含义：</h2><p>TPID：长度2bytes，表示帧类型，取值为0x8100为802.1Q帧，如果不支持的设备接受到则丢弃<br>PRI：长度3bits，表示帧优先级，取值范围0-7，越大越优，用于QOS<br>CFI：长度1bits，表示MAC地址是否为经典格式，0是经典1是非经典，在以太网中值为1<br>VID：长度12bits，表示VLAN ID</p>
+<h2 id="802-1Q-Tag各字段含义"><a href="#802-1Q-Tag各字段含义" class="headerlink" title="802.1Q Tag各字段含义"></a>802.1Q Tag各字段含义</h2><p>TPID：长度2bytes，表示帧类型，取值为0x8100为802.1Q帧，如果不支持的设备接受到则丢弃<br>PRI：长度3bits，表示帧优先级，取值范围0-7，越大越优，用于QOS<br>CFI：长度1bits，表示MAC地址是否为经典格式，0是经典1是非经典，在以太网中值为1<br>VID：长度12bits，表示VLAN ID</p>
 <h2 id="VLAN特性"><a href="#VLAN特性" class="headerlink" title="VLAN特性"></a>VLAN特性</h2><p>华为交换机支持5种VLAN划分：基于<strong>端口</strong>划分、基于<strong>子网</strong>划分、基于<strong>MAC地址</strong>划分、基于<strong>协议</strong>划分、基于<strong>策略</strong>划分；其中端口划分属于静态VLAN划分，其余的属于动态VLAN划分<br><em>（除了端口划分其余都要在Hybrid口上划分）</em></p>
 <p>常见的VLAN间通信有三层VLANIF接口、三层以太网子接口和VLAN switch方案</p>
 <blockquote>
