@@ -146,6 +146,81 @@
             
 
 <div class="post">
+    <a href="/2023/05/10/powershell安装IIS并搭建https站点/">
+        <h2 class="post-title">powershell安装IIS并搭建https站点</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/笔记/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                </span>
+                笔记
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2023/5/10
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <h2 id="powershell安装IIS并搭建https站点"><a href="#powershell安装IIS并搭建https站点" class="headerlink" title="powershell安装IIS并搭建https站点"></a>powershell安装IIS并搭建https站点</h2><ol>
+<li>关闭虚拟机并复制虚拟硬盘路径并挂载<br><img src="/images/windows/2/1.png"></li>
+</ol>
+<p><img src="/images/windows/2/2.png"></p>
+<ol start="2">
+<li>导入网站根目录和证书文件，并创建index.html和内容<br>Ps:证书私钥时选择“组或用户名”<br><img src="/images/windows/2/3.png"></li>
+</ol>
+<p><img src="/images/windows/2/4.png"></p>
+<ol start="3">
+<li><p>弹出虚拟硬盘<br><img src="/images/windows/2/5.png"></p>
+</li>
+<li><p>开启虚拟机并导入证书文件</p>
+<pre><code class="powershell">Import-PfxCertificate -FilePath &quot;C:\1.pfx&quot; -CertStoreLocation Cert:\LocalMachine\My
+</code></pre>
+<p><img src="/images/windows/2/6.png"></p>
+</li>
+<li><p>若忘记证书指纹可用以下命令获取本地证书指纹<br>Get-ChildItem -Path Cert:LocalMachine\MY</p>
+</li>
+<li><p>安装Web-Server</p>
+<pre><code class="posershell">Install-WindowsFeature web-server
+</code></pre>
+</li>
+<li><p>添加新站点并绑定证书</p>
+<pre><code class="powershell">New-Website -name web -PhysicalPath C:\wwwroot -Port 443 -Ssl
+(Get-WebBinding -Name web).AddSslCertificate(&quot;A6D10FE6786CADEC71D36FAA809F7A2735&quot;, &quot;my&quot;)
+</code></pre>
+</li>
+</ol>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/Windows/" style="color: #ffa2c4">
+                Windows
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2023/05/10/powershell安装IIS并搭建https站点/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
     <a href="/2023/04/27/Windows组策略/">
         <h2 class="post-title">Windows组策略</h2>
     </a>
@@ -173,7 +248,7 @@
             <h1 id="Windows组策略"><a href="#Windows组策略" class="headerlink" title="Windows组策略"></a>Windows组策略</h1><ul>
 <li><strong>所有的域计算机和域用户都能自动注册证书</strong></li>
 </ul>
-<p><img src="/images/windows/1.png"></p>
+<p><img src="/images/windows/1/1.png"></p>
             
         </div>
     </div>
@@ -186,7 +261,7 @@
         
         <span class="tag">
             
-            <a href="/tags/Windows/" style="color: #ffa2c4">
+            <a href="/tags/Windows/" style="color: #03a9f4">
                 Windows
             </a>
         </span>
@@ -257,14 +332,14 @@ else:
         
         <span class="tag">
             
-            <a href="/tags/text/" style="color: #00a596">
+            <a href="/tags/text/" style="color: #03a9f4">
                 text
             </a>
         </span>
         
         <span class="tag">
             
-            <a href="/tags/python/" style="color: #ff7d73">
+            <a href="/tags/python/" style="color: #00bcd4">
                 python
             </a>
         </span>
@@ -323,14 +398,14 @@ else:
         
         <span class="tag">
             
-            <a href="/tags/python/" style="color: #00bcd4">
+            <a href="/tags/python/" style="color: #03a9f4">
                 python
             </a>
         </span>
         
         <span class="tag">
             
-            <a href="/tags/exam/" style="color: #03a9f4">
+            <a href="/tags/exam/" style="color: #ff7d73">
                 exam
             </a>
         </span>
@@ -379,67 +454,7 @@ else:
         
         <span class="tag">
             
-            <a href="/tags/python/" style="color: #ff7d73">
-                python
-            </a>
-        </span>
-        
-        <span class="tag">
-            
-            <a href="/tags/exam/" style="color: #00a596">
-                exam
-            </a>
-        </span>
-        
-    </div>
-    <a href="/2022/11/03/22-11-02蓝桥杯测试题/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2022/10/26/22-10-26蓝桥杯测试题/">
-        <h2 class="post-title">22.10.26蓝桥杯测试题</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/笔记/">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
-                </span>
-                笔记
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
-            </span>
-            2022/10/26
-        </span>
-    </div>
-    <div class="excerpt">
-        <div class="content" v-pre>
-            
-            <h1 id="还是老规矩直接上题"><a href="#还是老规矩直接上题" class="headerlink" title="还是老规矩直接上题"></a>还是老规矩直接上题</h1><h3 id="1-题目"><a href="#1-题目" class="headerlink" title="1. 题目"></a>1. <a target="_blank" rel="noopener" href="https://www.lanqiao.cn/problems/2118/learning/">题目</a></h3><blockquote>
-<p>小蓝要把一个字符串中的字母按其在字母表中的顺序排列。<br>例如，LANQIAO 排列后为 AAILNOQ。<br>又如，GOODGOODSTUDYDAYDAYUP 排列后为 AADDDDDGGOOOOPSTUUYYY。<br>请问对于以下字符串，排列之后字符串是什么？<br>WHERETHEREISAWILLTHEREISAWAYZA</p>
-</blockquote>
-<pre><code class="python">source = &#39;WHERETHEREISAWILLTHEREISAWAY&#39;
-print(&#39;&#39;.join(sorted(list(source))))
-# AAAEEEEEEHHHIIILLRRRSSTTWWWY
-</code></pre>
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-        </span>
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/python/" style="color: #00a596">
+            <a href="/tags/python/" style="color: #00bcd4">
                 python
             </a>
         </span>
@@ -452,7 +467,7 @@ print(&#39;&#39;.join(sorted(list(source))))
         </span>
         
     </div>
-    <a href="/2022/10/26/22-10-26蓝桥杯测试题/" class="go-post">阅读全文</a>
+    <a href="/2022/11/03/22-11-02蓝桥杯测试题/" class="go-post">阅读全文</a>
 </div>
 
              
