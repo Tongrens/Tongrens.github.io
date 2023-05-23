@@ -12,12 +12,20 @@
         <script src="https://cdn.staticfile.org/vue/3.2.47/vue.global.prod.min.js"></script>
 <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.3.0/css/all.min.css" />
 <link rel="stylesheet" href="/css/fonts.min.css" />
-<canvas id="fireworks" style="position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:2147483647"></canvas>
-<canvas id="background" style="position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:-1"></canvas>
+<canvas id="fireworks" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 32767"></canvas>
+<script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+<script src="/js/fireworks.min.js"></script>
+<canvas id="background" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -1"></canvas>
+<script src="/js/background.min.js"></script>
+<div id="cursor"></div>
+<link rel="stylesheet" href="/css/cursor.min.css">
+<script src="/js/cursor.min.js"></script>
 <script src="/js/fireworks.js"></script>
 <script src="/js/background.js"></script>
-<script src="/js/particlex.js"></script>
-<script src="/js/showimg.js"></script>
+<canvas id="fireworks" style="position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:2147483647"></canvas>
+<canvas id="background" style="position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:-1"></canvas>
+
+
 <script> const mixins = {}; </script>
 
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
@@ -186,12 +194,12 @@
             
             <span class="tag">
                 
-                <a href="/tags/Windows/" style="color: #ffa2c4">Windows</a>
+                <a href="/tags/Windows/" style="color: #ff7d73">Windows</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/Powershell/" style="color: #00bcd4">Powershell</a>
+                <a href="/tags/Powershell/" style="color: #00a596">Powershell</a>
             </span>
             
         </span>
@@ -205,7 +213,7 @@
         :disabled="cryptoStatus"
         ref="crypto"
         placeholder="文章被加密，请输入密码"
-        data-encrypted="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"
+        data-encrypted="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"
         data-shasum="6b1b3fdd0e3574ab08d4a6aa0a0d605ad33aa17425a0482e839d15fbf1c2294a"
         v-model="crypto"
     />

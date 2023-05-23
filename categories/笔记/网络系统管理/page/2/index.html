@@ -12,12 +12,20 @@
         <script src="https://cdn.staticfile.org/vue/3.2.47/vue.global.prod.min.js"></script>
 <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.3.0/css/all.min.css" />
 <link rel="stylesheet" href="/css/fonts.min.css" />
-<canvas id="fireworks" style="position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:2147483647"></canvas>
-<canvas id="background" style="position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:-1"></canvas>
+<canvas id="fireworks" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 32767"></canvas>
+<script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+<script src="/js/fireworks.min.js"></script>
+<canvas id="background" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -1"></canvas>
+<script src="/js/background.min.js"></script>
+<div id="cursor"></div>
+<link rel="stylesheet" href="/css/cursor.min.css">
+<script src="/js/cursor.min.js"></script>
 <script src="/js/fireworks.js"></script>
 <script src="/js/background.js"></script>
-<script src="/js/particlex.js"></script>
-<script src="/js/showimg.js"></script>
+<canvas id="fireworks" style="position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:2147483647"></canvas>
+<canvas id="background" style="position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:-1"></canvas>
+
+
 <script> const mixins = {}; </script>
 
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
@@ -152,7 +160,7 @@
         
         
         <span>
-            <a href="/categories/Other/" style="background: #ffa2c4">
+            <a href="/categories/Other/" style="background: #ff7d73">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
@@ -163,7 +171,7 @@
         
         
         <span>
-            <a href="/categories/%E7%AC%94%E8%AE%B0/" style="background: #00a596">
+            <a href="/categories/%E7%AC%94%E8%AE%B0/" style="background: #ff7d73">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
@@ -185,7 +193,7 @@
         
         
         <span>
-            <a href="/categories/%E7%AC%94%E8%AE%B0/%E8%B7%AF%E7%94%B1%E4%BA%A4%E6%8D%A2/" style="background: #03a9f4">
+            <a href="/categories/%E7%AC%94%E8%AE%B0/%E8%B7%AF%E7%94%B1%E4%BA%A4%E6%8D%A2/" style="background: #ff7d73">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
@@ -235,7 +243,7 @@
                     
                     <span class="tag">
                         
-                        <a href="/tags/Windows/" style="color: #ff7d73">Windows</a>
+                        <a href="/tags/Windows/" style="color: #00bcd4">Windows</a>
                     </span>
                     
                     <span class="tag">
@@ -275,7 +283,7 @@
                     
                     <span class="tag">
                         
-                        <a href="/tags/Windows/" style="color: #00bcd4">Windows</a>
+                        <a href="/tags/Windows/" style="color: #ff7d73">Windows</a>
                     </span>
                     
                 </span>
@@ -310,7 +318,7 @@
                     
                     <span class="tag">
                         
-                        <a href="/tags/Windows/" style="color: #00bcd4">Windows</a>
+                        <a href="/tags/Windows/" style="color: #03a9f4">Windows</a>
                     </span>
                     
                 </span>
@@ -380,7 +388,7 @@
                     
                     <span class="tag">
                         
-                        <a href="/tags/Windows/" style="color: #ffa2c4">Windows</a>
+                        <a href="/tags/Windows/" style="color: #03a9f4">Windows</a>
                     </span>
                     
                 </span>
@@ -415,7 +423,7 @@
                     
                     <span class="tag">
                         
-                        <a href="/tags/Windows/" style="color: #00a596">Windows</a>
+                        <a href="/tags/Windows/" style="color: #00bcd4">Windows</a>
                     </span>
                     
                     <span class="tag">
@@ -455,12 +463,12 @@
                     
                     <span class="tag">
                         
-                        <a href="/tags/Windows/" style="color: #00bcd4">Windows</a>
+                        <a href="/tags/Windows/" style="color: #00a596">Windows</a>
                     </span>
                     
                     <span class="tag">
                         
-                        <a href="/tags/Powershell/" style="color: #00bcd4">Powershell</a>
+                        <a href="/tags/Powershell/" style="color: #03a9f4">Powershell</a>
                     </span>
                     
                 </span>
@@ -500,7 +508,7 @@
                     
                     <span class="tag">
                         
-                        <a href="/tags/Powershell/" style="color: #ffa2c4">Powershell</a>
+                        <a href="/tags/Powershell/" style="color: #03a9f4">Powershell</a>
                     </span>
                     
                 </span>
@@ -535,7 +543,7 @@
                     
                     <span class="tag">
                         
-                        <a href="/tags/Windows/" style="color: #00a596">Windows</a>
+                        <a href="/tags/Windows/" style="color: #ffa2c4">Windows</a>
                     </span>
                     
                 </span>
