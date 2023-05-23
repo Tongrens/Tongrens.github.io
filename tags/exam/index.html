@@ -12,6 +12,12 @@
         <script src="https://cdn.staticfile.org/vue/3.2.47/vue.global.prod.min.js"></script>
 <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.3.0/css/all.min.css" />
 <link rel="stylesheet" href="/css/fonts.min.css" />
+<canvas id="fireworks" style="position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:2147483647"></canvas>
+<canvas id="background" style="position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:-1"></canvas>
+<script src="/js/fireworks.js"></script>
+<script src="/js/background.js"></script>
+<script src="/js/particlex.js"></script>
+<script src="/js/showimg.js"></script>
 <script> const mixins = {}; </script>
 
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
@@ -24,11 +30,6 @@
 />
 <script src="/js/lib/highlight.js"></script>
 
-
-<script src="https://cdn.staticfile.org/KaTeX/0.16.4/katex.min.js"></script>
-<script src="https://cdn.staticfile.org/KaTeX/0.16.4/contrib/auto-render.min.js"></script>
-<link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.16.4/katex.min.css" />
-<script src="/js/lib/math.js"></script>
 
 
 <script src="/js/lib/preview.js"></script>
@@ -46,7 +47,6 @@
                 <div id="loading" v-show="loading">
                     <div id="loading-circle">
                         <h2>LOADING</h2>
-                        <p>加载过慢请开启缓存 浏览器默认开启</p>
                         <img src="/images/loading.gif" />
                     </div>
                 </div>
@@ -152,7 +152,7 @@
         
         
         <span>
-            <a href="/tags/text/" style="background: #00bcd4">
+            <a href="/tags/text/" style="background: #00a596">
                 <span class="icon">
                     <i class="fa-solid fa-tags fa-fw"></i>
                 </span>
@@ -163,7 +163,7 @@
         
         
         <span>
-            <a href="/tags/python/" style="background: #00a596">
+            <a href="/tags/python/" style="background: #ffa2c4">
                 <span class="icon">
                     <i class="fa-solid fa-tags fa-fw"></i>
                 </span>
@@ -198,7 +198,7 @@
         
         
         <span>
-            <a href="/tags/Router/" style="background: #ffa2c4">
+            <a href="/tags/Router/" style="background: #00bcd4">
                 <span class="icon">
                     <i class="fa-solid fa-tags fa-fw"></i>
                 </span>
@@ -209,7 +209,7 @@
         
         
         <span>
-            <a href="/tags/Windows/" style="background: #ff7d73">
+            <a href="/tags/Windows/" style="background: #03a9f4">
                 <span class="icon">
                     <i class="fa-solid fa-tags fa-fw"></i>
                 </span>
@@ -220,7 +220,7 @@
         
         
         <span>
-            <a href="/tags/Powershell/" style="background: #00a596">
+            <a href="/tags/Powershell/" style="background: #ff7d73">
                 <span class="icon">
                     <i class="fa-solid fa-tags fa-fw"></i>
                 </span>
@@ -242,7 +242,7 @@
         
         
         <span>
-            <a href="/tags/HashTable/" style="background: #ffa2c4">
+            <a href="/tags/HashTable/" style="background: #ff7d73">
                 <span class="icon">
                     <i class="fa-solid fa-tags fa-fw"></i>
                 </span>
@@ -253,7 +253,7 @@
         
         
         <span>
-            <a href="/tags/switch/" style="background: #00bcd4">
+            <a href="/tags/switch/" style="background: #00a596">
                 <span class="icon">
                     <i class="fa-solid fa-tags fa-fw"></i>
                 </span>
@@ -275,7 +275,7 @@
         
         
         <span>
-            <a href="/tags/sort/" style="background: #00a596">
+            <a href="/tags/sort/" style="background: #00bcd4">
                 <span class="icon">
                     <i class="fa-solid fa-tags fa-fw"></i>
                 </span>
@@ -286,7 +286,7 @@
         
         
         <span>
-            <a href="/tags/LinkList/" style="background: #ffa2c4">
+            <a href="/tags/LinkList/" style="background: #ff7d73">
                 <span class="icon">
                     <i class="fa-solid fa-tags fa-fw"></i>
                 </span>
@@ -323,12 +323,12 @@
                     
                     <span class="tag">
                         
-                        <a href="/tags/python/" style="color: #ffa2c4">python</a>
+                        <a href="/tags/python/" style="color: #ff7d73">python</a>
                     </span>
                     
                     <span class="tag">
                         
-                        <a href="/tags/exam/" style="color: #ffa2c4">exam</a>
+                        <a href="/tags/exam/" style="color: #00bcd4">exam</a>
                     </span>
                     
                 </span>
@@ -363,12 +363,12 @@
                     
                     <span class="tag">
                         
-                        <a href="/tags/python/" style="color: #00a596">python</a>
+                        <a href="/tags/python/" style="color: #03a9f4">python</a>
                     </span>
                     
                     <span class="tag">
                         
-                        <a href="/tags/exam/" style="color: #03a9f4">exam</a>
+                        <a href="/tags/exam/" style="color: #ffa2c4">exam</a>
                     </span>
                     
                 </span>
@@ -403,12 +403,12 @@
                     
                     <span class="tag">
                         
-                        <a href="/tags/python/" style="color: #03a9f4">python</a>
+                        <a href="/tags/python/" style="color: #ff7d73">python</a>
                     </span>
                     
                     <span class="tag">
                         
-                        <a href="/tags/exam/" style="color: #00a596">exam</a>
+                        <a href="/tags/exam/" style="color: #ff7d73">exam</a>
                     </span>
                     
                 </span>

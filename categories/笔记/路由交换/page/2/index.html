@@ -12,6 +12,12 @@
         <script src="https://cdn.staticfile.org/vue/3.2.47/vue.global.prod.min.js"></script>
 <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.3.0/css/all.min.css" />
 <link rel="stylesheet" href="/css/fonts.min.css" />
+<canvas id="fireworks" style="position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:2147483647"></canvas>
+<canvas id="background" style="position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:-1"></canvas>
+<script src="/js/fireworks.js"></script>
+<script src="/js/background.js"></script>
+<script src="/js/particlex.js"></script>
+<script src="/js/showimg.js"></script>
 <script> const mixins = {}; </script>
 
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
@@ -24,11 +30,6 @@
 />
 <script src="/js/lib/highlight.js"></script>
 
-
-<script src="https://cdn.staticfile.org/KaTeX/0.16.4/katex.min.js"></script>
-<script src="https://cdn.staticfile.org/KaTeX/0.16.4/contrib/auto-render.min.js"></script>
-<link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.16.4/katex.min.css" />
-<script src="/js/lib/math.js"></script>
 
 
 <script src="/js/lib/preview.js"></script>
@@ -46,7 +47,6 @@
                 <div id="loading" v-show="loading">
                     <div id="loading-circle">
                         <h2>LOADING</h2>
-                        <p>加载过慢请开启缓存 浏览器默认开启</p>
                         <img src="/images/loading.gif" />
                     </div>
                 </div>
@@ -152,7 +152,7 @@
         
         
         <span>
-            <a href="/categories/Other/" style="background: #00a596">
+            <a href="/categories/Other/" style="background: #00bcd4">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
@@ -174,7 +174,7 @@
         
         
         <span>
-            <a href="/categories/%E7%AC%94%E8%AE%B0/%E7%AE%97%E6%B3%95/" style="background: #03a9f4">
+            <a href="/categories/%E7%AC%94%E8%AE%B0/%E7%AE%97%E6%B3%95/" style="background: #ffa2c4">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
@@ -235,7 +235,7 @@
                     
                     <span class="tag">
                         
-                        <a href="/tags/Router/" style="color: #00bcd4">Router</a>
+                        <a href="/tags/Router/" style="color: #ff7d73">Router</a>
                     </span>
                     
                 </span>
@@ -270,7 +270,7 @@
                     
                     <span class="tag">
                         
-                        <a href="/tags/Router/" style="color: #ffa2c4">Router</a>
+                        <a href="/tags/Router/" style="color: #00bcd4">Router</a>
                     </span>
                     
                 </span>
@@ -340,12 +340,12 @@
                     
                     <span class="tag">
                         
-                        <a href="/tags/switch/" style="color: #ffa2c4">switch</a>
+                        <a href="/tags/switch/" style="color: #03a9f4">switch</a>
                     </span>
                     
                     <span class="tag">
                         
-                        <a href="/tags/vlan/" style="color: #ffa2c4">vlan</a>
+                        <a href="/tags/vlan/" style="color: #03a9f4">vlan</a>
                     </span>
                     
                 </span>
@@ -380,7 +380,7 @@
                     
                     <span class="tag">
                         
-                        <a href="/tags/switch/" style="color: #ffa2c4">switch</a>
+                        <a href="/tags/switch/" style="color: #03a9f4">switch</a>
                     </span>
                     
                 </span>
@@ -415,12 +415,12 @@
                     
                     <span class="tag">
                         
-                        <a href="/tags/switch/" style="color: #00a596">switch</a>
+                        <a href="/tags/switch/" style="color: #ffa2c4">switch</a>
                     </span>
                     
                     <span class="tag">
                         
-                        <a href="/tags/vlan/" style="color: #03a9f4">vlan</a>
+                        <a href="/tags/vlan/" style="color: #00a596">vlan</a>
                     </span>
                     
                 </span>

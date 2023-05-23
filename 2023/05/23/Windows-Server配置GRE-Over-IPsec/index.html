@@ -12,6 +12,12 @@
         <script src="https://cdn.staticfile.org/vue/3.2.47/vue.global.prod.min.js"></script>
 <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.3.0/css/all.min.css" />
 <link rel="stylesheet" href="/css/fonts.min.css" />
+<canvas id="fireworks" style="position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:2147483647"></canvas>
+<canvas id="background" style="position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:-1"></canvas>
+<script src="/js/fireworks.js"></script>
+<script src="/js/background.js"></script>
+<script src="/js/particlex.js"></script>
+<script src="/js/showimg.js"></script>
 <script> const mixins = {}; </script>
 
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
@@ -24,11 +30,6 @@
 />
 <script src="/js/lib/highlight.js"></script>
 
-
-<script src="https://cdn.staticfile.org/KaTeX/0.16.4/katex.min.js"></script>
-<script src="https://cdn.staticfile.org/KaTeX/0.16.4/contrib/auto-render.min.js"></script>
-<link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.16.4/katex.min.css" />
-<script src="/js/lib/math.js"></script>
 
 
 <script src="/js/lib/preview.js"></script>
@@ -57,7 +58,6 @@
                 <div id="loading" v-show="loading">
                     <div id="loading-circle">
                         <h2>LOADING</h2>
-                        <p>加载过慢请开启缓存 浏览器默认开启</p>
                         <img src="/images/loading.gif" />
                     </div>
                 </div>
@@ -186,12 +186,12 @@
             
             <span class="tag">
                 
-                <a href="/tags/Windows/" style="color: #03a9f4">Windows</a>
+                <a href="/tags/Windows/" style="color: #ffa2c4">Windows</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/Powershell/" style="color: #ff7d73">Powershell</a>
+                <a href="/tags/Powershell/" style="color: #00bcd4">Powershell</a>
             </span>
             
         </span>
@@ -205,7 +205,7 @@
         :disabled="cryptoStatus"
         ref="crypto"
         placeholder="文章被加密，请输入密码"
-        data-encrypted="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"
+        data-encrypted="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"
         data-shasum="6b1b3fdd0e3574ab08d4a6aa0a0d605ad33aa17425a0482e839d15fbf1c2294a"
         v-model="crypto"
     />

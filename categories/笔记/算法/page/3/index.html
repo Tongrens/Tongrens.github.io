@@ -12,6 +12,12 @@
         <script src="https://cdn.staticfile.org/vue/3.2.47/vue.global.prod.min.js"></script>
 <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.3.0/css/all.min.css" />
 <link rel="stylesheet" href="/css/fonts.min.css" />
+<canvas id="fireworks" style="position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:2147483647"></canvas>
+<canvas id="background" style="position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:-1"></canvas>
+<script src="/js/fireworks.js"></script>
+<script src="/js/background.js"></script>
+<script src="/js/particlex.js"></script>
+<script src="/js/showimg.js"></script>
 <script> const mixins = {}; </script>
 
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
@@ -24,11 +30,6 @@
 />
 <script src="/js/lib/highlight.js"></script>
 
-
-<script src="https://cdn.staticfile.org/KaTeX/0.16.4/katex.min.js"></script>
-<script src="https://cdn.staticfile.org/KaTeX/0.16.4/contrib/auto-render.min.js"></script>
-<link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.16.4/katex.min.css" />
-<script src="/js/lib/math.js"></script>
 
 
 <script src="/js/lib/preview.js"></script>
@@ -46,7 +47,6 @@
                 <div id="loading" v-show="loading">
                     <div id="loading-circle">
                         <h2>LOADING</h2>
-                        <p>加载过慢请开启缓存 浏览器默认开启</p>
                         <img src="/images/loading.gif" />
                     </div>
                 </div>
@@ -152,7 +152,7 @@
         
         
         <span>
-            <a href="/categories/Other/" style="background: #00bcd4">
+            <a href="/categories/Other/" style="background: #03a9f4">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
@@ -163,7 +163,7 @@
         
         
         <span>
-            <a href="/categories/%E7%AC%94%E8%AE%B0/" style="background: #ffa2c4">
+            <a href="/categories/%E7%AC%94%E8%AE%B0/" style="background: #ff7d73">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
@@ -187,7 +187,7 @@
         
         
         <span>
-            <a href="/categories/%E7%AC%94%E8%AE%B0/%E8%B7%AF%E7%94%B1%E4%BA%A4%E6%8D%A2/" style="background: #ffa2c4">
+            <a href="/categories/%E7%AC%94%E8%AE%B0/%E8%B7%AF%E7%94%B1%E4%BA%A4%E6%8D%A2/" style="background: #ff7d73">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
@@ -198,7 +198,7 @@
         
         
         <span>
-            <a href="/categories/%E7%AC%94%E8%AE%B0/%E7%BD%91%E7%BB%9C%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86/" style="background: #00bcd4">
+            <a href="/categories/%E7%AC%94%E8%AE%B0/%E7%BD%91%E7%BB%9C%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86/" style="background: #ffa2c4">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
@@ -235,12 +235,12 @@
                     
                     <span class="tag">
                         
-                        <a href="/tags/python/" style="color: #00a596">python</a>
+                        <a href="/tags/python/" style="color: #ffa2c4">python</a>
                     </span>
                     
                     <span class="tag">
                         
-                        <a href="/tags/exam/" style="color: #ff7d73">exam</a>
+                        <a href="/tags/exam/" style="color: #00bcd4">exam</a>
                     </span>
                     
                 </span>
@@ -280,7 +280,7 @@
                     
                     <span class="tag">
                         
-                        <a href="/tags/exam/" style="color: #ff7d73">exam</a>
+                        <a href="/tags/exam/" style="color: #03a9f4">exam</a>
                     </span>
                     
                 </span>
@@ -315,12 +315,12 @@
                     
                     <span class="tag">
                         
-                        <a href="/tags/python/" style="color: #ff7d73">python</a>
+                        <a href="/tags/python/" style="color: #00a596">python</a>
                     </span>
                     
                     <span class="tag">
                         
-                        <a href="/tags/exam/" style="color: #03a9f4">exam</a>
+                        <a href="/tags/exam/" style="color: #00bcd4">exam</a>
                     </span>
                     
                 </span>
@@ -355,12 +355,12 @@
                     
                     <span class="tag">
                         
-                        <a href="/tags/python/" style="color: #00a596">python</a>
+                        <a href="/tags/python/" style="color: #ff7d73">python</a>
                     </span>
                     
                     <span class="tag">
                         
-                        <a href="/tags/exam/" style="color: #03a9f4">exam</a>
+                        <a href="/tags/exam/" style="color: #00bcd4">exam</a>
                     </span>
                     
                 </span>
@@ -395,12 +395,12 @@
                     
                     <span class="tag">
                         
-                        <a href="/tags/python/" style="color: #00bcd4">python</a>
+                        <a href="/tags/python/" style="color: #ffa2c4">python</a>
                     </span>
                     
                     <span class="tag">
                         
-                        <a href="/tags/LinkList/" style="color: #ff7d73">LinkList</a>
+                        <a href="/tags/LinkList/" style="color: #00a596">LinkList</a>
                     </span>
                     
                 </span>
@@ -435,12 +435,12 @@
                     
                     <span class="tag">
                         
-                        <a href="/tags/python/" style="color: #00bcd4">python</a>
+                        <a href="/tags/python/" style="color: #ff7d73">python</a>
                     </span>
                     
                     <span class="tag">
                         
-                        <a href="/tags/BiTreeNode/" style="color: #ff7d73">BiTreeNode</a>
+                        <a href="/tags/BiTreeNode/" style="color: #03a9f4">BiTreeNode</a>
                     </span>
                     
                 </span>
@@ -475,7 +475,7 @@
                     
                     <span class="tag">
                         
-                        <a href="/tags/python/" style="color: #00a596">python</a>
+                        <a href="/tags/python/" style="color: #ffa2c4">python</a>
                     </span>
                     
                     <span class="tag">
@@ -515,7 +515,7 @@
                     
                     <span class="tag">
                         
-                        <a href="/tags/python/" style="color: #ff7d73">python</a>
+                        <a href="/tags/python/" style="color: #00a596">python</a>
                     </span>
                     
                     <span class="tag">
@@ -555,12 +555,12 @@
                     
                     <span class="tag">
                         
-                        <a href="/tags/python/" style="color: #03a9f4">python</a>
+                        <a href="/tags/python/" style="color: #00bcd4">python</a>
                     </span>
                     
                     <span class="tag">
                         
-                        <a href="/tags/HashTable/" style="color: #ffa2c4">HashTable</a>
+                        <a href="/tags/HashTable/" style="color: #ff7d73">HashTable</a>
                     </span>
                     
                 </span>
@@ -595,12 +595,12 @@
                     
                     <span class="tag">
                         
-                        <a href="/tags/python/" style="color: #ff7d73">python</a>
+                        <a href="/tags/python/" style="color: #00bcd4">python</a>
                     </span>
                     
                     <span class="tag">
                         
-                        <a href="/tags/search/" style="color: #00a596">search</a>
+                        <a href="/tags/search/" style="color: #00bcd4">search</a>
                     </span>
                     
                 </span>
@@ -635,12 +635,12 @@
                     
                     <span class="tag">
                         
-                        <a href="/tags/python/" style="color: #03a9f4">python</a>
+                        <a href="/tags/python/" style="color: #ffa2c4">python</a>
                     </span>
                     
                     <span class="tag">
                         
-                        <a href="/tags/sort/" style="color: #00a596">sort</a>
+                        <a href="/tags/sort/" style="color: #00bcd4">sort</a>
                     </span>
                     
                 </span>
@@ -675,7 +675,7 @@
                     
                     <span class="tag">
                         
-                        <a href="/tags/python/" style="color: #00bcd4">python</a>
+                        <a href="/tags/python/" style="color: #ff7d73">python</a>
                     </span>
                     
                     <span class="tag">
@@ -715,12 +715,12 @@
                     
                     <span class="tag">
                         
-                        <a href="/tags/python/" style="color: #00a596">python</a>
+                        <a href="/tags/python/" style="color: #ffa2c4">python</a>
                     </span>
                     
                     <span class="tag">
                         
-                        <a href="/tags/sort/" style="color: #00bcd4">sort</a>
+                        <a href="/tags/sort/" style="color: #ffa2c4">sort</a>
                     </span>
                     
                 </span>
