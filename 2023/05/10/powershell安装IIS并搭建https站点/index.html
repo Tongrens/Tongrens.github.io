@@ -151,7 +151,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/Windows/" style="color: #00bcd4">
+                <a href="/tags/Windows/" style="color: #03a9f4">
                     Windows
                 </a>
             </span>
@@ -161,22 +161,19 @@
     </div>
     <div class="content" v-pre>
         <h2 id="powershell安装IIS并搭建https站点"><a href="#powershell安装IIS并搭建https站点" class="headerlink" title="powershell安装IIS并搭建https站点"></a>powershell安装IIS并搭建https站点</h2><ol>
-<li>关闭虚拟机并复制虚拟硬盘路径并挂载<br><img src="/images/windows/2/1.png"></li>
+<li>关闭虚拟机并复制虚拟硬盘路径并挂载<br><img src="../images/windows/2/1.png"><br><img src="../images/windows/2/2.png"></li>
 </ol>
-<p><img src="/images/windows/2/2.png"></p>
 <span id="more"></span>
 
 <ol start="2">
-<li>导入网站根目录和证书文件，并创建index.html和内容<br>Ps:证书私钥时选择“组或用户名”<br><img src="/images/windows/2/3.png"></li>
-</ol>
-<p><img src="/images/windows/2/4.png"></p>
-<ol start="3">
-<li><p>弹出虚拟硬盘<br><img src="/images/windows/2/5.png"></p>
+<li><p>导入网站根目录和证书文件，并创建index.html和内容<br>Ps:证书私钥时选择“组或用户名”<br><img src="../images/windows/2/3.png"><br><img src="../images/windows/2/4.png"></p>
+</li>
+<li><p>弹出虚拟硬盘<br><img src="../images/windows/2/5.png"></p>
 </li>
 <li><p>开启虚拟机并导入证书文件</p>
 <pre><code class="powershell">Import-PfxCertificate -FilePath &quot;C:\1.pfx&quot; -CertStoreLocation Cert:\LocalMachine\My
 </code></pre>
-<p><img src="/images/windows/2/6.png"></p>
+<p><img src="../images/windows/2/6.png"></p>
 </li>
 <li><p>若忘记证书指纹可用以下命令获取本地证书指纹<br>Get-ChildItem -Path Cert:LocalMachine\MY</p>
 </li>
