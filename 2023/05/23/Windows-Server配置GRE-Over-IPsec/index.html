@@ -2,78 +2,37 @@
 <!DOCTYPE html>
 <html lang="zh">
     <head>
-        <meta charset="utf-8" />
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
         <title>Windows Server配置GRE Over IPsec | Tongrens</title>
-        <meta name="author" content="Tongrens" />
-        <meta name="description" content="" />
-        <meta name="keywords" content="" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-        <link rel="icon" href="/images/73508047.png" />
-        <script src="https://cdn.staticfile.org/vue/3.2.47/vue.global.prod.min.js"></script>
-<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.3.0/css/all.min.css" />
-<link rel="stylesheet" href="/css/fonts.min.css" />
-<canvas id="fireworks" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 32767"></canvas>
-<script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
-<script src="/js/fireworks.min.js"></script>
-<canvas id="background" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -1"></canvas>
-<script src="/js/background.min.js"></script>
-<div id="cursor"></div>
-<link rel="stylesheet" href="/css/cursor.min.css">
-<script src="/js/cursor.min.js"></script>
-<script src="/js/fireworks.js"></script>
-<script src="/js/background.js"></script>
-<canvas id="fireworks" style="position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:2147483647"></canvas>
-<canvas id="background" style="position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:-1"></canvas>
-
-
-<script> const mixins = {}; </script>
-
-<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-
-
-<script src="https://cdn.staticfile.org/highlight.js/11.7.0/highlight.min.js"></script>
-<link
-    rel="stylesheet"
-    href="https://cdn.staticfile.org/highlight.js/11.7.0/styles/github.min.css"
-/>
-<script src="/js/lib/highlight.js"></script>
-
-
-
-<script src="/js/lib/preview.js"></script>
-
-
-<script src="https://cdn.staticfile.org/crypto-js/4.1.1/crypto-js.min.js"></script>
-<script src="/js/lib/crypto.js"></script>
-
-
-
-
-
-<script src="https://cdn.staticfile.org/waline/2.14.8/waline.min.js"></script>
-<link rel="stylesheet" href="https://cdn.staticfile.org/waline/2.14.8/waline.min.css" />
-<link rel="stylesheet" href="https://cdn.staticfile.org/waline/2.14.8/waline-meta.min.css" />
-
-
-
-
-<link rel="stylesheet" href="/css/main.css" />
-
-    <meta name="generator" content="Hexo 5.4.2"></head>
+        <meta name="author" content="Tongrens">
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <link rel="icon" href="/images/73508047.png">
+        <script src="https://cdn.staticfile.org/instant.page/5.1.0/instantpage.min.js" type="module"></script>
+        <script src="https://cdn.staticfile.org/font-awesome/6.2.0/js/all.min.js"></script>
+        
+        <link rel="stylesheet" href="/css/fonts.min.css">
+        <link rel="stylesheet" href="/css/particlex.css">
+        
+        <script src="https://cdn.staticfile.org/vue/3.2.33/vue.global.prod.min.js"></script>
+        <script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+        <meta name="generator" content="Hexo 6.2.0">
+    </head>
     <body>
+        <div id="loading" style="height:100vh;width:100vw;position:fixed;display:flex;z-index:200;justify-content:space-between;background:#fff;transition:opacity 0.3s ease-out"><div style="position:fixed;height:100vh;width:100vw;display:flex;justify-content:center;align-items:center"><div id="loadcontent" style="width:50vmin;height:50vmin;padding:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;border:solid 10px #a3ddfb;text-align:center"><div><h2>LOADING...</h2><div><img alt="loading" src="/loading.gif"></div></div></div></div></div>
         <div id="layout">
-            <transition name="fade">
-                <div id="loading" v-show="loading">
-                    <div id="loading-circle">
-                        <h2>LOADING</h2>
-                        <img src="/images/loading.gif" />
-                    </div>
-                </div>
-            </transition>
-            <nav id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
-    <div id="desktop-menu">
-        <a class="title" href="/">
-            <span>TONGRENS</span>
+            <i data-fa-symbol="calendar-solid" class="fa-solid fa-calendar fa-fw"></i>
+            <i data-fa-symbol="bookmark-solid" class="fa-solid fa-bookmark fa-fw"></i>
+            <i data-fa-symbol="tags-solid" class="fa-solid fa-tags fa-fw"></i>
+            <transition name="into">
+                <div v-show="show_page" style="display: -not-none">
+                    <div id="menu_show">
+                         
+<nav id="menu">
+    <div class="desktop-menu">
+        <a href="/">
+            <span class="title">Tongrens</span>
         </a>
         
         <a href="/">
@@ -102,85 +61,83 @@
         </a>
         
     </div>
-    <div id="mobile-menu">
-        <div class="title" @click="showMenuItems = !showMenuItems">
+    <div :class="'phone-menu ' + menu_show" id="phone-menu">
+        <div class="curtain" @click="menu_show = !menu_show" v-show="menu_show"></div>
+        <div :class="'title'" @click="menu_show = !menu_show">
             <i class="fa-solid fa-bars fa-fw"></i>
-            <span>&emsp;TONGRENS</span>
+            <span>&emsp;Tongrens</span>
         </div>
         <transition name="slide">
-            <div class="items" v-show="showMenuItems">
-                
-                <a href="/">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-house fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">主页</div>
+        <div class="items" v-show="menu_show">
+            
+            <a href="/">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-house fa-fw"></i>
                     </div>
-                </a>
-                
-                <a href="/about">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-id-card fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">关于</div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">主页</div>
+                </div>
+            </a>
+            
+            <a href="/about">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-id-card fa-fw"></i>
                     </div>
-                </a>
-                
-                <a href="/archives">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-box-archive fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">归档</div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">关于</div>
+                </div>
+            </a>
+            
+            <a href="/archives">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-box-archive fa-fw"></i>
                     </div>
-                </a>
-                
-                <a href="/categories">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-bookmark fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">分类</div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">归档</div>
+                </div>
+            </a>
+            
+            <a href="/categories">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-bookmark fa-fw"></i>
                     </div>
-                </a>
-                
-                <a href="/tags">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-tags fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">标签</div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">分类</div>
+                </div>
+            </a>
+            
+            <a href="/tags">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-tags fa-fw"></i>
                     </div>
-                </a>
-                
-            </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">标签</div>
+                </div>
+            </a>
+            
+        </div>
         </transition>
     </div>
 </nav>
-<transition name="fade">
-    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
-</transition>
-
-            <transition name="into">
-                <div id="main" v-show="!loading">
-                    <div class="article">
+                    </div>
+                    <div id="main">
+                        
+<div class="article">
     <div>
-        <h1>Windows Server配置GRE Over IPsec</h1>
+        <h1>Windows Server配置GRE Over IPsec </h1>
     </div>
     <div class="info">
         <span class="date">
             <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
             </span>
             2023/5/23
         </span>
         
         <span class="category">
-            <a href="/categories/%E7%AC%94%E8%AE%B0/">
+            <a href="/categories/笔记/">
                 <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
                 </span>
                 笔记
             </a>
@@ -189,104 +146,120 @@
         
         <span class="tags">
             <span class="icon">
-                <i class="fa-solid fa-tags fa-fw"></i>
+                <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/Windows/" style="color: #ff7d73">Windows</a>
+                <a href="/tags/Windows/" style="color: #03a9f4">
+                    Windows
+                </a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/Powershell/" style="color: #00a596">Powershell</a>
+                <a href="/tags/Powershell/" style="color: #ffa2c4">
+                    Powershell
+                </a>
             </span>
             
         </span>
         
     </div>
+    <div class="content" v-pre>
+        <h2 id="Windows-Server配置GRE-Over-IPsec"><a href="#Windows-Server配置GRE-Over-IPsec" class="headerlink" title="Windows Server配置GRE Over IPsec"></a>Windows Server配置GRE Over IPsec</h2><span id="more"></span>
+<p>Server1 IP:</p>
+<ul>
+<li>192.168.10.1/24</li>
+<li>10.1.1.1/24</li>
+<li>GW:10.1.1.2</li>
+</ul>
+<p>Server2 IP:</p>
+<ul>
+<li>10.1.1.2/24</li>
+<li>10.1.2.1/24</li>
+</ul>
+<p>Server3 IP:</p>
+<ul>
+<li>192.168.20.1/24</li>
+<li>10.1.2.2/24   </li>
+<li>GW:10.1.1.1</li>
+</ul>
+<h3 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h3><ul>
+<li>三台Windows安装配置路由及远程访问功能，Server1 &amp; Server3配置NAT，所有Server配置LAN路由<pre><code class="powershell">Install-WindowsFeature Routing -IncludeManagementTools
+</code></pre>
+</li>
+</ul>
+<h3 id="配置GRE隧道"><a href="#配置GRE隧道" class="headerlink" title="配置GRE隧道"></a>配置GRE隧道</h3><pre><code class="powershell"># Server1
+Add-VpnS2SInterface -Name &quot;Gre&quot; -GreTunnel -GreKey &quot;123&quot; -SourceIpAddress 10.1.1.1 -Destination 10.1.2.2 -IPv4Address 1.1.1.1 -IPv4Subnet @(&quot;192.168.20.0/24:100&quot;, &quot;1.1.1.2/32:100&quot;)
+
+# Server2
+Add-VpnS2SInterface -Name &quot;Gre&quot; -GreTunnel -GreKey &quot;123&quot; -SourceIpAddress 10.1.2.2 -Destination 10.1.1.1 -IPv4Address 1.1.1.2 -IPv4Subnet @(&quot;192.168.10.0/24:100&quot;, &quot;1.1.1.1/32:100&quot;)
+</code></pre>
+<h3 id="配置IPsec对GRE进行加密"><a href="#配置IPsec对GRE进行加密" class="headerlink" title="配置IPsec对GRE进行加密"></a>配置IPsec对GRE进行加密</h3><ul>
+<li><p>Server1<br><img src="https://s2.loli.net/2023/05/23/2hSYJFmTrfx8ajs.png" alt="图 1">  </p>
+</li>
+<li><p>Server2<br><img src="https://s2.loli.net/2023/05/23/Ey4OIeGDftCU6vd.png" alt="图 2">  </p>
+</li>
+</ul>
+
+    </div>
     
     
-    <input
-        id="crypto"
-        :class="['input', cryptoClass]"
-        :disabled="cryptoStatus"
-        ref="crypto"
-        placeholder="文章被加密，请输入密码"
-        data-encrypted="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"
-        data-shasum="6b1b3fdd0e3574ab08d4a6aa0a0d605ad33aa17425a0482e839d15fbf1c2294a"
-        v-model="crypto"
-    />
-    <transition name="fade">
-        <div class="content" ref="content" v-show="cryptoStatus"></div>
-    </transition>
-    
-    
-    
-    
-    
+    <link rel="stylesheet" href="https://unpkg.com/@waline/client@v2/dist/waline.css" />
     <div id="comment">
         <div id="waline-container"></div>
     </div>
     
-    
-    
 </div>
-
-                    <footer id="footer">
-    <div id="footer-wrap">
+                         
+<footer id="footer">
+    <div class="footer-wrap">
         <div>
-            &copy;
-            2023 - 2023 Tongrens
-            <span id="footer-icon">
+            © 2022 - 2023 Tongrens
+            <span class="footer-icon">
                 <i class="fa-solid fa-font-awesome fa-fw"></i>
             </span>
-            &commat;Tongrens
+            @Tongrens
         </div>
-        <div>
-            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
-            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
-        </div>
+        <div></div>
+        <div>Based on the <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo Engine</a> & <a
+                target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a></div>
         
     </div>
 </footer>
-
+                    </div>
                 </div>
             </transition>
-            
-            <transition name="fade">
-                <div id="preview" ref="preview" v-show="previewShow">
-                    <img id="preview-content" ref="previewContent" />
-                </div>
-            </transition>
-            
+            <div id="img_show">
+                <img id="img_content" alt="img_show">
+            </div>
         </div>
-        <script src="/js/main.js"></script>
-        
+        <script src="https://cdn.staticfile.org/highlight.js/11.5.1/highlight.min.js"></script>
+        <script src="/js/particlex.js"></script>
+        <script src="/js/showimg.js"></script>
+        <canvas id="fireworks" style="position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:2147483647"></canvas>
+        <canvas id="background" style="position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:-1"></canvas>
+        <script src="/js/fireworks.js"></script>
+        <script src="/js/background.js"></script>
         
 
-
+<script src="https://unpkg.com/@waline/client@v2/dist/waline.js"></script>
 <script>
     Waline.init({
-        el: "#waline-container",
+        el: '#waline-container',
         serverURL: "https://waline.tongrens.me/",
         commentCount: true,
         pageview: false,
-        emoji: "https://unpkg.com/@waline/emojis@1.2.0/weibo,https://unpkg.com/@waline/emojis@1.2.0/alus,https://unpkg.com/@waline/emojis@1.2.0/bilibili,https://unpkg.com/@waline/emojis@1.2.0/qq,https://unpkg.com/@waline/emojis@1.2.0/tieba,https://unpkg.com/@waline/emojis@1.2.0/tw-emoji".split(","),
-        meta: "nick,mail,link".split(","),
-        requiredMeta: "nick".split(","),
+        emoji: "https://unpkg.com/@waline/emojis@1.0.1/weibo,https://unpkg.com/@waline/emojis@1.0.1/alus,https://unpkg.com/@waline/emojis@1.0.1/bilibili,https://unpkg.com/@waline/emojis@1.0.1/qq,https://unpkg.com/@waline/emojis@1.0.1/tieba,https://unpkg.com/@waline/emojis@1.0.1/tw-emoji".split(','),
+        meta: "nick,mail,link".split(','),
+        requiredMeta: "nick".split(','),
         lang: "zh-CN",
-        wordLimit: 0,
+        wordLimit: parseInt("0"),
         pageSize: "10",
         login: "enable",
-        
-        locale: {},
-        
     });
 </script>
 
-
-
-        
     </body>
 </html>

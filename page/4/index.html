@@ -2,69 +2,37 @@
 <!DOCTYPE html>
 <html lang="zh">
     <head>
-        <meta charset="utf-8" />
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
         <title>Tongrens</title>
-        <meta name="author" content="Tongrens" />
-        <meta name="description" content="" />
-        <meta name="keywords" content="" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-        <link rel="icon" href="/images/73508047.png" />
-        <script src="https://cdn.staticfile.org/vue/3.2.47/vue.global.prod.min.js"></script>
-<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.3.0/css/all.min.css" />
-<link rel="stylesheet" href="/css/fonts.min.css" />
-<canvas id="fireworks" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 32767"></canvas>
-<script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
-<script src="/js/fireworks.min.js"></script>
-<canvas id="background" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -1"></canvas>
-<script src="/js/background.min.js"></script>
-<div id="cursor"></div>
-<link rel="stylesheet" href="/css/cursor.min.css">
-<script src="/js/cursor.min.js"></script>
-<script src="/js/fireworks.js"></script>
-<script src="/js/background.js"></script>
-<canvas id="fireworks" style="position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:2147483647"></canvas>
-<canvas id="background" style="position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:-1"></canvas>
-
-
-<script> const mixins = {}; </script>
-
-<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-
-
-<script src="https://cdn.staticfile.org/highlight.js/11.7.0/highlight.min.js"></script>
-<link
-    rel="stylesheet"
-    href="https://cdn.staticfile.org/highlight.js/11.7.0/styles/github.min.css"
-/>
-<script src="/js/lib/highlight.js"></script>
-
-
-
-<script src="/js/lib/preview.js"></script>
-
-
-
-
-
-<script src="/js/lib/home.js"></script>
-
-<link rel="stylesheet" href="/css/main.css" />
-
-    <meta name="generator" content="Hexo 5.4.2"></head>
+        <meta name="author" content="Tongrens">
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <link rel="icon" href="/images/73508047.png">
+        <script src="https://cdn.staticfile.org/instant.page/5.1.0/instantpage.min.js" type="module"></script>
+        <script src="https://cdn.staticfile.org/font-awesome/6.2.0/js/all.min.js"></script>
+        
+        <link rel="stylesheet" href="/css/fonts.min.css">
+        <link rel="stylesheet" href="/css/particlex.css">
+        
+        <script src="https://cdn.staticfile.org/vue/3.2.33/vue.global.prod.min.js"></script>
+        <script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+        <meta name="generator" content="Hexo 6.2.0">
+    </head>
     <body>
+        <div id="loading" style="height:100vh;width:100vw;position:fixed;display:flex;z-index:200;justify-content:space-between;background:#fff;transition:opacity 0.3s ease-out"><div style="position:fixed;height:100vh;width:100vw;display:flex;justify-content:center;align-items:center"><div id="loadcontent" style="width:50vmin;height:50vmin;padding:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;border:solid 10px #a3ddfb;text-align:center"><div><h2>LOADING...</h2><div><img alt="loading" src="/loading.gif"></div></div></div></div></div>
         <div id="layout">
-            <transition name="fade">
-                <div id="loading" v-show="loading">
-                    <div id="loading-circle">
-                        <h2>LOADING</h2>
-                        <img src="/images/loading.gif" />
-                    </div>
-                </div>
-            </transition>
-            <nav id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
-    <div id="desktop-menu">
-        <a class="title" href="/">
-            <span>TONGRENS</span>
+            <i data-fa-symbol="calendar-solid" class="fa-solid fa-calendar fa-fw"></i>
+            <i data-fa-symbol="bookmark-solid" class="fa-solid fa-bookmark fa-fw"></i>
+            <i data-fa-symbol="tags-solid" class="fa-solid fa-tags fa-fw"></i>
+            <transition name="into">
+                <div v-show="show_page" style="display: -not-none">
+                    <div id="menu_show">
+                         
+<nav id="menu">
+    <div class="desktop-menu">
+        <a href="/">
+            <span class="title">Tongrens</span>
         </a>
         
         <a href="/">
@@ -93,72 +61,70 @@
         </a>
         
     </div>
-    <div id="mobile-menu">
-        <div class="title" @click="showMenuItems = !showMenuItems">
+    <div :class="'phone-menu ' + menu_show" id="phone-menu">
+        <div class="curtain" @click="menu_show = !menu_show" v-show="menu_show"></div>
+        <div :class="'title'" @click="menu_show = !menu_show">
             <i class="fa-solid fa-bars fa-fw"></i>
-            <span>&emsp;TONGRENS</span>
+            <span>&emsp;Tongrens</span>
         </div>
         <transition name="slide">
-            <div class="items" v-show="showMenuItems">
-                
-                <a href="/">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-house fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">主页</div>
+        <div class="items" v-show="menu_show">
+            
+            <a href="/">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-house fa-fw"></i>
                     </div>
-                </a>
-                
-                <a href="/about">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-id-card fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">关于</div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">主页</div>
+                </div>
+            </a>
+            
+            <a href="/about">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-id-card fa-fw"></i>
                     </div>
-                </a>
-                
-                <a href="/archives">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-box-archive fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">归档</div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">关于</div>
+                </div>
+            </a>
+            
+            <a href="/archives">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-box-archive fa-fw"></i>
                     </div>
-                </a>
-                
-                <a href="/categories">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-bookmark fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">分类</div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">归档</div>
+                </div>
+            </a>
+            
+            <a href="/categories">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-bookmark fa-fw"></i>
                     </div>
-                </a>
-                
-                <a href="/tags">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-tags fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">标签</div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">分类</div>
+                </div>
+            </a>
+            
+            <a href="/tags">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-tags fa-fw"></i>
                     </div>
-                </a>
-                
-            </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">标签</div>
+                </div>
+            </a>
+            
+        </div>
         </transition>
     </div>
 </nav>
-<transition name="fade">
-    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
-</transition>
-
-            <transition name="into">
-                <div id="main" v-show="!loading">
-                    <div id="home-head">
-    <div id="home-background" ref="homeBackground" data-images="/images/blog_head.jpg"></div>
-    <div id="home-info" @click="homeClick">
+                    </div>
+                    <div id="main">
+                        <div id="home-head">
+    <div id="home-background" style="background-image: url(/images/blog_head.jpg)"></div>
+    
+    <div id="home-info" class="home-info" @click="home_click">
         <span class="loop"></span>
         <span class="loop"></span>
         <span class="loop"></span>
@@ -171,10 +137,13 @@
             </div>
         </span>
     </div>
+    
 </div>
-<div id="home-posts-wrap"  ref="homePostsWrap">
+
+<div id="home-posts-wrap" class="">
     <div id="home-posts">
-        
+        <div id="posts">
+            
 
 <div class="post">
     <a href="/2022/10/10/BGP/">
@@ -183,9 +152,9 @@
     <div class="category-and-date">
         
         <span class="category">
-            <a href="/categories/%E7%AC%94%E8%AE%B0/">
+            <a href="/categories/笔记/">
                 <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
                 </span>
                 笔记
             </a>
@@ -193,14 +162,12 @@
         
         <span class="date">
             <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
             </span>
             2022/10/10
         </span>
-        
-        
     </div>
-    <div class="description">
+    <div class="excerpt">
         <div class="content" v-pre>
             
             <h1 id="BGP"><a href="#BGP" class="headerlink" title="BGP"></a>BGP</h1><blockquote>
@@ -215,13 +182,15 @@
     <div class="post-tags">
         
         <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
+            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
         </span>
         
         
         <span class="tag">
             
-            <a href="/tags/Router/" style="color: #ffa2c4">Router</a>
+            <a href="/tags/Router/" style="color: #03a9f4">
+                Router
+            </a>
         </span>
         
     </div>
@@ -235,9 +204,9 @@
     <div class="category-and-date">
         
         <span class="category">
-            <a href="/categories/%E7%AC%94%E8%AE%B0/">
+            <a href="/categories/笔记/">
                 <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
                 </span>
                 笔记
             </a>
@@ -245,14 +214,12 @@
         
         <span class="date">
             <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
             </span>
             2022/10/10
         </span>
-        
-        
     </div>
-    <div class="description">
+    <div class="excerpt">
         <div class="content" v-pre>
             
             <h1 id="OSPF"><a href="#OSPF" class="headerlink" title="OSPF"></a>OSPF</h1><h2 id="OSPF基础"><a href="#OSPF基础" class="headerlink" title="OSPF基础"></a>OSPF基础</h2><p>同一AS中每个路由器ID必须唯一，但同一路由器的不同进程中的路由器ID可以相同<br>AS（自治系统）：进程号<br>Area（区域）：区域号<br>每个参与计算的OSPF接口都有优先级，范围0-255，默认值为1，0不参与选举DR/BDR，<strong>越高越优先</strong></p>
@@ -277,13 +244,15 @@
     <div class="post-tags">
         
         <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
+            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
         </span>
         
         
         <span class="tag">
             
-            <a href="/tags/Router/" style="color: #ff7d73">Router</a>
+            <a href="/tags/Router/" style="color: #ffa2c4">
+                Router
+            </a>
         </span>
         
     </div>
@@ -297,9 +266,9 @@
     <div class="category-and-date">
         
         <span class="category">
-            <a href="/categories/%E7%AC%94%E8%AE%B0/">
+            <a href="/categories/笔记/">
                 <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
                 </span>
                 笔记
             </a>
@@ -307,14 +276,12 @@
         
         <span class="date">
             <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
             </span>
             2022/10/10
         </span>
-        
-        
     </div>
-    <div class="description">
+    <div class="excerpt">
         <div class="content" v-pre>
             
             <h1 id="RIP"><a href="#RIP" class="headerlink" title="RIP"></a>RIP</h1><h2 id="RIP特点"><a href="#RIP特点" class="headerlink" title="RIP特点"></a>RIP特点</h2><p>引入跳数（Hop Count）的概念，每经过一个三层设备跳数就增加1，到16则丢弃；当收到多条相同路由时，仅加收度量值更小或相当的更新</p>
@@ -340,13 +307,15 @@
     <div class="post-tags">
         
         <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
+            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
         </span>
         
         
         <span class="tag">
             
-            <a href="/tags/Router/" style="color: #00a596">Router</a>
+            <a href="/tags/Router/" style="color: #00a596">
+                Router
+            </a>
         </span>
         
     </div>
@@ -354,15 +323,15 @@
 </div>
 
 <div class="post">
-    <a href="/2022/10/10/%E6%89%A9%E5%B1%95VLAN%E7%89%B9%E6%80%A7%E9%85%8D%E7%BD%AE%E4%B8%8E%E7%AE%A1%E7%90%86/">
+    <a href="/2022/10/10/扩展VLAN特性配置与管理/">
         <h2 class="post-title">扩展VLAN特性配置与管理</h2>
     </a>
     <div class="category-and-date">
         
         <span class="category">
-            <a href="/categories/%E7%AC%94%E8%AE%B0/">
+            <a href="/categories/笔记/">
                 <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
                 </span>
                 笔记
             </a>
@@ -370,14 +339,12 @@
         
         <span class="date">
             <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
             </span>
             2022/10/10
         </span>
-        
-        
     </div>
-    <div class="description">
+    <div class="excerpt">
         <div class="content" v-pre>
             
             <h1 id="扩展VLAN特性配置与管理"><a href="#扩展VLAN特性配置与管理" class="headerlink" title="扩展VLAN特性配置与管理"></a>扩展VLAN特性配置与管理</h1><h2 id="VLAN聚合"><a href="#VLAN聚合" class="headerlink" title="VLAN聚合"></a>VLAN聚合</h2><p>VLAN聚合是把多个不配置三层VLANIF接口聚合成一个超级VLAN（Super-VLAN），这些VLANIF的接口称为Sub-VLAN</p>
@@ -400,34 +367,38 @@
     <div class="post-tags">
         
         <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
+            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
         </span>
         
         
         <span class="tag">
             
-            <a href="/tags/switch/" style="color: #00a596">switch</a>
+            <a href="/tags/switch/" style="color: #ff7d73">
+                switch
+            </a>
         </span>
         
         <span class="tag">
             
-            <a href="/tags/vlan/" style="color: #00bcd4">vlan</a>
+            <a href="/tags/vlan/" style="color: #ffa2c4">
+                vlan
+            </a>
         </span>
         
     </div>
-    <a href="/2022/10/10/%E6%89%A9%E5%B1%95VLAN%E7%89%B9%E6%80%A7%E9%85%8D%E7%BD%AE%E4%B8%8E%E7%AE%A1%E7%90%86/" class="go-post">阅读全文</a>
+    <a href="/2022/10/10/扩展VLAN特性配置与管理/" class="go-post">阅读全文</a>
 </div>
 
 <div class="post">
-    <a href="/2022/10/10/%E6%8E%A5%E5%8F%A3%E5%8F%8A%E4%BB%A5%E5%A4%AA%E7%BD%91%E9%93%BE%E8%B7%AF%E9%85%8D%E7%BD%AE%E5%8F%8A%E7%AE%A1%E7%90%86/">
+    <a href="/2022/10/10/接口及以太网链路配置及管理/">
         <h2 class="post-title">接口及以太网链路配置及管理</h2>
     </a>
     <div class="category-and-date">
         
         <span class="category">
-            <a href="/categories/%E7%AC%94%E8%AE%B0/">
+            <a href="/categories/笔记/">
                 <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
                 </span>
                 笔记
             </a>
@@ -435,14 +406,12 @@
         
         <span class="date">
             <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
             </span>
             2022/10/10
         </span>
-        
-        
     </div>
-    <div class="description">
+    <div class="excerpt">
         <div class="content" v-pre>
             
             <h1 id="接口及以太网链路配置及管理"><a href="#接口及以太网链路配置及管理" class="headerlink" title="接口及以太网链路配置及管理"></a>接口及以太网链路配置及管理</h1><h2 id="以太网接口属性"><a href="#以太网接口属性" class="headerlink" title="以太网接口属性"></a>以太网接口属性</h2><blockquote>
@@ -467,25 +436,29 @@
     <div class="post-tags">
         
         <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
+            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
         </span>
         
         
         <span class="tag">
             
-            <a href="/tags/switch/" style="color: #03a9f4">switch</a>
+            <a href="/tags/switch/" style="color: #00bcd4">
+                switch
+            </a>
         </span>
         
     </div>
-    <a href="/2022/10/10/%E6%8E%A5%E5%8F%A3%E5%8F%8A%E4%BB%A5%E5%A4%AA%E7%BD%91%E9%93%BE%E8%B7%AF%E9%85%8D%E7%BD%AE%E5%8F%8A%E7%AE%A1%E7%90%86/" class="go-post">阅读全文</a>
+    <a href="/2022/10/10/接口及以太网链路配置及管理/" class="go-post">阅读全文</a>
 </div>
 
-
-        <div class="page-current">
+             
+<div class="page-current">
     <div class="prev">
         
-        <a class="page-num" href="/page/3/">
-            <i class="fa-solid fa-caret-left fa-fw"></i>
+        <a href="/page/3/">
+            <span class="page-num">
+                <i class="fa-solid fa-caret-left fa-fw"></i>
+            </span>
         </a>
         
     </div>
@@ -493,132 +466,149 @@
         
         <span>
             
-            <a class="page-num" href="/">1</a>
+            <a href="/"><span class="page-num">1</span></a>
             <span class="page-omit">...</span>
             
             
+                
+                
+                <a href="/page/2">
+                    <span class="page-num">
+                        2
+                    </span>
+                </a>
+                
             
-            
-            <a class="page-num" href="/page/2">2</a>
-            
-            
-            <a class="page-num" href="/page/3/">3</a>
+            <a href="/page/3/">
+                <span class="page-num">
+                    3
+                </span>
+            </a>
         </span>
         
-        <span class="current">4</span>
+        <span class="current">
+            4
+        </span>
         
         <span>
-            <a class="page-num" href="/page/5/">5</a>
+            <a href="/page/5/">
+                <span class="page-num">
+                    5
+                </span>
+            </a>
             
-            <a class="page-num" href="/page/6">6</a>
+            <a href="/page/6">
+                <span class="page-num">
+                    6
+                </span>
+            </a>
             
             
             <span class="page-omit">...</span>
-            <a class="page-num" href="/page/7">7</a>
+            <a href="/page/7">
+                <span class="page-num">
+                    7
+                </span>
+            </a>
             
         </span>
         
     </div>
     <div class="next">
         
-        <a class="page-num" href="/page/5/">
-            <i class="fa-solid fa-caret-right fa-fw"></i>
+        <a href="/page/5/ ">
+            <span class="page-num">
+                <i class="fa-solid fa-caret-right fa-fw"></i>
+            </span>
         </a>
         
     </div>
 </div>
-
+        </div>
     </div>
     
     <div id="home-card">
         <div id="card-div">
-    <div class="card-style">
+    <div class="card-style" style="width: 300px">
         <div class="avatar">
-            <img src="/images/73508047.png" alt="avatar" />
+            <img src="/images/73508047.png " alt="avatar">
         </div>
-        <div class="name">Tongrens</div>
-        <div class="description">
-            <p>没什么好看的，累了毁灭吧sb Hexo</p>
-
+        <div class="name">
+            Tongrens
         </div>
-        
+        <div class="descriptions">
+            
+            <div class="description">
+                没什么好看的，累了毁灭吧sb Hexo
+            </div>
+            
+        </div>
         <div class="icon-links">
             
             <span class="icon-link">
                 <a target="_blank" rel="noopener" href="https://tongrens.vip:81">
-                    <i
-                        class="fa-solid fa-earth-americas fa-fw"
-                    ></i>
+                    <i class="fa-solid fa-earth-americas fa-fw"></i>
                 </a>
             </span>
             
             <span class="icon-link">
                 <a target="_blank" rel="noopener" href="https://github.com/Tongrens">
-                    <i
-                        class="fa-brands fa-github fa-fw"
-                    ></i>
+                    <i class="fa-brands fa-github fa-fw"></i>
                 </a>
             </span>
             
             <span class="icon-link">
                 <a href="/images/wechat.png">
-                    <i
-                        class="fa-brands fa-weixin fa-fw"
-                    ></i>
+                    <i class="fa-brands fa-weixin fa-fw"></i>
                 </a>
             </span>
             
             <span class="icon-link">
                 <a href="mailto:tongrens@qq.com">
-                    <i
-                        class="fa-solid fa-envelope fa-fw"
-                    ></i>
+                    <i class="fa-solid fa-envelope fa-fw"></i>
                 </a>
             </span>
             
         </div>
-        
-        
         <div class="friend-links">
             
         </div>
-        
     </div>
 </div>
-
     </div>
     
 </div>
-
-                    <footer id="footer">
-    <div id="footer-wrap">
+                         
+<footer id="footer">
+    <div class="footer-wrap">
         <div>
-            &copy;
-            2023 - 2023 Tongrens
-            <span id="footer-icon">
+            © 2022 - 2023 Tongrens
+            <span class="footer-icon">
                 <i class="fa-solid fa-font-awesome fa-fw"></i>
             </span>
-            &commat;Tongrens
+            @Tongrens
         </div>
-        <div>
-            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
-            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
-        </div>
+        <div></div>
+        <div>Based on the <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo Engine</a> & <a
+                target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a></div>
         
     </div>
 </footer>
-
+                    </div>
                 </div>
             </transition>
-            
-            <transition name="fade">
-                <div id="preview" ref="preview" v-show="previewShow">
-                    <img id="preview-content" ref="previewContent" />
-                </div>
-            </transition>
-            
+            <div id="img_show">
+                <img id="img_content" alt="img_show">
+            </div>
         </div>
-        <script src="/js/main.js"></script>
+        <script src="https://cdn.staticfile.org/highlight.js/11.5.1/highlight.min.js"></script>
+        <script src="/js/particlex.js"></script>
+        <script src="/js/showimg.js"></script>
+        <canvas id="fireworks" style="position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:2147483647"></canvas>
+        <canvas id="background" style="position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:-1"></canvas>
+        <script src="/js/fireworks.js"></script>
+        <script src="/js/background.js"></script>
         
+
     </body>
 </html>
