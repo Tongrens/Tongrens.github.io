@@ -161,19 +161,19 @@
     </div>
     <div class="content" v-pre>
         <h2 id="powershell安装IIS并搭建https站点"><a href="#powershell安装IIS并搭建https站点" class="headerlink" title="powershell安装IIS并搭建https站点"></a>powershell安装IIS并搭建https站点</h2><ol>
-<li>关闭虚拟机并复制虚拟硬盘路径并挂载<br><img src="../images/windows/2/1.png"><br><img src="../images/windows/2/2.png"></li>
+<li>关闭虚拟机并复制虚拟硬盘路径并挂载<br><img src="https://s2.loli.net/2023/05/23/LZIWzvrXkjUfT3K.png" alt="1.png"><br><img src="https://s2.loli.net/2023/05/23/xbLznHTWXgkA1Fm.png" alt="2.png"></li>
 </ol>
 <span id="more"></span>
 
 <ol start="2">
-<li><p>导入网站根目录和证书文件，并创建index.html和内容<br>Ps:证书私钥时选择“组或用户名”<br><img src="../images/windows/2/3.png"><br><img src="../images/windows/2/4.png"></p>
+<li><p>导入网站根目录和证书文件，并创建index.html和内容<br>Ps:证书私钥时选择“组或用户名”<br><img src="https://s2.loli.net/2023/05/23/mR9YIhrnUX4WzAq.png" alt="3.png"><br><img src="https://s2.loli.net/2023/05/23/9GI2haVOnlkWqAe.png" alt="4.png"></p>
 </li>
-<li><p>弹出虚拟硬盘<br><img src="../images/windows/2/5.png"></p>
+<li><p>弹出虚拟硬盘<br><img src="https://s2.loli.net/2023/05/23/9l4ZhUCXc2ANoJx.png" alt="5.png"></p>
 </li>
 <li><p>开启虚拟机并导入证书文件</p>
 <pre><code class="powershell">Import-PfxCertificate -FilePath &quot;C:\1.pfx&quot; -CertStoreLocation Cert:\LocalMachine\My
 </code></pre>
-<p><img src="../images/windows/2/6.png"></p>
+<p><img src="https://s2.loli.net/2023/05/23/ej9IsHEcaBlwPU8.png" alt="6.png"></p>
 </li>
 <li><p>若忘记证书指纹可用以下命令获取本地证书指纹<br>Get-ChildItem -Path Cert:LocalMachine\MY</p>
 </li>
