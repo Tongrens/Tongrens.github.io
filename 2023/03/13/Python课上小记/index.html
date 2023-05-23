@@ -151,15 +151,8 @@
             
             <span class="tag">
                 
-                <a href="/tags/python/" style="color: #03a9f4">
+                <a href="/tags/python/" style="color: #ffa2c4">
                     python
-                </a>
-            </span>
-            
-            <span class="tag">
-                
-                <a href="/tags/text/" style="color: #00bcd4">
-                    text
                 </a>
             </span>
             
@@ -201,7 +194,7 @@ else:
 <li>程序生成一个随机数，让用户猜这个数是多少，如果输入的数小于随机数则返回”猜低了”，反之返回”猜高了”，并让用户接着输入下一个数，直到猜对返回这个随机数和共计的次数。</li>
 </ul>
 <p>Answer:</p>
-<pre><code class="python">&gt;import random
+<pre><code class="python">import random
 ans, count = random.randint(0, 100), 1  # 生成随机数并初始化次数
 # 使用海象运算符*对每次输入的价格进行赋值的同时判断是否等于随机数
 while (num := int(input(&#39;请输入价格：&#39;))) != ans:
@@ -282,10 +275,10 @@ print(f&quot;输出：&#123;&#39;不是&#39; if any(num % i == 0 for i in range(
 </ul>
 <p>Answer:</p>
 <pre><code class="python">default = num = int(input(&#39;输入：&#39;))  # 初始化输入日期，其中default给星期几使用
-time_lst, month = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]  # 2023年时间列表
+time_lst, month = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31], 0  # 2023年时间列表
 while (num := num - time_lst[month]) &gt; 0:
    month += 1
-&gt;print(f&quot;输出：&#123;month + 1&#125;月&#123;num + time_lst[month]&#125;日&quot;)
+print(f&quot;输出：&#123;month + 1&#125;月&#123;num + time_lst[month]&#125;日&quot;)
 print(f&quot;输出：星期&#123;[&#39;日&#39;, &#39;一&#39;, &#39;二&#39;, &#39;三&#39;, &#39;四&#39;, &#39;五&#39;, &#39;六&#39;][default % 7 - 1]&#125;&quot;)
 </code></pre>
 <p>Analysis:</p>

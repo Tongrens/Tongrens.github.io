@@ -146,8 +146,8 @@
             
 
 <div class="post">
-    <a href="/2022/10/26/22-10-26蓝桥杯测试题/">
-        <h2 class="post-title">22.10.26蓝桥杯测试题</h2>
+    <a href="/2023/05/15/使用Powershell导入csv用户并批量创建/">
+        <h2 class="post-title">使用Powershell导入csv用户并批量创建</h2>
     </a>
     <div class="category-and-date">
         
@@ -164,18 +164,250 @@
             <span class="icon">
                 <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
             </span>
-            2022/10/26
+            2023/5/15
         </span>
     </div>
     <div class="excerpt">
         <div class="content" v-pre>
             
-            <h1 id="还是老规矩直接上题"><a href="#还是老规矩直接上题" class="headerlink" title="还是老规矩直接上题"></a>还是老规矩直接上题</h1><h3 id="1-题目"><a href="#1-题目" class="headerlink" title="1. 题目"></a>1. <a target="_blank" rel="noopener" href="https://www.lanqiao.cn/problems/2118/learning/">题目</a></h3><blockquote>
-<p>小蓝要把一个字符串中的字母按其在字母表中的顺序排列。<br>例如，LANQIAO 排列后为 AAILNOQ。<br>又如，GOODGOODSTUDYDAYDAYUP 排列后为 AADDDDDGGOOOOPSTUUYYY。<br>请问对于以下字符串，排列之后字符串是什么？<br>WHERETHEREISAWILLTHEREISAWAYZA</p>
+            <h3 id="使用Powershell导入csv用户并批量创建"><a href="#使用Powershell导入csv用户并批量创建" class="headerlink" title="使用Powershell导入csv用户并批量创建"></a>使用Powershell导入csv用户并批量创建</h3><pre><code class="powershell">$users=Import-Csv 1.csv
+foreach ($user in $users) &#123;New-ADUser $user.Username -Surname $user.&quot;last name&quot; -GivenName $user.&#39;first Name&#39; -EmailAddress $user.&#39;EMail&#39; -Title $user.&#39;Job Title&#39; -Country $user.region -OfficePhone $user.phone -AccountPassword(ConvertTo-SecureString &quot;Qwer1234&quot; -AsPlainText -Force) -Enabled $true
+Add-ADGroupMember -Identity $user.&#39;Group Member&#39; -Members $user.Username
+&#125;
+</code></pre>
+<ul>
+<li>1.csv:<br><img src="/images/windows/3/1.png"></li>
+</ul>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/Windows/" style="color: #00a596">
+                Windows
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2023/05/15/使用Powershell导入csv用户并批量创建/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/05/10/powershell安装IIS并搭建https站点/">
+        <h2 class="post-title">powershell安装IIS并搭建https站点</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/笔记/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                </span>
+                笔记
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2023/5/10
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <h2 id="powershell安装IIS并搭建https站点"><a href="#powershell安装IIS并搭建https站点" class="headerlink" title="powershell安装IIS并搭建https站点"></a>powershell安装IIS并搭建https站点</h2><ol>
+<li>关闭虚拟机并复制虚拟硬盘路径并挂载<br><img src="/images/windows/2/1.png"></li>
+</ol>
+<p><img src="/images/windows/2/2.png"></p>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/Windows/" style="color: #03a9f4">
+                Windows
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2023/05/10/powershell安装IIS并搭建https站点/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/04/27/Windows组策略/">
+        <h2 class="post-title">Windows组策略</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/笔记/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                </span>
+                笔记
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2023/4/27
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <h1 id="Windows组策略"><a href="#Windows组策略" class="headerlink" title="Windows组策略"></a>Windows组策略</h1><ul>
+<li><strong>所有的域计算机和域用户都能自动注册证书</strong></li>
+</ul>
+<p><img src="/images/windows/1/1.png"></p>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/Windows/" style="color: #ff7d73">
+                Windows
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2023/04/27/Windows组策略/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/03/13/Python课上小记/">
+        <h2 class="post-title">Python课上小记</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/笔记/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                </span>
+                笔记
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2023/3/13
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <h3 id="这条笔记用于记录一些Python课上的One-line-Code"><a href="#这条笔记用于记录一些Python课上的One-line-Code" class="headerlink" title="这条笔记用于记录一些Python课上的One-line Code~"></a>这条笔记用于记录一些Python课上的One-line Code~</h3><p>过7游戏：</p>
+<blockquote>
+<p>Question:</p>
+<ul>
+<li>过七游戏：输入一个整数，如果这个整数的下一个数是7的倍数或者包含“7”则输出“过”，否则输出这个数。</li>
+</ul>
+<p>Answer:</p>
+<pre><code class="python">num = int(input(&#39;输入数字：&#39;)) + 1
+print(&#39;需要输入正整数&#39;) if num &lt; 2 else print(&#39;过&#39;) if &#39;7&#39; in str(num) or num % 7 == 0 else print(num)
+</code></pre>
+<p>Analysis:</p>
+<ol>
+<li><strong>注意题目要求：需要判断的数是输入的下一个数</strong></li>
+<li>line1: 将用户输入的数字加一并存入num</li>
+<li>line2: 代码等同于：</li>
+</ol>
+<pre><code class="python">if num &lt; 2:  # 判断自增后的数是否小于2，只有大于1的整数才是正整数
+   print(&#39;需要输入正整数&#39;)
+else:
+   if &#39;7&#39; in str(num) or num % 7 == 0:  # 判断&quot;7&quot;是否在num内或者是否能整除7
+       print(&#39;过&#39;)
+   else:
+       print(num)
+</code></pre>
 </blockquote>
-<pre><code class="python">source = &#39;WHERETHEREISAWILLTHEREISAWAY&#39;
-print(&#39;&#39;.join(sorted(list(source))))
-# AAAEEEEEEHHHIIILLRRRSSTTWWWY
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/python/" style="color: #ffa2c4">
+                python
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2023/03/13/Python课上小记/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/03/09/23-03-09蓝桥杯测试题/">
+        <h2 class="post-title">23.03.09蓝桥杯测试题</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/笔记/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                </span>
+                笔记
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2023/3/9
+        </span>
+    </div>
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <h1 id="好久没做算法题了，上题上题"><a href="#好久没做算法题了，上题上题" class="headerlink" title="好久没做算法题了，上题上题"></a>好久没做算法题了，上题上题</h1><blockquote>
+<p>请找到⼀个⼤于 2022 的最⼩数，这个数转换成⼗六进制之后，所有的数位（不含前导 0）都为字⺟（A 到 F）。<br>请将这个数的⼗进制形式作为答案提交。</p>
+</blockquote>
+<pre><code class="python">def fun1():
+    cur = 2022
+    while True:
+        for i in hex(cur)[2:]:
+            if i.isnumeric():
+                break
+        else:
+            return cur
+        cur += 1
 </code></pre>
             
         </div>
@@ -189,7 +421,7 @@ print(&#39;&#39;.join(sorted(list(source))))
         
         <span class="tag">
             
-            <a href="/tags/python/" style="color: #00a596">
+            <a href="/tags/python/" style="color: #03a9f4">
                 python
             </a>
         </span>
@@ -202,237 +434,7 @@ print(&#39;&#39;.join(sorted(list(source))))
         </span>
         
     </div>
-    <a href="/2022/10/26/22-10-26蓝桥杯测试题/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2022/10/19/22-10-19蓝桥杯测试题/">
-        <h2 class="post-title">22.10.19蓝桥杯测试题</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/笔记/">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
-                </span>
-                笔记
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
-            </span>
-            2022/10/19
-        </span>
-    </div>
-    <div class="excerpt">
-        <div class="content" v-pre>
-            
-            <h1 id="没什么好说的，直接上题"><a href="#没什么好说的，直接上题" class="headerlink" title="没什么好说的，直接上题"></a>没什么好说的，直接上题</h1><blockquote>
-<p>11.《过7游戏》<br>编写代码：用户给出一个正整数n，计算所有小于等于n的正整数中，包含数字7或7的倍数的数字有多少个。<br>例如：<br>输入10，输出1<br>输入200，输出38<br>输入200000，输出81902</p>
-</blockquote>
-<pre><code class="python">def fun11(n):
-    ans = 0
-    for i in range(1, n + 1):
-        if &#39;7&#39; in str(i) or i % 7 == 0:
-            ans += 1
-    return ans
-print(fun11(200))   # 61
-</code></pre>
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-        </span>
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/python/" style="color: #ff7d73">
-                python
-            </a>
-        </span>
-        
-        <span class="tag">
-            
-            <a href="/tags/exam/" style="color: #ffa2c4">
-                exam
-            </a>
-        </span>
-        
-    </div>
-    <a href="/2022/10/19/22-10-19蓝桥杯测试题/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2022/10/14/22-10-14小记/">
-        <h2 class="post-title">22.10.14小记</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/Other/">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
-                </span>
-                Other
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
-            </span>
-            2022/10/14
-        </span>
-    </div>
-    <div class="excerpt">
-        <div class="content" v-pre>
-            
-            <h2 id="瞎几把随便记记"><a href="#瞎几把随便记记" class="headerlink" title="瞎几把随便记记"></a>瞎几把随便记记</h2><p>leetcode刷题终于了250多道题了，虽然大部分都是简单题，但还是蛮有成就感的，其中做了两道时间超过100%的题目，让我炫耀了好一会（开心</p>
-<p>其次这刷的简单题中也有一大半都是字符串的题目，算法题好久没刷都忘得差不多了，动态规划、回溯、递归老实讲都不是很熟，后面要抓紧时间补了…</p>
-<p>还有被无限拖延的科目一也得抓紧时间提上日程了，再墨迹就真的没得考了md</p>
-<p><img src="/images/other/1.jpg"></p>
-<p><img src="/images/other/2.jpg"></p>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-        </span>
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/text/" style="color: #00a596">
-                text
-            </a>
-        </span>
-        
-    </div>
-    <a href="/2022/10/14/22-10-14小记/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2022/10/10/BGP/">
-        <h2 class="post-title">BGP</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/笔记/">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
-                </span>
-                笔记
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
-            </span>
-            2022/10/10
-        </span>
-    </div>
-    <div class="excerpt">
-        <div class="content" v-pre>
-            
-            <h1 id="BGP"><a href="#BGP" class="headerlink" title="BGP"></a>BGP</h1><blockquote>
-<h5 id="BGP分类"><a href="#BGP分类" class="headerlink" title="BGP分类"></a>BGP分类</h5></blockquote>
-<p>BGP是EGP（外部网关协议）的一种，而IGP包含了RIP、OSPF、ISIS，是内部网关协议，BGP协议本身不产生、发现路由；<br>BGP分为IBGP和EBGP<br>EBGP：当BGP设备收到EBGP发来的路由时，会将带有自己AS号的路由丢弃<br>IBGP：为了防止环路，从IBGP学习到的路由不会转发给其他IBGP设备，需要建立全连接才能互通，有路由反射器和联盟两种解决方法<br>BGP Router-id：在发送的Open报文中携带，通常是IP地址<br><strong>AS划分：</strong><br>二字节AS：1-65535<br>四字节AS：1-4294967295<br>公网AS：1-64511<br>私网AS：64512-65534</p>
-<h3 id="2种角色"><a href="#2种角色" class="headerlink" title="2种角色"></a>2种角色</h3><blockquote>
-<p>Speaker：发送或者接受BGP报文的任何设备都是Speaker<br>Peer：相互交换报文的Speaker之间互为对等体，若干相关的对等体可以组成对等体组</p>
-</blockquote>
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-        </span>
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/Router/" style="color: #00a596">
-                Router
-            </a>
-        </span>
-        
-    </div>
-    <a href="/2022/10/10/BGP/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2022/10/10/OSPF/">
-        <h2 class="post-title">OSPF</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/笔记/">
-                <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
-                </span>
-                笔记
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
-            </span>
-            2022/10/10
-        </span>
-    </div>
-    <div class="excerpt">
-        <div class="content" v-pre>
-            
-            <h1 id="OSPF"><a href="#OSPF" class="headerlink" title="OSPF"></a>OSPF</h1><h2 id="OSPF基础"><a href="#OSPF基础" class="headerlink" title="OSPF基础"></a>OSPF基础</h2><p>同一AS中每个路由器ID必须唯一，但同一路由器的不同进程中的路由器ID可以相同<br>AS（自治系统）：进程号<br>Area（区域）：区域号<br>每个参与计算的OSPF接口都有优先级，范围0-255，默认值为1，0不参与选举DR/BDR，<strong>越高越优先</strong></p>
-<blockquote>
-<p>组播地址：<br>DRother向DR，BDR发送DD，LSA request或者LSA UPdate时目标地址是AllDRouter（224.0.0.6）<br>DR，BDR向DRother发送DD，LSA Request或者LSA Update时目标地址是AllSPFRouter（224.0.0.5）</p>
-</blockquote>
-<h2 id="OSPF-LSA类型"><a href="#OSPF-LSA类型" class="headerlink" title="OSPF LSA类型"></a>OSPF LSA类型</h2><blockquote>
-<p>Type1</p>
-</blockquote>
-<ul>
-<li>路由器LSA（Router LSA）<br>每个路由器都会产生路由器LSA<br>表明了链路状态、开销等参数</li>
-</ul>
-<blockquote>
-<p>Type2</p>
-</blockquote>
-<ul>
-<li>网络LSA（Network LSA）<br>由DR或BDR产生<br>表明了DR和BDR所在网段的链路状态（DR和BDR只在广播中存在）</li>
-</ul>
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-        </span>
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/Router/" style="color: #00bcd4">
-                Router
-            </a>
-        </span>
-        
-    </div>
-    <a href="/2022/10/10/OSPF/" class="go-post">阅读全文</a>
+    <a href="/2023/03/09/23-03-09蓝桥杯测试题/" class="go-post">阅读全文</a>
 </div>
 
              
@@ -477,9 +479,9 @@ print(fun11(200))   # 61
             
             
             <span class="page-omit">...</span>
-            <a href="/page/5">
+            <a href="/page/6">
                 <span class="page-num">
-                    5
+                    6
                 </span>
             </a>
             
@@ -518,7 +520,7 @@ print(fun11(200))   # 61
         <div class="icon-links">
             
             <span class="icon-link">
-                <a target="_blank" rel="noopener" href="https://szpt.tongrens.vip:81">
+                <a target="_blank" rel="noopener" href="https://tongrens.vip:81">
                     <i class="fa-solid fa-earth-americas fa-fw"></i>
                 </a>
             </span>
