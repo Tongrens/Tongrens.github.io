@@ -2,37 +2,63 @@
 <!DOCTYPE html>
 <html lang="zh">
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+        <meta charset="utf-8" />
         <title>Tongrens</title>
-        <meta name="author" content="Tongrens">
-        <meta name="description" content="">
-        <meta name="keywords" content="">
-        <link rel="icon" href="/images/73508047.png">
-        <script src="https://cdn.staticfile.org/instant.page/5.1.0/instantpage.min.js" type="module"></script>
-        <script src="https://cdn.staticfile.org/font-awesome/6.2.0/js/all.min.js"></script>
-        
-        <link rel="stylesheet" href="/css/fonts.min.css">
-        <link rel="stylesheet" href="/css/particlex.css">
-        
-        <script src="https://cdn.staticfile.org/vue/3.2.33/vue.global.prod.min.js"></script>
-        <script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
-        <meta name="generator" content="Hexo 6.2.0">
-    </head>
+        <meta name="author" content="Tongrens" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+        <link rel="icon" href="/images/73508047.png" />
+        <script src="https://cdn.staticfile.org/vue/3.2.47/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.3.0/css/all.min.css" />
+<link rel="stylesheet" href="/css/fonts.min.css" />
+<script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+<div id="cursor"></div>
+<link rel="stylesheet" href="/css/cursor.min.css">
+<script src="/js/cursor.min.js"></script>
+<canvas id="fireworks" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 32767"></canvas>
+<script src="/js/fireworks.js"></script>
+<canvas id="background" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -1"></canvas>
+<script src="/js/background.js"></script>
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://cdn.staticfile.org/highlight.js/11.7.0/highlight.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.staticfile.org/highlight.js/11.7.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+<script src="/js/lib/home.js"></script>
+
+<link rel="stylesheet" href="/css/main.css" />
+
+    <meta name="generator" content="Hexo 5.4.2"></head>
     <body>
-        <div id="loading" style="height:100vh;width:100vw;position:fixed;display:flex;z-index:200;justify-content:space-between;background:#fff;transition:opacity 0.3s ease-out"><div style="position:fixed;height:100vh;width:100vw;display:flex;justify-content:center;align-items:center"><div id="loadcontent" style="width:50vmin;height:50vmin;padding:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;border:solid 10px #a3ddfb;text-align:center"><div><h2>LOADING...</h2><div><img alt="loading" src="/loading.gif"></div></div></div></div></div>
         <div id="layout">
-            <i data-fa-symbol="calendar-solid" class="fa-solid fa-calendar fa-fw"></i>
-            <i data-fa-symbol="bookmark-solid" class="fa-solid fa-bookmark fa-fw"></i>
-            <i data-fa-symbol="tags-solid" class="fa-solid fa-tags fa-fw"></i>
-            <transition name="into">
-                <div v-show="show_page" style="display: -not-none">
-                    <div id="menu_show">
-                         
-<nav id="menu">
-    <div class="desktop-menu">
-        <a href="/">
-            <span class="title">Tongrens</span>
+            <transition name="fade">
+                <div id="loading" v-show="loading">
+                    <div id="loading-circle">
+                        <h2>LOADING</h2>
+                        <img src="/images/loading.gif" />
+                    </div>
+                </div>
+            </transition>
+            <nav id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <div id="desktop-menu">
+        <a class="title" href="/">
+            <span>TONGRENS</span>
         </a>
         
         <a href="/">
@@ -61,70 +87,72 @@
         </a>
         
     </div>
-    <div :class="'phone-menu ' + menu_show" id="phone-menu">
-        <div class="curtain" @click="menu_show = !menu_show" v-show="menu_show"></div>
-        <div :class="'title'" @click="menu_show = !menu_show">
+    <div id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
             <i class="fa-solid fa-bars fa-fw"></i>
-            <span>&emsp;Tongrens</span>
+            <span>&emsp;TONGRENS</span>
         </div>
         <transition name="slide">
-        <div class="items" v-show="menu_show">
-            
-            <a href="/">
-                <div class="item">
-                    <div style="min-width: 20px; max-width: 50px; width: 10%">
-                        <i class="fa-solid fa-house fa-fw"></i>
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">主页</div>
                     </div>
-                    <div style="min-width: 100px; max-width: 150%; width: 20%">主页</div>
-                </div>
-            </a>
-            
-            <a href="/about">
-                <div class="item">
-                    <div style="min-width: 20px; max-width: 50px; width: 10%">
-                        <i class="fa-solid fa-id-card fa-fw"></i>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">关于</div>
                     </div>
-                    <div style="min-width: 100px; max-width: 150%; width: 20%">关于</div>
-                </div>
-            </a>
-            
-            <a href="/archives">
-                <div class="item">
-                    <div style="min-width: 20px; max-width: 50px; width: 10%">
-                        <i class="fa-solid fa-box-archive fa-fw"></i>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">归档</div>
                     </div>
-                    <div style="min-width: 100px; max-width: 150%; width: 20%">归档</div>
-                </div>
-            </a>
-            
-            <a href="/categories">
-                <div class="item">
-                    <div style="min-width: 20px; max-width: 50px; width: 10%">
-                        <i class="fa-solid fa-bookmark fa-fw"></i>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">分类</div>
                     </div>
-                    <div style="min-width: 100px; max-width: 150%; width: 20%">分类</div>
-                </div>
-            </a>
-            
-            <a href="/tags">
-                <div class="item">
-                    <div style="min-width: 20px; max-width: 50px; width: 10%">
-                        <i class="fa-solid fa-tags fa-fw"></i>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">标签</div>
                     </div>
-                    <div style="min-width: 100px; max-width: 150%; width: 20%">标签</div>
-                </div>
-            </a>
-            
-        </div>
+                </a>
+                
+            </div>
         </transition>
     </div>
 </nav>
-                    </div>
-                    <div id="main">
-                        <div id="home-head">
-    <div id="home-background" style="background-image: url(/images/blog_head.jpg)"></div>
-    
-    <div id="home-info" class="home-info" @click="home_click">
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+            <transition name="into">
+                <div id="main" v-show="!loading">
+                    <div id="home-head">
+    <div id="home-background" ref="homeBackground" data-images="/images/blog_head.jpg"></div>
+    <div id="home-info" @click="homeClick">
         <span class="loop"></span>
         <span class="loop"></span>
         <span class="loop"></span>
@@ -137,24 +165,21 @@
             </div>
         </span>
     </div>
-    
 </div>
-
-<div id="home-posts-wrap" class="">
+<div id="home-posts-wrap"  ref="homePostsWrap">
     <div id="home-posts">
-        <div id="posts">
-            
+        
 
 <div class="post">
-    <a href="/2023/05/16/使用powershell创建AD域快照/">
+    <a href="/2023/05/16/%E4%BD%BF%E7%94%A8powershell%E5%88%9B%E5%BB%BAAD%E5%9F%9F%E5%BF%AB%E7%85%A7/">
         <h2 class="post-title">使用powershell创建AD域快照</h2>
     </a>
     <div class="category-and-date">
         
         <span class="category">
-            <a href="/categories/笔记/">
+            <a href="/categories/%E7%AC%94%E8%AE%B0/">
                 <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
                 笔记
             </a>
@@ -162,12 +187,14 @@
         
         <span class="date">
             <span class="icon">
-                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+                <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
             2023/5/16
         </span>
+        
+        
     </div>
-    <div class="excerpt">
+    <div class="description">
         <div class="content" v-pre>
             
             <h3 id="使用powershell创建AD域快照"><a href="#使用powershell创建AD域快照" class="headerlink" title="使用powershell创建AD域快照"></a>使用powershell创建AD域快照</h3><pre><code class="powershell">ntdsutil            # 进入ntds工具
@@ -186,38 +213,34 @@ Mount %s        # 挂载索引或GUID为%s的快照
     <div class="post-tags">
         
         <span class="icon">
-            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+            <i class="fa-solid fa-tags fa-fw"></i>
         </span>
         
         
         <span class="tag">
             
-            <a href="/tags/Windows/" style="color: #00a596">
-                Windows
-            </a>
+            <a href="/tags/Windows/" style="color: #03a9f4">Windows</a>
         </span>
         
         <span class="tag">
             
-            <a href="/tags/Powershell/" style="color: #00bcd4">
-                Powershell
-            </a>
+            <a href="/tags/Powershell/" style="color: #00bcd4">Powershell</a>
         </span>
         
     </div>
-    <a href="/2023/05/16/使用powershell创建AD域快照/" class="go-post">阅读全文</a>
+    <a href="/2023/05/16/%E4%BD%BF%E7%94%A8powershell%E5%88%9B%E5%BB%BAAD%E5%9F%9F%E5%BF%AB%E7%85%A7/" class="go-post">阅读全文</a>
 </div>
 
 <div class="post">
-    <a href="/2023/05/15/使用Powershell导入csv用户并批量创建/">
+    <a href="/2023/05/15/%E4%BD%BF%E7%94%A8Powershell%E5%AF%BC%E5%85%A5csv%E7%94%A8%E6%88%B7%E5%B9%B6%E6%89%B9%E9%87%8F%E5%88%9B%E5%BB%BA/">
         <h2 class="post-title">使用Powershell导入csv用户并批量创建</h2>
     </a>
     <div class="category-and-date">
         
         <span class="category">
-            <a href="/categories/笔记/">
+            <a href="/categories/%E7%AC%94%E8%AE%B0/">
                 <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
                 笔记
             </a>
@@ -225,12 +248,14 @@ Mount %s        # 挂载索引或GUID为%s的快照
         
         <span class="date">
             <span class="icon">
-                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+                <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
             2023/5/15
         </span>
+        
+        
     </div>
-    <div class="excerpt">
+    <div class="description">
         <div class="content" v-pre>
             
             <h3 id="使用Powershell导入csv用户并批量创建"><a href="#使用Powershell导入csv用户并批量创建" class="headerlink" title="使用Powershell导入csv用户并批量创建"></a>使用Powershell导入csv用户并批量创建</h3><pre><code class="powershell">$users=Import-Csv 1.csv
@@ -248,38 +273,34 @@ Add-ADGroupMember -Identity $user.&#39;Group Member&#39; -Members $user.Username
     <div class="post-tags">
         
         <span class="icon">
-            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+            <i class="fa-solid fa-tags fa-fw"></i>
         </span>
         
         
         <span class="tag">
             
-            <a href="/tags/Windows/" style="color: #03a9f4">
-                Windows
-            </a>
+            <a href="/tags/Windows/" style="color: #00bcd4">Windows</a>
         </span>
         
         <span class="tag">
             
-            <a href="/tags/Powershell/" style="color: #ff7d73">
-                Powershell
-            </a>
+            <a href="/tags/Powershell/" style="color: #00bcd4">Powershell</a>
         </span>
         
     </div>
-    <a href="/2023/05/15/使用Powershell导入csv用户并批量创建/" class="go-post">阅读全文</a>
+    <a href="/2023/05/15/%E4%BD%BF%E7%94%A8Powershell%E5%AF%BC%E5%85%A5csv%E7%94%A8%E6%88%B7%E5%B9%B6%E6%89%B9%E9%87%8F%E5%88%9B%E5%BB%BA/" class="go-post">阅读全文</a>
 </div>
 
 <div class="post">
-    <a href="/2023/05/10/powershell安装IIS并搭建https站点/">
+    <a href="/2023/05/10/powershell%E5%AE%89%E8%A3%85IIS%E5%B9%B6%E6%90%AD%E5%BB%BAhttps%E7%AB%99%E7%82%B9/">
         <h2 class="post-title">powershell安装IIS并搭建https站点</h2>
     </a>
     <div class="category-and-date">
         
         <span class="category">
-            <a href="/categories/笔记/">
+            <a href="/categories/%E7%AC%94%E8%AE%B0/">
                 <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
                 笔记
             </a>
@@ -287,12 +308,14 @@ Add-ADGroupMember -Identity $user.&#39;Group Member&#39; -Members $user.Username
         
         <span class="date">
             <span class="icon">
-                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+                <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
             2023/5/10
         </span>
+        
+        
     </div>
-    <div class="excerpt">
+    <div class="description">
         <div class="content" v-pre>
             
             <h2 id="powershell安装IIS并搭建https站点"><a href="#powershell安装IIS并搭建https站点" class="headerlink" title="powershell安装IIS并搭建https站点"></a>powershell安装IIS并搭建https站点</h2><ol>
@@ -304,38 +327,34 @@ Add-ADGroupMember -Identity $user.&#39;Group Member&#39; -Members $user.Username
     <div class="post-tags">
         
         <span class="icon">
-            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+            <i class="fa-solid fa-tags fa-fw"></i>
         </span>
         
         
         <span class="tag">
             
-            <a href="/tags/Windows/" style="color: #03a9f4">
-                Windows
-            </a>
+            <a href="/tags/Windows/" style="color: #03a9f4">Windows</a>
         </span>
         
         <span class="tag">
             
-            <a href="/tags/Powershell/" style="color: #ffa2c4">
-                Powershell
-            </a>
+            <a href="/tags/Powershell/" style="color: #03a9f4">Powershell</a>
         </span>
         
     </div>
-    <a href="/2023/05/10/powershell安装IIS并搭建https站点/" class="go-post">阅读全文</a>
+    <a href="/2023/05/10/powershell%E5%AE%89%E8%A3%85IIS%E5%B9%B6%E6%90%AD%E5%BB%BAhttps%E7%AB%99%E7%82%B9/" class="go-post">阅读全文</a>
 </div>
 
 <div class="post">
-    <a href="/2023/04/27/Windows组策略/">
+    <a href="/2023/04/27/Windows%E7%BB%84%E7%AD%96%E7%95%A5/">
         <h2 class="post-title">Windows组策略</h2>
     </a>
     <div class="category-and-date">
         
         <span class="category">
-            <a href="/categories/笔记/">
+            <a href="/categories/%E7%AC%94%E8%AE%B0/">
                 <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
                 笔记
             </a>
@@ -343,12 +362,14 @@ Add-ADGroupMember -Identity $user.&#39;Group Member&#39; -Members $user.Username
         
         <span class="date">
             <span class="icon">
-                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+                <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
             2023/4/27
         </span>
+        
+        
     </div>
-    <div class="excerpt">
+    <div class="description">
         <div class="content" v-pre>
             
             <h1 id="Windows组策略"><a href="#Windows组策略" class="headerlink" title="Windows组策略"></a>Windows组策略</h1><ul>
@@ -361,31 +382,29 @@ Add-ADGroupMember -Identity $user.&#39;Group Member&#39; -Members $user.Username
     <div class="post-tags">
         
         <span class="icon">
-            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+            <i class="fa-solid fa-tags fa-fw"></i>
         </span>
         
         
         <span class="tag">
             
-            <a href="/tags/Windows/" style="color: #ff7d73">
-                Windows
-            </a>
+            <a href="/tags/Windows/" style="color: #ff7d73">Windows</a>
         </span>
         
     </div>
-    <a href="/2023/04/27/Windows组策略/" class="go-post">阅读全文</a>
+    <a href="/2023/04/27/Windows%E7%BB%84%E7%AD%96%E7%95%A5/" class="go-post">阅读全文</a>
 </div>
 
 <div class="post">
-    <a href="/2023/03/13/Python课上小记/">
+    <a href="/2023/03/13/Python%E8%AF%BE%E4%B8%8A%E5%B0%8F%E8%AE%B0/">
         <h2 class="post-title">Python课上小记</h2>
     </a>
     <div class="category-and-date">
         
         <span class="category">
-            <a href="/categories/笔记/">
+            <a href="/categories/%E7%AC%94%E8%AE%B0/">
                 <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
                 笔记
             </a>
@@ -393,12 +412,14 @@ Add-ADGroupMember -Identity $user.&#39;Group Member&#39; -Members $user.Username
         
         <span class="date">
             <span class="icon">
-                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+                <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
             2023/3/13
         </span>
+        
+        
     </div>
-    <div class="excerpt">
+    <div class="description">
         <div class="content" v-pre>
             
             <h3 id="这条笔记用于记录一些Python课上的One-line-Code"><a href="#这条笔记用于记录一些Python课上的One-line-Code" class="headerlink" title="这条笔记用于记录一些Python课上的One-line Code~"></a>这条笔记用于记录一些Python课上的One-line Code~</h3><p>过7游戏：</p>
@@ -432,29 +453,25 @@ else:
     <div class="post-tags">
         
         <span class="icon">
-            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+            <i class="fa-solid fa-tags fa-fw"></i>
         </span>
         
         
         <span class="tag">
             
-            <a href="/tags/python/" style="color: #00a596">
-                python
-            </a>
+            <a href="/tags/python/" style="color: #00a596">python</a>
         </span>
         
     </div>
-    <a href="/2023/03/13/Python课上小记/" class="go-post">阅读全文</a>
+    <a href="/2023/03/13/Python%E8%AF%BE%E4%B8%8A%E5%B0%8F%E8%AE%B0/" class="go-post">阅读全文</a>
 </div>
 
-             
-<div class="page-current">
+
+        <div class="page-current">
     <div class="prev">
         
-        <a href="/">
-            <span class="page-num">
-                <i class="fa-solid fa-caret-left fa-fw"></i>
-            </span>
+        <a class="page-num" href="/">
+            <i class="fa-solid fa-caret-left fa-fw"></i>
         </a>
         
     </div>
@@ -463,136 +480,123 @@ else:
         <span>
             
             
-            <a href="/">
-                <span class="page-num">
-                    1
-                </span>
-            </a>
+            <a class="page-num" href="/">1</a>
         </span>
         
-        <span class="current">
-            2
-        </span>
+        <span class="current">2</span>
         
         <span>
-            <a href="/page/3/">
-                <span class="page-num">
-                    3
-                </span>
-            </a>
+            <a class="page-num" href="/page/3/">3</a>
             
-            <a href="/page/4">
-                <span class="page-num">
-                    4
-                </span>
-            </a>
+            <a class="page-num" href="/page/4">4</a>
             
             
             <span class="page-omit">...</span>
-            <a href="/page/7">
-                <span class="page-num">
-                    7
-                </span>
-            </a>
+            <a class="page-num" href="/page/7">7</a>
             
         </span>
         
     </div>
     <div class="next">
         
-        <a href="/page/3/ ">
-            <span class="page-num">
-                <i class="fa-solid fa-caret-right fa-fw"></i>
-            </span>
+        <a class="page-num" href="/page/3/">
+            <i class="fa-solid fa-caret-right fa-fw"></i>
         </a>
         
     </div>
 </div>
-        </div>
+
     </div>
     
     <div id="home-card">
         <div id="card-div">
-    <div class="card-style" style="width: 300px">
+    <div class="card-style">
         <div class="avatar">
-            <img src="/images/73508047.png " alt="avatar">
+            <img src="/images/73508047.png" alt="avatar" />
         </div>
-        <div class="name">
-            Tongrens
+        <div class="name">Tongrens</div>
+        <div class="description">
+            <p>没什么好看的，累了毁灭吧sb Hexo</p>
+
         </div>
-        <div class="descriptions">
-            
-            <div class="description">
-                没什么好看的，累了毁灭吧sb Hexo
-            </div>
-            
-        </div>
+        
         <div class="icon-links">
             
             <span class="icon-link">
                 <a target="_blank" rel="noopener" href="https://tongrens.vip:81">
-                    <i class="fa-solid fa-earth-americas fa-fw"></i>
+                    <i
+                        class="fa-solid fa-earth-americas fa-fw"
+                    ></i>
                 </a>
             </span>
             
             <span class="icon-link">
                 <a target="_blank" rel="noopener" href="https://github.com/Tongrens">
-                    <i class="fa-brands fa-github fa-fw"></i>
+                    <i
+                        class="fa-brands fa-github fa-fw"
+                    ></i>
                 </a>
             </span>
             
             <span class="icon-link">
                 <a href="/images/wechat.png">
-                    <i class="fa-brands fa-weixin fa-fw"></i>
+                    <i
+                        class="fa-brands fa-weixin fa-fw"
+                    ></i>
                 </a>
             </span>
             
             <span class="icon-link">
                 <a href="mailto:tongrens@qq.com">
-                    <i class="fa-solid fa-envelope fa-fw"></i>
+                    <i
+                        class="fa-solid fa-envelope fa-fw"
+                    ></i>
                 </a>
             </span>
             
         </div>
+        
+        
         <div class="friend-links">
             
         </div>
+        
     </div>
 </div>
+
     </div>
     
 </div>
-                         
-<footer id="footer">
-    <div class="footer-wrap">
+
+                    <footer id="footer">
+    <div id="footer-wrap">
         <div>
-            © 2022 - 2023 Tongrens
-            <span class="footer-icon">
+            &copy;
+            2023 - 2023 Tongrens
+            <span id="footer-icon">
                 <i class="fa-solid fa-font-awesome fa-fw"></i>
             </span>
-            @Tongrens
+            &commat;Tongrens
         </div>
-        <div></div>
-        <div>Based on the <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo Engine</a> & <a
-                target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a></div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
         
     </div>
 </footer>
-                    </div>
+
                 </div>
             </transition>
-            <div id="img_show">
-                <img id="img_content" alt="img_show">
-            </div>
+            
+            <transition name="fade">
+                <div id="preview" ref="preview" v-show="previewShow">
+                    <img id="preview-content" ref="previewContent" />
+                </div>
+            </transition>
+            
         </div>
-        <script src="https://cdn.staticfile.org/highlight.js/11.5.1/highlight.min.js"></script>
-        <script src="/js/particlex.js"></script>
-        <script src="/js/showimg.js"></script>
-        <canvas id="fireworks" style="position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:2147483647"></canvas>
-        <canvas id="background" style="position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:-1"></canvas>
-        <script src="/js/fireworks.js"></script>
-        <script src="/js/background.js"></script>
+        <script src="/js/main.js"></script>
         
-
     </body>
 </html>
