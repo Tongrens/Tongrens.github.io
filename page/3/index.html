@@ -171,6 +171,77 @@
         
 
 <div class="post">
+    <a href="/2023/03/13/Python%E8%AF%BE%E4%B8%8A%E5%B0%8F%E8%AE%B0/">
+        <h2 class="post-title">Python课上小记</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/%E7%AC%94%E8%AE%B0/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                笔记
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/3/13
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h3 id="这条笔记用于记录一些Python课上的One-line-Code"><a href="#这条笔记用于记录一些Python课上的One-line-Code" class="headerlink" title="这条笔记用于记录一些Python课上的One-line Code~"></a>这条笔记用于记录一些Python课上的One-line Code~</h3><p>过7游戏：</p>
+<blockquote>
+<p>Question:</p>
+<ul>
+<li>过七游戏：输入一个整数，如果这个整数的下一个数是7的倍数或者包含“7”则输出“过”，否则输出这个数。</li>
+</ul>
+<p>Answer:</p>
+<pre><code class="python">num = int(input(&#39;输入数字：&#39;)) + 1
+print(&#39;需要输入正整数&#39;) if num &lt; 2 else print(&#39;过&#39;) if &#39;7&#39; in str(num) or num % 7 == 0 else print(num)
+</code></pre>
+<p>Analysis:</p>
+<ol>
+<li><strong>注意题目要求：需要判断的数是输入的下一个数</strong></li>
+<li>line1: 将用户输入的数字加一并存入num</li>
+<li>line2: 代码等同于：</li>
+</ol>
+<pre><code class="python">if num &lt; 2:  # 判断自增后的数是否小于2，只有大于1的整数才是正整数
+   print(&#39;需要输入正整数&#39;)
+else:
+   if &#39;7&#39; in str(num) or num % 7 == 0:  # 判断&quot;7&quot;是否在num内或者是否能整除7
+       print(&#39;过&#39;)
+   else:
+       print(num)
+</code></pre>
+</blockquote>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/python/" style="color: #00a596">python</a>
+        </span>
+        
+    </div>
+    <a href="/2023/03/13/Python%E8%AF%BE%E4%B8%8A%E5%B0%8F%E8%AE%B0/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
     <a href="/2023/03/09/23-03-09%E8%93%9D%E6%A1%A5%E6%9D%AF%E6%B5%8B%E8%AF%95%E9%A2%98/">
         <h2 class="post-title">23.03.09蓝桥杯测试题</h2>
     </a>
@@ -222,12 +293,12 @@
         
         <span class="tag">
             
-            <a href="/tags/python/" style="color: #00a596">python</a>
+            <a href="/tags/python/" style="color: #00bcd4">python</a>
         </span>
         
         <span class="tag">
             
-            <a href="/tags/exam/" style="color: #00a596">exam</a>
+            <a href="/tags/exam/" style="color: #ff7d73">exam</a>
         </span>
         
     </div>
@@ -276,12 +347,12 @@
         
         <span class="tag">
             
-            <a href="/tags/python/" style="color: #00bcd4">python</a>
+            <a href="/tags/python/" style="color: #03a9f4">python</a>
         </span>
         
         <span class="tag">
             
-            <a href="/tags/exam/" style="color: #00a596">exam</a>
+            <a href="/tags/exam/" style="color: #ffa2c4">exam</a>
         </span>
         
     </div>
@@ -339,7 +410,7 @@ print(&#39;&#39;.join(sorted(list(source))))
         
         <span class="tag">
             
-            <a href="/tags/exam/" style="color: #00bcd4">exam</a>
+            <a href="/tags/exam/" style="color: #ff7d73">exam</a>
         </span>
         
     </div>
@@ -396,68 +467,16 @@ print(fun11(200))   # 61
         
         <span class="tag">
             
-            <a href="/tags/python/" style="color: #ff7d73">python</a>
+            <a href="/tags/python/" style="color: #00a596">python</a>
         </span>
         
         <span class="tag">
             
-            <a href="/tags/exam/" style="color: #03a9f4">exam</a>
+            <a href="/tags/exam/" style="color: #ff7d73">exam</a>
         </span>
         
     </div>
     <a href="/2022/10/19/22-10-19%E8%93%9D%E6%A1%A5%E6%9D%AF%E6%B5%8B%E8%AF%95%E9%A2%98/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2022/10/14/22-10-14%E5%B0%8F%E8%AE%B0/">
-        <h2 class="post-title">22.10.14小记</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/Other/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                Other
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2022/10/14
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h2 id="瞎几把随便记记"><a href="#瞎几把随便记记" class="headerlink" title="瞎几把随便记记"></a>瞎几把随便记记</h2><p>leetcode刷题终于了250多道题了，虽然大部分都是简单题，但还是蛮有成就感的，其中做了两道时间超过100%的题目，让我炫耀了好一会（开心</p>
-<p>其次这刷的简单题中也有一大半都是字符串的题目，算法题好久没刷都忘得差不多了，动态规划、回溯、递归老实讲都不是很熟，后面要抓紧时间补了…</p>
-<p>还有被无限拖延的科目一也得抓紧时间提上日程了，再墨迹就真的没得考了md</p>
-<p><img src="https://s2.loli.net/2023/05/23/IU4pkzDEKXg23Ce.jpg" alt="1.jpg"></p>
-<p><img src="https://s2.loli.net/2023/05/23/BVhwJgq3cQClULo.jpg" alt="2.jpg"></p>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/text/" style="color: #ff7d73">text</a>
-        </span>
-        
-    </div>
-    <a href="/2022/10/14/22-10-14%E5%B0%8F%E8%AE%B0/" class="go-post">阅读全文</a>
 </div>
 
 
