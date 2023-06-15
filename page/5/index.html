@@ -171,6 +171,71 @@
         
 
 <div class="post">
+    <a href="/2022/10/10/%E6%89%A9%E5%B1%95VLAN%E7%89%B9%E6%80%A7%E9%85%8D%E7%BD%AE%E4%B8%8E%E7%AE%A1%E7%90%86/">
+        <h2 class="post-title">扩展VLAN特性配置与管理</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/%E7%AC%94%E8%AE%B0/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                笔记
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2022/10/10
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="扩展VLAN特性配置与管理"><a href="#扩展VLAN特性配置与管理" class="headerlink" title="扩展VLAN特性配置与管理"></a>扩展VLAN特性配置与管理</h1><h2 id="VLAN聚合"><a href="#VLAN聚合" class="headerlink" title="VLAN聚合"></a>VLAN聚合</h2><p>VLAN聚合是把多个不配置三层VLANIF接口聚合成一个超级VLAN（Super-VLAN），这些VLANIF的接口称为Sub-VLAN</p>
+<p><img src="https://s2.loli.net/2023/05/23/eiS6ln5ZVLWsRcX.jpg" alt="1.jpg"></p>
+<blockquote>
+<p>Super-VLAN：<br>可以看成一个大的VLAN，但它的成员不是端口而是Sub-VLAN，需要配置三层VLANIF接口并配置IP地址。每个VLAN聚合中只能有一个Super-VLAN。</p>
+</blockquote>
+<blockquote>
+<p>Sub-VLAN：<br>它是Super-VLAN的成员，它的成员是交换机的端口，不能创建三层VLANIF接口，不同Sub-VLAN间是相互二层隔离的，但各个Sub-VLAN中的用户网关都是Super-VLAN的VLANIF接口IP地址，来实现各Sub-VLAN成员间以及与外部网络的三层通信。每个VLAN聚合中可以有多个Sub-VLAN。</p>
+</blockquote>
+<h2 id="MUX-VLAN"><a href="#MUX-VLAN" class="headerlink" title="MUX VLAN"></a>MUX VLAN</h2><p><strong>MUX VLAN（Multiplex VLAN）提供了一种通过VLAN进行网络资源控制的机制</strong></p>
+<ol>
+<li>主VLAN（Principal VLAN）：Principal port可以和MUX VLAN内的所有接口进行通信。</li>
+<li>从VLAN（Subordinate VLAN）包括隔离型从VLAN和互通型从VLAN：</li>
+<li>隔离型从VLAN（Separate VLAN）：Separate port只能和Principal port进行通信，和其他类型的接口实现完全隔离。</li>
+</ol>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/switch/" style="color: #00bcd4">switch</a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/vlan/" style="color: #00a596">vlan</a>
+        </span>
+        
+    </div>
+    <a href="/2022/10/10/%E6%89%A9%E5%B1%95VLAN%E7%89%B9%E6%80%A7%E9%85%8D%E7%BD%AE%E4%B8%8E%E7%AE%A1%E7%90%86/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
     <a href="/2022/10/10/%E6%8E%A5%E5%8F%A3%E5%8F%8A%E4%BB%A5%E5%A4%AA%E7%BD%91%E9%93%BE%E8%B7%AF%E9%85%8D%E7%BD%AE%E5%8F%8A%E7%AE%A1%E7%90%86/">
         <h2 class="post-title">接口及以太网链路配置及管理</h2>
     </a>
@@ -225,7 +290,7 @@
         
         <span class="tag">
             
-            <a href="/tags/switch/" style="color: #00a596">switch</a>
+            <a href="/tags/switch/" style="color: #03a9f4">switch</a>
         </span>
         
     </div>
@@ -273,12 +338,12 @@
         
         <span class="tag">
             
-            <a href="/tags/switch/" style="color: #ffa2c4">switch</a>
+            <a href="/tags/switch/" style="color: #00a596">switch</a>
         </span>
         
         <span class="tag">
             
-            <a href="/tags/vlan/" style="color: #00a596">vlan</a>
+            <a href="/tags/vlan/" style="color: #00bcd4">vlan</a>
         </span>
         
     </div>
@@ -341,12 +406,12 @@ def create_linklist_head(lst):
         
         <span class="tag">
             
-            <a href="/tags/python/" style="color: #03a9f4">python</a>
+            <a href="/tags/python/" style="color: #ff7d73">python</a>
         </span>
         
         <span class="tag">
             
-            <a href="/tags/LinkList/" style="color: #03a9f4">LinkList</a>
+            <a href="/tags/LinkList/" style="color: #00bcd4">LinkList</a>
         </span>
         
     </div>
@@ -410,77 +475,11 @@ class AVLTree(BST):
         
         <span class="tag">
             
-            <a href="/tags/BiTreeNode/" style="color: #03a9f4">BiTreeNode</a>
+            <a href="/tags/BiTreeNode/" style="color: #ff7d73">BiTreeNode</a>
         </span>
         
     </div>
     <a href="/2022/10/10/AVL%E6%A0%91/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2022/10/10/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/">
-        <h2 class="post-title">二叉搜索树</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/%E7%AC%94%E8%AE%B0/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                笔记
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2022/10/10
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <pre><code class="python"># BST
-class BiTreeNode:
-    def __init__(self, data):
-        self.data = data
-        self.lchild = None
-        self.rchild = None
-        self.parent = None
-
-class BST:
-    def __init__(self, lst=None):
-        self.root = None
-        if lst:
-            for val in lst:
-                self.insert(val)
-</code></pre>
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/python/" style="color: #ffa2c4">python</a>
-        </span>
-        
-        <span class="tag">
-            
-            <a href="/tags/BiTreeNode/" style="color: #03a9f4">BiTreeNode</a>
-        </span>
-        
-    </div>
-    <a href="/2022/10/10/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/" class="go-post">阅读全文</a>
 </div>
 
 

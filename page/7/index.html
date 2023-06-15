@@ -171,6 +171,79 @@
         
 
 <div class="post">
+    <a href="/2022/10/10/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95-NB%E4%B8%89%E4%BA%BA%E7%BB%84/">
+        <h2 class="post-title">排序算法-NB三人组</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/%E7%AC%94%E8%AE%B0/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                笔记
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2022/10/10
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h1><pre><code class="python">def partition(lst, left, right):
+    tmp = lst[left]
+    while left &lt; right:
+        while left &lt; right and lst[right] &gt; tmp:
+            right -= 1
+        lst[left] = lst[right]
+        while left &lt; right and lst[left] &lt; tmp:
+            left += 1
+        lst[right] = lst[left]
+    lst[left] = tmp
+    return left
+
+def quick_sort(lst, left, right):
+    if left &lt; right:
+        mid = partition(lst, left, right)
+        quick_sort(lst, left, mid)
+        quick_sort(lst, mid + 1, right)
+
+li = [4, 6, 2, 3, 1, 5, 7, 9, 8]
+quick_sort(li, 0, len(li) - 1)
+print(li)  # [1, 2, 3, 4, 5, 6, 7, 8, 9]
+</code></pre>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/python/" style="color: #00a596">python</a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/sort/" style="color: #00a596">sort</a>
+        </span>
+        
+    </div>
+    <a href="/2022/10/10/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95-NB%E4%B8%89%E4%BA%BA%E7%BB%84/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
     <a href="/2022/10/10/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95-lowB%E4%B8%89%E4%BA%BA%E7%BB%84/">
         <h2 class="post-title">排序算法-lowB三人组</h2>
     </a>
@@ -223,12 +296,12 @@ print(li)  # [1, 2, 3, 4, 5, 6, 7, 8, 9]
         
         <span class="tag">
             
-            <a href="/tags/python/" style="color: #00a596">python</a>
+            <a href="/tags/python/" style="color: #ffa2c4">python</a>
         </span>
         
         <span class="tag">
             
-            <a href="/tags/sort/" style="color: #ffa2c4">sort</a>
+            <a href="/tags/sort/" style="color: #03a9f4">sort</a>
         </span>
         
     </div>
@@ -278,7 +351,7 @@ print(li)  # [1, 2, 3, 4, 5, 6, 7, 8, 9]
         
         <span class="tag">
             
-            <a href="/tags/text/" style="color: #03a9f4">text</a>
+            <a href="/tags/text/" style="color: #ffa2c4">text</a>
         </span>
         
     </div>
