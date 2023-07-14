@@ -171,6 +171,71 @@
         
 
 <div class="post">
+    <a href="/2022/10/10/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95-%E5%85%B6%E4%BB%96%E6%8E%92%E5%BA%8F/">
+        <h2 class="post-title">排序算法-其他排序</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/%E7%AC%94%E8%AE%B0/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                笔记
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2022/10/10
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="计数排序"><a href="#计数排序" class="headerlink" title="计数排序"></a>计数排序</h1><pre><code class="python">def count_sort(lst, max_count=100):
+    count = [0 for _ in range(max_count + 1)]
+    for val in lst:
+        count[val] += 1
+    lst.clear()
+    for ind, val in enumerate(count):
+        for i in range(val):
+            lst.append(ind)
+
+li = [4, 6, 2, 3, 1, 5, 7, 9, 8]
+count_sort(li, 9)
+print(li)  # [1, 2, 3, 4, 5, 6, 7, 8, 9]
+</code></pre>
+<p><strong>时间复杂度：O(n)<br>空间复杂度：O(n)<br>稳定性：稳定</strong></p>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/python/" style="color: #03a9f4">python</a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/sort/" style="color: #03a9f4">sort</a>
+        </span>
+        
+    </div>
+    <a href="/2022/10/10/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95-%E5%85%B6%E4%BB%96%E6%8E%92%E5%BA%8F/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
     <a href="/2022/10/10/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95-NB%E4%B8%89%E4%BA%BA%E7%BB%84/">
         <h2 class="post-title">排序算法-NB三人组</h2>
     </a>
@@ -231,7 +296,7 @@ print(li)  # [1, 2, 3, 4, 5, 6, 7, 8, 9]
         
         <span class="tag">
             
-            <a href="/tags/python/" style="color: #00a596">python</a>
+            <a href="/tags/python/" style="color: #ff7d73">python</a>
         </span>
         
         <span class="tag">
@@ -296,7 +361,7 @@ print(li)  # [1, 2, 3, 4, 5, 6, 7, 8, 9]
         
         <span class="tag">
             
-            <a href="/tags/python/" style="color: #ffa2c4">python</a>
+            <a href="/tags/python/" style="color: #00bcd4">python</a>
         </span>
         
         <span class="tag">
@@ -351,7 +416,7 @@ print(li)  # [1, 2, 3, 4, 5, 6, 7, 8, 9]
         
         <span class="tag">
             
-            <a href="/tags/text/" style="color: #ffa2c4">text</a>
+            <a href="/tags/text/" style="color: #ff7d73">text</a>
         </span>
         
     </div>
