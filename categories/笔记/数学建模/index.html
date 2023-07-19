@@ -3,7 +3,7 @@
 <html lang="zh">
     <head>
         <meta charset="utf-8" />
-        <title>使用Powershell导入csv用户并批量创建 | Tongrens</title>
+        <title>Categories: 数学建模 | Tongrens</title>
         <meta name="author" content="Tongrens" />
         <meta name="description" content="" />
         <meta name="keywords" content="" />
@@ -36,14 +36,6 @@
 
 <script src="/js/lib/preview.js"></script>
 
-
-
-
-
-
-<script src="https://cdn.staticfile.org/waline/2.14.8/waline.min.js"></script>
-<link rel="stylesheet" href="https://cdn.staticfile.org/waline/2.14.8/waline.min.css" />
-<link rel="stylesheet" href="https://cdn.staticfile.org/waline/2.14.8/waline-meta.min.css" />
 
 
 
@@ -156,20 +148,24 @@
 
             <transition name="into">
                 <div id="main" v-show="!loading">
-                    <div class="article">
-    <div>
-        <h1>使用Powershell导入csv用户并批量创建</h1>
-    </div>
-    <div class="info">
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/5/15
+                    <div id="archives">
+    
+    <div class="categories-tags">
+        
+        
+        <span>
+            <a href="/categories/Other/" style="background: #00bcd4">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                Other
+            </a>
         </span>
         
-        <span class="category">
-            <a href="/categories/%E7%AC%94%E8%AE%B0/">
+        
+        
+        <span>
+            <a href="/categories/%E7%AC%94%E8%AE%B0/" style="background: #00a596">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
@@ -178,46 +174,88 @@
         </span>
         
         
-        <span class="tags">
-            <span class="icon">
-                <i class="fa-solid fa-tags fa-fw"></i>
-            </span>
-            
-            <span class="tag">
-                
-                <a href="/tags/Windows/" style="color: #03a9f4">Windows</a>
-            </span>
-            
-            <span class="tag">
-                
-                <a href="/tags/Powershell/" style="color: #ffa2c4">Powershell</a>
-            </span>
-            
+        
+        <span>
+            <a href="/categories/%E7%AC%94%E8%AE%B0/%E7%AE%97%E6%B3%95/" style="background: #ff7d73">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                算法
+            </a>
         </span>
+        
+        
+        
+        <span>
+            <a href="/categories/%E7%AC%94%E8%AE%B0/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/" style="background: linear-gradient(120deg, #9abbf7 0%, #ffbbf4 100%)">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                数学建模
+            </a>
+        </span>
+        
+        
+        
+        
+        
+        <span>
+            <a href="/categories/%E7%AC%94%E8%AE%B0/%E8%B7%AF%E7%94%B1%E4%BA%A4%E6%8D%A2/" style="background: #03a9f4">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                路由交换
+            </a>
+        </span>
+        
+        
+        
+        <span>
+            <a href="/categories/%E7%AC%94%E8%AE%B0/%E7%BD%91%E7%BB%9C%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86/" style="background: #03a9f4">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                网络系统管理
+            </a>
+        </span>
+        
         
     </div>
     
-    <div class="content" v-pre>
-        <h3 id="使用Powershell导入csv用户并批量创建"><a href="#使用Powershell导入csv用户并批量创建" class="headerlink" title="使用Powershell导入csv用户并批量创建"></a>使用Powershell导入csv用户并批量创建</h3><pre><code class="powershell">$users=Import-Csv 1.csv
-foreach ($user in $users) &#123;New-ADUser $user.Username -Surname $user.&quot;last name&quot; -GivenName $user.&#39;first Name&#39; -EmailAddress $user.&#39;EMail&#39; -Title $user.&#39;Job Title&#39; -Country $user.region -OfficePhone $user.phone -AccountPassword(ConvertTo-SecureString &quot;Qwer1234&quot; -AsPlainText -Force) -Enabled $true
-Add-ADGroupMember -Identity $user.&#39;Group Member&#39; -Members $user.Username
-&#125;
-</code></pre>
-<ul>
-<li>1.csv:<br><img src="https://s2.loli.net/2023/05/23/Jf6ZXvMuRkwbVBG.png" alt="1.png"></li>
-</ul>
-
+    <div class="timeline">
+        <div class="timeline-tail"></div>
+        <div class="timeline-content">
+            <div class="item-time">2023/7/19</div>
+            <a href="/2023/07/19/Matlab%E5%88%9D%E5%AD%A6%E4%B9%A0/">
+                <h3>Matlab初学习</h3>
+            </a>
+            <div class="info">
+                
+                <span class="category">
+                    <a href="/categories/%E7%AC%94%E8%AE%B0/">
+                        <span class="icon">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </span>
+                        笔记
+                    </a>
+                </span>
+                
+                
+                <span class="tags">
+                    <span class="icon">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </span>
+                    
+                    <span class="tag">
+                        
+                        <a href="/tags/matlab/" style="color: #ffa2c4">matlab</a>
+                    </span>
+                    
+                </span>
+                
+            </div>
+        </div>
     </div>
-    
-    
-    
-    
-    
-    <div id="comment">
-        <div id="waline-container"></div>
-    </div>
-    
-    
     
 </div>
 
@@ -250,31 +288,6 @@ Add-ADGroupMember -Identity $user.&#39;Group Member&#39; -Members $user.Username
             
         </div>
         <script src="/js/main.js"></script>
-        
-        
-
-
-<script>
-    Waline.init({
-        el: "#waline-container",
-        serverURL: "https://waline.tongrens.me/",
-        commentCount: true,
-        pageview: false,
-        emoji: "https://unpkg.com/@waline/emojis@1.2.0/weibo,https://unpkg.com/@waline/emojis@1.2.0/alus,https://unpkg.com/@waline/emojis@1.2.0/bilibili,https://unpkg.com/@waline/emojis@1.2.0/qq,https://unpkg.com/@waline/emojis@1.2.0/tieba,https://unpkg.com/@waline/emojis@1.2.0/tw-emoji".split(","),
-        meta: "nick,mail,link".split(","),
-        requiredMeta: "nick".split(","),
-        lang: "zh-CN",
-        wordLimit: 0,
-        pageSize: "10",
-        login: "enable",
-        
-        locale: {},
-        
-    });
-</script>
-
-
-
         
     </body>
 </html>

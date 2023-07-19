@@ -171,6 +171,67 @@
         
 
 <div class="post">
+    <a href="/2023/05/21/Windows%E7%94%A8%E6%88%B7%E7%99%BB%E5%BD%95-%E6%B3%A8%E9%94%80%E8%87%AA%E5%8A%A8%E6%8A%A5%E5%91%8A%E8%AE%B0%E5%BD%95/">
+        <h2 class="post-title">Windows用户登录/注销自动报告记录</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/%E7%AC%94%E8%AE%B0/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                笔记
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/5/21
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h3 id="Windows用户登录-注销自动报告记录"><a href="#Windows用户登录-注销自动报告记录" class="headerlink" title="Windows用户登录/注销自动报告记录"></a>Windows用户登录/注销自动报告记录</h3><p><img src="https://s2.loli.net/2023/05/23/iaMZ8cPRLquWxdQ.png" alt="1.png"></p>
+<ol>
+<li>创建powershell脚本<pre><code class="powershell"># login.ps1
+Add-Content -Path \\hq-server1\Login-info\index.html -Value &quot;$(whoami) $(Get-Date -Format &#39;yyyy/MM/dd HH:mm&#39;) Login TO $(hostname) Successful &lt; br&gt;&quot;
+# logout.ps1
+Add-Content -Path \\hq-server1\Login-info\index.html -Value &quot;$(whoami) $(Get-Date -Format &#39;yyyy/MM/dd HH:mm&#39;) Logout FROM $(hostname) Successful &lt; br&gt;&quot;
+# 自行删除br前的空格
+</code></pre>
+</li>
+</ol>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/Windows/" style="color: #00bcd4">Windows</a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/Powershell/" style="color: #00bcd4">Powershell</a>
+        </span>
+        
+    </div>
+    <a href="/2023/05/21/Windows%E7%94%A8%E6%88%B7%E7%99%BB%E5%BD%95-%E6%B3%A8%E9%94%80%E8%87%AA%E5%8A%A8%E6%8A%A5%E5%91%8A%E8%AE%B0%E5%BD%95/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
     <a href="/2023/05/17/%E4%BD%BF%E7%94%A8IPsec%E5%AF%B9iSCSI%E8%BF%9B%E8%A1%8C%E4%BC%A0%E8%BE%93%E5%8A%A0%E5%AF%86/">
         <h2 class="post-title">使用IPsec对iSCSI进行传输加密</h2>
     </a>
@@ -316,7 +377,7 @@
         
         <span class="tag">
             
-            <a href="/tags/Windows/" style="color: #00bcd4">Windows</a>
+            <a href="/tags/Windows/" style="color: #03a9f4">Windows</a>
         </span>
         
     </div>
@@ -372,76 +433,16 @@ Mount %s        # 挂载索引或GUID为%s的快照
         
         <span class="tag">
             
-            <a href="/tags/Windows/" style="color: #00bcd4">Windows</a>
+            <a href="/tags/Windows/" style="color: #ff7d73">Windows</a>
         </span>
         
         <span class="tag">
             
-            <a href="/tags/Powershell/" style="color: #ff7d73">Powershell</a>
+            <a href="/tags/Powershell/" style="color: #ffa2c4">Powershell</a>
         </span>
         
     </div>
     <a href="/2023/05/16/%E4%BD%BF%E7%94%A8powershell%E5%88%9B%E5%BB%BAAD%E5%9F%9F%E5%BF%AB%E7%85%A7/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2023/05/15/%E4%BD%BF%E7%94%A8Powershell%E5%AF%BC%E5%85%A5csv%E7%94%A8%E6%88%B7%E5%B9%B6%E6%89%B9%E9%87%8F%E5%88%9B%E5%BB%BA/">
-        <h2 class="post-title">使用Powershell导入csv用户并批量创建</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/%E7%AC%94%E8%AE%B0/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                笔记
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/5/15
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h3 id="使用Powershell导入csv用户并批量创建"><a href="#使用Powershell导入csv用户并批量创建" class="headerlink" title="使用Powershell导入csv用户并批量创建"></a>使用Powershell导入csv用户并批量创建</h3><pre><code class="powershell">$users=Import-Csv 1.csv
-foreach ($user in $users) &#123;New-ADUser $user.Username -Surname $user.&quot;last name&quot; -GivenName $user.&#39;first Name&#39; -EmailAddress $user.&#39;EMail&#39; -Title $user.&#39;Job Title&#39; -Country $user.region -OfficePhone $user.phone -AccountPassword(ConvertTo-SecureString &quot;Qwer1234&quot; -AsPlainText -Force) -Enabled $true
-Add-ADGroupMember -Identity $user.&#39;Group Member&#39; -Members $user.Username
-&#125;
-</code></pre>
-<ul>
-<li>1.csv:<br><img src="https://s2.loli.net/2023/05/23/Jf6ZXvMuRkwbVBG.png" alt="1.png"></li>
-</ul>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/Windows/" style="color: #00bcd4">Windows</a>
-        </span>
-        
-        <span class="tag">
-            
-            <a href="/tags/Powershell/" style="color: #00bcd4">Powershell</a>
-        </span>
-        
-    </div>
-    <a href="/2023/05/15/%E4%BD%BF%E7%94%A8Powershell%E5%AF%BC%E5%85%A5csv%E7%94%A8%E6%88%B7%E5%B9%B6%E6%89%B9%E9%87%8F%E5%88%9B%E5%BB%BA/" class="go-post">阅读全文</a>
 </div>
 
 
