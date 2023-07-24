@@ -171,6 +171,58 @@
         
 
 <div class="post">
+    <a href="/2022/10/10/BGP/">
+        <h2 class="post-title">BGP</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/%E7%AC%94%E8%AE%B0/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                笔记
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2022/10/10
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="BGP"><a href="#BGP" class="headerlink" title="BGP"></a>BGP</h1><blockquote>
+<h5 id="BGP分类"><a href="#BGP分类" class="headerlink" title="BGP分类"></a>BGP分类</h5></blockquote>
+<p>BGP是EGP（外部网关协议）的一种，而IGP包含了RIP、OSPF、ISIS，是内部网关协议，BGP协议本身不产生、发现路由；<br>BGP分为IBGP和EBGP<br>EBGP：当BGP设备收到EBGP发来的路由时，会将带有自己AS号的路由丢弃<br>IBGP：为了防止环路，从IBGP学习到的路由不会转发给其他IBGP设备，需要建立全连接才能互通，有路由反射器和联盟两种解决方法<br>BGP Router-id：在发送的Open报文中携带，通常是IP地址<br><strong>AS划分：</strong><br>二字节AS：1-65535<br>四字节AS：1-4294967295<br>公网AS：1-64511<br>私网AS：64512-65534</p>
+<h3 id="2种角色"><a href="#2种角色" class="headerlink" title="2种角色"></a>2种角色</h3><blockquote>
+<p>Speaker：发送或者接受BGP报文的任何设备都是Speaker<br>Peer：相互交换报文的Speaker之间互为对等体，若干相关的对等体可以组成对等体组</p>
+</blockquote>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/Router/" style="color: #00bcd4">Router</a>
+        </span>
+        
+    </div>
+    <a href="/2022/10/10/BGP/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
     <a href="/2022/10/10/OSPF/">
         <h2 class="post-title">OSPF</h2>
     </a>
@@ -225,7 +277,7 @@
         
         <span class="tag">
             
-            <a href="/tags/Router/" style="color: #00a596">Router</a>
+            <a href="/tags/Router/" style="color: #00bcd4">Router</a>
         </span>
         
     </div>
@@ -288,7 +340,7 @@
         
         <span class="tag">
             
-            <a href="/tags/Router/" style="color: #00bcd4">Router</a>
+            <a href="/tags/Router/" style="color: #ff7d73">Router</a>
         </span>
         
     </div>
@@ -348,12 +400,12 @@
         
         <span class="tag">
             
-            <a href="/tags/switch/" style="color: #00bcd4">switch</a>
+            <a href="/tags/switch/" style="color: #ff7d73">switch</a>
         </span>
         
         <span class="tag">
             
-            <a href="/tags/vlan/" style="color: #03a9f4">vlan</a>
+            <a href="/tags/vlan/" style="color: #00bcd4">vlan</a>
         </span>
         
     </div>
@@ -415,64 +467,11 @@
         
         <span class="tag">
             
-            <a href="/tags/switch/" style="color: #ffa2c4">switch</a>
+            <a href="/tags/switch/" style="color: #ff7d73">switch</a>
         </span>
         
     </div>
     <a href="/2022/10/10/%E6%8E%A5%E5%8F%A3%E5%8F%8A%E4%BB%A5%E5%A4%AA%E7%BD%91%E9%93%BE%E8%B7%AF%E9%85%8D%E7%BD%AE%E5%8F%8A%E7%AE%A1%E7%90%86/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2022/10/10/%E5%9F%BA%E6%9C%ACVLAN%E7%89%B9%E6%80%A7%E9%85%8D%E7%BD%AE%E4%B8%8E%E7%AE%A1%E7%90%86/">
-        <h2 class="post-title">基本VLAN特性配置与管理</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/%E7%AC%94%E8%AE%B0/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                笔记
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2022/10/10
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h1 id="基本VLAN特性配置与管理"><a href="#基本VLAN特性配置与管理" class="headerlink" title="基本VLAN特性配置与管理"></a>基本VLAN特性配置与管理</h1><h2 id="VLAN基础"><a href="#VLAN基础" class="headerlink" title="VLAN基础"></a>VLAN基础</h2><p>VLAN（虚拟局域网）是一个将物理LAN逻辑划分为若干个虚拟的LAN，目的是为了缩小广播域，使广播域进行二层（数据链路层）通信，不同VLAN间的主机是不能互相通信的，必须经过第三层（网络层）进行通信。<br><strong>VLAN既能限制广播网络，又可增强局域网的安全性，还提高了网络的健壮性。</strong><br>在同一个物理交换机上不可能存在两个相同的VLAN，在不同交换机上则可以有相同VLAN</p>
-<h2 id="VLAN帧"><a href="#VLAN帧" class="headerlink" title="VLAN帧"></a>VLAN帧</h2><p>VLAN Tag:标识所属VLAN，遵循IEEE 802.1Q标注，支持802.1Q协议的交换机既可以发送有标记帧也可以发送无标记帧（有标记帧加入了4字节的801.1Q Tag，反之则没有），交换机内部的数据包一律携带Tag。</p>
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/switch/" style="color: #03a9f4">switch</a>
-        </span>
-        
-        <span class="tag">
-            
-            <a href="/tags/vlan/" style="color: #00a596">vlan</a>
-        </span>
-        
-    </div>
-    <a href="/2022/10/10/%E5%9F%BA%E6%9C%ACVLAN%E7%89%B9%E6%80%A7%E9%85%8D%E7%BD%AE%E4%B8%8E%E7%AE%A1%E7%90%86/" class="go-post">阅读全文</a>
 </div>
 
 
@@ -507,6 +506,9 @@
             
             <a class="page-num" href="/page/7">7</a>
             
+            
+            <span class="page-omit">...</span>
+            <a class="page-num" href="/page/8">8</a>
             
         </span>
         

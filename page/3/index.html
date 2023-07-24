@@ -171,6 +171,67 @@
         
 
 <div class="post">
+    <a href="/2023/05/16/%E4%BD%BF%E7%94%A8powershell%E5%88%9B%E5%BB%BAAD%E5%9F%9F%E5%BF%AB%E7%85%A7/">
+        <h2 class="post-title">使用powershell创建AD域快照</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/%E7%AC%94%E8%AE%B0/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                笔记
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/5/16
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h3 id="使用powershell创建AD域快照"><a href="#使用powershell创建AD域快照" class="headerlink" title="使用powershell创建AD域快照"></a>使用powershell创建AD域快照</h3><pre><code class="powershell">ntdsutil            # 进入ntds工具
+Snapshot            # 进入快照界面(输入sn也可以)
+Activate Instance NTDS    # 选择NTDS实例
+Create            # 创建快照
+
+List All        # 查看当前所有快照
+Mount %s        # 挂载索引或GUID为%s的快照
+</code></pre>
+<p><img src="https://s2.loli.net/2023/05/23/Hn6LfUwQ1v2zaN5.png" alt="2.png"></p>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/Windows/" style="color: #00a596">Windows</a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/Powershell/" style="color: #ff7d73">Powershell</a>
+        </span>
+        
+    </div>
+    <a href="/2023/05/16/%E4%BD%BF%E7%94%A8powershell%E5%88%9B%E5%BB%BAAD%E5%9F%9F%E5%BF%AB%E7%85%A7/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
     <a href="/2023/05/15/%E4%BD%BF%E7%94%A8Powershell%E5%AF%BC%E5%85%A5csv%E7%94%A8%E6%88%B7%E5%B9%B6%E6%89%B9%E9%87%8F%E5%88%9B%E5%BB%BA/">
         <h2 class="post-title">使用Powershell导入csv用户并批量创建</h2>
     </a>
@@ -218,7 +279,7 @@ Add-ADGroupMember -Identity $user.&#39;Group Member&#39; -Members $user.Username
         
         <span class="tag">
             
-            <a href="/tags/Windows/" style="color: #ffa2c4">Windows</a>
+            <a href="/tags/Windows/" style="color: #03a9f4">Windows</a>
         </span>
         
         <span class="tag">
@@ -272,12 +333,12 @@ Add-ADGroupMember -Identity $user.&#39;Group Member&#39; -Members $user.Username
         
         <span class="tag">
             
-            <a href="/tags/Windows/" style="color: #ffa2c4">Windows</a>
+            <a href="/tags/Windows/" style="color: #00bcd4">Windows</a>
         </span>
         
         <span class="tag">
             
-            <a href="/tags/Powershell/" style="color: #ff7d73">Powershell</a>
+            <a href="/tags/Powershell/" style="color: #ffa2c4">Powershell</a>
         </span>
         
     </div>
@@ -327,7 +388,7 @@ Add-ADGroupMember -Identity $user.&#39;Group Member&#39; -Members $user.Username
         
         <span class="tag">
             
-            <a href="/tags/Windows/" style="color: #ffa2c4">Windows</a>
+            <a href="/tags/Windows/" style="color: #00bcd4">Windows</a>
         </span>
         
     </div>
@@ -398,75 +459,11 @@ else:
         
         <span class="tag">
             
-            <a href="/tags/python/" style="color: #00a596">python</a>
+            <a href="/tags/python/" style="color: #03a9f4">python</a>
         </span>
         
     </div>
     <a href="/2023/03/13/Python%E8%AF%BE%E4%B8%8A%E5%B0%8F%E8%AE%B0/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2023/03/09/23-03-09%E8%93%9D%E6%A1%A5%E6%9D%AF%E6%B5%8B%E8%AF%95%E9%A2%98/">
-        <h2 class="post-title">23.03.09蓝桥杯测试题</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/categories/%E7%AC%94%E8%AE%B0/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                笔记
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/3/9
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h1 id="好久没做算法题了，上题上题"><a href="#好久没做算法题了，上题上题" class="headerlink" title="好久没做算法题了，上题上题"></a>好久没做算法题了，上题上题</h1><blockquote>
-<p>请找到⼀个⼤于 2022 的最⼩数，这个数转换成⼗六进制之后，所有的数位（不含前导 0）都为字⺟（A 到 F）。<br>请将这个数的⼗进制形式作为答案提交。</p>
-</blockquote>
-<pre><code class="python">def fun1():
-    cur = 2022
-    while True:
-        for i in hex(cur)[2:]:
-            if i.isnumeric():
-                break
-        else:
-            return cur
-        cur += 1
-</code></pre>
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/python/" style="color: #00bcd4">python</a>
-        </span>
-        
-        <span class="tag">
-            
-            <a href="/tags/exam/" style="color: #00a596">exam</a>
-        </span>
-        
-    </div>
-    <a href="/2023/03/09/23-03-09%E8%93%9D%E6%A1%A5%E6%9D%AF%E6%B5%8B%E8%AF%95%E9%A2%98/" class="go-post">阅读全文</a>
 </div>
 
 
@@ -500,7 +497,7 @@ else:
             
             
             <span class="page-omit">...</span>
-            <a class="page-num" href="/page/7">7</a>
+            <a class="page-num" href="/page/8">8</a>
             
         </span>
         

@@ -3,7 +3,7 @@
 <html lang="zh">
     <head>
         <meta charset="utf-8" />
-        <title>哈希表 | Tongrens</title>
+        <title>Matlab求权重 | Tongrens</title>
         <meta name="author" content="Tongrens" />
         <meta name="description" content="" />
         <meta name="keywords" content="" />
@@ -158,14 +158,14 @@
                 <div id="main" v-show="!loading">
                     <div class="article">
     <div>
-        <h1>哈希表</h1>
+        <h1>Matlab求权重</h1>
     </div>
     <div class="info">
         <span class="date">
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-            2022/10/10
+            2023/7/24
         </span>
         
         <span class="category">
@@ -185,12 +185,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/python/" style="color: #ffa2c4">python</a>
-            </span>
-            
-            <span class="tag">
-                
-                <a href="/tags/HashTable/" style="color: #00a596">HashTable</a>
+                <a href="/tags/matlab/" style="color: #03a9f4">matlab</a>
             </span>
             
         </span>
@@ -198,87 +193,89 @@
     </div>
     
     <div class="content" v-pre>
-        <pre><code class="python"># HashTable
-class LinkList:
-    class Node:
-        def __init__(self, item=None):
-            self.item = item
-            self.next = None
-
-    class LinkListIterator:
-        def __init__(self, head):
-            self.current = head
-
-        def __iter__(self):
-            return self
-
-        def __next__(self):
-            if self.current is None:
-                raise StopIteration
-            else:
-                item = self.current.item
-                self.current = self.current.next
-                return item
+        <h2 id="矩阵（A）："><a href="#矩阵（A）：" class="headerlink" title="矩阵（A）："></a>矩阵（A）：</h2><pre><code>1.0000    1.0000    4.0000    0.3333    3.0000
+1.0000    1.0000    4.0000    0.3333    3.0000
+0.2500    0.2500    1.0000    0.3333    0.5000
+3.0000    3.0000    3.0000    1.0000    3.0000
+0.3333    0.3333    2.0000    0.3333    1.0000
 </code></pre>
 <span id="more"></span>
-<pre><code class="python">    def __init__(self, iterable=None):
-        self.head = None
-        self.tail = None
-        if iterable:
-            self.extend(iterable)
 
-    def append(self, obj):
-        node = self.Node(obj)
-        if self.head is None:
-            self.head = node
-            self.tail = node
-        else:
-            self.tail.next = node
-            self.tail = node
+<h3 id="算术平均法求权重"><a href="#算术平均法求权重" class="headerlink" title="算术平均法求权重"></a>算术平均法求权重</h3><pre><code class="matlab">sum(A./repmat(sum(A),size(A,1),1),2)
 
-    def extend(self, iterable):
-        for item in iterable:
-            self.append(item)
+Sum_A = sum(A)
+%Sum_A =
+%    5.5833    5.5833   14.0000    2.3333   10.5000
+n = size(A,1)   % n = 5
+SUM_A = repmat(Sum_A,n,1)
+%SUM_A =
+%    5.5833    5.5833   14.0000    2.3333   10.5000
+%    5.5833    5.5833   14.0000    2.3333   10.5000
+%    5.5833    5.5833   14.0000    2.3333   10.5000
+%    5.5833    5.5833   14.0000    2.3333   10.5000
+%    5.5833    5.5833   14.0000    2.3333   10.5000
+Stand_A = A ./ SUM_A
+%Stand_A =
+%    0.1791    0.1791    0.2857    0.1429    0.2857
+%    0.1791    0.1791    0.2857    0.1429    0.2857
+%    0.0448    0.0448    0.0714    0.1429    0.0476
+%    0.5373    0.5373    0.2143    0.4286    0.2857
+%    0.0597    0.0597    0.1429    0.1429    0.0952
+sum(Stand_A,2) / n
+%    0.2145
+%    0.2145
+%    0.0703
+%    0.4006
+%    0.1001
+</code></pre>
+<h3 id="几何平均法求权重"><a href="#几何平均法求权重" class="headerlink" title="几何平均法求权重"></a>几何平均法求权重</h3><pre><code class="matlab">Prduct = prod(A,2).^(1/size(A,1));
+Prduct ./ sum(Prduct)
 
-    def find(self, obj):
-        for item in self:
-            if item == obj:
-                return True
-        return False
+Prduct_A = prod(A,2)
+%Prduct_A =
+%    4.0000
+%    4.0000
+%    0.0104
+%   81.0000
+%    0.0741
+n = size(A,1)   % n = 5
+ans = Prduct_A .^ (1/n)
+ans ./ sum(ans)
+%    0.2184
+%    0.2184
+%    0.0664
+%    0.3985
+%    0.0983
+</code></pre>
+<h3 id="特征值法求权重"><a href="#特征值法求权重" class="headerlink" title="特征值法求权重"></a>特征值法求权重</h3><pre><code class="matlab">[V,D] = eig(A)
+% V: 特征向量
+% D: 特征值
+max_eig = max(D(:))
+[r,c] = find(D == max_eig, 1)
+% r: 行     c: 列
+ans = V(:,c)
+ans ./ sum(ans)
+%    0.2121
+%    0.2121
+%    0.0679
+%    0.4114
+%    0.0965
+</code></pre>
+<h3 id="计算一致性比例CR"><a href="#计算一致性比例CR" class="headerlink" title="计算一致性比例CR"></a>计算一致性比例CR</h3><pre><code class="matlab">% 1. 求最大特征值
+n = size(A,1);
+[V,D] = eig(A);
+max_eig = max(D(:));
 
-    def __iter__(self):
-        return self.LinkListIterator(self.head)
+% 2. 计算一致性指标CI
+CI = (max_eig-n) / (n-1);
 
-    def __repr__(self):
-        return str(list(self))
+% 3. 生成平均随机一致性指标RI
+RI = [0 0.001 0.52 0.89 1.12 1.26 1.36 1.41 1.46 1.49 1.52 1.54 1.56 1.58 1.59];
 
-class HashTable:
-    def __init__(self, size=101):
-        self.size = size
-        self.table = [LinkList() for i in range(self.size)]
+% 4. 计算一致性比例CR
+CR = CI / RI(n)
 
-    def hash(self, obj):
-        return obj % self.size
-
-    def insert(self, obj):
-        index = self.hash(obj)
-        if self.find(obj):
-            return False
-        else:
-            self.table[index].append(obj)
-            return True
-
-    def find(self, obj):
-        index = self.hash(obj)
-        return self.table[index].find(obj)
-
-ht = HashTable()
-ht.insert(0)
-ht.insert(1)
-ht.insert(101)
-print(&#39;,&#39;.join(map(str, ht.table)))
-print(ht.find(1))
-print(ht.find(2))
+% 5. 若CR &lt; 0.10则矩阵A的一致性可以接受
 </code></pre>
 
     </div>

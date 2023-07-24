@@ -3,7 +3,7 @@
 <html lang="zh">
     <head>
         <meta charset="utf-8" />
-        <title>哈希表 | Tongrens</title>
+        <title>Tongrens</title>
         <meta name="author" content="Tongrens" />
         <meta name="description" content="" />
         <meta name="keywords" content="" />
@@ -40,13 +40,7 @@
 
 
 
-
-<script src="https://cdn.staticfile.org/waline/2.14.8/waline.min.js"></script>
-<link rel="stylesheet" href="https://cdn.staticfile.org/waline/2.14.8/waline.min.css" />
-<link rel="stylesheet" href="https://cdn.staticfile.org/waline/2.14.8/waline-meta.min.css" />
-
-
-
+<script src="/js/lib/home.js"></script>
 
 <link rel="stylesheet" href="/css/main.css" />
 
@@ -156,142 +150,168 @@
 
             <transition name="into">
                 <div id="main" v-show="!loading">
-                    <div class="article">
-    <div>
-        <h1>哈希表</h1>
+                    <div id="home-head">
+    <div id="home-background" ref="homeBackground" data-images="/images/blog_head.jpg"></div>
+    <div id="home-info" @click="homeClick">
+        <span class="loop"></span>
+        <span class="loop"></span>
+        <span class="loop"></span>
+        <span class="loop"></span>
+        <span class="info">
+            <div class="wrap">
+                <h1>Tongrens</h1>
+                <h3>Welcome to My Blog!</h3>
+                <h5></h5>
+            </div>
+        </span>
     </div>
-    <div class="info">
+</div>
+<div id="home-posts-wrap"  ref="homePostsWrap">
+    <div id="home-posts">
+        
+
+<div class="post">
+    <a href="/2022/10/09/hello-world/">
+        <h2 class="post-title">Hello World</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/categories/Other/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                Other
+            </a>
+        </span>
+        
         <span class="date">
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-            2022/10/10
-        </span>
-        
-        <span class="category">
-            <a href="/categories/%E7%AC%94%E8%AE%B0/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                笔记
-            </a>
+            2022/10/9
         </span>
         
         
-        <span class="tags">
-            <span class="icon">
-                <i class="fa-solid fa-tags fa-fw"></i>
-            </span>
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
             
-            <span class="tag">
-                
-                <a href="/tags/python/" style="color: #ffa2c4">python</a>
-            </span>
+            <p>通宵达旦做blog…记录一下…</p>
+<p>今后会在这里放一下学习笔记，小目标插本，加油加油！</p>
+<p>（吐槽一下，这hexo的结构是真的乱，那什么sb主题里的source结构是真的ex TvT</p>
+
             
-            <span class="tag">
-                
-                <a href="/tags/HashTable/" style="color: #00a596">HashTable</a>
-            </span>
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        <span class="tag">
             
+            <a href="/tags/text/" style="color: #00a596">text</a>
         </span>
         
     </div>
-    
-    <div class="content" v-pre>
-        <pre><code class="python"># HashTable
-class LinkList:
-    class Node:
-        def __init__(self, item=None):
-            self.item = item
-            self.next = None
+    <a href="/2022/10/09/hello-world/" class="go-post">阅读全文</a>
+</div>
 
-    class LinkListIterator:
-        def __init__(self, head):
-            self.current = head
 
-        def __iter__(self):
-            return self
-
-        def __next__(self):
-            if self.current is None:
-                raise StopIteration
-            else:
-                item = self.current.item
-                self.current = self.current.next
-                return item
-</code></pre>
-<span id="more"></span>
-<pre><code class="python">    def __init__(self, iterable=None):
-        self.head = None
-        self.tail = None
-        if iterable:
-            self.extend(iterable)
-
-    def append(self, obj):
-        node = self.Node(obj)
-        if self.head is None:
-            self.head = node
-            self.tail = node
-        else:
-            self.tail.next = node
-            self.tail = node
-
-    def extend(self, iterable):
-        for item in iterable:
-            self.append(item)
-
-    def find(self, obj):
-        for item in self:
-            if item == obj:
-                return True
-        return False
-
-    def __iter__(self):
-        return self.LinkListIterator(self.head)
-
-    def __repr__(self):
-        return str(list(self))
-
-class HashTable:
-    def __init__(self, size=101):
-        self.size = size
-        self.table = [LinkList() for i in range(self.size)]
-
-    def hash(self, obj):
-        return obj % self.size
-
-    def insert(self, obj):
-        index = self.hash(obj)
-        if self.find(obj):
-            return False
-        else:
-            self.table[index].append(obj)
-            return True
-
-    def find(self, obj):
-        index = self.hash(obj)
-        return self.table[index].find(obj)
-
-ht = HashTable()
-ht.insert(0)
-ht.insert(1)
-ht.insert(101)
-print(&#39;,&#39;.join(map(str, ht.table)))
-print(ht.find(1))
-print(ht.find(2))
-</code></pre>
+        <div class="page-current">
+    <div class="prev">
+        
+        <a class="page-num" href="/page/7/">
+            <i class="fa-solid fa-caret-left fa-fw"></i>
+        </a>
+        
+    </div>
+    <div class="page-index">
+        
+        <span>
+            
+            <a class="page-num" href="/">1</a>
+            <span class="page-omit">...</span>
+            
+            
+            
+            
+            <a class="page-num" href="/page/6">6</a>
+            
+            
+            <a class="page-num" href="/page/7/">7</a>
+        </span>
+        
+        <span class="current">8</span>
+        
+    </div>
+    <div class="next">
+        
+    </div>
+</div>
 
     </div>
     
-    
-    
-    
-    
-    <div id="comment">
-        <div id="waline-container"></div>
+    <div id="home-card">
+        <div id="card-div">
+    <div class="card-style">
+        <div class="avatar">
+            <img src="/images/73508047.png" alt="avatar" />
+        </div>
+        <div class="name">Tongrens</div>
+        <div class="description">
+            <p>没什么好看的，累了毁灭吧sb Hexo</p>
+
+        </div>
+        
+        <div class="icon-links">
+            
+            <span class="icon-link">
+                <a target="_blank" rel="noopener" href="https://tongrens.vip:81">
+                    <i
+                        class="fa-solid fa-earth-americas fa-fw"
+                    ></i>
+                </a>
+            </span>
+            
+            <span class="icon-link">
+                <a target="_blank" rel="noopener" href="https://github.com/Tongrens">
+                    <i
+                        class="fa-brands fa-github fa-fw"
+                    ></i>
+                </a>
+            </span>
+            
+            <span class="icon-link">
+                <a href="/images/wechat.png">
+                    <i
+                        class="fa-brands fa-weixin fa-fw"
+                    ></i>
+                </a>
+            </span>
+            
+            <span class="icon-link">
+                <a href="mailto:tongrens@qq.com">
+                    <i
+                        class="fa-solid fa-envelope fa-fw"
+                    ></i>
+                </a>
+            </span>
+            
+        </div>
+        
+        
+        <div class="friend-links">
+            
+        </div>
+        
     </div>
-    
-    
+</div>
+
+    </div>
     
 </div>
 
@@ -324,31 +344,6 @@ print(ht.find(2))
             
         </div>
         <script src="/js/main.js"></script>
-        
-        
-
-
-<script>
-    Waline.init({
-        el: "#waline-container",
-        serverURL: "https://waline.tongrens.me/",
-        commentCount: true,
-        pageview: false,
-        emoji: "https://unpkg.com/@waline/emojis@1.2.0/weibo,https://unpkg.com/@waline/emojis@1.2.0/alus,https://unpkg.com/@waline/emojis@1.2.0/bilibili,https://unpkg.com/@waline/emojis@1.2.0/qq,https://unpkg.com/@waline/emojis@1.2.0/tieba,https://unpkg.com/@waline/emojis@1.2.0/tw-emoji".split(","),
-        meta: "nick,mail,link".split(","),
-        requiredMeta: "nick".split(","),
-        lang: "zh-CN",
-        wordLimit: 0,
-        pageSize: "10",
-        login: "enable",
-        
-        locale: {},
-        
-    });
-</script>
-
-
-
         
     </body>
 </html>
